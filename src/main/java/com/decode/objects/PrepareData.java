@@ -1,4 +1,4 @@
-package com.decode.skapaBooking;
+package com.decode.objects;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
