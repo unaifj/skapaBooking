@@ -18,7 +18,7 @@ public ArrayList<Usuario> importarStock () {
 	    FileReader fr = null;
 	    BufferedReader br = null;
 	
-	    String ruta = "data/usuarios.txt";
+	    String ruta = "data/usuarios";
 	
 	      try {
 	         archivo = new File (ruta);
@@ -35,6 +35,8 @@ public ArrayList<Usuario> importarStock () {
 	        	
 	        	 Usuario usuario = new Usuario(nomUsuario, correo, contrasenya);
 	        	 usuarios.add(usuario);
+	        	 
+	        	 linea = br.readLine();
 	         }
 	         
 	      }catch(Exception e){
