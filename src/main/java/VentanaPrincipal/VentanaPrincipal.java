@@ -10,11 +10,12 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
-
+import com.toedter.calendar.JDateChooser;
 
 import javax.swing.JMenuBar;
 import java.awt.Rectangle;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JButton;
@@ -27,9 +28,17 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JTable;
+import javax.swing.JSpinner;
+import java.awt.Button;
+import java.awt.Panel;
+import javax.swing.JCheckBox;
+import javax.swing.Box;
+import java.awt.Checkbox;
+import VentanaPrincipal.*;
 
 public class VentanaPrincipal extends JFrame  {
-	private JTextField textField;
+	private JTextField textDestino;
+	private JTextField txtIntroduzcaElPrecio;
 	
 	/**
 	 * Ejecutamos la aplicación.
@@ -102,25 +111,127 @@ public class VentanaPrincipal extends JFrame  {
 		lblBandera.setIcon(img1);
 		
 		JPanel panelOeste = new JPanel();
-		panelOeste.setBounds(0, 150, 323, 392);
+		panelOeste.setBounds(0, 109, 323, 392);
 		getContentPane().add(panelOeste);
 		panelOeste.setBackground(Color.ORANGE);
 		panelOeste.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Buscar");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblNewLabel.setBounds(10, 11, 88, 23);
-		panelOeste.add(lblNewLabel);
+		JLabel lblBuscar = new JLabel("Buscar");
+		lblBuscar.setFont(new Font("Tahoma", Font.BOLD, 19));
+		lblBuscar.setBounds(10, 11, 88, 23);
+		panelOeste.add(lblBuscar);
 		
-		JLabel lblNewLabel_1 = new JLabel("Destino / Nombre alojamiento:");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblNewLabel_1.setBounds(10, 45, 247, 23);
-		panelOeste.add(lblNewLabel_1);
+		JLabel lblDestino = new JLabel("Destino / Nombre alojamiento:");
+		lblDestino.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblDestino.setBounds(10, 45, 247, 23);
+		panelOeste.add(lblDestino);
 		
-		textField = new JTextField();
-		textField.setBounds(12, 66, 274, 30);
-		panelOeste.add(textField);
-		textField.setColumns(10);
+		textDestino = new JTextField();
+		textDestino.setBounds(12, 66, 274, 30);
+		panelOeste.add(textDestino);
+		textDestino.setColumns(10);
+		
+		JLabel lblFechaEn = new JLabel("Fecha de entrada");
+		lblFechaEn.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblFechaEn.setBounds(10, 107, 247, 23);
+		panelOeste.add(lblFechaEn);
+		
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setBounds(10, 135, 276, 30);
+		panelOeste.add(dateChooser);
+		
+		JLabel lblFechaDeSalida = new JLabel("Fecha de salida");
+		lblFechaDeSalida.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblFechaDeSalida.setBounds(10, 176, 247, 23);
+		panelOeste.add(lblFechaDeSalida);
+		
+		JDateChooser dateChooser_1 = new JDateChooser();
+		dateChooser_1.setBounds(10, 198, 276, 30);
+		panelOeste.add(dateChooser_1);
+		
+		JSpinner spinnerAdultos = new JSpinner();
+		spinnerAdultos.setToolTipText("Adultos 4");
+		spinnerAdultos.setBounds(10, 259, 276, 23);
+		panelOeste.add(spinnerAdultos);
+		
+		JSpinner spinnerNinos = new JSpinner();
+		spinnerNinos.setBounds(10, 298, 127, 23);
+		panelOeste.add(spinnerNinos);
+		
+		JSpinner spinnerHabitaciones = new JSpinner();
+		spinnerHabitaciones.setBounds(138, 298, 148, 23);
+		panelOeste.add(spinnerHabitaciones);
+		
+		Button buttonBuscar = new Button("Buscar");
+		buttonBuscar.setActionCommand("");
+		buttonBuscar.setBounds(99, 340, 100, 30);
+		panelOeste.add(buttonBuscar);
+		
+		Panel panelSuroeste = new Panel();
+		panelSuroeste.setBounds(0, 501, 323, 274);
+		getContentPane().add(panelSuroeste);
+		panelSuroeste.setLayout(null);
+		
+		JLabel lblFiltradoPor = new JLabel("Filtrado por:");
+		lblFiltradoPor.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblFiltradoPor.setBounds(10, 11, 128, 23);
+		panelSuroeste.add(lblFiltradoPor);
+		
+		JCheckBox chckbxCancelacion = new JCheckBox("Cancelacion gratuita");
+		chckbxCancelacion.setBounds(10, 68, 158, 23);
+		panelSuroeste.add(chckbxCancelacion);
+		
+		txtIntroduzcaElPrecio = new JTextField();
+		txtIntroduzcaElPrecio.setText("Introduzca el precio");
+		txtIntroduzcaElPrecio.setBounds(10, 41, 245, 20);
+		panelSuroeste.add(txtIntroduzcaElPrecio);
+		txtIntroduzcaElPrecio.setColumns(10);
+		
+		JCheckBox chckbxParking = new JCheckBox("Parking");
+		chckbxParking.setBounds(10, 198, 97, 23);
+		panelSuroeste.add(chckbxParking);
+		
+		JCheckBox chckbxPiscina = new JCheckBox("Piscina");
+		chckbxPiscina.setBounds(10, 172, 97, 23);
+		panelSuroeste.add(chckbxPiscina);
+		
+		JCheckBox chckbxNewCheckBox_2_1 = new JCheckBox("Casas y apartamentos");
+		chckbxNewCheckBox_2_1.setBounds(10, 94, 158, 23);
+		panelSuroeste.add(chckbxNewCheckBox_2_1);
+		
+		JCheckBox chckbxHoteles = new JCheckBox("Hoteles y pensiones");
+		chckbxHoteles.setBounds(10, 120, 189, 23);
+		panelSuroeste.add(chckbxHoteles);
+		
+		JCheckBox chckbxRurales = new JCheckBox("Casa rurales");
+		chckbxRurales.setBounds(10, 146, 189, 23);
+		panelSuroeste.add(chckbxRurales);
+		
+		Panel panelCentro = new Panel();
+		panelCentro.setBounds(325, 166, 948, 604);
+		getContentPane().add(panelCentro);
+		
+		JButton btnMapa = new JButton("Mapa");
+		btnMapa.setBounds(1049, 120, 123, 23);
+		getContentPane().add(btnMapa);
+		
+		JLabel lblAlojamientosEncontrados = new JLabel("Alojamientos encontrados");
+		lblAlojamientosEncontrados.setFont(new Font("Tahoma", Font.BOLD, 19));
+		lblAlojamientosEncontrados.setBounds(351, 120, 338, 23);
+		getContentPane().add(lblAlojamientosEncontrados);
+		
+		btnMapa.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Mapa mp = new Mapa("Mapa");
+				mp.setVisible(true);
+				setVisible(false);
+				
+			}
+		});
+		
 		
 		
 	}
