@@ -6,11 +6,18 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.decode.dbprov.SimuladorDb;
+import com.decode.objects.Usuario;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class VentanaInicio extends JFrame {
@@ -18,6 +25,10 @@ public class VentanaInicio extends JFrame {
 	private JPanel contentPane;
 	private JTextField textNomUsuario;
 	private JTextField textContrasenya;
+	private ArrayList<Usuario> usuarios;
+	private String nomUsuario;
+	private String contrasenya;
+	private boolean acceso;
 
 	/**
 	 * Launch the application.
@@ -39,6 +50,12 @@ public class VentanaInicio extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaInicio() {
+		
+
+		SimuladorDb sdb = new SimuladorDb();
+		usuarios = sdb.importarStock();
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 329, 274);
 		contentPane = new JPanel();
@@ -78,12 +95,27 @@ public class VentanaInicio extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		
-		String nomUsuario = textNomUsuario.getText();
-		String contrasenya = textContrasenya.getText();
+		acceso = false;
 		
 		btnLogIn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				nomUsuario = textNomUsuario.getText();
+				contrasenya = textContrasenya.getText();
+				
+				for (Usuario user : usuarios) {
+					if (user.getNomUsuario().equals(nomUsuario) && user.getContrasenya().equals(contrasenya)) {
+						acceso = true;
+					}
+					
+				}
+				if (acceso) {
+					JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Incio correcto", 1, null);
+					
+				}else {
+					JOptionPane.showMessageDialog(null, "Error con las credenciales", "Error", 0, null);
+				}
 				
 				
 			}

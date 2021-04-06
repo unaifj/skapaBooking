@@ -1,6 +1,5 @@
 package com.decode.sesion;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -103,6 +102,7 @@ public class VentanaRegistro extends JFrame {
 		String correo = textCorreo.getText();
 		String contrasenya = textContrasenya.getText();
 		String contrasenya2 = textContrasenya2.getText();
+		
 		
 		if (contrasenya.equals(contrasenya2)) {
 			
