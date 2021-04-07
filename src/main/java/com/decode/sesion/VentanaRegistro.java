@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.decode.bd.DBException;
+import com.decode.bd.DBManager;
 import com.decode.dbprov.SimuladorDb;
 import com.decode.objects.Usuario;
 
@@ -17,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class VentanaRegistro extends JFrame {
@@ -26,7 +29,7 @@ public class VentanaRegistro extends JFrame {
 	private JTextField textCorreo;
 	private JTextField textContrasenya;
 	private JTextField textContrasenya2;
-	private ArrayList<Usuario> usuarios;
+	private List<Usuario> usuarios;
 	private String nomUsuario;
 	private String correo;
 	private String contrasenya;
@@ -109,8 +112,13 @@ public class VentanaRegistro extends JFrame {
 		btnSingUp.setBounds(280, 214, 89, 23);
 		contentPane.add(btnSingUp);
 		
-		sdb = new SimuladorDb();
-		usuarios = sdb.importarUsuarios();
+		DBManager dbm = new DBManager();
+		try {
+			usuarios = dbm.listarUsuarios();
+		} catch (DBException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 	
 		btnSingUp.addActionListener(new ActionListener() {
@@ -123,21 +131,22 @@ public class VentanaRegistro extends JFrame {
 				contrasenya2 = textContrasenya2.getText();
 				
 				if (contrasenya.equals(contrasenya2)) {
-					
-					if (!sdb.comprobarUsuario(nomUsuario)) {
+
 						Usuario user = new Usuario(nomUsuario, correo, contrasenya);
-						usuarios.add(user);
-						sdb.exportarUsuarios(usuarios);
+						
+						try {
+							
+							dbm.insertarUsuario(user);
+						
+						} catch (DBException e1) {
+							e1.printStackTrace();
+						}
 						JOptionPane.showMessageDialog(null, "Cuenta creada con exito", "Exito", 1, null);
 						
 						VentanaInicio vi = new VentanaInicio();
 						setVisible(false);
 						vi.setVisible(true);
-						
-					}else {
-						JOptionPane.showMessageDialog(null, "Nombre de usuario ya en uso", "Error", 0, null);
-					}
-					
+
 				}else {
 					JOptionPane.showMessageDialog(null, "Contraseñas no coinciden", "Error", 0, null);
 				}

@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.decode.bd.DBException;
+import com.decode.bd.DBManager;
 import com.decode.dbprov.SimuladorDb;
 import com.decode.objects.Usuario;
 
@@ -17,7 +19,10 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class VentanaInicio extends JFrame {
@@ -25,7 +30,7 @@ public class VentanaInicio extends JFrame {
 	private JPanel contentPane;
 	private JTextField textNomUsuario;
 	private JTextField textContrasenya;
-	private ArrayList<Usuario> usuarios;
+	private List<Usuario> usuarios;
 	private String nomUsuario;
 	private String contrasenya;
 	private boolean acceso;
@@ -52,8 +57,14 @@ public class VentanaInicio extends JFrame {
 	public VentanaInicio() {
 		
 
-		SimuladorDb sdb = new SimuladorDb();
-		usuarios = sdb.importarUsuarios();
+		DBManager dbm = new DBManager();
+		try {
+			
+			usuarios =dbm.listarUsuarios();
+			
+		} catch (DBException e1) {
+			e1.printStackTrace();
+		}
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 329, 274);
@@ -93,6 +104,10 @@ public class VentanaInicio extends JFrame {
 		lblNewLabel.setBounds(10, 11, 156, 20);
 		contentPane.add(lblNewLabel);
 		
+		JLabel lblReg = new JLabel("No tengo una cuenta skapa");
+		lblReg.setBounds(161, 210, 142, 14);
+		contentPane.add(lblReg);
+		
 		
 		acceso = false;
 		
@@ -116,6 +131,41 @@ public class VentanaInicio extends JFrame {
 					JOptionPane.showMessageDialog(null, "Error con las credenciales", "Error", 0, null);
 				}
 				
+				
+			}
+		});
+		
+		lblReg.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VentanaRegistro vr = new VentanaRegistro();
+				vr.setVisible(true);
+				setVisible(false);
 				
 			}
 		});
