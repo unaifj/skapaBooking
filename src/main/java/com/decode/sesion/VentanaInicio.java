@@ -53,8 +53,7 @@ public class VentanaInicio extends JFrame {
 		
 
 		SimuladorDb sdb = new SimuladorDb();
-		usuarios = sdb.importarStock();
-		
+		usuarios = sdb.importarUsuarios();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 329, 274);
