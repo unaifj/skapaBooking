@@ -35,6 +35,7 @@ import javax.swing.JCheckBox;
 import javax.swing.Box;
 import java.awt.Checkbox;
 import VentanaPrincipal.*;
+import javax.swing.JSlider;
 
 public class VentanaPrincipal extends JFrame  {
 	private JTextField textDestino;
@@ -206,6 +207,10 @@ public class VentanaPrincipal extends JFrame  {
 		JCheckBox chckbxRurales = new JCheckBox("Casa rurales");
 		chckbxRurales.setBounds(10, 146, 189, 23);
 		panelSuroeste.add(chckbxRurales);
+		
+		JSlider slider = new JSlider();
+		slider.setBounds(33, 228, 200, 26);
+		panelSuroeste.add(slider);
 		
 		Panel panelCentro = new Panel();
 		panelCentro.setBounds(325, 166, 948, 604);
