@@ -156,6 +156,7 @@ public class VentanaPrincipal extends JFrame  {
 		panelOeste.add(spinnerAdultos);
 		
 		JSpinner spinnerNinos = new JSpinner();
+		spinnerNinos.setToolTipText("Niños");
 		spinnerNinos.setBounds(10, 298, 127, 23);
 		panelOeste.add(spinnerNinos);
 		
@@ -208,10 +209,6 @@ public class VentanaPrincipal extends JFrame  {
 		chckbxRurales.setBounds(10, 146, 189, 23);
 		panelSuroeste.add(chckbxRurales);
 		
-		JSlider slider = new JSlider();
-		slider.setBounds(33, 228, 200, 26);
-		panelSuroeste.add(slider);
-		
 		Panel panelCentro = new Panel();
 		panelCentro.setBounds(325, 166, 948, 604);
 		getContentPane().add(panelCentro);
@@ -225,17 +222,9 @@ public class VentanaPrincipal extends JFrame  {
 		lblAlojamientosEncontrados.setBounds(351, 120, 338, 23);
 		getContentPane().add(lblAlojamientosEncontrados);
 		
-		btnMapa.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				Mapa mp = new Mapa("Mapa");
-				mp.setVisible(true);
-				setVisible(false);
-				
-			}
-		});
+	
+	
+	
 		
 		
 		
