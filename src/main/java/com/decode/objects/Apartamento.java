@@ -1,4 +1,4 @@
-package com.decode.lista_apartamentos;
+package com.decode.objects;
 
 public class Apartamento {
 	
