@@ -182,5 +182,35 @@
 
 	</properties>
 
+<<<<<<< HEAD
+=======
+				<configuration>
+					<mainClass>com.decode.main.Main</mainClass>
+					<systemProperties>
+						<systemProperty>
+							<key>log4j.configuration</key>
+							<value>file:${config.files.dir}/log4j.properties</value>
+						</systemProperty>
+					</systemProperties>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptors>
+						<descriptor>${basedir}/assembly.xml</descriptor>
+					</descriptors>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.0.0</version>
+				<configuration>
+					<show>private</show>
+					<nohelp>true</nohelp>
+				</configuration>
+			</plugin>
+>>>>>>> master
 
 </project>
