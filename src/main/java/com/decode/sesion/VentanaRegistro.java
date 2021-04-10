@@ -1,11 +1,15 @@
 package com.decode.sesion;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.decode.bd.DBException;
+import com.decode.bd.DBManager;
+import com.decode.objects.Usuario;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -13,6 +17,8 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class VentanaRegistro extends JFrame {
@@ -22,6 +28,11 @@ public class VentanaRegistro extends JFrame {
 	private JTextField textCorreo;
 	private JTextField textContrasenya;
 	private JTextField textContrasenya2;
+	private List<Usuario> usuarios;
+	private String nomUsuario;
+	private String correo;
+	private String contrasenya;
+	private String contrasenya2;
 
 	/**
 	 * Launch the application.
@@ -99,17 +110,49 @@ public class VentanaRegistro extends JFrame {
 		btnSingUp.setBounds(280, 214, 89, 23);
 		contentPane.add(btnSingUp);
 		
-		String nomUsuario = textNomUsuario.getText();
-		String correo = textCorreo.getText();
-		String contrasenya = textContrasenya.getText();
-		String contrasenya2 = textContrasenya2.getText();
-		
-		if (contrasenya.equals(contrasenya2)) {
-			
-			
-		}else {
-			JOptionPane.showMessageDialog(null, "Error", "Contraseñas no coinciden", 0, null);
+		DBManager dbm = new DBManager();
+		try {
+			usuarios = dbm.listarUsuarios();
+		} catch (DBException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
+		
+	
+		btnSingUp.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				nomUsuario = textNomUsuario.getText();
+				correo = textCorreo.getText();
+				contrasenya = textContrasenya.getText();
+				contrasenya2 = textContrasenya2.getText();
+				
+				if (contrasenya.equals(contrasenya2)) {
+
+						Usuario user = new Usuario(nomUsuario, correo, contrasenya);
+						
+						try {
+							
+							dbm.insertarUsuario(user);
+						
+						} catch (DBException e1) {
+							e1.printStackTrace();
+						}
+						JOptionPane.showMessageDialog(null, "Cuenta creada con exito", "Exito", 1, null);
+						
+						VentanaInicio vi = new VentanaInicio();
+						setVisible(false);
+						vi.setVisible(true);
+
+				}else {
+					JOptionPane.showMessageDialog(null, "Contraseñas no coinciden", "Error", 0, null);
+				}
+				
+			}
+		});
+		
+		
 		
 		
 		
