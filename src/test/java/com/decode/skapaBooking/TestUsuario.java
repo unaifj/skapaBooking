@@ -1,4 +1,4 @@
-package com.decode.junit;
+package com.decode.skapaBooking;
 
 import static org.junit.Assert.*;
 
