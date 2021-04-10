@@ -7,11 +7,11 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
-
-import com.decode.objects.Usuario;
 import com.decode.objects.Anuncio;
 import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
+import com.decode.objects.Usuario;
+
 
 public class DBManager {
 	
@@ -84,6 +84,21 @@ public class DBManager {
 		pm.close();
 		return results;
 		
+	}
+	
+	public boolean exiteUsuario(Usuario usuario) throws DBException{
+		
+		boolean existe = false;
+		List<Usuario> usuarios = listarUsuarios();
+		
+		for (Usuario user : usuarios) {
+			if (user.getNomUsuario().equals(usuario.getNomUsuario())) {
+				existe = true;
+			}
+		}
+
+		return existe;
+
 	}
 	
 	//INSERTAR USUARIO
