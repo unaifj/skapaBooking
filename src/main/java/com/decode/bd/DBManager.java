@@ -7,9 +7,11 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
-
-import com.decode.objects.Usuario;
+import com.decode.objects.Anuncio;
 import com.decode.objects.Apartamento;
+import com.decode.objects.Localidad;
+import com.decode.objects.Usuario;
+
 
 public class DBManager {
 	
@@ -32,7 +34,26 @@ public class DBManager {
 			Usuario userC = new Usuario("Isaac", "isaac@gmail.com", "isaac123");
 			pm.makePersistent(userC);
 			
-		
+			Localidad triana1=new Localidad("Andalucia","Triana",49500, "Avd San Miguel 4");
+			pm.makePersistent(triana1);
+			Localidad conil1=new Localidad("Andaluzcia","Conil",48500, "Avd San Patricio 6");
+			pm.makePersistent(conil1);
+			Localidad barakaldo1=new Localidad("Pais Vasco","Barakaldo",48300, "Avd Bagatza 8");
+			pm.makePersistent(barakaldo1);
+			
+			Apartamento apar1= new Apartamento(4,100,triana1);
+			pm.makePersistent(apar1);
+			Apartamento apar2= new Apartamento(6,105,conil1);
+			pm.makePersistent(apar2);
+			Apartamento apar3= new Apartamento(8,120,barakaldo1);
+			pm.makePersistent(apar3);
+			
+			Anuncio anun1=new Anuncio(apar1,"Apartamento soleado en la margen izquierda de Sevilla", "Apartamento soleado con vistas al mar ideal para pasar unos dias en el sur de España", 25, true, 4);
+			pm.makePersistent(anun1);
+			Anuncio anun2=new Anuncio(apar2,"Apartamento soleado muy bien situado en Conil", "Apartamento muy bien situado con vistas a la cala santo amor muy grande y espaciosa", 32, true, 6);
+			pm.makePersistent(anun2);
+			Anuncio anun3=new Anuncio(apar3,"Apartamento muy bueno y completo para conocer Vizcaya", "Apartamento muy completo con lo basico para dormir cocinar y descansar, lo demas lo dejamos a gusto del cliente", 20, true, 3);
+			pm.makePersistent(anun3);
 
 			tx.commit();
 			
@@ -63,6 +84,21 @@ public class DBManager {
 		pm.close();
 		return results;
 		
+	}
+	
+	public boolean exiteUsuario(Usuario usuario) throws DBException{
+		
+		boolean existe = false;
+		List<Usuario> usuarios = listarUsuarios();
+		
+		for (Usuario user : usuarios) {
+			if (user.getNomUsuario().equals(usuario.getNomUsuario())) {
+				existe = true;
+			}
+		}
+
+		return existe;
+
 	}
 	
 	//INSERTAR USUARIO
