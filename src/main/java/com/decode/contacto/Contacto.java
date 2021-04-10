@@ -18,18 +18,18 @@ public class Contacto extends JFrame{
 	public Contacto() {
 		getContentPane().setBackground(Color.BLUE);
 		getContentPane().setLayout(null);
-		setBounds(300,250,389,500);
+		setBounds(300,250,448,500);
 		
 		JButton btnChat = new JButton("Chat");
 		btnChat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnChat.setBounds(136, 190, 89, 23);
+		btnChat.setBounds(167, 187, 89, 23);
 		getContentPane().add(btnChat);
 		
 		JButton btnCorreo = new JButton("Correo");
-		btnCorreo.setBounds(136, 244, 89, 23);
+		btnCorreo.setBounds(167, 240, 89, 23);
 		getContentPane().add(btnCorreo);
 		
 		btnCorreo.addActionListener(new ActionListener() {
@@ -53,12 +53,12 @@ public class Contacto extends JFrame{
 		});
 		
 		JButton btnTelefono = new JButton("Teléfono");
-		btnTelefono.setBounds(136, 289, 89, 23);
+		btnTelefono.setBounds(167, 289, 89, 23);
 		getContentPane().add(btnTelefono);
 		
 		JLabel texto1 = new JLabel("En SkapaBooking vemos esencial la comunicación entre\r\n cliente y ");
 		texto1.setForeground(Color.WHITE);
-		texto1.setBounds(33, 42, 330, 34);
+		texto1.setBounds(35, 45, 330, 34);
 		getContentPane().add(texto1);
 		
 		JLabel texto2 = new JLabel("También ofrecemos la comunicación con nuestras oficinas \r\n");
@@ -77,7 +77,7 @@ public class Contacto extends JFrame{
 		getContentPane().add(texto4);
 		
 		JButton btnVideoLLamada = new JButton("Videollamada\r\n");
-		btnVideoLLamada.setBounds(131, 341, 104, 23);
+		btnVideoLLamada.setBounds(156, 340, 115, 23);
 		getContentPane().add(btnVideoLLamada);
 		
 		btnVideoLLamada.addActionListener(new ActionListener() {
@@ -107,7 +107,7 @@ public class Contacto extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnCOVID.setBounds(258, 391, 89, 23);
+		btnCOVID.setBounds(303, 391, 89, 23);
 		getContentPane().add(btnCOVID);
 		
 		btnCOVID.addActionListener(new ActionListener() {
@@ -121,7 +121,7 @@ public class Contacto extends JFrame{
 		JLabel lblNewLabel = new JLabel("CONTACTO");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(136, 17, 104, 23);
+		lblNewLabel.setBounds(167, 11, 104, 23);
 		getContentPane().add(lblNewLabel);
 		
 		JButton btnAyuda = new JButton("?");
@@ -142,8 +142,7 @@ public class Contacto extends JFrame{
 		
 		
 		
-		
-		
+				
 	}
 	public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {

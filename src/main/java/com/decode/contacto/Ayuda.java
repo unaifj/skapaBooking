@@ -3,6 +3,8 @@ package com.decode.contacto;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -35,13 +37,13 @@ public class Ayuda extends JFrame{
 		getContentPane().add(label3);
 		
 		JButton boton1 = new JButton("Normativa COVID                     -->");
-		boton1.setBounds(92, 164, 221, 23);
+		boton1.setBounds(92, 233, 221, 23);
 		getContentPane().add(boton1);
 		setBounds(300,250,389,500);
 		
 		
 		JButton boton2 = new JButton("Cancelaciones                      -->");
-		boton2.setBounds(92, 164, 221, 23);
+		boton2.setBounds(92, 199, 221, 23);
 		getContentPane().add(boton2);
 		setBounds(300,250,389,500);
 		
@@ -49,6 +51,19 @@ public class Ayuda extends JFrame{
 		boton3.setBounds(92, 164, 221, 23);
 		getContentPane().add(boton3);
 		setBounds(300,250,389,500);
+		
+		
+		JButton Volver = new JButton("<");
+		Volver.setBounds(20, 416, 49, 23);
+		getContentPane().add(Volver);
+		
+		Volver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Contacto C = new Contacto();
+				setVisible(false);
+				C.setVisible(true);
+				}
+			});
 	}
 	
 	
