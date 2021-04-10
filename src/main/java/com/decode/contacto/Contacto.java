@@ -19,9 +19,6 @@ import com.decode.chat.ChatSkapaBookingCliente;
 
 public class Contacto extends JFrame{
 	public Contacto() {
-		getContentPane().setBackground(Color.BLUE);
-		getContentPane().setLayout(null);
-		setBounds(300,250,448,500);
 		
 		JButton btnChat = new JButton("Chat.S");
 		btnChat.addActionListener(new ActionListener() {
@@ -81,6 +78,14 @@ public class Contacto extends JFrame{
 		JButton btnTelefono = new JButton("Teléfono");
 		btnTelefono.setBounds(167, 289, 89, 23);
 		getContentPane().add(btnTelefono);
+		
+		btnTelefono.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Telefono T = new Telefono();
+				setVisible(false);
+				T.setVisible(true);
+				}
+			});
 		
 		JLabel texto1 = new JLabel("En SkapaBooking vemos esencial la comunicación entre\r\n cliente y ");
 		texto1.setForeground(Color.WHITE);
