@@ -1,42 +1,39 @@
 package com.decode.lista_apartamentos;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-
-
-import javax.swing.JMenuBar;
-import java.awt.Rectangle;
-import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.EventQueue;
 
-import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.border.EmptyBorder;
+
+import com.decode.bd.DBException;
+import com.decode.bd.DBManager;
+import com.decode.dbprov.SimuladorDb;
+import com.decode.objects.Apartamento;
+
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Image;
 
-import javax.swing.JComboBox;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.ImageIcon;
 import javax.swing.JTextField;
-import javax.swing.JTable;
-import javax.swing.JSpinner;
-import java.awt.Button;
-import java.awt.Panel;
-import javax.swing.JCheckBox;
-import javax.swing.Box;
-import java.awt.Checkbox;
-import javax.swing.JSlider;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.List;
+import java.awt.event.ActionEvent;
+
 
 public class InterfazApartamentos extends JFrame  {
-	
+
+	private List<Apartamento> apartamentos;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -52,6 +49,15 @@ public class InterfazApartamentos extends JFrame  {
 	}
 	
 	public InterfazApartamentos() {
+		
+		DBManager dbm = new DBManager();
+		try {
+			
+			apartamentos =dbm.listarApartamentos();
+			
+		} catch (DBException e1) {
+			e1.printStackTrace();
+		}
 		getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 62));
 		getContentPane().setLayout(null);
 		setBounds(300, 200, 1289, 809);
@@ -117,6 +123,7 @@ public class InterfazApartamentos extends JFrame  {
 		
 		JLabel LabelDescripcion = new JLabel("");
 		panelAbajo.add(LabelDescripcion);
+		
 		
 	
 		
