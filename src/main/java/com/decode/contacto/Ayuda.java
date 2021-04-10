@@ -41,6 +41,13 @@ public class Ayuda extends JFrame{
 		getContentPane().add(boton1);
 		setBounds(300,250,389,500);
 		
+		boton1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Precios Pr = new Precios();
+				setVisible(false);
+				Pr.setVisible(true);
+				}
+			});
 		
 		JButton boton2 = new JButton("Cancelaciones         >");
 		boton2.setBounds(92, 222, 221, 23);
