@@ -19,7 +19,10 @@ import com.decode.chat.ChatSkapaBookingCliente;
 
 public class Contacto extends JFrame{
 	public Contacto() {
-		
+		getContentPane().setBackground(Color.BLUE);
+		getContentPane().setLayout(null);
+		setBounds(300,250,453,500);
+
 		JButton btnChat = new JButton("Chat.S");
 		btnChat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
