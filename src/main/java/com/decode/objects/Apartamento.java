@@ -7,89 +7,54 @@ import javax.jdo.annotations.PersistenceCapable;
 @PersistenceCapable
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class Apartamento {
-	private String titulo;
-	private String descripcion;
-	private String localizacion;
-	private int precioNoche;
-	private int precioTotal;
-	private boolean disponibilidad;
-	private int numPersonas;
 	
-	public Apartamento(String titulo, String descripcion, String localizacion, int precioNoche, int precioTotal,
-			boolean disponibilidad, int numPersonas) {
+	private int numHabitaciones;
+	private int metrosCuad;
+	private Localidad localidad;
+	
+	public Apartamento(int numHabitaciones, int metrosCuad, Localidad localidad) {
 		super();
-		this.titulo = titulo;
-		this.descripcion = descripcion;
-		this.localizacion = localizacion;
-		this.precioNoche = precioNoche;
-		this.precioTotal = precioTotal;
-		this.disponibilidad = disponibilidad;
-		this.numPersonas = numPersonas;
+		this.numHabitaciones = numHabitaciones;
+		this.metrosCuad = metrosCuad;
+		this.localidad = localidad;
 	}
+	
 	public Apartamento() {
 		super();
-		this.titulo = "";
-		this.descripcion = "";
-		this.localizacion = "";
-		this.precioNoche = 0;
-		this.precioTotal = 0;
-		this.disponibilidad = false;
-		this.numPersonas = 0;
+		this.numHabitaciones = 0;
+		this.metrosCuad = 0;
+		this.localidad = null;
 	}
-	public String getTitulo() {
-		return titulo;
+
+	public int getNumHabitaciones() {
+		return numHabitaciones;
 	}
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+
+	public void setNumHabitaciones(int numHabitaciones) {
+		this.numHabitaciones = numHabitaciones;
 	}
-	public String getDescripcion() {
-		return descripcion;
+
+	public int getMetrosCuad() {
+		return metrosCuad;
 	}
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+
+	public void setMetrosCuad(int metrosCuad) {
+		this.metrosCuad = metrosCuad;
 	}
-	public String getLocalizacion() {
-		return localizacion;
+
+	public Localidad getLocalidad() {
+		return localidad;
 	}
-	public void setLocalizacion(String localizacion) {
-		this.localizacion = localizacion;
+
+	public void setLocalidad(Localidad localidad) {
+		this.localidad = localidad;
 	}
-	public int getPrecioNoche() {
-		return precioNoche;
-	}
-	public void setPrecioNoche(int precioNoche) {
-		this.precioNoche = precioNoche;
-	}
-	public int getPrecioTotal() {
-		return precioTotal;
-	}
-	public void setPrecioTotal(int precioTotal) {
-		this.precioTotal = precioTotal;
-	}
-	public boolean isDisponibilidad() {
-		return disponibilidad;
-	}
-	public void setDisponibilidad(boolean disponibilidad) {
-		this.disponibilidad = disponibilidad;
-	}
-	public int getNumPersonas() {
-		return numPersonas;
-	}
-	public void setNumPersonas(int numPersonas) {
-		this.numPersonas = numPersonas;
-	}
-	
+
 	@Override
 	public String toString() {
-		return "Apartamento [titulo=" + titulo + ", descripcion=" + descripcion + ", localizacion=" + localizacion
-				+ ", precioNoche=" + precioNoche + ", precioTotal=" + precioTotal + ", disponibilidad=" + disponibilidad
-				+ ", numPersonas=" + numPersonas + "]";
+		return "Apartamento [numHabitaciones=" + numHabitaciones + ", metrosCuad=" + metrosCuad + ", localidad="
+				+ localidad + "]";
 	}
-	
-	
-
-	
-	
 	
 
 }
