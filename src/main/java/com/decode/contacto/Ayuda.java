@@ -36,18 +36,18 @@ public class Ayuda extends JFrame{
 		label3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		getContentPane().add(label3);
 		
-		JButton boton1 = new JButton("Normativa COVID                     -->");
+		JButton boton1 = new JButton("Normativa COVID      >");
 		boton1.setBounds(92, 233, 221, 23);
 		getContentPane().add(boton1);
 		setBounds(300,250,389,500);
 		
 		
-		JButton boton2 = new JButton("Cancelaciones                      -->");
+		JButton boton2 = new JButton("Cancelaciones           >");
 		boton2.setBounds(92, 199, 221, 23);
 		getContentPane().add(boton2);
 		setBounds(300,250,389,500);
 		
-		JButton boton3 = new JButton("Pago                     -->");
+		JButton boton3 = new JButton("Pago                          >");
 		boton3.setBounds(92, 164, 221, 23);
 		getContentPane().add(boton3);
 		setBounds(300,250,389,500);

@@ -12,6 +12,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import com.decode.chat.ChatSkapaBooking;
+import com.decode.chat.ChatSkapaBookingCliente;
+
 
 
 public class Contacto extends JFrame{
@@ -20,13 +23,36 @@ public class Contacto extends JFrame{
 		getContentPane().setLayout(null);
 		setBounds(300,250,448,500);
 		
-		JButton btnChat = new JButton("Chat");
+		JButton btnChat = new JButton("Chat.S");
 		btnChat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnChat.setBounds(167, 187, 89, 23);
+		btnChat.setBounds(81, 185, 89, 23);
 		getContentPane().add(btnChat);
+		
+		btnChat.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ChatSkapaBooking C = new ChatSkapaBooking();
+				setVisible(false);
+				C.setVisible(true);
+				}
+			});
+		JButton btnChat2 = new JButton("Chat.C");
+		btnChat2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnChat2.setBounds(253, 185, 89, 23);
+		getContentPane().add(btnChat2);
+		
+		btnChat2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ChatSkapaBookingCliente C = new ChatSkapaBookingCliente();
+				setVisible(false);
+				C.setVisible(true);
+				}
+			});
 		
 		JButton btnCorreo = new JButton("Correo");
 		btnCorreo.setBounds(167, 240, 89, 23);
@@ -58,22 +84,22 @@ public class Contacto extends JFrame{
 		
 		JLabel texto1 = new JLabel("En SkapaBooking vemos esencial la comunicación entre\r\n cliente y ");
 		texto1.setForeground(Color.WHITE);
-		texto1.setBounds(35, 45, 330, 34);
+		texto1.setBounds(35, 45, 387, 34);
 		getContentPane().add(texto1);
 		
 		JLabel texto2 = new JLabel("También ofrecemos la comunicación con nuestras oficinas \r\n");
 		texto2.setForeground(Color.WHITE);
-		texto2.setBounds(33, 102, 314, 14);
+		texto2.setBounds(33, 102, 389, 14);
 		getContentPane().add(texto2);
 		
 		JLabel texto3 = new JLabel("anfitrión. Por eso ofrecemos estas \r\ndiferentes comunicaciones.");
 		texto3.setForeground(Color.WHITE);
-		texto3.setBounds(33, 77, 303, 14);
+		texto3.setBounds(33, 77, 389, 14);
 		getContentPane().add(texto3);
 		
 		JLabel texto4 = new JLabel("para posibles dudas y necesidades de los usuarios.\r\n");
 		texto4.setForeground(Color.WHITE);
-		texto4.setBounds(36, 127, 300, 14);
+		texto4.setBounds(36, 127, 386, 14);
 		getContentPane().add(texto4);
 		
 		JButton btnVideoLLamada = new JButton("Videollamada\r\n");
