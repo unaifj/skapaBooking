@@ -1,20 +1,16 @@
 package com.decode.contacto;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.EventQueue;
-
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
-import javax.swing.JTextPane;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.awt.Font;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class Contacto extends JFrame{
 	public Contacto() {
