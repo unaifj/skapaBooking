@@ -11,7 +11,6 @@ import javax.swing.border.EmptyBorder;
 
 import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
-import com.decode.dbprov.SimuladorDb;
 import com.decode.objects.Apartamento;
 
 import javax.swing.JLabel;
