@@ -1,6 +1,5 @@
 package com.decode.bd;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.jdo.JDOHelper;
@@ -32,6 +31,8 @@ public class DBManager {
 			pm.makePersistent(userB);
 			Usuario userC = new Usuario("Isaac", "isaac@gmail.com", "isaac123");
 			pm.makePersistent(userC);
+			
+		
 
 			tx.commit();
 			

@@ -8,7 +8,6 @@ import javax.swing.border.EmptyBorder;
 
 import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
-import com.decode.dbprov.SimuladorDb;
 import com.decode.objects.Usuario;
 
 import javax.swing.JLabel;
@@ -34,7 +33,6 @@ public class VentanaRegistro extends JFrame {
 	private String correo;
 	private String contrasenya;
 	private String contrasenya2;
-	private SimuladorDb sdb;
 
 	/**
 	 * Launch the application.
