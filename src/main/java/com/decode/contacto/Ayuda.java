@@ -14,24 +14,25 @@ public class Ayuda extends JFrame{
 		
 		getContentPane().setBackground(Color.BLUE);
 		getContentPane().setLayout(null);
+		setBounds(300,250,389,500);
 		
-		JLabel lblNewLabel = new JLabel("AYUDA");
-		lblNewLabel.setBounds(158, 11, 68, 14);
-		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		getContentPane().add(lblNewLabel);
+		JLabel label1 = new JLabel("AYUDA");
+		label1.setBounds(158, 11, 68, 14);
+		label1.setForeground(Color.WHITE);
+		label1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		getContentPane().add(label1);
 		
-		JLabel lblNewLabel_1 = new JLabel("Te damos la bienvenida a la Página de ayuda");
-		lblNewLabel_1.setBounds(30, 62, 353, 14);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_1.setForeground(Color.WHITE);
-		getContentPane().add(lblNewLabel_1);
+		JLabel label2 = new JLabel("Te damos la bienvenida a la Página de ayuda");
+		label2.setBounds(30, 62, 353, 14);
+		label2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		label2.setForeground(Color.WHITE);
+		getContentPane().add(label2);
 		
-		JLabel lblNewLabel_2 = new JLabel("Estamos disponibles 24 horas al día\r\n");
-		lblNewLabel_2.setBounds(65, 87, 227, 14);
-		lblNewLabel_2.setForeground(Color.WHITE);
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		getContentPane().add(lblNewLabel_2);
+		JLabel label3 = new JLabel("Estamos disponibles 24 horas al día\r\n");
+		label3.setBounds(65, 87, 227, 14);
+		label3.setForeground(Color.WHITE);
+		label3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		getContentPane().add(label3);
 		
 		JButton boton1 = new JButton("Normativa COVID                     -->");
 		boton1.setBounds(92, 164, 221, 23);

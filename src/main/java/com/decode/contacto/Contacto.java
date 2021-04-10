@@ -12,6 +12,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+
+
 public class Contacto extends JFrame{
 	public Contacto() {
 		getContentPane().setBackground(Color.BLUE);
@@ -98,13 +100,7 @@ public class Contacto extends JFrame{
 			
 		});
 		
-		JButton btnAyuda = new JButton("?");
-		btnAyuda.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnAyuda.setBounds(23, 391, 89, 23);
-		getContentPane().add(btnAyuda);
+		
 		
 		JButton btnCOVID = new JButton("COVID");
 		btnCOVID.addActionListener(new ActionListener() {
@@ -114,11 +110,40 @@ public class Contacto extends JFrame{
 		btnCOVID.setBounds(258, 391, 89, 23);
 		getContentPane().add(btnCOVID);
 		
+		btnCOVID.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				COVID C = new COVID();
+				setVisible(false);
+				C.setVisible(true);
+				}
+			});
+		
 		JLabel lblNewLabel = new JLabel("CONTACTO");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel.setBounds(136, 17, 104, 23);
 		getContentPane().add(lblNewLabel);
+		
+		JButton btnAyuda = new JButton("?");
+		btnAyuda.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnAyuda.setBounds(33, 391, 89, 23);
+		getContentPane().add(btnAyuda);
+		
+		btnAyuda.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Ayuda A = new Ayuda();
+				setVisible(false);
+				A.setVisible(true);
+				}
+			});
+		
+		
+		
+		
+		
 	}
 	public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
