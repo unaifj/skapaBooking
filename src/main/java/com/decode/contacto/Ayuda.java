@@ -59,6 +59,13 @@ public class Ayuda extends JFrame{
 		getContentPane().add(boton3);
 		setBounds(300,250,389,500);
 		
+		boton3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Pago P = new Pago();
+				setVisible(false);
+				P.setVisible(true);
+				}
+			});
 		
 		JButton Volver = new JButton("<");
 		Volver.setBounds(20, 416, 49, 23);

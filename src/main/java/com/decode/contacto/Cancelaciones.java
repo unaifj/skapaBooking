@@ -29,7 +29,7 @@ public class Cancelaciones extends JFrame {
 		getContentPane().add(lblNewLabel);
 		
 		JButton boton1 = new JButton("¿ Puedo anular mi reserva ?");
-		boton1.setBounds(65, 85, 313, 51);
+		boton1.setBounds(22, 101, 379, 51);
 		getContentPane().add(boton1);
 		
 		boton1.addActionListener(new ActionListener() {
@@ -45,7 +45,7 @@ public class Cancelaciones extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		boton2.setBounds(65, 163, 313, 51);
+		boton2.setBounds(22, 181, 379, 51);
 		getContentPane().add(boton2);
 		
 		boton2.addActionListener(new ActionListener() {
@@ -57,8 +57,14 @@ public class Cancelaciones extends JFrame {
 			});
 		
 		JButton boton3 = new JButton("Si anulo mi reserva, ¿se me realizará algún cargo?");
-		boton3.setBounds(65, 251, 313, 51);
+		boton3.setBounds(22, 265, 379, 51);
 		getContentPane().add(boton3);
+		
+		JLabel lblNewLabel_1 = new JLabel("Cancelaciones");
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_1.setBounds(88, 66, 247, 14);
+		getContentPane().add(lblNewLabel_1);
 		
 		boton3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
