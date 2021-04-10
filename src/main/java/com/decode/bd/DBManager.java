@@ -143,8 +143,106 @@ public class DBManager {
 		
 	}
 	
+	//INSERTAR APARTAMENTO
+		public void insertarApartamento(Apartamento apartamento) throws DBException{
+			
+			PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+			PersistenceManager pm = pmf.getPersistenceManager();
+			Transaction tx = pm.currentTransaction();
+			
+			try {
+				tx.begin();
+				
+				pm.makePersistent(apartamento);
 
-	
+				tx.commit();
+				
+			} finally {
+				if (tx.isActive()) {
+					tx.rollback();
+				}
+				pm.close();
+			}
+			
+		}
+		
+		//LISTAR APARTAMENTOS
+		public List<Anuncio> listarAnuncio() throws DBException{
+			PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+			PersistenceManager pm = pmf.getPersistenceManager();
+			Transaction tx = pm.currentTransaction();
+			
+			tx.begin();
+			
+			Query<Anuncio> query = pm.newQuery("javax.jdo.query.SQL","select * from " + "Anuncio");
+			query.setClass(Anuncio.class);
+				
+			List<Anuncio> results = query.executeList();
+			
+			tx.commit();
+			pm.close();
+			return results;
+			
+		}
+		
+		//INSERTAR APARTAMENTO
+			public void insertarAnuncio(Anuncio anuncio) throws DBException{
+					
+			PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+			PersistenceManager pm = pmf.getPersistenceManager();
+			Transaction tx = pm.currentTransaction();
+					
+					try {
+						tx.begin();
+						
+						pm.makePersistent(anuncio);
+
+						tx.commit();
+						
+					} finally {
+						if (tx.isActive()) {
+							tx.rollback();
+						}
+						pm.close();
+					}
+					
+				}
+			
+			//LISTAR APARTAMENTOS POR LOCALIDAD
+			public List<Apartamento> listarApartamentosPorLocalidad(Apartamento apartamento) throws DBException{
+				PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+				PersistenceManager pm = pmf.getPersistenceManager();
+				Transaction tx = pm.currentTransaction();
+				
+				tx.begin();
+				
+				Query<Apartamento> query = pm.newQuery("javax.jdo.query.SQL","select * from " + "Apartamento" + "WHERE localidad=?");
+				query.setClass(Apartamento.class);
+					
+				List<Apartamento> results = query.executeList();
+				
+				tx.commit();
+				pm.close();
+				return results;
+			}
+			
+			//LISTAR ANUNCIOS POR USUARIO
+//				public List<Anuncio> listarAnuncioPorUsuario(Anuncio anuncio) throws DBException{
+//				PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+//				PersistenceManager pm = pmf.getPersistenceManager();
+//				Transaction tx = pm.currentTransaction();
+//				
+//				tx.begin();
+				
+//				Query<Anuncio> query = pm.newQuery("javax.jdo.query.SQL","select * from " + "Anuncio" + "WHERE usuario.idUsuario=?");
+//				query.setClass(Anuncio.class);
+					
+//				List<Anuncio> results = query.executeList();
+				
+//				tx.commit();
+//				pm.close();
+//				return results;
+//		}
 			
 }
 	
