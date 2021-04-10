@@ -6,11 +6,22 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.decode.bd.DBException;
+import com.decode.bd.DBManager;
+import com.decode.objects.Usuario;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class VentanaInicio extends JFrame {
@@ -18,6 +29,10 @@ public class VentanaInicio extends JFrame {
 	private JPanel contentPane;
 	private JTextField textNomUsuario;
 	private JTextField textContrasenya;
+	private List<Usuario> usuarios;
+	private String nomUsuario;
+	private String contrasenya;
+	private boolean acceso;
 
 	/**
 	 * Launch the application.
@@ -39,6 +54,17 @@ public class VentanaInicio extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaInicio() {
+		
+
+		DBManager dbm = new DBManager();
+		try {
+			
+			usuarios =dbm.listarUsuarios();
+			
+		} catch (DBException e1) {
+			e1.printStackTrace();
+		}
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 329, 274);
 		contentPane = new JPanel();
@@ -77,14 +103,68 @@ public class VentanaInicio extends JFrame {
 		lblNewLabel.setBounds(10, 11, 156, 20);
 		contentPane.add(lblNewLabel);
 		
+		JLabel lblReg = new JLabel("No tengo una cuenta skapa");
+		lblReg.setBounds(161, 210, 142, 14);
+		contentPane.add(lblReg);
 		
-		String nomUsuario = textNomUsuario.getText();
-		String contrasenya = textContrasenya.getText();
+		
+		acceso = false;
 		
 		btnLogIn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				nomUsuario = textNomUsuario.getText();
+				contrasenya = textContrasenya.getText();
+				
+				for (Usuario user : usuarios) {
+					if (user.getNomUsuario().equals(nomUsuario) && user.getContrasenya().equals(contrasenya)) {
+						acceso = true;
+					}
+					
+				}
+				if (acceso) {
+					JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Incio correcto", 1, null);
+					
+				}else {
+					JOptionPane.showMessageDialog(null, "Error con las credenciales", "Error", 0, null);
+				}
+				
+				
+			}
+		});
+		
+		lblReg.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VentanaRegistro vr = new VentanaRegistro();
+				vr.setVisible(true);
+				setVisible(false);
 				
 			}
 		});
