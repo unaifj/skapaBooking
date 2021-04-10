@@ -1,7 +1,12 @@
 package com.decode.objects;
 
+import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.InheritanceStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+
+@PersistenceCapable
+@Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class Apartamento {
-	
 	private String titulo;
 	private String descripcion;
 	private String localizacion;
