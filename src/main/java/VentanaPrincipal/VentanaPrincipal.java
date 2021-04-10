@@ -210,7 +210,7 @@ public class VentanaPrincipal extends JFrame  {
 		panelSuroeste.add(chckbxRurales);
 		
 		Panel panelCentro = new Panel();
-		panelCentro.setBounds(325, 166, 948, 604);
+		panelCentro.setBounds(329, 156, 948, 604);
 		getContentPane().add(panelCentro);
 		
 		JButton btnMapa = new JButton("Mapa");
