@@ -32,6 +32,8 @@ public class DBManager {
 			Usuario userC = new Usuario("Isaac", "isaac@gmail.com", "isaac123");
 			pm.makePersistent(userC);
 			
+			Apartamento apar1= new Apartamento("Apartamento grande lujoso", "Apartamento lujoso pensado para relajarse con toma de sol todos los dias", "Marbella", 18, 126, false, 2);
+			
 		
 
 			tx.commit();
