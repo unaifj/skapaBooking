@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.HeadlessException;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -33,6 +35,7 @@ public class VentanaRegistro extends JFrame {
 	private String correo;
 	private String contrasenya;
 	private String contrasenya2;
+	private DBManager dbm;
 
 	/**
 	 * Launch the application.
@@ -110,7 +113,7 @@ public class VentanaRegistro extends JFrame {
 		btnSingUp.setBounds(280, 214, 89, 23);
 		contentPane.add(btnSingUp);
 		
-		DBManager dbm = new DBManager();
+		dbm = new DBManager();
 		try {
 			usuarios = dbm.listarUsuarios();
 		} catch (DBException e1) {
@@ -128,26 +131,40 @@ public class VentanaRegistro extends JFrame {
 				contrasenya = textContrasenya.getText();
 				contrasenya2 = textContrasenya2.getText();
 				
-				if (contrasenya.equals(contrasenya2)) {
+				Usuario user = new Usuario(nomUsuario, correo, contrasenya);
+				
+				try {
+					if (!dbm.exiteUsuario(user)) {
+						if (contrasenya.equals(contrasenya2)) {
 
-						Usuario user = new Usuario(nomUsuario, correo, contrasenya);
-						
-						try {
+							try {
+								
+								dbm.insertarUsuario(user);
 							
-							dbm.insertarUsuario(user);
-						
-						} catch (DBException e1) {
-							e1.printStackTrace();
-						}
-						JOptionPane.showMessageDialog(null, "Cuenta creada con exito", "Exito", 1, null);
-						
-						VentanaInicio vi = new VentanaInicio();
-						setVisible(false);
-						vi.setVisible(true);
+							} catch (DBException e1) {
+								e1.printStackTrace();
+							}
+							JOptionPane.showMessageDialog(null, "Cuenta creada con exito", "Exito", 1, null);
+							
+							VentanaInicio vi = new VentanaInicio();
+							setVisible(false);
+							vi.setVisible(true);
 
-				}else {
-					JOptionPane.showMessageDialog(null, "Contraseñas no coinciden", "Error", 0, null);
+					}else {
+						JOptionPane.showMessageDialog(null, "Contraseñas no coinciden", "Error", 0, null);
+					}
+					}else {
+						JOptionPane.showMessageDialog(null, "El nombre de usuario ya esta en uso", "Error", 0, null);
+					}
+					
+				} catch (HeadlessException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (DBException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
+				
 				
 			}
 		});

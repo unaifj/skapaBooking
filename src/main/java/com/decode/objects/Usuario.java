@@ -7,6 +7,7 @@ import javax.jdo.annotations.PersistenceCapable;
 @PersistenceCapable
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class Usuario {
+	private int id;
 	private String nomUsuario;
 	private String correo;
 	private String contrasenya;
@@ -17,6 +18,17 @@ public class Usuario {
 		this.correo = correo;
 		this.contrasenya = contrasenya;
 	}
+	
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 
 	public String getNomUsuario() {
 		return nomUsuario;
