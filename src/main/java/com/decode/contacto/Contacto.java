@@ -170,6 +170,18 @@ public class Contacto extends JFrame{
 		btnNewButton.setBounds(277, 240, 104, 23);
 		getContentPane().add(btnNewButton);
 		
+		JButton btnNewButton_1 = new JButton("Redes sociales\r\n");
+		btnNewButton_1.setBounds(35, 240, 122, 23);
+		getContentPane().add(btnNewButton_1);
+		
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RedesSociales R = new RedesSociales();
+				setVisible(false);
+				R.setVisible(true);
+				}
+			});
+		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				NuestroCorreo NC = new NuestroCorreo();
