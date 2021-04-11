@@ -166,6 +166,17 @@ public class Contacto extends JFrame{
 		btnAyuda.setBounds(33, 391, 89, 23);
 		getContentPane().add(btnAyuda);
 		
+		JButton btnNewButton = new JButton("Nuestro correo\r\n");
+		btnNewButton.setBounds(277, 240, 104, 23);
+		getContentPane().add(btnNewButton);
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				NuestroCorreo NC = new NuestroCorreo();
+				setVisible(false);
+				NC.setVisible(true);
+				}
+			});
 		btnAyuda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Ayuda A = new Ayuda();
