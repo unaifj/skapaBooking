@@ -15,7 +15,7 @@ public class Anuncio {
 	private boolean disponibilidad;
 	private int numPersonas;
 	
-	public Anuncio(Apartamento apartamento, String titulo, String descripcion, int precioNoche, boolean disponibilidad,
+	public Anuncio(Apartamento apartamento, String titulo, String descripcion, double precioNoche, boolean disponibilidad,
 			int numPersonas) {
 		super();
 		this.apartamento = apartamento;

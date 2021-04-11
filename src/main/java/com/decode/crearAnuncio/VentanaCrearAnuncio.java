@@ -17,6 +17,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
+
+import com.decode.bd.DBException;
+import com.decode.bd.DBManager;
+import com.decode.objects.Anuncio;
+import com.decode.objects.Apartamento;
+import com.decode.objects.Localidad;
+
 import javax.swing.JTextField;
 
 public class VentanaCrearAnuncio extends JFrame {
@@ -28,6 +35,7 @@ public class VentanaCrearAnuncio extends JFrame {
 	private JTextField txtHabitaciones;
 	private JTextField txtPrecio;
 	private JTextField txtDescripcion;
+	private DBManager dbm;
 
 	/**
 	 * Launch the application.
@@ -110,53 +118,77 @@ public class VentanaCrearAnuncio extends JFrame {
 		contentPane.add(lblIntro);
 		
 		JLabel lblFoto = new JLabel("Foto");
-		lblFoto.setBounds(10, 178, 378, 408);
+		lblFoto.setBounds(918, 176, 378, 408);
 		contentPane.add(lblFoto);
 		
 		txtNombre = new JTextField();
 		txtNombre.setText("Introduzca el nombre de su apartamento");
-		txtNombre.setBounds(453, 178, 455, 30);
+		txtNombre.setBounds(207, 178, 258, 30);
 		contentPane.add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		txtLocalizacion = new JTextField();
 		txtLocalizacion.setText("Localizacion exacta de la vivienda");
 		txtLocalizacion.setColumns(10);
-		txtLocalizacion.setBounds(453, 219, 455, 30);
+		txtLocalizacion.setBounds(207, 219, 258, 30);
 		contentPane.add(txtLocalizacion);
 		
 		txtMetrosCuadrados = new JTextField();
 		txtMetrosCuadrados.setText("Metros cuadrados de la vivienda");
 		txtMetrosCuadrados.setColumns(10);
-		txtMetrosCuadrados.setBounds(453, 260, 455, 30);
+		txtMetrosCuadrados.setBounds(207, 260, 258, 30);
 		contentPane.add(txtMetrosCuadrados);
 		
 		txtHabitaciones = new JTextField();
 		txtHabitaciones.setText("Introduzca el numero de habitaciones de su vivienda");
 		txtHabitaciones.setColumns(10);
-		txtHabitaciones.setBounds(453, 301, 455, 30);
+		txtHabitaciones.setBounds(207, 301, 258, 30);
 		contentPane.add(txtHabitaciones);
 		
 		txtPrecio = new JTextField();
 		txtPrecio.setText("Introduzca el precio deseado por noche para su vivienda");
 		txtPrecio.setColumns(10);
-		txtPrecio.setBounds(453, 342, 455, 30);
+		txtPrecio.setBounds(207, 342, 258, 30);
 		contentPane.add(txtPrecio);
 		
 		txtDescripcion = new JTextField();
 		txtDescripcion.setText("Descripcion");
-		txtDescripcion.setBounds(453, 383, 455, 180);
+		txtDescripcion.setBounds(207, 383, 258, 180);
 		contentPane.add(txtDescripcion);
 		txtDescripcion.setColumns(10);
 		
 		JButton btnImagen = new JButton("Añadir imagen");
-		btnImagen.setBounds(121, 627, 130, 23);
+		btnImagen.setBounds(872, 582, 130, 23);
 		contentPane.add(btnImagen);
 		btnImagen.setBackground(Color.WHITE);
 		
 		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(620, 620, 130, 37);
+		btnGuardar.setBounds(1061, 674, 130, 37);
 		contentPane.add(btnGuardar);
+		
+		JLabel lblNewLabel = new JLabel("Titulo");
+		lblNewLabel.setBounds(10, 186, 46, 14);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Loxcalizacion");
+		lblNewLabel_1.setBounds(10, 227, 70, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Metros cuadrados (m2)");
+		lblNewLabel_2.setBounds(10, 268, 122, 14);
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("Numero de habitaciones");
+		lblNewLabel_3.setBounds(10, 309, 122, 14);
+		contentPane.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("Precio por noche");
+		lblNewLabel_4.setBounds(10, 342, 122, 14);
+		contentPane.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_5 = new JLabel("Descripcion");
+		lblNewLabel_5.setBounds(10, 373, 92, 14);
+		contentPane.add(lblNewLabel_5);
 		
 		//BOTON IMAGEN 
 		btnImagen.addActionListener(new ActionListener() {
@@ -170,8 +202,25 @@ public class VentanaCrearAnuncio extends JFrame {
 				if(seleccionado == JFileChooser.APPROVE_OPTION) {
 					File ficheroSeleccionado = fc.getSelectedFile();
 					ficheroSeleccionado.getAbsolutePath();
-				
 				}
+				
+				String nombre = txtNombre.getText();
+				String desc = txtDescripcion.getText();
+				String loc = txtLocalizacion.getText();
+				int numHab = Integer.parseInt(txtHabitaciones.getText());
+				double precio = Double.parseDouble(txtPrecio.getText());
+				int m2 = Integer.parseInt(txtMetrosCuadrados.getText());
+				
+				Localidad local = new Localidad("", "", 00000, loc);
+				Apartamento aparta = new Apartamento(numHab, m2, null);
+				Anuncio anuncio = new Anuncio(aparta, loc, desc, precio, false, m2);
+				
+				try {
+					dbm.insertarAnuncio(anuncio);
+				} catch (DBException e1) {
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		

@@ -66,8 +66,6 @@ public class DBManager {
 	}
 	
 	//LISTAR USUARIOS DE BD
-	
-	
 	public List<Usuario> listarUsuarios() throws DBException{
 		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -113,6 +111,27 @@ public class DBManager {
 			
 			pm.makePersistent(user);
 
+			tx.commit();
+			
+		} finally {
+			if (tx.isActive()) {
+				tx.rollback();
+			}
+			pm.close();
+		}
+		
+	}
+	
+	//CREAR NUEVO ANUNCIO
+	public void insertarAnuncio(Anuncio anuncio) throws DBException{
+		
+		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		
+		try {
+			tx.begin();
+			pm.makePersistent(anuncio);
 			tx.commit();
 			
 		} finally {
@@ -185,28 +204,6 @@ public class DBManager {
 			
 		}
 		
-		//INSERTAR APARTAMENTO
-			public void insertarAnuncio(Anuncio anuncio) throws DBException{
-					
-			PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-			PersistenceManager pm = pmf.getPersistenceManager();
-			Transaction tx = pm.currentTransaction();
-					
-					try {
-						tx.begin();
-						
-						pm.makePersistent(anuncio);
-
-						tx.commit();
-						
-					} finally {
-						if (tx.isActive()) {
-							tx.rollback();
-						}
-						pm.close();
-					}
-					
-				}
 			
 			//LISTAR APARTAMENTOS POR LOCALIDAD
 			public List<Apartamento> listarApartamentosPorLocalidad(Apartamento apartamento) throws DBException{
