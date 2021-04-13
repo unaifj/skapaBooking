@@ -64,7 +64,7 @@ public class Cancelaciones2 extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Contacto frame = new Contacto();
+                	Cancelaciones2 frame = new Cancelaciones2();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();

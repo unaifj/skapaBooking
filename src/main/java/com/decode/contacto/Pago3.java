@@ -78,7 +78,7 @@ public class Pago3 extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Contacto frame = new Contacto();
+                	Pago3 frame = new Pago3();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -82,7 +82,7 @@ public class Cancelaciones4 extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Contacto frame = new Contacto();
+                	Cancelaciones4 frame = new Cancelaciones4();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();

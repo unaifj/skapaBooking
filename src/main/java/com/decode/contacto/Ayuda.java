@@ -41,39 +41,39 @@ public class Ayuda extends JFrame{
 		getContentPane().add(boton1);
 		setBounds(300,250,389,500);
 		
-		boton1.addActionListener(new ActionListener() {
+		/*boton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Precios Pr = new Precios();
 				setVisible(false);
 				Pr.setVisible(true);
 				}
 			});
-		
+		*/
 		JButton boton2 = new JButton("Cancelaciones         >");
 		boton2.setBounds(92, 222, 221, 23);
 		getContentPane().add(boton2);
 		setBounds(300,250,389,500);
 		
-		boton2.addActionListener(new ActionListener() {
+		/*boton2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Cancelaciones C = new Cancelaciones();
 				setVisible(false);
 				C.setVisible(true);
 				}
-			});
+			});*/
 		JButton boton3 = new JButton("Pago                    >");
 		boton3.setBounds(92, 176, 221, 23);
 		getContentPane().add(boton3);
 		setBounds(300,250,389,500);
 		
-		boton3.addActionListener(new ActionListener() {
+		/*boton3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Pago P = new Pago();
 				setVisible(false);
 				P.setVisible(true);
 				}
 			});
-		
+		*/
 		JButton Volver = new JButton("<");
 		Volver.setBounds(20, 416, 49, 23);
 		getContentPane().add(Volver);
@@ -96,29 +96,33 @@ public class Ayuda extends JFrame{
 		lblNewLabel_2.setBounds(20, 363, 327, 14);
 		getContentPane().add(lblNewLabel_2);
 		
-		Volver.addActionListener(new ActionListener() {
+		/*Volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Contacto C = new Contacto();
 				setVisible(false);
 				C.setVisible(true);
 				}
 			});
+			*/
 	}
 	
 	
 	
 	
 	
-	public static void main(String[] args) {
+	
+	 public static void main(String[] args) {
+	 
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Contacto frame = new Contacto();
+                    Ayuda frame = new Ayuda();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-        });
+        }); 
     }
+
 }

@@ -82,7 +82,7 @@ public class Pago2 extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Contacto frame = new Contacto();
+                	Pago2 frame = new Pago2();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();

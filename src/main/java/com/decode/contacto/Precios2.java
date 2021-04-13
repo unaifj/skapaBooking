@@ -82,7 +82,7 @@ public class Precios2 extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Contacto frame = new Contacto();
+                	Precios2 frame = new Precios2();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
