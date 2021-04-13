@@ -49,13 +49,13 @@ public class NuestroCorreo extends JFrame{
 			lblNewLabel_3.setBounds(44, 160, 94, 14);
 			getContentPane().add(lblNewLabel_3);
 			
-			Volver.addActionListener(new ActionListener() {
+		/*	Volver.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Contacto C = new Contacto();
 					setVisible(false);
 					C.setVisible(true);
 					}
 				});
-			
+			*/
 	 }
 }
