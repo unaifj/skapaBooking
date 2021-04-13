@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 SKAPABOOKING
+=======
+SKAPABOOKING + Jersey + JDO
+>>>>>>> master
 ===============================
 
 Configuración
