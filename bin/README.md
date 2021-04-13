@@ -1,7 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 SKAPABOOKING
 =======
 SKAPABOOKING + Jersey + JDO
+>>>>>>> master
+=======
+SKAPABOOKING
 >>>>>>> master
 ===============================
 
