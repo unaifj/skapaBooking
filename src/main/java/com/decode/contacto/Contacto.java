@@ -15,6 +15,8 @@ import javax.swing.JLabel;
 import com.decode.chat.ChatSkapaBooking;
 import com.decode.chat.ChatSkapaBookingCliente;
 
+import VentanaPrincipal.VentanaPrincipal;
+
 
 
 public class Contacto extends JFrame{
@@ -174,6 +176,17 @@ public class Contacto extends JFrame{
 		botonRedesSociales.setBounds(35, 240, 104, 23);
 		getContentPane().add(botonRedesSociales);
 		
+		JButton botonVP = new JButton("Ventana Principal\r\n");
+		botonVP.setBounds(141, 427, 142, 23);
+		getContentPane().add(botonVP);
+		
+		botonVP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaPrincipal VP = new VentanaPrincipal();
+				setVisible(false);
+				VP.setVisible(true);
+				}
+			});
 		botonRedesSociales.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RedesSociales RS = new RedesSociales();

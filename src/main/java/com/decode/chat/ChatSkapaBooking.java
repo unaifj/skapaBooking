@@ -3,6 +3,10 @@ package com.decode.chat;
 
 
 import javax.swing.*;
+
+import com.decode.contacto.Ayuda;
+import com.decode.contacto.Contacto;
+
 import java.awt.*;
 import java.net.*;
 import java.io.*;
@@ -59,7 +63,19 @@ public class ChatSkapaBooking extends JFrame{
 		lblNewLabel.setBackground(new Color(173, 216, 230));
 		lblNewLabel.setBounds(0, 0, 343, 46);
 		ventana_chat.getContentPane().add(lblNewLabel);
-		ventana_chat.setSize(349,559);
+		
+		JButton botonContacto = new JButton("Contacto");
+		botonContacto.setBounds(123, 521, 89, 23);
+		
+		botonContacto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Contacto C = new Contacto();
+				setVisible(false);
+				C.setVisible(true);
+				}
+			});
+		ventana_chat.getContentPane().add(botonContacto);
+		ventana_chat.setSize(349,585);
 		ventana_chat.setVisible(true);
 		ventana_chat.setResizable(false);
 		ventana_chat.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

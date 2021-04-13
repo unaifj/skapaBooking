@@ -15,7 +15,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-
+import com.decode.contacto.Contacto;
 
 import java.awt.TextArea;
 import java.awt.event.ActionEvent;
@@ -101,11 +101,20 @@ public class ChatSkapaBookingCliente extends JFrame{
 		labelChat.setBackground(SystemColor.activeCaption);
 
 		
+		JButton botonContacto = new JButton("Contacto");
+		botonContacto.setBounds(121, 520, 89, 23);
 		
+		botonContacto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Contacto C = new Contacto();
+				setVisible(false);
+				C.setVisible(true);
+				}
+			});
 		ventana_chat.getContentPane().add(labelChat);
+		ventana_chat.getContentPane().add(botonContacto);
 		
-		
-		ventana_chat.setSize(349,559);
+		ventana_chat.setSize(349,585);
 		ventana_chat.setVisible(true);
 		ventana_chat.setResizable(false);
 		ventana_chat.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
