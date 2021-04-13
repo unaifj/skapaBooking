@@ -26,32 +26,23 @@ public class Contacto extends JFrame{
 		setBounds(300,250,453,500);
 
 		JButton btnChat = new JButton("Chat.S");
-		btnChat.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		
 		btnChat.setBounds(81, 185, 89, 23);
 		getContentPane().add(btnChat);
 		
 		btnChat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ChatSkapaBooking C = new ChatSkapaBooking();
-				setVisible(false);
-				C.setVisible(true);
+								C.setVisible(true);
 				}
 			});
 		JButton btnChat2 = new JButton("Chat.C");
-		btnChat2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
 		btnChat2.setBounds(253, 185, 89, 23);
 		getContentPane().add(btnChat2);
 		
 		btnChat2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ChatSkapaBookingCliente C = new ChatSkapaBookingCliente();
-				setVisible(false);
 				C.setVisible(true);
 				}
 			});

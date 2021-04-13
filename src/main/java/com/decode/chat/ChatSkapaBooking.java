@@ -78,7 +78,7 @@ public class ChatSkapaBooking extends JFrame{
 		ventana_chat.setSize(349,585);
 		ventana_chat.setVisible(true);
 		ventana_chat.setResizable(false);
-		ventana_chat.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//ventana_chat.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
 		Thread principal =  new Thread(new Runnable() {
