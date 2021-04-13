@@ -78,9 +78,9 @@ public class VentanaInicio extends JFrame {
 		lblNomUsuario.setBounds(10, 78, 103, 14);
 		contentPane.add(lblNomUsuario);
 		
-		JLabel lblContrasenya = new JLabel("Contraseña:");
-		lblContrasenya.setBounds(10, 118, 86, 14);
-		contentPane.add(lblContrasenya);
+		JLabel lblContraseña = new JLabel("Contraseña:");
+		lblContraseña.setBounds(10, 118, 86, 14);
+		contentPane.add(lblContraseña);
 		
 		textNomUsuario = new JTextField();
 		textNomUsuario.setBounds(154, 75, 137, 20);

@@ -1,4 +1,4 @@
-SKAPABOOKING + Jersey + JDO
+SKAPABOOKING
 ===============================
 
 Configuración
