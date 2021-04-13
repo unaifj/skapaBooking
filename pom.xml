@@ -106,6 +106,7 @@
 				<artifactId>datanucleus-maven-plugin</artifactId>
 				<version>5.0.2</version>
 				<configuration>
+					 <fork>false</fork>
 					<log4jConfiguration>${config.files.dir}/log4j.properties</log4jConfiguration>
 					<verbose>true</verbose>
 					<props>${config.files.dir}/datanucleus.properties</props>
@@ -135,6 +136,7 @@
 					</systemProperties>
 				</configuration>
 			</plugin>
+			
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>

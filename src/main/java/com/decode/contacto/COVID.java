@@ -103,7 +103,7 @@ public class COVID extends JFrame{
 	JButton Volver = new JButton("<");
 	Volver.setBounds(20, 416, 49, 23);
 	getContentPane().add(Volver);
-	/*
+	
 	Volver.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			Contacto C = new Contacto();
@@ -111,6 +111,6 @@ public class COVID extends JFrame{
 			C.setVisible(true);
 			}
 		});
-	*/
+	
 	}
 	}

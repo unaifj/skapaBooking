@@ -18,6 +18,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
+
+import com.decode.chat.ChatSkapaBookingCliente;
+import com.decode.contacto.Contacto;
 import com.toedter.calendar.*;
 
 
@@ -206,7 +209,17 @@ public class VentanaPrincipal extends JFrame  {
 		lblAlojamientosEncontrados.setBounds(351, 120, 338, 23);
 		getContentPane().add(lblAlojamientosEncontrados);
 		
-	
+		JButton btnNewButton = new JButton("Contacto");
+		btnNewButton.setBounds(900, 120, 123, 23);
+		getContentPane().add(btnNewButton);
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Contacto C = new Contacto();
+				setVisible(false);
+				C.setVisible(true);
+				}
+			});
 	
 	
 		

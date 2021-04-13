@@ -37,14 +37,14 @@ public class Telefono extends JFrame {
 		Volver.setBounds(21, 120, 49, 23);
 		getContentPane().add(Volver);
 		
-		/*Volver.addActionListener(new ActionListener() {
+		Volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Contacto C = new Contacto();
 				setVisible(false);
 				C.setVisible(true);
 				}
 			});
-		*/
+		
  }
 
 

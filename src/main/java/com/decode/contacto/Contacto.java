@@ -166,11 +166,23 @@ public class Contacto extends JFrame{
 		btnAyuda.setBounds(33, 391, 89, 23);
 		getContentPane().add(btnAyuda);
 		
-		JButton btnNewButton = new JButton("Nuestro correo\r\n");
-		btnNewButton.setBounds(277, 240, 104, 23);
-		getContentPane().add(btnNewButton);
+		JButton botonCorreo = new JButton("Nuestro correo\r\n");
+		botonCorreo.setBounds(277, 240, 104, 23);
+		getContentPane().add(botonCorreo);
 		
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton botonRedesSociales = new JButton("Redes Sociales\r\n");
+		botonRedesSociales.setBounds(35, 240, 104, 23);
+		getContentPane().add(botonRedesSociales);
+		
+		botonRedesSociales.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RedesSociales RS = new RedesSociales();
+				setVisible(false);
+				RS.setVisible(true);
+				}
+			});
+		
+		botonCorreo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				NuestroCorreo NC = new NuestroCorreo();
 				setVisible(false);
