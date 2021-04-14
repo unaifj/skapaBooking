@@ -34,11 +34,7 @@ El servidor REST de la aplicación se lanza utilizando el comando
 
     mvn exec:java
 
-**Inicio de la aplicación cliente**
 
-La aplicación cliente puede iniciarse usando el comando
-
-    mvn -Pcliente exec:java
     
     
     
