@@ -60,6 +60,7 @@ Para poder acceder tendremos que realizar un registro (Para acceder al registro 
 
 
 **Ventana Principal**
+
 Una vez inicies sesión llegaras a la ventana principal en ella podrás seleccionar diferentes fechas pero no podrás realizar una busqueda.
 En esa misma ventana habrá un botón contacto donde accederas a toda la funcionalidad de contacto que hemos realizado.
 
@@ -96,8 +97,11 @@ Videollamada : Este botón es una invitación a nuestro servidor(Discord) propio
 Chat:
 
 Primero hay que ejecutar el Chat.S y luego Chat.C
+
 En estas dos ventanas se simulara un chat mediante sockets.
+
 Una vez terminada la simulación podrás volver acceder a la ventana Contacto con un botón llamado Contacto
+
 Una vez finalizada toda la parte de contacto podras volver a la ventana principal para continuar con la interfaz(Botón Ventana Principal).
 
 
@@ -105,8 +109,11 @@ Una vez finalizada toda la parte de contacto podras volver a la ventana principa
 
 
 **Perfil de usuario**
+
 Una vez posicionado en la ventana Principal presionas un botón en la parte superior derecha para poder acceder en el perfil de usuario(Botón perfil).
+
 Visualizarás todos los apartados de la ventana perfil usuario.
+
 Una vez finalizado podrás presionar un botón volver para regresar a la ventana principal.
 
 
