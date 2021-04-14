@@ -94,6 +94,7 @@ Videollamada : Este botón es una invitación a nuestro servidor(Discord) propio
 
 
 Chat:
+
 Primero hay que ejecutar el Chat.S y luego Chat.C
 En estas dos ventanas se simulara un chat mediante sockets.
 Una vez terminada la simulación podrás volver acceder a la ventana Contacto con un botón llamado Contacto
