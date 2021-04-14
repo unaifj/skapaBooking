@@ -41,13 +41,33 @@ La aplicación cliente puede iniciarse usando el comando
     mvn -Pcliente exec:java
     
     
-**Pasos a seguir en la interfaz**    
+    
+    
+    
+    
+**Pasos a seguir en la interfaz**
+
+
+
+
+
+
 **Iniciar Sesión y Registro**    
 La primera ventana que nos aparecera sera la ventana iniciar sesión.
 Para poder acceder tendremos que realiza un registro (Para acceder al registro hay un boton en la parte inferior derecha)
+
+
+
+
 **Ventana Principal**
 Una vez inicies sesión llegaras a la ventana principal en ella podras seleccionar diferentes fechas pero no podras realizar una busqueda.
 En esa misma ventana habra un boton contacto donde accederas a toda la funcionalidad de contacto que hemos realizado.
+
+
+
+
+
+
 **Contacto**
 Una vez llegas a la ventana contacto veras distintos botones :
 Redes sociales : Apareceran nuestras redes sociales mediante botones en la parte inferior derecha de las imagenes.
@@ -62,6 +82,8 @@ Primero hay que ejecutar el Chat.S y luego Chat.C
 En estas dos ventanas se simulara un chat mediante sockets.
 Una vez terminada la simulación podrás volver acceder a la ventana Contacto con un botón llamado Contacto
 Una vez finalizada toda la parte de contacto podras volver a la ventana principal para continuar con la interfaz.
+
+
 **Todas las ventanas relacionadas con el contacto tienen un botón volver ("<")**
 
 
