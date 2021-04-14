@@ -1,28 +1,21 @@
 package com.decode.lista_apartamentos;
-import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JProgressBar;
-import javax.swing.border.EmptyBorder;
-import com.decode.bd.LogController;
-import VentanaPrincipal.VentanaPrincipal;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextPane;
 import java.awt.Color;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.Icon;
+import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.logging.Level;
+
 import javax.swing.JButton;
-import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.border.EmptyBorder;
+
+import VentanaPrincipal.VentanaPrincipal;
 public class VentanaPerfil extends JFrame {
 private JPanel contentPane;
 private int contC1 = 0;
@@ -37,7 +30,6 @@ private JTextField textField_2;
  * Launch the application.
  */
 public static void main(String[] args) {
- LogController.log ( Level.INFO, "Inicio Ventana " + (new Date()),null);
  EventQueue.invokeLater(new Runnable() {
  public void run() {
  try {
