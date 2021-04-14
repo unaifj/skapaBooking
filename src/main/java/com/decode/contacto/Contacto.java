@@ -160,11 +160,11 @@ public class Contacto extends JFrame{
 		getContentPane().add(btnAyuda);
 		
 		JButton botonCorreo = new JButton("Nuestro correo\r\n");
-		botonCorreo.setBounds(277, 240, 104, 23);
+		botonCorreo.setBounds(277, 240, 127, 23);
 		getContentPane().add(botonCorreo);
 		
 		JButton botonRedesSociales = new JButton("Redes Sociales\r\n");
-		botonRedesSociales.setBounds(35, 240, 104, 23);
+		botonRedesSociales.setBounds(10, 240, 129, 23);
 		getContentPane().add(botonRedesSociales);
 		
 		JButton botonVP = new JButton("Ventana Principal\r\n");

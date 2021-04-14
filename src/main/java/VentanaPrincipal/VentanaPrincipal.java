@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 
 import com.decode.chat.ChatSkapaBookingCliente;
 import com.decode.contacto.Contacto;
+import com.decode.lista_apartamentos.VentanaPerfil;
 import com.toedter.calendar.*;
 
 
@@ -82,7 +83,7 @@ public class VentanaPrincipal extends JFrame  {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnRegistro.setBounds(960, 13, 117, 23);
+		btnRegistro.setBounds(960, 67, 117, 23);
 		panelNorte.add(btnRegistro);
 		
 		JButton btnLogin = new JButton("Iniciar Sesion");
@@ -90,7 +91,7 @@ public class VentanaPrincipal extends JFrame  {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnLogin.setBounds(1087, 13, 123, 23);
+		btnLogin.setBounds(960, 30, 117, 23);
 		panelNorte.add(btnLogin);
 		
 		ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en la bd
@@ -220,7 +221,25 @@ public class VentanaPrincipal extends JFrame  {
 				C.setVisible(true);
 				}
 			});
-	
+		JButton btnNewButton_1 = new JButton("Perfil");
+		 btnNewButton_1.setBounds(1103, 66, 81, 24);
+		 panelNorte.add(btnNewButton_1);
+		btnNewButton_1.addActionListener(new ActionListener() {
+			 public void actionPerformed(ActionEvent e) {
+			 VentanaPerfil C = new VentanaPerfil();
+			 setVisible(false);
+			 C.setVisible(true);
+			 }
+			 });
+			JLabel lblPerfil = new JLabel("");
+			 lblPerfil.setBounds(1119, 8, 46, 46);
+			 panelNorte.add(lblPerfil);
+			 
+			 ImageIcon imagen1= new ImageIcon("img/perfil.png");  ImageIcon img= new
+			ImageIcon(imagen1.getImage().getScaledInstance(lblPerfil.getWidth(),
+			lblPerfil.getHeight(), Image.SCALE_SMOOTH)); 
+			 lblPerfil.setIcon(img);
+			
 	
 		
 		
