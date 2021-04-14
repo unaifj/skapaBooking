@@ -53,15 +53,15 @@ La aplicación cliente puede iniciarse usando el comando
 
 
 **Iniciar Sesión y Registro**    
-La primera ventana que nos aparecera sera la ventana iniciar sesión.
-Para poder acceder tendremos que realiza un registro (Para acceder al registro hay un boton en la parte inferior derecha)
+La primera ventana que nos aparecerá sera la ventana iniciar sesión.
+Para poder acceder tendremos que realizar un registro (Para acceder al registro hay un botón en la parte inferior derecha)
 
 
 
 
 **Ventana Principal**
-Una vez inicies sesión llegaras a la ventana principal en ella podras seleccionar diferentes fechas pero no podras realizar una busqueda.
-En esa misma ventana habra un boton contacto donde accederas a toda la funcionalidad de contacto que hemos realizado.
+Una vez inicies sesión llegaras a la ventana principal en ella podrás seleccionar diferentes fechas pero no podrás realizar una busqueda.
+En esa misma ventana habrá un botón contacto donde accederas a toda la funcionalidad de contacto que hemos realizado.
 
 
 
@@ -72,19 +72,19 @@ En esa misma ventana habra un boton contacto donde accederas a toda la funcional
 Una vez llegas a la ventana contacto veras distintos botones :
 
 
-Redes sociales : Apareceran nuestras redes sociales mediante botones en la parte inferior derecha de las imagenes.
+Redes sociales : Aparecerán nuestras redes sociales mediante botones en la parte inferior derecha de las imagenes.
 
 
-Teléfono : Nuestros diferentes numeros de telefono.
+Teléfono : Nuestros diferentes números de teléfono.
 
 
-Botón (?) : Este boton es para las diferentes dudas más comunes de los usuarios en las que aparecen distintas preguntas con sus correspondientes preguntas  
+Botón (?) : Este botón es para las diferentes dudas más comunes de los usuarios en las que aparecen distintas preguntas con sus correspondientes preguntas  
 
 
 COVID : Ventana con la diferente normativa covid que incluye un codigo qr que podemos visualizar con nuestro dispositivo que nos da la información global en cuanto al COVID-19
 
 
-Correo : Nos lleva hacia una nueva ventana de gmail para poder enviar un correo electronico.
+Correo : Nos lleva hacia una nueva ventana de gmail para poder enviar un correo electrónico.
 
 
 Nuestro Correo: Aparece la información de nuestro correo electrónico
@@ -98,12 +98,15 @@ Chat:
 Primero hay que ejecutar el Chat.S y luego Chat.C
 En estas dos ventanas se simulara un chat mediante sockets.
 Una vez terminada la simulación podrás volver acceder a la ventana Contacto con un botón llamado Contacto
-Una vez finalizada toda la parte de contacto podras volver a la ventana principal para continuar con la interfaz.
+Una vez finalizada toda la parte de contacto podras volver a la ventana principal para continuar con la interfaz(Botón Ventana Principal).
 
 
 **Todas las ventanas relacionadas con el contacto tienen un botón volver ("<")**
 
 
-
+**Perfil de usuario**
+Una vez posicionado en la ventana Principal presionas un botón en la parte superior derecha para poder acceder en el perfil de usuario(Botón perfil).
+Visualizarás todos los apartados de la ventana perfil usuario.
+Una vez finalizado podrás presionar un botón volver para regresar a la ventana principal.
 
 
