@@ -70,6 +70,10 @@ En esa misma ventana habrá un botón contacto donde accederas a toda la funcion
 
 
 **Contacto**
+
+**Todas las ventanas relacionadas con el contacto tienen un botón volver ("<")**
+
+
 Una vez llegas a la ventana contacto veras distintos botones :
 
 
