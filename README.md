@@ -102,7 +102,7 @@ En estas dos ventanas se simulara un chat mediante sockets.
 
 Una vez terminada la simulación podrás volver acceder a la ventana Contacto con un botón llamado Contacto
 
-Una vez finalizada toda la parte de contacto podras volver a la ventana principal para continuar con la interfaz(Botón Ventana Principal).
+Una vez finalizada toda la parte de contacto podrás volver a la ventana principal para continuar con la interfaz(Botón Ventana Principal).
 
 
 **Todas las ventanas relacionadas con el contacto tienen un botón volver ("<")**
