@@ -70,13 +70,29 @@ En esa misma ventana habra un boton contacto donde accederas a toda la funcional
 
 **Contacto**
 Una vez llegas a la ventana contacto veras distintos botones :
+
+
 Redes sociales : Apareceran nuestras redes sociales mediante botones en la parte inferior derecha de las imagenes.
+
+
 Teléfono : Nuestros diferentes numeros de telefono.
+
+
 Botón (?) : Este boton es para las diferentes dudas más comunes de los usuarios en las que aparecen distintas preguntas con sus correspondientes preguntas  
+
+
 COVID : Ventana con la diferente normativa covid que incluye un codigo qr que podemos visualizar con nuestro dispositivo que nos da la información global en cuanto al COVID-19
+
+
 Correo : Nos lleva hacia una nueva ventana de gmail para poder enviar un correo electronico.
+
+
 Nuestro Correo: Aparece la información de nuestro correo electrónico
+
+
 Videollamada : Este botón es una invitación a nuestro servidor(Discord) propio de SkapaBooking para que el usuario pueda realizar llamadas y videollamadas con nuestra empresa.
+
+
 Chat:
 Primero hay que ejecutar el Chat.S y luego Chat.C
 En estas dos ventanas se simulara un chat mediante sockets.
