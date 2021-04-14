@@ -28,9 +28,9 @@ Se pueden introducir datos de prueba en la aplicación utilizando el comando de 
 
     mvn -Pdatos exec:java
 
-**Inicio del servidor**
+**Inicio de la aplicación**
 
-El servidor REST de la aplicación se lanza utilizando el comando
+La aplicación se inicializa utilizando el comando
 
     mvn exec:java
 
