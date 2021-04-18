@@ -11,6 +11,8 @@ import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
 import com.decode.objects.Usuario;
 
+import VentanaPrincipal.VentanaPrincipal;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -120,6 +122,9 @@ public class VentanaInicio extends JFrame {
 				for (Usuario user : usuarios) {
 					if (user.getNomUsuario().equals(nomUsuario) && user.getContrasenya().equals(contrasenya)) {
 						acceso = true;
+						VentanaPrincipal vp = new VentanaPrincipal();
+						vp.setVisible(true);
+						setVisible(false);
 					}
 					
 				}
