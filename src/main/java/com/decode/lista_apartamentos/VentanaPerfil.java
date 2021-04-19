@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
-import VentanaPrincipal.VentanaPrincipal;
+import com.decode.ventanaPrincipal.VentanaPrincipal;
 public class VentanaPerfil extends JFrame {
 private JPanel contentPane;
 private int contC1 = 0;

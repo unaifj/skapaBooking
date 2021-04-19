@@ -10,8 +10,7 @@ import javax.swing.border.EmptyBorder;
 import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
 import com.decode.objects.Usuario;
-
-import VentanaPrincipal.VentanaPrincipal;
+import com.decode.ventanaPrincipal.VentanaPrincipal;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;

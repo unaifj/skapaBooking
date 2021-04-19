@@ -185,8 +185,8 @@ public class DBManager {
 			
 		}
 		
-		//LISTAR APARTAMENTOS
-		public List<Anuncio> listarAnuncio() throws DBException{
+		//LISTAR ANUNCIOS
+		public List<Anuncio> listarAnuncios() throws DBException{
 			PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 			PersistenceManager pm = pmf.getPersistenceManager();
 			Transaction tx = pm.currentTransaction();

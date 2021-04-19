@@ -1,41 +1,33 @@
-package VentanaPrincipal;
+package com.decode.ventanaPrincipal;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import java.awt.Button;
 import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-
-import com.toedter.calendar.JDateChooser;
-
-import javax.swing.JMenuBar;
-import java.awt.Rectangle;
-import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.EventQueue;
-
-import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Image;
-
-import javax.swing.JComboBox;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.ImageIcon;
-import javax.swing.JTextField;
-import javax.swing.JTable;
-import javax.swing.JSpinner;
-import java.awt.Button;
 import java.awt.Panel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.Box;
-import java.awt.Checkbox;
-import VentanaPrincipal.*;
-import javax.swing.JSlider;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+
+import com.decode.bd.DBException;
+import com.decode.bd.DBManager;
+import com.decode.objects.Anuncio;
+import com.toedter.calendar.JDateChooser;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class VentanaPrincipal extends JFrame  {
 	private JTextField textDestino;
@@ -210,8 +202,11 @@ public class VentanaPrincipal extends JFrame  {
 		panelSuroeste.add(chckbxRurales);
 		
 		Panel panelCentro = new Panel();
-		panelCentro.setBounds(329, 156, 948, 604);
+		panelCentro.setBounds(329, 156, 944, 604);
 		getContentPane().add(panelCentro);
+		panelCentro.setLayout(null);
+		
+		
 		
 		JButton btnMapa = new JButton("Mapa");
 		btnMapa.setBounds(1049, 120, 123, 23);
@@ -222,8 +217,29 @@ public class VentanaPrincipal extends JFrame  {
 		lblAlojamientosEncontrados.setBounds(351, 120, 338, 23);
 		getContentPane().add(lblAlojamientosEncontrados);
 		
-	
-	
+		DBManager dbm = new DBManager();
+		List<Anuncio> anuncios;
+		
+		int y = 0;
+		try {
+			anuncios = dbm.listarAnuncios();
+			for (Anuncio a : anuncios) {
+				PanelAnuncio pa = new PanelAnuncio(a);
+				pa.setVisible(true);
+				panelCentro.add(pa);
+				pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
+				y = y + 125;
+				
+			}
+		} catch (DBException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+		
+		
+		
 	
 		
 		
