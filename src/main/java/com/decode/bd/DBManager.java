@@ -180,6 +180,34 @@ public class DBManager {
 		return results;
 			
 	}
+	
+	//MOSTRAR ANUNCIOS FILTRO
+	
+	public List<Anuncio> listarFiltrados(String titulo)throws DBException{
+		
+		
+		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		
+		tx.begin();
+		
+		Query<Anuncio> query = pm.newQuery("javax.jdo.query.SQL","select * from " + "anuncio " + "where titulo like ?");
+		query.setParameters(titulo);
+		
+		query.setClass(Anuncio.class);
+		List<Anuncio> results = query.executeList();
+		
+
+		
+		tx.commit();
+		pm.close();
+	
+		return results;
+		
+		
+	}
+	
 		
 
 			

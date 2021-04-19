@@ -237,7 +237,43 @@ public class VentanaPrincipal extends JFrame  {
 		}
 		
 		
-		
+		buttonBuscar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelCentro.removeAll();
+				panelCentro.revalidate();
+			
+				String titulo = textDestino.getText();
+				int y = 0;
+				
+				List <Anuncio> anunciosFiltrados;
+				
+				try {
+					anunciosFiltrados = dbm.listarFiltrados(titulo);
+					
+					for (Anuncio a : anunciosFiltrados) {
+					
+						if (a.getTitulo() != null) {
+			
+							System.out.println(a.getTitulo());
+							PanelAnuncio pa = new PanelAnuncio(a);
+							pa.setVisible(true);
+							panelCentro.add(pa);
+							pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
+							y = y + 125;
+						}
+						
+						
+					}
+					
+					getContentPane().add(panelCentro);
+					
+				} catch (DBException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		
 		
 	

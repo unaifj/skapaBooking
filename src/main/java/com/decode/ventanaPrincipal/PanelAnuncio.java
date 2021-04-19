@@ -24,6 +24,7 @@ public class PanelAnuncio extends JPanel implements ActionListener {
 		this.setVisible(true);
 		this.setLayout(null);
 		
+
 		JLabel lbltitulo = new JLabel(anuncio.getTitulo().toUpperCase());
 		lbltitulo.setBounds(10, 11, 483, 14);
 		this.add(lbltitulo);
@@ -49,6 +50,8 @@ public class PanelAnuncio extends JPanel implements ActionListener {
 		JLabel lblNewLabel = new JLabel("[IMAGEN]");
 		lblNewLabel.setBounds(790, 11, 46, 14);
 		add(lblNewLabel);
+			
+		
 		
 		
        
