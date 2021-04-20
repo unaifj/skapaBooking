@@ -1,17 +1,13 @@
 package com.decode.ventanaPrincipal;
 
-import java.awt.Color;
-import java.awt.FlowLayout;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.decode.objects.Anuncio;
-import java.awt.SystemColor;
 
 public class PanelAnuncio extends JPanel implements ActionListener {
 

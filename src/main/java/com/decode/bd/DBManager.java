@@ -1,5 +1,8 @@
 package com.decode.bd;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.jdo.JDOHelper;
@@ -10,6 +13,7 @@ import javax.jdo.Transaction;
 import com.decode.objects.Anuncio;
 import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
+import com.decode.objects.Reserva;
 import com.decode.objects.Usuario;
 
 
@@ -47,6 +51,14 @@ public class DBManager {
 			pm.makePersistent(apar2);
 			Apartamento apar3= new Apartamento(8,120,barakaldo1);
 			pm.makePersistent(apar3);
+			
+			Calendar fechaEntrada = new GregorianCalendar(2021, 6, 24);
+			Calendar fechaSalida = new GregorianCalendar(2021, 6, 31);
+			Reserva res1 = new Reserva(userA, fechaEntrada, fechaSalida, 5);
+			
+			List<Reserva>reservasA = new ArrayList<Reserva>();
+			reservasA.add(res1);
+			apar1.setReservas(reservasA);
 			
 			Anuncio anun1=new Anuncio(apar1,"Apartamento soleado en la margen izquierda de Sevilla", "Apartamento soleado con vistas al mar ideal para pasar unos dias en el sur de España", 25, true, 4);
 			pm.makePersistent(anun1);
@@ -205,8 +217,9 @@ public class DBManager {
 	
 		return results;
 		
-		
 	}
+	
+	
 	
 		
 

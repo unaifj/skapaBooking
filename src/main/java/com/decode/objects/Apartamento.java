@@ -1,5 +1,7 @@
 package com.decode.objects;
 
+import java.util.List;
+
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
@@ -11,6 +13,7 @@ public class Apartamento {
 	private int numHabitaciones;
 	private int metrosCuad;
 	private Localidad localidad;
+	private List<Reserva> reservas;
 	
 	public Apartamento(int numHabitaciones, int metrosCuad, Localidad localidad) {
 		super();
@@ -24,7 +27,9 @@ public class Apartamento {
 		this.numHabitaciones = 0;
 		this.metrosCuad = 0;
 		this.localidad = null;
+		this.reservas = null;
 	}
+
 
 	public int getNumHabitaciones() {
 		return numHabitaciones;
@@ -50,11 +55,18 @@ public class Apartamento {
 		this.localidad = localidad;
 	}
 
-	@Override
-	public String toString() {
-		return "Apartamento [numHabitaciones=" + numHabitaciones + ", metrosCuad=" + metrosCuad + ", localidad="
-				+ localidad + "]";
+	public List<Reserva> getReservas() {
+		return reservas;
+	}
+
+	public void setReservas(List<Reserva> reservas) {
+		this.reservas = reservas;
 	}
 	
-
+	public void setReserva(Reserva reserva) {
+		this.reservas.add(reserva);
+	}
+	
+	
+	
 }

@@ -8,6 +8,7 @@ import java.awt.Image;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -129,18 +130,18 @@ public class VentanaPrincipal extends JFrame  {
 		lblFechaEn.setBounds(10, 107, 247, 23);
 		panelOeste.add(lblFechaEn);
 		
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(10, 135, 276, 30);
-		panelOeste.add(dateChooser);
+		JDateChooser fechaEntrada = new JDateChooser();
+		fechaEntrada.setBounds(10, 135, 276, 30);
+		panelOeste.add(fechaEntrada);
 		
 		JLabel lblFechaDeSalida = new JLabel("Fecha de salida");
 		lblFechaDeSalida.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblFechaDeSalida.setBounds(10, 176, 247, 23);
 		panelOeste.add(lblFechaDeSalida);
 		
-		JDateChooser dateChooser_1 = new JDateChooser();
-		dateChooser_1.setBounds(10, 198, 276, 30);
-		panelOeste.add(dateChooser_1);
+		JDateChooser fechaSalida = new JDateChooser();
+		fechaSalida.setBounds(10, 198, 276, 30);
+		panelOeste.add(fechaSalida);
 		
 		JSpinner spinnerAdultos = new JSpinner();
 		spinnerAdultos.setToolTipText("Adultos 4");
@@ -242,8 +243,10 @@ public class VentanaPrincipal extends JFrame  {
 			public void actionPerformed(ActionEvent e) {
 				panelCentro.removeAll();
 				panelCentro.revalidate();
-			
+
 				String titulo = textDestino.getText();
+			
+				
 				int y = 0;
 				
 				List <Anuncio> anunciosFiltrados;
@@ -254,13 +257,18 @@ public class VentanaPrincipal extends JFrame  {
 					for (Anuncio a : anunciosFiltrados) {
 					
 						if (a.getTitulo() != null) {
+							
+							//COMPROBACION FECHAS
+							if (a.comprobarDis(fechaEntrada.getCalendar(), fechaSalida.getCalendar())) {
+
+								PanelAnuncio pa = new PanelAnuncio(a);
+								pa.setVisible(true);
+								panelCentro.add(pa);
+								pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
+								y = y + 125;
+							}
 			
-							System.out.println(a.getTitulo());
-							PanelAnuncio pa = new PanelAnuncio(a);
-							pa.setVisible(true);
-							panelCentro.add(pa);
-							pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
-							y = y + 125;
+							
 						}
 						
 						
