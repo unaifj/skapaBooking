@@ -2,15 +2,25 @@ package com.decode.chat;
 
 
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
 
-import com.decode.contacto.Ayuda;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 import com.decode.contacto.Contacto;
-
-import java.awt.*;
-import java.net.*;
-import java.io.*;
-import java.awt.event.*;
 
 public class ChatSkapaBooking extends JFrame{
 	JFrame ventana_chat = null;

@@ -66,6 +66,13 @@ public class Apartamento {
 	public void setReserva(Reserva reserva) {
 		this.reservas.add(reserva);
 	}
+
+	@Override
+	public String toString() {
+		return "Apartamento [numHabitaciones=" + numHabitaciones + ", metrosCuad=" + metrosCuad + ", localidad="
+				+ localidad + ", reservas=" + reservas + "]";
+	}
+	
 	
 	
 	

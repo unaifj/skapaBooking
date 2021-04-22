@@ -224,6 +224,7 @@ public class VentanaPrincipal extends JFrame  {
 		int y = 0;
 		try {
 			anuncios = dbm.listarAnuncios();
+			System.out.println(anuncios);
 			for (Anuncio a : anuncios) {
 				PanelAnuncio pa = new PanelAnuncio(a);
 				pa.setVisible(true);

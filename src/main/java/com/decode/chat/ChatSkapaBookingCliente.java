@@ -1,37 +1,24 @@
 package com.decode.chat;
 
-import java.awt.BorderLayout;
-import java.awt.ComponentOrientation;
-import java.awt.EventQueue;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
-
-import javax.print.attribute.standard.OrientationRequested;
-import javax.swing.AbstractButton;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
-
-import com.decode.contacto.Contacto;
-
-import java.awt.TextArea;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
-import java.io.Serializable;
-import java.net.ServerSocket;
 import java.net.Socket;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.Color;
-import java.awt.Font;
-import javax.swing.JSeparator;
-import java.awt.SystemColor;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+import com.decode.contacto.Contacto;
 
 public class ChatSkapaBookingCliente extends JFrame{
 	JTextArea area_chat = null;
