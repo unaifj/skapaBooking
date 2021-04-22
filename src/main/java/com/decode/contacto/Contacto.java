@@ -14,8 +14,7 @@ import javax.swing.JLabel;
 
 import com.decode.chat.ChatSkapaBooking;
 import com.decode.chat.ChatSkapaBookingCliente;
-
-import VentanaPrincipal.VentanaPrincipal;
+import com.decode.ventanaPrincipal.VentanaPrincipal;
 
 
 

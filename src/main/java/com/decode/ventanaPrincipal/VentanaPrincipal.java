@@ -1,4 +1,4 @@
-package VentanaPrincipal;
+package com.decode.ventanaPrincipal;
 
 import java.awt.Button;
 import java.awt.Color;
@@ -8,6 +8,8 @@ import java.awt.Image;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,11 +21,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 
-import com.decode.chat.ChatSkapaBookingCliente;
-import com.decode.contacto.Contacto;
-import com.decode.lista_apartamentos.VentanaPerfil;
-import com.toedter.calendar.*;
-
+import com.decode.bd.DBException;
+import com.decode.bd.DBManager;
+import com.decode.objects.Anuncio;
+import com.toedter.calendar.JDateChooser;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class VentanaPrincipal extends JFrame  {
 	private JTextField textDestino;
@@ -83,7 +88,7 @@ public class VentanaPrincipal extends JFrame  {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnRegistro.setBounds(960, 67, 117, 23);
+		btnRegistro.setBounds(960, 13, 117, 23);
 		panelNorte.add(btnRegistro);
 		
 		JButton btnLogin = new JButton("Iniciar Sesion");
@@ -91,7 +96,7 @@ public class VentanaPrincipal extends JFrame  {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnLogin.setBounds(960, 30, 117, 23);
+		btnLogin.setBounds(1087, 13, 123, 23);
 		panelNorte.add(btnLogin);
 		
 		ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en la bd
@@ -125,18 +130,18 @@ public class VentanaPrincipal extends JFrame  {
 		lblFechaEn.setBounds(10, 107, 247, 23);
 		panelOeste.add(lblFechaEn);
 		
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(10, 135, 276, 30);
-		panelOeste.add(dateChooser);
+		JDateChooser fechaEntrada = new JDateChooser();
+		fechaEntrada.setBounds(10, 135, 276, 30);
+		panelOeste.add(fechaEntrada);
 		
 		JLabel lblFechaDeSalida = new JLabel("Fecha de salida");
 		lblFechaDeSalida.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblFechaDeSalida.setBounds(10, 176, 247, 23);
 		panelOeste.add(lblFechaDeSalida);
 		
-		JDateChooser dateChooser_1 = new JDateChooser();
-		dateChooser_1.setBounds(10, 198, 276, 30);
-		panelOeste.add(dateChooser_1);
+		JDateChooser fechaSalida = new JDateChooser();
+		fechaSalida.setBounds(10, 198, 276, 30);
+		panelOeste.add(fechaSalida);
 		
 		JSpinner spinnerAdultos = new JSpinner();
 		spinnerAdultos.setToolTipText("Adultos 4");
@@ -198,8 +203,11 @@ public class VentanaPrincipal extends JFrame  {
 		panelSuroeste.add(chckbxRurales);
 		
 		Panel panelCentro = new Panel();
-		panelCentro.setBounds(324, 156, 953, 604);
+		panelCentro.setBounds(329, 156, 944, 604);
 		getContentPane().add(panelCentro);
+		panelCentro.setLayout(null);
+		
+		
 		
 		JButton btnMapa = new JButton("Mapa");
 		btnMapa.setBounds(1049, 120, 123, 23);
@@ -210,36 +218,73 @@ public class VentanaPrincipal extends JFrame  {
 		lblAlojamientosEncontrados.setBounds(351, 120, 338, 23);
 		getContentPane().add(lblAlojamientosEncontrados);
 		
-		JButton btnNewButton = new JButton("Contacto");
-		btnNewButton.setBounds(900, 120, 123, 23);
-		getContentPane().add(btnNewButton);
+		DBManager dbm = new DBManager();
+		List<Anuncio> anuncios;
 		
-		btnNewButton.addActionListener(new ActionListener() {
+		int y = 0;
+		try {
+			anuncios = dbm.listarAnuncios();
+			System.out.println(anuncios);
+			for (Anuncio a : anuncios) {
+				PanelAnuncio pa = new PanelAnuncio(a);
+				pa.setVisible(true);
+				panelCentro.add(pa);
+				pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
+				y = y + 125;
+				
+			}
+		} catch (DBException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+		buttonBuscar.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
-				Contacto C = new Contacto();
-				setVisible(false);
-				C.setVisible(true);
-				}
-			});
-		JButton btnNewButton_1 = new JButton("Perfil");
-		 btnNewButton_1.setBounds(1103, 66, 81, 24);
-		 panelNorte.add(btnNewButton_1);
-		btnNewButton_1.addActionListener(new ActionListener() {
-			 public void actionPerformed(ActionEvent e) {
-			 VentanaPerfil C = new VentanaPerfil();
-			 setVisible(false);
-			 C.setVisible(true);
-			 }
-			 });
-			JLabel lblPerfil = new JLabel("");
-			 lblPerfil.setBounds(1119, 8, 46, 46);
-			 panelNorte.add(lblPerfil);
-			 
-			 ImageIcon imagen1= new ImageIcon("img/perfil.png");  ImageIcon img= new
-			ImageIcon(imagen1.getImage().getScaledInstance(lblPerfil.getWidth(),
-			lblPerfil.getHeight(), Image.SCALE_SMOOTH)); 
-			 lblPerfil.setIcon(img);
+				panelCentro.removeAll();
+				panelCentro.revalidate();
+
+				String titulo = textDestino.getText();
 			
+				
+				int y = 0;
+				
+				List <Anuncio> anunciosFiltrados;
+				
+				try {
+					anunciosFiltrados = dbm.listarFiltrados(titulo);
+					
+					for (Anuncio a : anunciosFiltrados) {
+					
+						if (a.getTitulo() != null) {
+							
+							//COMPROBACION FECHAS
+							if (a.comprobarDis(fechaEntrada.getCalendar(), fechaSalida.getCalendar())) {
+
+								PanelAnuncio pa = new PanelAnuncio(a);
+								pa.setVisible(true);
+								panelCentro.add(pa);
+								pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
+								y = y + 125;
+							}
+			
+							
+						}
+						
+						
+					}
+					
+					getContentPane().add(panelCentro);
+					
+				} catch (DBException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		
+		
 	
 		
 		

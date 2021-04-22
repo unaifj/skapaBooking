@@ -28,9 +28,9 @@ Se pueden introducir datos de prueba en la aplicación utilizando el comando de 
 
     mvn -Pdatos exec:java
 
-**Inicio del servidor**
+**Inicio de la aplicación**
 
-El servidor REST de la aplicación se lanza utilizando el comando
+La aplicación se inicializa utilizando el comando
 
     mvn exec:java
 
@@ -102,7 +102,7 @@ En estas dos ventanas se simulara un chat mediante sockets.
 
 Una vez terminada la simulación podrás volver acceder a la ventana Contacto con un botón llamado Contacto
 
-Una vez finalizada toda la parte de contacto podras volver a la ventana principal para continuar con la interfaz(Botón Ventana Principal).
+Una vez finalizada toda la parte de contacto podrás volver a la ventana principal para continuar con la interfaz(Botón Ventana Principal).
 
 
 **Todas las ventanas relacionadas con el contacto tienen un botón volver ("<")**

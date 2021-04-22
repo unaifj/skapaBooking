@@ -10,8 +10,7 @@ import javax.swing.border.EmptyBorder;
 import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
 import com.decode.objects.Usuario;
-
-import VentanaPrincipal.VentanaPrincipal;
+import com.decode.ventanaPrincipal.VentanaPrincipal;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -122,14 +121,15 @@ public class VentanaInicio extends JFrame {
 				for (Usuario user : usuarios) {
 					if (user.getNomUsuario().equals(nomUsuario) && user.getContrasenya().equals(contrasenya)) {
 						acceso = true;
-						VentanaPrincipal vp = new VentanaPrincipal();
-						vp.setVisible(true);
-						setVisible(false);
+						
 					}
 					
 				}
 				if (acceso) {
 					JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Incio correcto", 1, null);
+					VentanaPrincipal vp = new VentanaPrincipal();
+					vp.setVisible(true);
+					setVisible(false);
 					
 				}else {
 					JOptionPane.showMessageDialog(null, "Error con las credenciales", "Error", 0, null);

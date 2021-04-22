@@ -1,13 +1,17 @@
 package com.decode.objects;
 
+import java.util.Calendar;
+
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
+import javax.jdo.annotations.Join;
 import javax.jdo.annotations.PersistenceCapable;
 
 @PersistenceCapable
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class Anuncio {
 	
+	@Join
 	private Apartamento apartamento;
 	private String titulo;
 	private String descripcion;
@@ -89,6 +93,24 @@ public class Anuncio {
 		return "Anuncio [apartamento=" + apartamento + ", titulo=" + titulo + ", descripcion=" + descripcion
 				+ ", precioNoche=" + precioNoche + ", disponibilidad=" + disponibilidad + ", numPersonas=" + numPersonas
 				+ "]";
+	}
+	
+	public boolean comprobarDis(Calendar fechaEntrada, Calendar fechaSalida) {
+	
+		boolean disponible = true;
+		
+		if (this.apartamento.getReservas() != null) {
+			for (Reserva r : this.apartamento.getReservas()) {
+				if (fechaEntrada.after(r.getFechaEntrada()) && fechaEntrada.before(r.getFechaSalida())) {
+					disponible = false;
+				}else if (fechaSalida.after(r.getFechaEntrada())&& fechaSalida.before(r.getFechaSalida())) {
+					disponible = false;
+				}
+			}
+		}
+		
+		
+		return disponible;
 	}
 	
 
