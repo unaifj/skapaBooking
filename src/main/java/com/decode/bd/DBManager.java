@@ -16,6 +16,7 @@ import javax.jdo.Transaction;
 import com.decode.objects.Anuncio;
 import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
+import com.decode.objects.Opinion;
 import com.decode.objects.Reserva;
 import com.decode.objects.Usuario;
 
@@ -255,13 +256,33 @@ public class DBManager {
 
     }
 	
+	//INSERTAR NUEVA OPINION 
 	
+        public void insertarOpinion(Opinion opinion) throws DBException{
 		
-
+		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		
+		try {
+			tx.begin();
+			pm.makePersistent(opinion);
+			tx.commit();
 			
-
-			
+		} finally {
+			if (tx.isActive()) {
+				tx.rollback();
+			}
+			pm.close();
+		
+		
+		}
+		
 }
+        
 	
+        
+        
+        
 
-
+}
