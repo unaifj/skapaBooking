@@ -247,35 +247,28 @@ public class VentanaPrincipal extends JFrame  {
 				
 				List <Anuncio> anunciosFiltrados;
 				
-				try {
-					anunciosFiltrados = dbm.listarFiltrados(titulo);
-					
-					for (Anuncio a : anunciosFiltrados) {
-					
-						if (a.getTitulo() != null) {
-							
-							//COMPROBACION FECHAS
-							if (a.comprobarDis(fechaEntrada.getCalendar(), fechaSalida.getCalendar())) {
-
-								PanelAnuncio pa = new PanelAnuncio(a);
-								pa.setVisible(true);
-								panelCentro.add(pa);
-								pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
-								y = y + 125;
-							}
-			
-							
-						}
+				anunciosFiltrados = dbm.getFiltrados(titulo, fechaEntrada.getCalendar(), fechaSalida.getCalendar());
+				
+				for (Anuncio a : anunciosFiltrados) {
+				
+					if (a.getTitulo() != null) {
 						
+						//COMPROBACION FECHAS
+					
+						PanelAnuncio pa = new PanelAnuncio(a);
+						pa.setVisible(true);
+						panelCentro.add(pa);
+						pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
+						y = y + 125;
+						
+
 						
 					}
 					
-					getContentPane().add(panelCentro);
 					
-				} catch (DBException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
 				}
+				
+				getContentPane().add(panelCentro);
 			}
 		});
 		

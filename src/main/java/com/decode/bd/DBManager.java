@@ -223,38 +223,7 @@ public class DBManager {
 		
 	}
 	
-	public List<Anuncio> getAnuncios() {
-		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		PersistenceManager pm = pmf.getPersistenceManager();
-		pm.getFetchPlan().setMaxFetchDepth(4);
-		Transaction tx = pm.currentTransaction();
-    	
 
-        List<Anuncio> anuncios = new ArrayList<Anuncio>();
-
-        try {
-            System.out.println("* Viendo todos Anuncios");
-            tx.begin();
-
-            Extent<Anuncio> AnuncioExtent = pm.getExtent(Anuncio.class, true);
-
-            for (Anuncio anuncio : AnuncioExtent) {
-                anuncios.add(anuncio);
-            }
-
-            tx.commit();
-        } catch (Exception ex) {
-            System.out.println("$ Error viendo todos Anuncios: " + ex.getMessage());
-        } finally {
-            if (tx != null && tx.isActive()) {
-                tx.rollback();
-            }
-
-            pm.close();
-        }
-        return anuncios;
-
-    }
 	
 	//INSERTAR NUEVA OPINION 
 	
@@ -278,7 +247,111 @@ public class DBManager {
 		
 		}
 		
-}
+        }
+        
+        public List<Anuncio> getAnuncios() {
+    		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+    		PersistenceManager pm = pmf.getPersistenceManager();
+    		Transaction tx = pm.currentTransaction();
+        	
+
+            List<Anuncio> anuncios = new ArrayList<Anuncio>();
+
+            try {
+                System.out.println("* Viendo todos Anuncios");
+                tx.begin();
+
+                Extent<Anuncio> anuncioExtent = pm.getExtent(Anuncio.class, true);
+
+                for (Anuncio anuncio : anuncioExtent) {
+            
+                	Localidad loc = new Localidad (anuncio.getApartamento().getLocalidad().getProvincia(), 
+                			anuncio.getApartamento().getLocalidad().getMunicipio(), 
+                			anuncio.getApartamento().getLocalidad().getCp(), anuncio.getApartamento().getLocalidad().getDireccion());
+                	Apartamento aparta = new Apartamento(anuncio.getApartamento().getNumHabitaciones(), 
+                			anuncio.getApartamento().getMetrosCuad(), loc);
+                	Anuncio a = new Anuncio(aparta, anuncio.getTitulo(), 
+                			anuncio.getDescripcion(), anuncio.getPrecioNoche(), anuncio.isDisponibilidad(), anuncio.getNumPersonas());
+                
+                	anuncios.add(a);
+                	
+                }
+
+                tx.commit();
+            } catch (Exception ex) {
+                System.out.println("$ Error viendo todos Anuncios: " + ex.getMessage());
+            } finally {
+                if (tx != null && tx.isActive()) {
+                    tx.rollback();
+                }
+
+                pm.close();
+            }
+            return anuncios;
+
+        }
+    	
+    	public List<Anuncio> getFiltrados(String titulo, Calendar fechaEntrada, Calendar fechaSalida) {
+    		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+    		PersistenceManager pm = pmf.getPersistenceManager();
+    		Transaction tx = pm.currentTransaction();
+        	
+
+            List<Anuncio> anuncios = new ArrayList<Anuncio>();
+
+            try {
+                System.out.println("* Viendo todos Anuncios filtrados");
+                tx.begin();
+
+                Extent<Anuncio> anuncioExtent = pm.getExtent(Anuncio.class, true);
+
+                for (Anuncio anuncio : anuncioExtent) {
+                	
+                	if (anuncio.getTitulo().contains(titulo)){
+                		Localidad loc = new Localidad (anuncio.getApartamento().getLocalidad().getProvincia(), 
+                    			anuncio.getApartamento().getLocalidad().getMunicipio(), 
+                    			anuncio.getApartamento().getLocalidad().getCp(), anuncio.getApartamento().getLocalidad().getDireccion());
+                    	Apartamento aparta = new Apartamento(anuncio.getApartamento().getNumHabitaciones(), 
+                    			anuncio.getApartamento().getMetrosCuad(), loc);
+                    	aparta.setReservas(anuncio.getApartamento().getReservas());
+                    	
+                    	
+                    	Anuncio a = new Anuncio(aparta, anuncio.getTitulo(), 
+                    			anuncio.getDescripcion(), anuncio.getPrecioNoche(), anuncio.isDisponibilidad(), anuncio.getNumPersonas());
+                    
+                 
+                    	if (fechaEntrada != null && fechaSalida != null) {
+                    		if (anuncio.comprobarDis(fechaEntrada, fechaSalida)) {
+                        		anuncios.add(a);
+                    	}
+                    	
+                    	}else {
+                    		anuncios.add(a);
+                    	}
+                    	
+                	}
+                	
+                	
+                }
+
+                tx.commit();
+            } catch (Exception ex) {
+                System.out.println("$ Error viendo todos Anuncios: " + ex.getMessage());
+            } finally {
+                if (tx != null && tx.isActive()) {
+                    tx.rollback();
+                }
+
+                pm.close();
+            }
+            return anuncios;
+    	
+    	
+    	
+    	
+    		
+
+    	}	
         
 	
         
