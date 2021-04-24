@@ -1,9 +1,7 @@
 package com.decode.objects;
 
 public class Opinion {
-<<<<<<< HEAD
-=======
-	
+
 	private int idUsuario;
 	private String titulo;
 	private String descripcion;
