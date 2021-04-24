@@ -222,20 +222,15 @@ public class VentanaPrincipal extends JFrame  {
 		List<Anuncio> anuncios;
 		
 		int y = 0;
-		try {
-			anuncios = dbm.listarAnuncios();
-			System.out.println(anuncios);
-			for (Anuncio a : anuncios) {
-				PanelAnuncio pa = new PanelAnuncio(a);
-				pa.setVisible(true);
-				panelCentro.add(pa);
-				pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
-				y = y + 125;
-				
-			}
-		} catch (DBException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		anuncios = dbm.getAnuncios();
+		System.out.println(anuncios);
+		for (Anuncio a : anuncios) {
+			PanelAnuncio pa = new PanelAnuncio(a);
+			pa.setVisible(true);
+			panelCentro.add(pa);
+			pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
+			y = y + 125;
+			
 		}
 		
 		

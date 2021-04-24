@@ -2,14 +2,22 @@ package com.decode.objects;
 
 import java.util.Calendar;
 
+import javax.jdo.annotations.ForeignKey;
+import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class Reserva {
 	
+	@PrimaryKey
+	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT, primaryKey = "true")
+	private int id;
+	@ForeignKey
 	private Usuario usuario;
 	private Calendar fechaEntrada;
 	private Calendar fechaSalida;
@@ -30,7 +38,14 @@ public class Reserva {
 		this.fechaSalida = null;
 		this.numPersonas = 0;
 	}
-	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -66,9 +81,11 @@ public class Reserva {
 
 	@Override
 	public String toString() {
-		return "Reserva [usuario=" + usuario + ", fechaEntrada=" + fechaEntrada + ", fechaSalida=" + fechaSalida
-				+ ", numPersonas=" + numPersonas + "]";
+		return "Reserva [id=" + id + ", usuario=" + usuario + ", fechaEntrada=" + fechaEntrada + ", fechaSalida="
+				+ fechaSalida + ", numPersonas=" + numPersonas + "]";
 	}
+	
+
 	
 	
 	
