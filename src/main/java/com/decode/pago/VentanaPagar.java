@@ -23,13 +23,12 @@ import com.decode.bd.DBManager;
 import com.decode.objects.Anuncio;
 import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
-import com.decode.ventanaPrincipal.VentanaPrincipal;
 
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
 
-public class VentanaPago extends JFrame {
+public class VentanaPagar extends JFrame {
 
 	private JPanel contentPane;
 	private DBManager dbm;
@@ -46,7 +45,7 @@ public class VentanaPago extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaPago frame = new VentanaPago();
+					VentanaPagar frame = new VentanaPagar();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -58,7 +57,7 @@ public class VentanaPago extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaPago() {
+	public VentanaPagar() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 200, 1289, 809);
@@ -212,56 +211,10 @@ public class VentanaPago extends JFrame {
 			
 		}
 		
-		 btnNewButton.addActionListener(new ActionListener() {
-			 public void actionPerformed(ActionEvent e) {
-			 VentanaPago C = new VentanaPago();
-			 setVisible(false);
-			 C.setVisible(true);
-			 
-			 if (rdbtnNewRadioButton.isSelected()==true) {
-					lblNewLabel.setVisible(true);
-					textField.setVisible(true);
-					lblNewLabel_4.setVisible(true);
-					textField_4.setVisible(true);
-					lblNewLabel_1.setVisible(false);
-					textField_1.setVisible(false);
-					lblNewLabel_2.setVisible(false);
-					textField_2.setVisible(false);
-					lblNewLabel_3.setVisible(false);
-					textField_3.setVisible(false);
-					
-				}else if(rdbtnNewRadioButton_1.isSelected()==true) {
-					lblNewLabel.setVisible(true);
-					textField.setVisible(true);
-					lblNewLabel_4.setVisible(true);
-					textField_4.setVisible(true);
-					lblNewLabel_1.setVisible(true);
-					textField_1.setVisible(true);
-					lblNewLabel_2.setVisible(true);
-					textField_2.setVisible(true);
-					lblNewLabel_3.setVisible(true);
-					textField_3.setVisible(true);
-					
-				}else {
-					lblNewLabel.setVisible(false);
-					textField.setVisible(false);
-					lblNewLabel_4.setVisible(false);
-					textField_4.setVisible(false);
-					lblNewLabel_1.setVisible(false);
-					textField_1.setVisible(false);
-					lblNewLabel_2.setVisible(false);
-					textField_2.setVisible(false);
-					lblNewLabel_3.setVisible(false);
-					textField_3.setVisible(false);
-
-					
-				}
-			 }
-			 });
-		
 		
 		
 	}
 }
+
 
 
