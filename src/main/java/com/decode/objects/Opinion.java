@@ -65,6 +65,6 @@ public class Opinion {
 				+ ", puntuacion=" + puntuacion + "]";
 	}
 	
->>>>>>> opinion
+
 
 }

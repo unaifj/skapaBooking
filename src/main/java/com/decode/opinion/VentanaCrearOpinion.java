@@ -75,10 +75,6 @@ public class VentanaCrearOpinion extends JFrame {
 			
 			
 			
-<<<<<<< HEAD
-			
-			
-=======
->>>>>>> opinion
+
 		}
 }
