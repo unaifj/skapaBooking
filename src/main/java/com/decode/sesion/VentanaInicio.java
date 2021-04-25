@@ -27,7 +27,7 @@ import java.awt.event.ActionEvent;
 
 public class VentanaInicio extends JFrame {
 
-	public static Usuario user;
+	private static Usuario user;
 	private JPanel contentPane;
 	private JTextField textNomUsuario;
 	private JTextField textContrasenya;
@@ -180,5 +180,9 @@ public class VentanaInicio extends JFrame {
 		
 		
 		
+	}
+	
+	public static Usuario getUser() {
+		return user;
 	}
 }

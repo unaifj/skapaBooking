@@ -88,7 +88,7 @@ public class VentanaPrincipal extends JFrame  {
 		
 		
 		
-		if (VentanaInicio.user == null) {
+		if (VentanaInicio.getUser() == null) {
 			
 			JButton btnRegistro = new JButton("Hazte cuenta");
 			btnRegistro.setBounds(960, 13, 117, 23);
@@ -121,7 +121,7 @@ public class VentanaPrincipal extends JFrame  {
 			});
 			
 		}else {
-			JLabel lblNewLabel = new JLabel("Cuenta de usuario:  " + VentanaInicio.user.getNomUsuario());
+			JLabel lblNewLabel = new JLabel("Has iniciado sesion como:  " + VentanaInicio.getUser().getNomUsuario());
 			lblNewLabel.setForeground(Color.LIGHT_GRAY);
 			lblNewLabel.setBounds(1062, 17, 201, 14);
 			panelNorte.add(lblNewLabel);
