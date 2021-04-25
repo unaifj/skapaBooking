@@ -24,11 +24,12 @@ public class Apartamento {
 	@ForeignKey
 	private List<Reserva> reservas;
 	
-	public Apartamento(int numHabitaciones, int metrosCuad, Localidad localidad) {
+	public Apartamento(int numHabitaciones, int metrosCuad, Localidad localidad, List<Reserva> reservas) {
 		super();
 		this.numHabitaciones = numHabitaciones;
 		this.metrosCuad = metrosCuad;
 		this.localidad = localidad;
+		this.reservas = reservas;
 	}
 
 	public int getId() {

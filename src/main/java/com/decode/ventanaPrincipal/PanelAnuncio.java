@@ -1,9 +1,11 @@
 package com.decode.ventanaPrincipal;
 
+import java.awt.Image;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -30,24 +32,33 @@ public class PanelAnuncio extends JPanel implements ActionListener {
 		panelDesc.setBounds(10, 36, 849, 48);
 		this.add(panelDesc);
 		
-		JLabel lblm2 = new JLabel(String.valueOf(anuncio.getApartamento().getMetrosCuad()));
+		JLabel lblm2 = new JLabel(String.valueOf(anuncio.getApartamento().getMetrosCuad()) + " m2");
 		lblm2.setBackground(SystemColor.inactiveCaption);
-		lblm2.setBounds(123, 95, 92, 14);
+		lblm2.setBounds(123, 99, 92, 14);
 		add(lblm2);
 		
-		JLabel lblPrecio = new JLabel(String.valueOf(anuncio.getPrecioNoche()));
-		lblPrecio.setBounds(796, 95, 118, 14);
+		JLabel lblPrecio = new JLabel(String.valueOf(anuncio.getPrecioNoche()) + " €");
+		lblPrecio.setBounds(796, 99, 118, 14);
 		add(lblPrecio);
 		
 		JLabel lblPers = new JLabel(String.valueOf(anuncio.getNumPersonas()));
-		lblPers.setBounds(10, 95, 92, 14);
+		lblPers.setBounds(10, 99, 13, 14);
 		add(lblPers);
 		
-		JLabel lblNewLabel = new JLabel("[IMAGEN]");
-		lblNewLabel.setBounds(790, 11, 46, 14);
-		add(lblNewLabel);
+		JLabel lblImage = new JLabel("[IMAGEN]");
+		lblImage.setBounds(790, 11, 46, 14);
+		add(lblImage);
 			
 		
+		
+		JLabel lblIconoPers = new JLabel("New label");
+		lblIconoPers.setBounds(20, 95, 13, 22);
+		add(lblIconoPers);
+		
+
+		ImageIcon ico1= new ImageIcon("img/iconoPersonas.PNG");               
+		ImageIcon img2= new ImageIcon(ico1.getImage().getScaledInstance(lblIconoPers.getWidth(), lblIconoPers.getHeight(), Image.SCALE_SMOOTH));    
+		lblIconoPers.setIcon(img2);
 		
 		
        

@@ -22,10 +22,7 @@ import com.decode.objects.Usuario;
 
 
 public class DBManager {
-	
-	
-	
-	
+
 	//INSTALACION DE DATOS
 	public void preparedData () throws DBException{
 		
@@ -49,21 +46,21 @@ public class DBManager {
 			Localidad barakaldo1=new Localidad("Pais Vasco","Barakaldo",48300, "Avd Bagatza 8");
 			pm.makePersistent(barakaldo1);
 			
-			Apartamento apar1= new Apartamento(4,100,triana1);
-			pm.makePersistent(apar1);
-			Apartamento apar2= new Apartamento(6,105,conil1);
-			pm.makePersistent(apar2);
-			Apartamento apar3= new Apartamento(8,120,barakaldo1);
-			pm.makePersistent(apar3);
-			
 			Calendar fechaEntrada = new GregorianCalendar(2021, 6, 24);
 			Calendar fechaSalida = new GregorianCalendar(2021, 6, 31);
 			Reserva res1 = new Reserva(userA, fechaEntrada, fechaSalida, 5);
+			pm.makePersistent(res1);
 			
 			List<Reserva>reservasA = new ArrayList<Reserva>();
 			reservasA.add(res1);
-			apar1.setReservas(reservasA);
 			
+			Apartamento apar1= new Apartamento(4,100,triana1, reservasA);
+			pm.makePersistent(apar1);
+			Apartamento apar2= new Apartamento(6,105,conil1, null);
+			pm.makePersistent(apar2);
+			Apartamento apar3= new Apartamento(8,120,barakaldo1, null);
+			pm.makePersistent(apar3);
+
 			Anuncio anun1=new Anuncio(apar1,"Apartamento soleado en la margen izquierda de Sevilla", "Apartamento soleado con vistas al mar ideal para pasar unos dias en el sur de España", 25, true, 4);
 			pm.makePersistent(anun1);
 			Anuncio anun2=new Anuncio(apar2,"Apartamento soleado muy bien situado en Conil", "Apartamento muy bien situado con vistas a la cala santo amor muy grande y espaciosa", 32, true, 6);
@@ -100,6 +97,7 @@ public class DBManager {
 		
 	}
 	
+	//COMPROBAR SI USUARIO EXISTE
 	public boolean exiteUsuario(Usuario usuario) throws DBException{
 		
 		boolean existe = false;
@@ -155,106 +153,9 @@ public class DBManager {
 			}
 			pm.close();
 		}
-		
 	}
 	
-	//LISTAR APARTAMENTOS
-	public List<Apartamento> listarApartamentos() throws DBException{
-		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
-		
-		tx.begin();
-		
-		Query<Apartamento> query = pm.newQuery("javax.jdo.query.SQL","select * from " + "Apartamento");
-		query.setClass(Apartamento.class);
-			
-		List<Apartamento> results = query.executeList();
-		
-		tx.commit();
-		pm.close();
-		return results;
-		
-	}
-	
-		
-	//LISTAR ANUNCIOS
-	public List<Anuncio> listarAnuncios() throws DBException{
-		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
-		
-		tx.begin();
-		
-		Query<Anuncio> query = pm.newQuery("javax.jdo.query.SQL","select * from " + "Anuncio");
-		query.setClass(Anuncio.class);
-			
-		List<Anuncio> results = query.executeList();
-		
-		tx.commit();
-		pm.close();
-		return results;
-			
-	}
-	
-	//MOSTRAR ANUNCIOS FILTRO
-	
-	public List<Anuncio> listarFiltrados(String titulo)throws DBException{
-		
-		
-		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
-		
-		tx.begin();
-		
-		Query<Anuncio> query = pm.newQuery("javax.jdo.query.SQL","select * from " + "anuncio " + "where titulo like ?");
-		query.setParameters(titulo);
-		
-		query.setClass(Anuncio.class);
-		List<Anuncio> results = query.executeList();
-		
 
-		
-		tx.commit();
-		pm.close();
-	
-		return results;
-		
-	}
-	
-	public List<Anuncio> getAnuncios() {
-		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		PersistenceManager pm = pmf.getPersistenceManager();
-		pm.getFetchPlan().setMaxFetchDepth(4);
-		Transaction tx = pm.currentTransaction();
-    	
-
-        List<Anuncio> anuncios = new ArrayList<Anuncio>();
-
-        try {
-            System.out.println("* Viendo todos Anuncios");
-            tx.begin();
-
-            Extent<Anuncio> AnuncioExtent = pm.getExtent(Anuncio.class, true);
-
-            for (Anuncio anuncio : AnuncioExtent) {
-                anuncios.add(anuncio);
-            }
-
-            tx.commit();
-        } catch (Exception ex) {
-            System.out.println("$ Error viendo todos Anuncios: " + ex.getMessage());
-        } finally {
-            if (tx != null && tx.isActive()) {
-                tx.rollback();
-            }
-
-            pm.close();
-        }
-        return anuncios;
-
-    }
 	
 	//INSERTAR NUEVA OPINION 
 	
@@ -278,11 +179,126 @@ public class DBManager {
 		
 		}
 		
-}
+        }
         
-	
-        
-        
-        
+      //LISTAR ANUNCIOS
+        public List<Anuncio> getAnuncios() {
+    		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+    		PersistenceManager pm = pmf.getPersistenceManager();
+    		Transaction tx = pm.currentTransaction();
+        	
 
+            List<Anuncio> anuncios = new ArrayList<Anuncio>();
+
+            try {
+                System.out.println("* Viendo todos Anuncios");
+                tx.begin();
+
+                Extent<Anuncio> anuncioExtent = pm.getExtent(Anuncio.class, true);
+
+                for (Anuncio anuncio : anuncioExtent) {
+            
+                	Localidad loc = new Localidad (anuncio.getApartamento().getLocalidad().getProvincia(), 
+                			anuncio.getApartamento().getLocalidad().getMunicipio(), 
+                			anuncio.getApartamento().getLocalidad().getCp(), anuncio.getApartamento().getLocalidad().getDireccion());
+                	Apartamento aparta = new Apartamento(anuncio.getApartamento().getNumHabitaciones(), 
+                			anuncio.getApartamento().getMetrosCuad(), loc, anuncio.getApartamento().getReservas());
+                	Anuncio a = new Anuncio(aparta, anuncio.getTitulo(), 
+                			anuncio.getDescripcion(), anuncio.getPrecioNoche(), anuncio.isDisponibilidad(), anuncio.getNumPersonas());
+                
+                	anuncios.add(a);
+                	
+                }
+
+                tx.commit();
+            } catch (Exception ex) {
+                System.out.println("$ Error viendo todos Anuncios: " + ex.getMessage());
+            } finally {
+                if (tx != null && tx.isActive()) {
+                    tx.rollback();
+                }
+
+                pm.close();
+            }
+            return anuncios;
+
+        }
+
+    	//MOSTRAR ANUNCIOS POR FILTROS
+    	public List<Anuncio> getFiltrados(String titulo, Calendar fechaEntrada, Calendar fechaSalida, int numPersonas, int precioMin, int precioMax) {
+    		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+    		PersistenceManager pm = pmf.getPersistenceManager();
+    		Transaction tx = pm.currentTransaction();
+
+            List<Anuncio> anuncios = new ArrayList<Anuncio>();
+
+            try {
+                System.out.println("* Viendo todos Anuncios filtrados");
+                tx.begin();
+
+                Extent<Anuncio> anuncioExtent = pm.getExtent(Anuncio.class, true);
+
+                for (Anuncio anuncio : anuncioExtent) {
+
+                		Localidad loc = new Localidad (anuncio.getApartamento().getLocalidad().getProvincia(), 
+                    			anuncio.getApartamento().getLocalidad().getMunicipio(), 
+                    			anuncio.getApartamento().getLocalidad().getCp(), anuncio.getApartamento().getLocalidad().getDireccion());
+                    	Apartamento aparta = new Apartamento(anuncio.getApartamento().getNumHabitaciones(), 
+                    			anuncio.getApartamento().getMetrosCuad(), loc, anuncio.getApartamento().getReservas());
+                    	aparta.setReservas(anuncio.getApartamento().getReservas());
+
+                    	Anuncio a = new Anuncio(aparta, anuncio.getTitulo(), 
+                    			anuncio.getDescripcion(), anuncio.getPrecioNoche(), anuncio.isDisponibilidad(), anuncio.getNumPersonas());    
+     
+                    	int cont = 0;
+                    	int contV = 0;
+                    	
+                    	if (!a.getTitulo().equals("")) {
+                    		cont++;
+                    		if (a.getTitulo().contains(titulo) || a.getTitulo().toLowerCase().contains(titulo)) {
+                    			contV++;
+                    		}
+                    	}
+                    	
+                    	if (fechaEntrada != null && fechaSalida != null) {
+                    		cont ++;
+                    		if (a.comprobarDis(fechaEntrada, fechaSalida)) {
+                        		contV++;
+                    		}
+                    	}
+                    	
+                    	if (numPersonas != 0) {
+                    		cont ++;
+                    		if (a.getNumPersonas() >= numPersonas) {
+                    			contV++;
+                    		}
+                    	}
+                    	
+                    	if (precioMax != 0) {
+                    		cont ++;
+                    		if (a.getPrecioNoche() >= precioMin && a.getPrecioNoche() <= precioMax) {
+                    			contV++;
+                    		}
+                    	}
+                    	
+                    	
+                    	if (cont == contV) {
+                    		anuncios.add(a);
+				
+                    	}
+               }
+
+                tx.commit();
+            } catch (Exception ex) {
+                System.out.println("$ Error viendo todos Anuncios: " + ex.getMessage());
+            } finally {
+                if (tx != null && tx.isActive()) {
+                    tx.rollback();
+                }
+
+                pm.close();
+            }
+            return anuncios;
+
+    	}	
 }
