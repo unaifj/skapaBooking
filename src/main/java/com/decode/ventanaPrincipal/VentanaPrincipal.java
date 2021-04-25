@@ -8,6 +8,8 @@ import java.awt.Image;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Calendar;
 import java.util.List;
 
@@ -23,6 +25,7 @@ import javax.swing.JTextField;
 
 import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
+import com.decode.contacto.Contacto;
 import com.decode.objects.Anuncio;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
@@ -57,7 +60,7 @@ public class VentanaPrincipal extends JFrame  {
 	public VentanaPrincipal() {
 		getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 62));
 		getContentPane().setLayout(null);
-		setBounds(300, 200, 1289, 809);
+		setBounds(300, 200, 1289, 907);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(1066, 3, -1066, 696);
@@ -246,7 +249,7 @@ public class VentanaPrincipal extends JFrame  {
 		panelSuroeste.add(chckbxRurales);
 		
 		Panel panelCentro = new Panel();
-		panelCentro.setBounds(329, 156, 944, 604);
+		panelCentro.setBounds(329, 156, 944, 619);
 		getContentPane().add(panelCentro);
 		panelCentro.setLayout(null);
 		
@@ -260,6 +263,16 @@ public class VentanaPrincipal extends JFrame  {
 		lblAlojamientosEncontrados.setFont(new Font("Tahoma", Font.BOLD, 19));
 		lblAlojamientosEncontrados.setBounds(351, 120, 338, 23);
 		getContentPane().add(lblAlojamientosEncontrados);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setBounds(0, 781, 1273, 130);
+		getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblContacto = new JLabel("Contacta con nosotros");
+		lblContacto.setBounds(1122, 11, 141, 14);
+		panel.add(lblContacto);
 		
 		DBManager dbm = new DBManager();
 		List<Anuncio> anuncios;
@@ -314,6 +327,41 @@ public class VentanaPrincipal extends JFrame  {
 				}
 				
 				getContentPane().add(panelCentro);
+			}
+		});
+		
+		lblContacto.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setVisible(false);
+				Contacto c = new Contacto();
+				c.setVisible(true);
+				
 			}
 		});
 		
