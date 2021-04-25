@@ -181,6 +181,49 @@ public class DBManager {
 		
         }
         
+        //LISTAR OPINIONES
+        public List<Opinion>getOpiniones(){
+        	PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+    		PersistenceManager pm = pmf.getPersistenceManager();
+    		Transaction tx = pm.currentTransaction();
+    		
+    		List<Opinion> opiniones = new ArrayList<Opinion>();
+    		
+    		try {
+    			
+    			System.out.println("* Tus opiniones");
+    			tx.begin();
+    			
+    			Extent<Opinion> opinionExtent = pm.getExtent(Opinion.class, true);
+    			
+    			for(Opinion opinion: opinionExtent) {
+    				
+    				Opinion op = new Opinion(opinion.getIdUsuario(), opinion.getTitulo(), opinion.getDescripcion(), opinion.getPuntuacion());
+    				
+    				opiniones.add(op);
+    				
+    			}
+    			
+    			tx.commit();
+    			
+    		}catch (Exception ex) {
+                System.out.println("$ Error viendo tus opiniones: " + ex.getMessage());
+            } finally {
+                if (tx != null && tx.isActive()) {
+                    tx.rollback();
+                }
+
+                pm.close();
+            }
+        	
+        	
+        	
+        	
+        	
+			return opiniones;
+        	
+        }
+        
       //LISTAR ANUNCIOS
         public List<Anuncio> getAnuncios() {
     		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
