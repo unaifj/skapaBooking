@@ -1,7 +1,7 @@
 package com.decode.objects;
 
 public class Opinion {
-	
+
 	private int idUsuario;
 	private String titulo;
 	private String descripcion;
@@ -63,5 +63,6 @@ public class Opinion {
 				+ ", puntuacion=" + puntuacion + "]";
 	}
 	
+
 
 }

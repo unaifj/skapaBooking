@@ -108,5 +108,6 @@ public class VentanaCrearOpinion extends JFrame {
 			
 			
 			
+
 		}
 }

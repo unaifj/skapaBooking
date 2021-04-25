@@ -5,14 +5,18 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import javax.jdo.Extent;
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
+
+
 import com.decode.objects.Anuncio;
 import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
+import com.decode.objects.Opinion;
 import com.decode.objects.Reserva;
 import com.decode.objects.Usuario;
 
@@ -219,14 +223,66 @@ public class DBManager {
 		
 	}
 	
+	public List<Anuncio> getAnuncios() {
+		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		PersistenceManager pm = pmf.getPersistenceManager();
+		pm.getFetchPlan().setMaxFetchDepth(4);
+		Transaction tx = pm.currentTransaction();
+    	
+
+        List<Anuncio> anuncios = new ArrayList<Anuncio>();
+
+        try {
+            System.out.println("* Viendo todos Anuncios");
+            tx.begin();
+
+            Extent<Anuncio> AnuncioExtent = pm.getExtent(Anuncio.class, true);
+
+            for (Anuncio anuncio : AnuncioExtent) {
+                anuncios.add(anuncio);
+            }
+
+            tx.commit();
+        } catch (Exception ex) {
+            System.out.println("$ Error viendo todos Anuncios: " + ex.getMessage());
+        } finally {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+
+            pm.close();
+        }
+        return anuncios;
+
+    }
 	
+	//INSERTAR NUEVA OPINION 
 	
+        public void insertarOpinion(Opinion opinion) throws DBException{
 		
-
+		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		
+		try {
+			tx.begin();
+			pm.makePersistent(opinion);
+			tx.commit();
 			
-
-			
+		} finally {
+			if (tx.isActive()) {
+				tx.rollback();
+			}
+			pm.close();
+		
+		
+		}
+		
 }
+        
 	
+        
+        
+        
 
-
+}
