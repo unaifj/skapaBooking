@@ -27,6 +27,7 @@ import java.awt.event.ActionEvent;
 
 public class VentanaInicio extends JFrame {
 
+	public static Usuario user;
 	private JPanel contentPane;
 	private JTextField textNomUsuario;
 	private JTextField textContrasenya;
@@ -121,12 +122,14 @@ public class VentanaInicio extends JFrame {
 				for (Usuario user : usuarios) {
 					if (user.getNomUsuario().equals(nomUsuario) && user.getContrasenya().equals(contrasenya)) {
 						acceso = true;
+						VentanaInicio.user = user;
 						
 					}
 					
 				}
 				if (acceso) {
 					JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Incio correcto", 1, null);
+					
 					VentanaPrincipal vp = new VentanaPrincipal();
 					vp.setVisible(true);
 					setVisible(false);
@@ -173,6 +176,8 @@ public class VentanaInicio extends JFrame {
 				
 			}
 		});
+		
+		
 		
 		
 	}
