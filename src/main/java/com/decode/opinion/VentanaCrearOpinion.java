@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
 import  com.decode.objects.Opinion;
 import com.decode.sesion.VentanaInicio;
@@ -30,7 +31,7 @@ public class VentanaCrearOpinion extends JFrame {
 	
 	public VentanaCrearOpinion() {
 		
-		//int idU = VentanaInicio.getUsuario();
+		int idU = VentanaInicio.getUser().getId();
 			
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			setBounds(100, 100, 440, 522);
@@ -92,12 +93,18 @@ public class VentanaCrearOpinion extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
 					
-				//	int idUsuario = idU;
+				    int idUsuario = idU;
 					String titulo = textTitulo.getText();
 					String descripcion = textDesc.getText();
 					float puntuacion = Float.parseFloat(textField.getText());
 					
-				//	Opinion opinion = new Opinion(idUsuario, titulo, descripcion, puntuacion);
+					Opinion opinion = new Opinion(idUsuario, titulo, descripcion, puntuacion);
+					try {
+						dbm.insertarOpinion(opinion);
+					} catch (DBException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				
 					
 					
