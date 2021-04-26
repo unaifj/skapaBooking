@@ -8,6 +8,8 @@ import java.awt.Image;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Calendar;
 import java.util.List;
 
@@ -23,12 +25,16 @@ import javax.swing.JTextField;
 
 import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
+import com.decode.contacto.Contacto;
 import com.decode.objects.Anuncio;
+import com.decode.sesion.VentanaInicio;
+import com.decode.sesion.VentanaRegistro;
 import com.toedter.calendar.JDateChooser;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.SpinnerNumberModel;
 
 public class VentanaPrincipal extends JFrame  {
 	private JTextField textDestino;
@@ -54,7 +60,7 @@ public class VentanaPrincipal extends JFrame  {
 	public VentanaPrincipal() {
 		getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 62));
 		getContentPane().setLayout(null);
-		setBounds(300, 200, 1289, 809);
+		setBounds(300, 200, 1289, 907);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(1066, 3, -1066, 696);
@@ -83,29 +89,59 @@ public class VentanaPrincipal extends JFrame  {
 		lblBandera.setBounds(821, 11, 40, 27);
 		panelNorte.add(lblBandera);
 		
-		JButton btnRegistro = new JButton("Hazte cuenta");
-		btnRegistro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnRegistro.setBounds(960, 13, 117, 23);
-		panelNorte.add(btnRegistro);
 		
-		JButton btnLogin = new JButton("Iniciar Sesion");
-		btnLogin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnLogin.setBounds(1087, 13, 123, 23);
-		panelNorte.add(btnLogin);
+		
+		if (VentanaInicio.getUser() == null) {
+			
+			JButton btnRegistro = new JButton("Hazte cuenta");
+			btnRegistro.setBounds(960, 13, 117, 23);
+			panelNorte.add(btnRegistro);
+			
+			JButton btnLogin = new JButton("Iniciar Sesion");
+			btnLogin.setBounds(1087, 13, 123, 23);
+			panelNorte.add(btnLogin);
+			
+			btnLogin.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+					VentanaInicio vi = new VentanaInicio();
+					vi.setVisible(true);
+					
+				}
+			});
+			
+			btnRegistro.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+					VentanaRegistro vr = new VentanaRegistro();
+					vr.setVisible(true);
+					
+				}
+			});
+			
+		}else {
+			JLabel lblNewLabel = new JLabel("Has iniciado sesion como:  " + VentanaInicio.getUser().getNomUsuario());
+			lblNewLabel.setForeground(Color.LIGHT_GRAY);
+			lblNewLabel.setBounds(1062, 17, 201, 14);
+			panelNorte.add(lblNewLabel);
+			
+			
+		}
+		
 		
 		ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en la bd
 		
 		ImageIcon img1= new ImageIcon(ico1.getImage().getScaledInstance(lblBandera.getWidth(), lblBandera.getHeight(), Image.SCALE_SMOOTH));
 		lblBandera.setIcon(img1);
 		
+
+		
 		JPanel panelOeste = new JPanel();
-		panelOeste.setBounds(0, 109, 323, 392);
+		panelOeste.setBounds(0, 109, 323, 409);
 		getContentPane().add(panelOeste);
 		panelOeste.setBackground(Color.ORANGE);
 		panelOeste.setLayout(null);
@@ -143,67 +179,77 @@ public class VentanaPrincipal extends JFrame  {
 		fechaSalida.setBounds(10, 198, 276, 30);
 		panelOeste.add(fechaSalida);
 		
-		JSpinner spinnerAdultos = new JSpinner();
-		spinnerAdultos.setToolTipText("Adultos 4");
-		spinnerAdultos.setBounds(10, 259, 276, 23);
-		panelOeste.add(spinnerAdultos);
+		JSpinner spinnerNumPersonas = new JSpinner();
+		spinnerNumPersonas.setToolTipText("Adultos 4");
+		spinnerNumPersonas.setBounds(10, 259, 276, 23);
+		panelOeste.add(spinnerNumPersonas);
 		
-		JSpinner spinnerNinos = new JSpinner();
-		spinnerNinos.setToolTipText("Niños");
-		spinnerNinos.setBounds(10, 298, 127, 23);
-		panelOeste.add(spinnerNinos);
+		JSpinner spinnerPrecioMin = new JSpinner();
+		spinnerPrecioMin.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(10)));
+		spinnerPrecioMin.setToolTipText("Niños");
+		spinnerPrecioMin.setBounds(10, 318, 127, 23);
+		panelOeste.add(spinnerPrecioMin);
 		
-		JSpinner spinnerHabitaciones = new JSpinner();
-		spinnerHabitaciones.setBounds(138, 298, 148, 23);
-		panelOeste.add(spinnerHabitaciones);
+		JSpinner spinnerPrecioMax = new JSpinner();
+		spinnerPrecioMax.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(10)));
+		spinnerPrecioMax.setBounds(153, 318, 133, 23);
+		panelOeste.add(spinnerPrecioMax);
 		
 		Button buttonBuscar = new Button("Buscar");
 		buttonBuscar.setActionCommand("");
-		buttonBuscar.setBounds(99, 340, 100, 30);
+		buttonBuscar.setBounds(101, 358, 100, 30);
 		panelOeste.add(buttonBuscar);
 		
+		JLabel lblNNumPersonas = new JLabel("Numero de personas");
+		lblNNumPersonas.setBounds(10, 239, 127, 14);
+		panelOeste.add(lblNNumPersonas);
+		
+		JLabel lblPrecio = new JLabel("Precio por noche");
+		lblPrecio.setBounds(10, 293, 112, 14);
+		panelOeste.add(lblPrecio);
+		
 		Panel panelSuroeste = new Panel();
-		panelSuroeste.setBounds(0, 501, 323, 274);
+		panelSuroeste.setBounds(0, 517, 323, 258);
 		getContentPane().add(panelSuroeste);
 		panelSuroeste.setLayout(null);
 		
 		JLabel lblFiltradoPor = new JLabel("Filtrado por:");
 		lblFiltradoPor.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblFiltradoPor.setBounds(10, 11, 128, 23);
+		lblFiltradoPor.setBounds(10, 28, 128, 23);
 		panelSuroeste.add(lblFiltradoPor);
 		
 		JCheckBox chckbxCancelacion = new JCheckBox("Cancelacion gratuita");
-		chckbxCancelacion.setBounds(10, 68, 158, 23);
+		chckbxCancelacion.setBounds(10, 89, 158, 23);
 		panelSuroeste.add(chckbxCancelacion);
 		
 		txtIntroduzcaElPrecio = new JTextField();
 		txtIntroduzcaElPrecio.setText("Introduzca el precio");
-		txtIntroduzcaElPrecio.setBounds(10, 41, 245, 20);
+		txtIntroduzcaElPrecio.setBounds(10, 62, 245, 20);
 		panelSuroeste.add(txtIntroduzcaElPrecio);
 		txtIntroduzcaElPrecio.setColumns(10);
 		
 		JCheckBox chckbxParking = new JCheckBox("Parking");
-		chckbxParking.setBounds(10, 198, 97, 23);
+		chckbxParking.setBounds(10, 219, 97, 23);
 		panelSuroeste.add(chckbxParking);
 		
 		JCheckBox chckbxPiscina = new JCheckBox("Piscina");
-		chckbxPiscina.setBounds(10, 172, 97, 23);
+		chckbxPiscina.setBounds(10, 193, 97, 23);
 		panelSuroeste.add(chckbxPiscina);
 		
 		JCheckBox chckbxNewCheckBox_2_1 = new JCheckBox("Casas y apartamentos");
-		chckbxNewCheckBox_2_1.setBounds(10, 94, 158, 23);
+		chckbxNewCheckBox_2_1.setBounds(10, 115, 158, 23);
 		panelSuroeste.add(chckbxNewCheckBox_2_1);
 		
 		JCheckBox chckbxHoteles = new JCheckBox("Hoteles y pensiones");
-		chckbxHoteles.setBounds(10, 120, 189, 23);
+		chckbxHoteles.setBounds(10, 141, 189, 23);
 		panelSuroeste.add(chckbxHoteles);
 		
 		JCheckBox chckbxRurales = new JCheckBox("Casa rurales");
-		chckbxRurales.setBounds(10, 146, 189, 23);
+		chckbxRurales.setBounds(10, 167, 189, 23);
 		panelSuroeste.add(chckbxRurales);
 		
 		Panel panelCentro = new Panel();
-		panelCentro.setBounds(329, 156, 944, 604);
+		panelCentro.setBounds(329, 156, 944, 619);
 		getContentPane().add(panelCentro);
 		panelCentro.setLayout(null);
 		
@@ -218,24 +264,29 @@ public class VentanaPrincipal extends JFrame  {
 		lblAlojamientosEncontrados.setBounds(351, 120, 338, 23);
 		getContentPane().add(lblAlojamientosEncontrados);
 		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setBounds(0, 781, 1273, 130);
+		getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblContacto = new JLabel("Contacta con nosotros");
+		lblContacto.setBounds(1122, 11, 141, 14);
+		panel.add(lblContacto);
+		
 		DBManager dbm = new DBManager();
 		List<Anuncio> anuncios;
 		
 		int y = 0;
-		try {
-			anuncios = dbm.listarAnuncios();
-			System.out.println(anuncios);
-			for (Anuncio a : anuncios) {
-				PanelAnuncio pa = new PanelAnuncio(a);
-				pa.setVisible(true);
-				panelCentro.add(pa);
-				pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
-				y = y + 125;
-				
-			}
-		} catch (DBException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		anuncios = dbm.getAnuncios();
+		System.out.println(anuncios);
+		for (Anuncio a : anuncios) {
+			PanelAnuncio pa = new PanelAnuncio(a);
+			pa.setVisible(true);
+			panelCentro.add(pa);
+			pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
+			y = y + 125;
+			
 		}
 		
 		
@@ -252,35 +303,65 @@ public class VentanaPrincipal extends JFrame  {
 				
 				List <Anuncio> anunciosFiltrados;
 				
-				try {
-					anunciosFiltrados = dbm.listarFiltrados(titulo);
-					
-					for (Anuncio a : anunciosFiltrados) {
-					
-						if (a.getTitulo() != null) {
-							
-							//COMPROBACION FECHAS
-							if (a.comprobarDis(fechaEntrada.getCalendar(), fechaSalida.getCalendar())) {
-
-								PanelAnuncio pa = new PanelAnuncio(a);
-								pa.setVisible(true);
-								panelCentro.add(pa);
-								pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
-								y = y + 125;
-							}
-			
-							
-						}
+				anunciosFiltrados = dbm.getFiltrados(titulo, fechaEntrada.getCalendar(), fechaSalida.getCalendar(), 
+						(Integer)spinnerNumPersonas.getValue(), (Integer)spinnerPrecioMin.getValue(), 
+								(Integer)spinnerPrecioMax.getValue());
+				
+				for (Anuncio a : anunciosFiltrados) {
+				
+					if (a.getTitulo() != null) {
 						
+						//COMPROBACION FECHAS
+					
+						PanelAnuncio pa = new PanelAnuncio(a);
+						pa.setVisible(true);
+						panelCentro.add(pa);
+						pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
+						y = y + 125;
+						
+
 						
 					}
 					
-					getContentPane().add(panelCentro);
 					
-				} catch (DBException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
 				}
+				
+				getContentPane().add(panelCentro);
+			}
+		});
+		
+		lblContacto.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setVisible(false);
+				Contacto c = new Contacto();
+				c.setVisible(true);
+				
 			}
 		});
 		

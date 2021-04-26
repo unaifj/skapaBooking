@@ -22,20 +22,20 @@ public class TestApartamento {
 	@Test
 	public void testGetNumHabitaciones() {
 		Localidad Triana= new Localidad("Andalucia", "Conil", 49503, "Avd maeda 3");
-		Apartamento apartamento= new Apartamento(4, 100, Triana);
+		Apartamento apartamento= new Apartamento(4, 100, Triana, null);
 		assertEquals(apartamento.getNumHabitaciones(),4);	
 		}
 
 	@Test
 	public void testGetMetrosCuad() {
 		Localidad Triana= new Localidad("Andalucia", "Conil", 49503, "Avd maeda 3");
-		Apartamento apartamento= new Apartamento(4, 100, Triana);
+		Apartamento apartamento= new Apartamento(4, 100, Triana, null);
 		assertEquals(apartamento.getMetrosCuad(),100);		}
 
 	@Test
 	public void testGetLocalidad() {
 		Localidad Triana= new Localidad("Andalucia", "Conil", 49503, "Avd maeda 3");
-		Apartamento apartamento= new Apartamento(4, 100, Triana);
+		Apartamento apartamento= new Apartamento(4, 100, Triana, null);
 		assertEquals(apartamento.getLocalidad(),Triana);		}
 
 }

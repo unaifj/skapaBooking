@@ -2,34 +2,43 @@ package com.decode.objects;
 
 import java.util.List;
 
+import javax.jdo.annotations.ForeignKey;
+import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class Apartamento {
 	
+	@PrimaryKey
+	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT, primaryKey = "true")
+	private int id;
 	private int numHabitaciones;
 	private int metrosCuad;
+	@ForeignKey
 	private Localidad localidad;
+	@ForeignKey
 	private List<Reserva> reservas;
 	
-	public Apartamento(int numHabitaciones, int metrosCuad, Localidad localidad) {
+	public Apartamento(int numHabitaciones, int metrosCuad, Localidad localidad, List<Reserva> reservas) {
 		super();
 		this.numHabitaciones = numHabitaciones;
 		this.metrosCuad = metrosCuad;
 		this.localidad = localidad;
-	}
-	
-	public Apartamento() {
-		super();
-		this.numHabitaciones = 0;
-		this.metrosCuad = 0;
-		this.localidad = null;
-		this.reservas = null;
+		this.reservas = reservas;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public int getNumHabitaciones() {
 		return numHabitaciones;
@@ -62,16 +71,16 @@ public class Apartamento {
 	public void setReservas(List<Reserva> reservas) {
 		this.reservas = reservas;
 	}
-	
-	public void setReserva(Reserva reserva) {
-		this.reservas.add(reserva);
-	}
 
 	@Override
 	public String toString() {
-		return "Apartamento [numHabitaciones=" + numHabitaciones + ", metrosCuad=" + metrosCuad + ", localidad="
-				+ localidad + ", reservas=" + reservas + "]";
+		return "Apartamento [id=" + id + ", numHabitaciones=" + numHabitaciones + ", metrosCuad=" + metrosCuad
+				+ ", localidad=" + localidad + ", reservas=" + reservas + "]";
 	}
+	
+	
+	
+	
 	
 	
 	

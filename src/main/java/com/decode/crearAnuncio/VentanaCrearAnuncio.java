@@ -212,7 +212,7 @@ public class VentanaCrearAnuncio extends JFrame {
 				int m2 = Integer.parseInt(txtMetrosCuadrados.getText());
 				
 				Localidad local = new Localidad("", "", 00000, loc);
-				Apartamento aparta = new Apartamento(numHab, m2, null);
+				Apartamento aparta = new Apartamento(numHab, m2, null, null);
 				Anuncio anuncio = new Anuncio(aparta, loc, desc, precio, false, m2);
 				
 				try {
