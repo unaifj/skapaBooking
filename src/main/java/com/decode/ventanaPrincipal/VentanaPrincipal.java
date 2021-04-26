@@ -29,6 +29,7 @@ import com.decode.contacto.Contacto;
 import com.decode.objects.Anuncio;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
+import com.decode.ventanaperfil.VentanaConfiguacion;
 import com.toedter.calendar.JDateChooser;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -126,11 +127,54 @@ public class VentanaPrincipal extends JFrame  {
 		}else {
 			JLabel lblNewLabel = new JLabel("Has iniciado sesion como:  " + VentanaInicio.getUser().getNomUsuario());
 			lblNewLabel.setForeground(Color.LIGHT_GRAY);
-			lblNewLabel.setBounds(1062, 17, 201, 14);
+			lblNewLabel.setBounds(991, 36, 201, 14);
 			panelNorte.add(lblNewLabel);
 			
+			JLabel lblImagenPerfil = new JLabel("");
+			lblImagenPerfil.setBounds(1217, 11, 46, 51);
+			panelNorte.add(lblImagenPerfil);
+
+
+			ImageIcon iconoperfil = new ImageIcon("img/perfil.PNG");               
+			ImageIcon img2= new ImageIcon(iconoperfil.getImage().getScaledInstance(lblImagenPerfil.getWidth(), lblImagenPerfil.getHeight(), Image.SCALE_SMOOTH));    
+			lblImagenPerfil.setIcon(img2);
+			
+			
+			lblImagenPerfil.addMouseListener(new MouseListener() {
+				
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					
+				}
+				
+				@Override
+				public void mousePressed(MouseEvent e) {
+					
+				}
+				
+				@Override
+				public void mouseExited(MouseEvent e) {
+					
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					
+				}
+				
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					setVisible(false);
+					VentanaConfiguacion vc = new VentanaConfiguacion();
+					vc.setVisible(true);
+					
+				}
+			});
+						
 			
 		}
+		
+		
 		
 		
 		ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en la bd
@@ -138,7 +182,7 @@ public class VentanaPrincipal extends JFrame  {
 		ImageIcon img1= new ImageIcon(ico1.getImage().getScaledInstance(lblBandera.getWidth(), lblBandera.getHeight(), Image.SCALE_SMOOTH));
 		lblBandera.setIcon(img1);
 		
-
+		
 		
 		JPanel panelOeste = new JPanel();
 		panelOeste.setBounds(0, 109, 323, 409);
@@ -249,7 +293,7 @@ public class VentanaPrincipal extends JFrame  {
 		panelSuroeste.add(chckbxRurales);
 		
 		Panel panelCentro = new Panel();
-		panelCentro.setBounds(329, 156, 944, 619);
+		panelCentro.setBounds(345, 156, 944, 619);
 		getContentPane().add(panelCentro);
 		panelCentro.setLayout(null);
 		
