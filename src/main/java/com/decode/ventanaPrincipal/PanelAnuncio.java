@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.decode.objects.Anuncio;
+import javax.swing.JButton;
 
 public class PanelAnuncio extends JPanel implements ActionListener {
 
@@ -59,6 +60,16 @@ public class PanelAnuncio extends JPanel implements ActionListener {
 		ImageIcon ico1= new ImageIcon("img/iconoPersonas.PNG");               
 		ImageIcon img2= new ImageIcon(ico1.getImage().getScaledInstance(lblIconoPers.getWidth(), lblIconoPers.getHeight(), Image.SCALE_SMOOTH));    
 		lblIconoPers.setIcon(img2);
+		
+		JButton btnAnuncio = new JButton("Entrar");
+		btnAnuncio.setBounds(661, 95, 89, 23);
+		add(btnAnuncio);
+		btnAnuncio.addActionListener(new ActionListener() {	
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		
 		
        
