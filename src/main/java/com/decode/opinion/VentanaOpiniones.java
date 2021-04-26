@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,11 +13,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.decode.bd.DBManager;
+import com.decode.objects.Opinion;
+import com.decode.sesion.VentanaInicio;
+import com.decode.opinion.*;
+
 public class VentanaOpiniones extends JFrame {
 	
-	
+	DBManager dbm;
 	
 	private JPanel contentPane;
+	
 	
 	public VentanaOpiniones() {
 		setUndecorated(true);
@@ -44,45 +51,28 @@ public class VentanaOpiniones extends JFrame {
 		btnNuevoComentario.setBounds(205, 466, 161, 29);
 		contentPane.add(btnNuevoComentario);
 		
-		/*try {
+	
 			
-			int cont = 16;
-			int contS=0;
+		List<Opinion> opiniones;
+		
+		int y =0;
+		
 			
-			ArrayList<JPanel> paneles = new ArrayList<JPanel>();
-			
-			while () {
-				
-				JPanel panelNuevo = new JPanel();
-				panelNuevo.setBackground(Color.white);
-				panelNuevo.setBounds(15, cont, 351, 95);
-				panelOpiniones.add(panelNuevo);
-				panelNuevo.setLayout(null);
-				
-				JLabel lblLabeltitulo = new JLabel();
-				lblLabeltitulo.setFont();
-				
-				lblLabeltitulo.setBounds(15, 16, 321, 20);
-				panelNuevo.add(lblLabeltitulo);
-				
-				JLabel labelOpinion = new JLabel();
-				labelOpinion.setBounds(15, 41, 321, 38);
-				panelNuevo.add(labelOpinion);
-			
-				
-				cont = cont + 105;
-				contS++;
-				
+			opiniones = dbm.getOpiniones(VentanaInicio.getUser().getId());
+			System.out.println(opiniones);
+			for(Opinion op : opiniones){
+				PanelOpinion PanelOp = new PanelOpinion(op);
+				PanelOp.setVisible(true);
+				panelOpiniones.add(PanelOp);
+				PanelOp.setBounds(PanelOp.getX(), y, PanelOp.getWidth(), PanelOp.getHeight());
+				y = y + 125;
 			}
 			
-		}catch (ClassNotFoundException e1) {
-			System.out.println("No se ja podido cargar el driver");
-			e1.printStackTrace();
-		}catch (SQLException e1) {
-			System.out.println("No se ha podido conectar a BD");
-			e1.printStackTrace();
-		}*/
 		
+			
+			
+			
+			
 		
 		btnNuevoComentario.addActionListener(new ActionListener() {
 			

@@ -182,7 +182,7 @@ public class DBManager {
         }
         
         //LISTAR OPINIONES
-        public List<Opinion>getOpiniones(){
+        public List<Opinion>getOpiniones(int idUsuario){
         	PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
     		PersistenceManager pm = pmf.getPersistenceManager();
     		Transaction tx = pm.currentTransaction();
@@ -200,7 +200,12 @@ public class DBManager {
     				
     				Opinion op = new Opinion(opinion.getIdUsuario(), opinion.getTitulo(), opinion.getDescripcion(), opinion.getPuntuacion());
     				
-    				opiniones.add(op);
+    				if(op.getIdUsuario() == idUsuario) {
+    					
+    					opiniones.add(op);
+    				}
+    				
+    				
     				
     			}
     			
