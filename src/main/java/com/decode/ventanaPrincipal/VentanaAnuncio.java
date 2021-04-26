@@ -30,6 +30,7 @@ import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
 import com.decode.ventanaperfil.VentanaConfiguacion;
 import com.toedter.calendar.JDateChooser;
+import javax.swing.SwingConstants;
 
 public class VentanaAnuncio extends JFrame{
 	
@@ -170,43 +171,43 @@ public class VentanaAnuncio extends JFrame{
 		
 		JLabel labelPrecio = new JLabel(anuncio.getPrecioNoche() + "€");
 		labelPrecio.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		labelPrecio.setBounds(151, 245, 116, 50);
+		labelPrecio.setBounds(169, 245, 116, 50);
 		panelCentro.add(labelPrecio);
 		
 		JLabel lblNewLabel_1 = new JLabel("Precio por noche:");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel_1.setBounds(10, 256, 145, 29);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblNewLabel_1.setBounds(10, 256, 160, 29);
 		panelCentro.add(lblNewLabel_1);
 		
 		JLabel lbl = new JLabel("Metros cuadrados: ");
-		lbl.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lbl.setBounds(10, 347, 145, 14);
+		lbl.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lbl.setBounds(10, 347, 164, 14);
 		panelCentro.add(lbl);
 		
 		
 		JLabel lblNewLabel_4 = new JLabel("Numero de habitaciones:");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel_4.setBounds(10, 306, 185, 14);
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblNewLabel_4.setBounds(10, 306, 227, 14);
 		panelCentro.add(lblNewLabel_4);
 		
 		JLabel labelHabitaciones = new JLabel(String.valueOf(anuncio.getApartamento().getNumHabitaciones()));
 		labelHabitaciones.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		labelHabitaciones.setBounds(205, 306, 46, 14);
+		labelHabitaciones.setBounds(239, 306, 46, 14);
 		panelCentro.add(labelHabitaciones);
 		
 		JLabel labelMetros = new JLabel(String.valueOf(anuncio.getApartamento().getMetrosCuad()));
 		labelMetros.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		labelMetros.setBounds(151, 347, 46, 14);
+		labelMetros.setBounds(177, 347, 46, 14);
 		panelCentro.add(labelMetros);
 		
 		JLabel lblNewLabel_2 = new JLabel("Localidad:");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel_2.setBounds(10, 389, 82, 14);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblNewLabel_2.setBounds(10, 389, 101, 14);
 		panelCentro.add(lblNewLabel_2);
 		
 		JLabel labelLocalidad = new JLabel(String.valueOf(anuncio.getApartamento().getLocalidad()));
 		labelLocalidad.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		labelLocalidad.setBounds(87, 389, 251, 14);
+		labelLocalidad.setBounds(108, 389, 251, 14);
 		panelCentro.add(labelLocalidad);
 		
 		
@@ -230,22 +231,7 @@ public class VentanaAnuncio extends JFrame{
 		lblContacto.setBounds(1122, 11, 141, 14);
 		panel.add(lblContacto);
 		
-		DBManager dbm = new DBManager();
-		List<Anuncio> anuncios;
-		
-		int y = 0;
-		anuncios = dbm.getAnuncios();
-		System.out.println(anuncios);
-		for (Anuncio a : anuncios) {
-			PanelAnuncio pa = new PanelAnuncio(a);
-			pa.setVisible(true);
-			panelCentro.add(pa);
-			pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
-			y = y + 125;
-			
-		}
-		
-		
+	
 		
 		
 		lblContacto.addMouseListener(new MouseListener() {

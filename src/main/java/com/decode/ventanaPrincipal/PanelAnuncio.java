@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.decode.objects.Anuncio;
+import com.decode.sesion.VentanaRegistro;
+
 import javax.swing.JButton;
 
 public class PanelAnuncio extends JPanel implements ActionListener {
@@ -67,7 +69,9 @@ public class PanelAnuncio extends JPanel implements ActionListener {
 		btnAnuncio.addActionListener(new ActionListener() {	
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				setVisible(false);
+				VentanaAnuncio vr = new VentanaAnuncio(anuncio);
+				vr.setVisible(true);
 			}
 		});
 		
