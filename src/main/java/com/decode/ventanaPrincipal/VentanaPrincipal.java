@@ -59,6 +59,7 @@ public class VentanaPrincipal extends JFrame  {
 	}
 	
 	public VentanaPrincipal() {
+		
 		getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 62));
 		getContentPane().setLayout(null);
 		setBounds(300, 200, 1289, 907);
