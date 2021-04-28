@@ -28,15 +28,13 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
 
-public class VentanaPagar extends JFrame {
+public class VentanaContrareembolso extends JFrame {
 
 	private JPanel contentPane;
 	private DBManager dbm;
 	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
 	private JTextField textField_4;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -45,7 +43,7 @@ public class VentanaPagar extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaPagar frame = new VentanaPagar();
+					VentanaContrareembolso frame = new VentanaContrareembolso();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -57,7 +55,7 @@ public class VentanaPagar extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaPagar() {
+	public VentanaContrareembolso() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 200, 1289, 809);
@@ -106,107 +104,46 @@ public class VentanaPagar extends JFrame {
 		
 		ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");
 		
-		JLabel lblIntro = new JLabel("Seleccione el metodo de pago que desea");
-		lblIntro.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblIntro.setBounds(31, 121, 576, 55);
-		contentPane.add(lblIntro);
-		
 		JButton btnGuardar = new JButton("Confirmar pago");
 		btnGuardar.setBounds(1061, 674, 130, 37);
 		contentPane.add(btnGuardar);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Pagar contrarembolso (en mano el dia de la entrega de llaves)");
-		rdbtnNewRadioButton.setBounds(41, 188, 426, 23);
-		contentPane.add(rdbtnNewRadioButton);
-		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Tarjeta de credito ");
-		rdbtnNewRadioButton_1.setBounds(40, 223, 199, 23);
-		contentPane.add(rdbtnNewRadioButton_1);
-		
 		JLabel lblNewLabel = new JLabel("Nombre y apellidos: ");
-		lblNewLabel.setBounds(41, 283, 232, 16);
+		lblNewLabel.setBounds(43, 245, 232, 16);
 		contentPane.add(lblNewLabel);
 		
 		textField = new JTextField();
-		textField.setBounds(41, 311, 130, 26);
+		textField.setBounds(43, 272, 244, 26);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("Numero de tarjeta de credito:");
-		lblNewLabel_1.setBounds(41, 426, 184, 16);
-		contentPane.add(lblNewLabel_1);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(41, 453, 130, 26);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
-		
-		JLabel lblNewLabel_2 = new JLabel("Fecha de caducidad:");
-		lblNewLabel_2.setBounds(41, 508, 138, 16);
-		contentPane.add(lblNewLabel_2);
-		
-		textField_2 = new JTextField();
-		textField_2.setBounds(41, 534, 130, 26);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
-		
-		JLabel lblNewLabel_3 = new JLabel("CVV:");
-		lblNewLabel_3.setBounds(41, 572, 61, 16);
-		contentPane.add(lblNewLabel_3);
-		
-		textField_3 = new JTextField();
-		textField_3.setBounds(41, 600, 130, 26);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
-		
 		JLabel lblNewLabel_4 = new JLabel("Direccion de facrturacion: ");
-		lblNewLabel_4.setBounds(41, 349, 184, 16);
+		lblNewLabel_4.setBounds(43, 319, 184, 16);
 		contentPane.add(lblNewLabel_4);
 		
 		textField_4 = new JTextField();
-		textField_4.setBounds(41, 377, 130, 26);
+		textField_4.setBounds(43, 346, 244, 26);
 		contentPane.add(textField_4);
 		textField_4.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Siguiente");
-		btnNewButton.setBounds(345, 239, 117, 29);
+		JButton btnNewButton = new JButton("Pagar");
+		btnNewButton.setBounds(372, 541, 117, 29);
 		contentPane.add(btnNewButton);
 		
-		if (rdbtnNewRadioButton.isSelected()==true) {
-			lblNewLabel.setVisible(true);
-			textField.setVisible(true);
-			lblNewLabel_4.setVisible(true);
-			textField_4.setVisible(true);
-			lblNewLabel_1.setVisible(false);
-			textField_1.setVisible(false);
-			lblNewLabel_2.setVisible(false);
-			textField_2.setVisible(false);
-			lblNewLabel_3.setVisible(false);
-			textField_3.setVisible(false);
-			
-		}else if(rdbtnNewRadioButton_1.isSelected()==true) {
-			lblNewLabel.setVisible(true);
-			textField.setVisible(true);
-			lblNewLabel_4.setVisible(true);
-			textField_4.setVisible(true);
-			lblNewLabel_1.setVisible(true);
-			textField_1.setVisible(true);
-			lblNewLabel_2.setVisible(true);
-			textField_2.setVisible(true);
-			lblNewLabel_3.setVisible(true);
-			textField_3.setVisible(true);
-			
-		}else {
-			lblNewLabel.setVisible(false);
-			textField.setVisible(false);
-			lblNewLabel_4.setVisible(false);
-			textField_4.setVisible(false);
-			lblNewLabel_1.setVisible(false);
-			textField_1.setVisible(false);
-			lblNewLabel_2.setVisible(false);
-			textField_2.setVisible(false);
-			lblNewLabel_3.setVisible(false);
-			textField_3.setVisible(false);
+		JButton btnAtras = new JButton("Atras");
+		btnAtras.setBounds(24, 132, 117, 29);
+		contentPane.add(btnAtras);
+		
+		JLabel lblNewLabel_4_1 = new JLabel("DNI:");
+		lblNewLabel_4_1.setBounds(43, 393, 184, 16);
+		contentPane.add(lblNewLabel_4_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(43, 420, 244, 26);
+		contentPane.add(textField_1);
+		
+		
 
 			
 		}
@@ -214,7 +151,7 @@ public class VentanaPagar extends JFrame {
 		
 		
 	}
-}
+
 
 
 
