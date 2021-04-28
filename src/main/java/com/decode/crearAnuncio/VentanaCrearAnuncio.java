@@ -213,7 +213,7 @@ public class VentanaCrearAnuncio extends JFrame {
 				
 				Localidad local = new Localidad("", "", 00000, loc);
 				Apartamento aparta = new Apartamento(numHab, m2, null, null);
-				Anuncio anuncio = new Anuncio(aparta, loc, desc, precio, false, m2);
+				Anuncio anuncio = new Anuncio(null,aparta, loc, desc, precio, false, m2);
 				
 				try {
 					dbm.insertarAnuncio(anuncio);

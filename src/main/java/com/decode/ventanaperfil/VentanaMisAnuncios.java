@@ -1,4 +1,4 @@
-package com.decode.ventanaPrincipal;
+package com.decode.ventanaperfil;
 
 import java.awt.Button;
 import java.awt.Color;
@@ -27,8 +27,10 @@ import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
 import com.decode.contacto.Contacto;
 import com.decode.objects.Anuncio;
+import com.decode.objects.Usuario;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
+import com.decode.ventanaPrincipal.PanelAnuncio;
 import com.decode.ventanaperfil.VentanaConfiguacion;
 import com.decode.ventanaperfil.VentanaMisAnuncios;
 import com.toedter.calendar.JDateChooser;
@@ -38,7 +40,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.SpinnerNumberModel;
 
-public class VentanaPrincipal extends JFrame  {
+public class VentanaMisAnuncios extends JFrame  {
 	private JTextField textDestino;
 	private JTextField txtIntroduzcaElPrecio;
 	
@@ -50,7 +52,7 @@ public class VentanaPrincipal extends JFrame  {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaPrincipal frame = new VentanaPrincipal();
+					VentanaMisAnuncios frame = new VentanaMisAnuncios(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,7 +61,7 @@ public class VentanaPrincipal extends JFrame  {
 		});
 	}
 	
-	public VentanaPrincipal() {
+	public VentanaMisAnuncios(Usuario user) {
 		
 		getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 62));
 		getContentPane().setLayout(null);
@@ -221,7 +223,7 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 		btnMapa.setBounds(1049, 120, 123, 23);
 		getContentPane().add(btnMapa);
 		
-		JLabel lblAlojamientosEncontrados = new JLabel("Alojamientos encontrados");
+		JLabel lblAlojamientosEncontrados = new JLabel("Mis alojamientos");
 		lblAlojamientosEncontrados.setFont(new Font("Tahoma", Font.BOLD, 19));
 		lblAlojamientosEncontrados.setBounds(351, 120, 338, 23);
 		getContentPane().add(lblAlojamientosEncontrados);
@@ -351,13 +353,15 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 		
 		int y = 0;
 		anuncios = dbm.getAnuncios();
-		System.out.println(anuncios);
 		for (Anuncio a : anuncios) {
-			PanelAnuncio pa = new PanelAnuncio(a);
-			pa.setVisible(true);
-			panelCentro.add(pa);
-			pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
-			y = y + 125;
+			if (a.getUsuario() == user) {
+				PanelAnuncio pa = new PanelAnuncio(a);
+				pa.setVisible(true);
+				panelCentro.add(pa);
+				pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
+				y = y + 125;
+			}
+			
 			
 		}
 		
@@ -380,11 +384,8 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 								(Integer)spinnerPrecioMax.getValue());
 				
 				for (Anuncio a : anunciosFiltrados) {
-				
-					if (a.getTitulo() != null) {
-						
-						//COMPROBACION FECHAS
-					
+					if (a.getUsuario() == user) {
+		
 						PanelAnuncio pa = new PanelAnuncio(a);
 						pa.setVisible(true);
 						panelCentro.add(pa);
