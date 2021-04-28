@@ -149,9 +149,9 @@ public class VentanaCrearAnuncio extends JFrame {
 		contentPane.add(btnImagen);
 		btnImagen.setBackground(Color.WHITE);
 		
-		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(1061, 674, 130, 37);
-		contentPane.add(btnGuardar);
+		JButton btnPublicar = new JButton("Publicar");
+		btnPublicar.setBounds(1061, 674, 130, 37);
+		contentPane.add(btnPublicar);
 		
 		JLabel lblNewLabel = new JLabel("Titulo:");
 		lblNewLabel.setBounds(10, 186, 46, 14);
@@ -187,38 +187,43 @@ public class VentanaCrearAnuncio extends JFrame {
 		textField.setColumns(10);
 		
 		//BOTON IMAGEN 
-		btnImagen.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JFileChooser fileChooser = new JFileChooser();
-				JFileChooser fc = new JFileChooser();
-				fc.setCurrentDirectory(new File(".")); //Abre el directorio raiz de mi proyecto
-				//fc.setCurrentDirectory(new File("src")); //Abre la carpeta src de mi proyecto
-				int seleccionado = fc.showOpenDialog(null);
-				if(seleccionado == JFileChooser.APPROVE_OPTION) {
-					File ficheroSeleccionado = fc.getSelectedFile();
-					ficheroSeleccionado.getAbsolutePath();
-				}
-				
-				String nombre = txtNombre.getText();
-				String desc = txtDescripcion.getText();
+//		btnImagen.addActionListener(new ActionListener() {
+//			
+//			
+//		});
+		
+		btnPublicar.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+            	
+            	String nombre = txtNombre.getText();
+            	String desc = txtDescripcion.getText();
 				String loc = txtLocalizacion.getText();
 				int numHab = Integer.parseInt(txtHabitaciones.getText());
 				double precio = Double.parseDouble(txtPrecio.getText());
 				int m2 = Integer.parseInt(txtMetrosCuadrados.getText());
-				
-				Localidad local = new Localidad("", "", 00000, loc);
+            	
+            	float puntuacion = Float.parseFloat(textField.getText());
+
+  
 				Apartamento aparta = new Apartamento(numHab, m2, null);
 				Anuncio anuncio = new Anuncio(aparta, loc, desc, precio, false, m2);
 				
-				try {
-					dbm.insertarAnuncio(anuncio);
-				} catch (DBException e1) {
-					e1.printStackTrace();
-				}
-				
-			}
-		});
+                try {
+                	//dbm.insertarApartamento(aparta);
+                    dbm.insertarAnuncio(anuncio);
+                    
+                } catch (DBException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+
+
+
+            }
+        });
 		
 		
 		
