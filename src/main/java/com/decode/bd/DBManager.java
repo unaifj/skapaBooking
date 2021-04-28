@@ -270,7 +270,27 @@ public class DBManager {
             return anuncios;
 
         }
-
+        
+      //CREAR NUEVO APARTAMENTO
+    	public void insertarApartamento(Apartamento apartamento) throws DBException{
+    		
+    		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+    		PersistenceManager pm = pmf.getPersistenceManager();
+    		Transaction tx = pm.currentTransaction();
+    		
+    		try {
+    			tx.begin();
+    			pm.makePersistent(apartamento);
+    			tx.commit();
+    			
+    		} finally {
+    			if (tx.isActive()) {
+    				tx.rollback();
+    			}
+    			pm.close();
+    		}
+    	}
+    	
     	//MOSTRAR ANUNCIOS POR FILTROS
     	public List<Anuncio> getFiltrados(String titulo, Calendar fechaEntrada, Calendar fechaSalida, int numPersonas, int precioMin, int precioMax) {
     		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
