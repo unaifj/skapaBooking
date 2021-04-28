@@ -29,6 +29,7 @@ import com.decode.objects.Anuncio;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
 import com.decode.ventanaperfil.VentanaConfiguacion;
+import com.google.protobuf.StringValue;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.SwingConstants;
 
@@ -160,55 +161,56 @@ public class VentanaAnuncio extends JFrame{
 		lblBandera.setIcon(img1);
 		
 		Panel panelCentro = new Panel();
-		panelCentro.setBounds(25, 156, 1210, 619);
+		panelCentro.setEnabled(false);
+		panelCentro.setBackground(Color.GREEN);
+		panelCentro.setBounds(25, 156, 912, 619);
 		getContentPane().add(panelCentro);
 		panelCentro.setLayout(null);
 		
 		JLabel labelDesc = new JLabel(anuncio.getDescripcion());
+		labelDesc.setVerticalAlignment(SwingConstants.TOP);
 		labelDesc.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		labelDesc.setBounds(10, 37, 664, 197);
+		labelDesc.setBounds(136, 416, 565, 197);
 		panelCentro.add(labelDesc);
 		
-		JLabel labelPrecio = new JLabel(anuncio.getPrecioNoche() + "€");
-		labelPrecio.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		labelPrecio.setBounds(169, 245, 116, 50);
-		panelCentro.add(labelPrecio);
+
 		
-		JLabel lblNewLabel_1 = new JLabel("Precio por noche:");
+		JLabel lblNewLabel_1 = new JLabel("Precio por noche: " + String.valueOf(anuncio.getPrecioNoche()) + " €");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblNewLabel_1.setBounds(10, 256, 160, 29);
+		lblNewLabel_1.setBounds(215, 348, 234, 29);
 		panelCentro.add(lblNewLabel_1);
 		
-		JLabel lbl = new JLabel("Metros cuadrados: ");
-		lbl.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lbl.setBounds(10, 347, 164, 14);
-		panelCentro.add(lbl);
-		
-		
-		JLabel lblNewLabel_4 = new JLabel("Numero de habitaciones:");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblNewLabel_4.setBounds(10, 306, 227, 14);
-		panelCentro.add(lblNewLabel_4);
-		
-		JLabel labelHabitaciones = new JLabel(String.valueOf(anuncio.getApartamento().getNumHabitaciones()));
-		labelHabitaciones.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		labelHabitaciones.setBounds(239, 306, 46, 14);
+		JLabel labelHabitaciones = new JLabel(String.valueOf(anuncio.getApartamento().getNumHabitaciones()) + " habitaciones - " + String.valueOf(anuncio.getApartamento().getMetrosCuad() + " m2 - " + String.valueOf(anuncio.getNumPersonas()) + " personas"));
+		labelHabitaciones.setFont(new Font("Tahoma", Font.BOLD, 17));
+		labelHabitaciones.setBounds(215, 306, 395, 14);
 		panelCentro.add(labelHabitaciones);
 		
-		JLabel labelMetros = new JLabel(String.valueOf(anuncio.getApartamento().getMetrosCuad()));
-		labelMetros.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		labelMetros.setBounds(177, 347, 46, 14);
-		panelCentro.add(labelMetros);
-		
-		JLabel lblNewLabel_2 = new JLabel("Localidad:");
+		JLabel lblNewLabel_2 = new JLabel("Localidad: " + String.valueOf(anuncio.getApartamento().getLocalidad()));
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblNewLabel_2.setBounds(10, 389, 101, 14);
+		lblNewLabel_2.setBounds(215, 389, 160, 14);
 		panelCentro.add(lblNewLabel_2);
 		
-		JLabel labelLocalidad = new JLabel(String.valueOf(anuncio.getApartamento().getLocalidad()));
-		labelLocalidad.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		labelLocalidad.setBounds(108, 389, 251, 14);
-		panelCentro.add(labelLocalidad);
+		JLabel lblNewLabel_3 = new JLabel("FOTO");
+		lblNewLabel_3.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel_3.setBackground(Color.BLACK);
+		lblNewLabel_3.setBounds(147, 39, 456, 250);
+		panelCentro.add(lblNewLabel_3);
+		
+		JButton btnNewButton = new JButton("CONTACTAR");
+		btnNewButton.setBounds(791, 521, 117, 29);
+		panelCentro.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("ME GUSTA");
+		btnNewButton_1.setBounds(791, 438, 99, 59);
+		panelCentro.add(btnNewButton_1);
+		
+		JPanel panelColor = new JPanel();
+		panelColor.setBounds(93, 0, 673, 619);
+		panelCentro.add(panelColor);
+		panelColor.setLayout(null);
+		panelColor.setBackground(new Color(51, 204, 255));
+		
+		
 		
 		
 		
@@ -230,6 +232,11 @@ public class VentanaAnuncio extends JFrame{
 		JLabel lblContacto = new JLabel("Contacta con nosotros");
 		lblContacto.setBounds(1122, 11, 141, 14);
 		panel.add(lblContacto);
+		
+		JPanel panelColorDerecha = new JPanel();
+		panelColorDerecha.setBackground(new Color(0, 51, 255));
+		panelColorDerecha.setBounds(943, 106, 330, 675);
+		getContentPane().add(panelColorDerecha);
 		
 	
 		
