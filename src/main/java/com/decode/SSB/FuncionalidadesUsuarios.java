@@ -22,7 +22,7 @@ public class FuncionalidadesUsuarios {
         {
             add(new Usuario("Paco", "Paquito2","paco@gmail.com"));
             add(new Usuario("Raul", "Raulito","raul@gmail.com"));
-            add(new Usuario("Pedro", "Pedrosa","pedro@gmail.com"));
+            add(new Usuario("Pedro", "Pedrosa21","pedro@gmail.com"));
         }
     };
  
