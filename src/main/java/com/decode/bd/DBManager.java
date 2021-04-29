@@ -135,8 +135,11 @@ public class DBManager {
 		}	
 	}
 	
-	//CREAR NUEVO ANUNCIO
+	//INSERTAR ANUNCIO
 	public void insertarAnuncio(Anuncio anuncio) throws DBException{
+		
+		System.out.println("----ANUNCIO DBM----- ");
+		System.out.println("A: " + anuncio);
 		
 		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -144,6 +147,9 @@ public class DBManager {
 		
 		try {
 			tx.begin();
+			
+			pm.makePersistent(anuncio.getApartamento().getLocalidad());
+			pm.makePersistent(anuncio.getApartamento());	
 			pm.makePersistent(anuncio);
 			tx.commit();
 			
@@ -277,44 +283,6 @@ public class DBManager {
 
         }
         
-      //CREAR NUEVO APARTAMENTO
-    	public void insertarApartamento(Apartamento apartamento) throws DBException{
-    		
-    		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-    		PersistenceManager pm = pmf.getPersistenceManager();
-    		Transaction tx = pm.currentTransaction();
-    		
-    		try {
-    			tx.begin();
-    			pm.makePersistent(apartamento);
-    			tx.commit();
-    			
-    		} finally {
-    			if (tx.isActive()) {
-    				tx.rollback();
-    			}
-    			pm.close();
-    		}
-    	}
-    	  //CREAR NUEVA LOCALIDAD
-    	public void insertarLocalidad(Localidad localidad) throws DBException{
-    		
-    		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-    		PersistenceManager pm = pmf.getPersistenceManager();
-    		Transaction tx = pm.currentTransaction();
-    		
-    		try {
-    			tx.begin();
-    			pm.makePersistent(localidad);
-    			tx.commit();
-    			
-    		} finally {
-    			if (tx.isActive()) {
-    				tx.rollback();
-    			}
-    			pm.close();
-    		}
-    	}
     	
     	//MOSTRAR ANUNCIOS POR FILTROS
     	public List<Anuncio> getFiltrados(String titulo, Calendar fechaEntrada, Calendar fechaSalida, int numPersonas, int precioMin, int precioMax) {
