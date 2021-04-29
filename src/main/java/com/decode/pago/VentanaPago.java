@@ -101,9 +101,22 @@ public class VentanaPago extends JFrame {
 		btnLogin.setBounds(1087, 13, 123, 23);
 		panelNorte.add(btnLogin);
 		
-		ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");
+		JLabel lblTarjeta = new JLabel("");
+		lblTarjeta.setBounds(243, 285, 229, 137);
+		contentPane.add(lblTarjeta);
+		
+		JLabel lblReembolso = new JLabel("");
+		lblReembolso.setBounds(540, 285, 229, 137);
+		contentPane.add(lblReembolso);
+		
+		//ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");
 		ImageIcon ico2= new ImageIcon("imagenes/pago-en-efectivo.png");
 		ImageIcon ico3 = new ImageIcon("imagenes/tarjeta-de-credito.png");
+		
+		ImageIcon img2= new ImageIcon(ico2.getImage().getScaledInstance(lblReembolso.getWidth(), lblReembolso.getHeight(), Image.SCALE_SMOOTH));
+		lblReembolso.setIcon(img2);
+		ImageIcon img3= new ImageIcon(ico3.getImage().getScaledInstance(lblTarjeta.getWidth(), lblTarjeta.getHeight(), Image.SCALE_SMOOTH));
+		lblTarjeta.setIcon(img3);
 		
 		JLabel lblIntro = new JLabel("Seleccione el metodo de pago que desea");
 		lblIntro.setFont(new Font("Tahoma", Font.BOLD, 17));
@@ -115,7 +128,7 @@ public class VentanaPago extends JFrame {
 		contentPane.add(btnGuardar);
 		
 		JButton btnContrareembolso = new JButton("Pagar contrarembolso (en mano el dia de la entrega de llaves)");
-		btnContrareembolso.setBounds(526, 527, 329, 29);
+		btnContrareembolso.setBounds(526, 527, 362, 29);
 		contentPane.add(btnContrareembolso);
 		
 		JButton btnTarjeta = new JButton("Tarjeta de credito");
@@ -125,6 +138,7 @@ public class VentanaPago extends JFrame {
 		JButton btnNewButton = new JButton("Volver");
 		btnNewButton.setBounds(10, 140, 89, 23);
 		contentPane.add(btnNewButton);
+		
 		
 		btnTarjeta.addActionListener(new ActionListener() {
 			

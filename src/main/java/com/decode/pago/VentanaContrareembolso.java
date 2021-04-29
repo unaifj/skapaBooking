@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
@@ -23,6 +24,7 @@ import com.decode.bd.DBManager;
 import com.decode.objects.Anuncio;
 import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
+import com.decode.ventanaPrincipal.VentanaPrincipal;
 
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
@@ -129,6 +131,32 @@ public class VentanaContrareembolso extends JFrame {
 		textField_1.setBounds(43, 420, 244, 26);
 		contentPane.add(textField_1);
 		
+		btnAtras.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VentanaPago C = new VentanaPago();
+				 setVisible(false);
+				 C.setVisible(true);
+				
+				
+			}
+		});
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+			    JOptionPane.showMessageDialog(null, "Pago correctamente realizado", "Pago correcto", 1, null);
+				VentanaPrincipal C = new VentanaPrincipal();
+				 setVisible(false);
+				 C.setVisible(true);
+				
+				
+			}
+		});
 		
 
 			
