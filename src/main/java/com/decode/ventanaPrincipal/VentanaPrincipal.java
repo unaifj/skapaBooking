@@ -301,38 +301,20 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 				}
 			});
 			
-			
-			
-			lblImagenPerfil.addMouseListener(new MouseListener() {
+			btnConfig.addActionListener(new ActionListener() {
 				
 				@Override
-				public void mouseReleased(MouseEvent e) {
-					
-				}
-				
-				@Override
-				public void mousePressed(MouseEvent e) {
-					
-				}
-				
-				@Override
-				public void mouseExited(MouseEvent e) {
-					
-				}
-				
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					
-				}
-				
-				@Override
-				public void mouseClicked(MouseEvent e) {
+				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
-					VentanaConfiguacion vc = new VentanaConfiguacion();
+					VentanaConfiguacion vc = new VentanaConfiguacion(VentanaInicio.getUser());
 					vc.setVisible(true);
 					
 				}
 			});
+			
+			
+			
+			
 						
 			
 		}

@@ -143,7 +143,7 @@ public class VentanaAnuncio extends JFrame{
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					setVisible(false);
-					VentanaConfiguacion vc = new VentanaConfiguacion();
+					VentanaConfiguacion vc = new VentanaConfiguacion(VentanaInicio.getUser());
 					vc.setVisible(true);
 					
 				}

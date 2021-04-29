@@ -3,6 +3,7 @@ package com.decode.bd;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.jdo.Extent;
@@ -11,7 +12,6 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
-
 
 import com.decode.objects.Anuncio;
 import com.decode.objects.Apartamento;
@@ -249,6 +249,7 @@ public class DBManager {
                 	
                 	Usuario user = new Usuario(anuncio.getUsuario().getNomUsuario(), 
                 			anuncio.getUsuario().getCorreo(), anuncio.getUsuario().getContrasenya());
+                	user.setId(anuncio.getUsuario().getId());
                 	
                 	Anuncio a = new Anuncio(user, aparta, anuncio.getTitulo(), 
                 			anuncio.getDescripcion(), anuncio.getPrecioNoche(), anuncio.isDisponibilidad(), anuncio.getNumPersonas());
@@ -316,6 +317,7 @@ public class DBManager {
 
                     	Usuario user = new Usuario(anuncio.getUsuario().getNomUsuario(), 
                     			anuncio.getUsuario().getCorreo(), anuncio.getUsuario().getContrasenya());
+                    	user.setId(anuncio.getUsuario().getId());
                     	
                     	Anuncio a = new Anuncio(user, aparta, anuncio.getTitulo(), anuncio.getDescripcion(), 
                     			anuncio.getPrecioNoche(), anuncio.isDisponibilidad(), anuncio.getNumPersonas());    
@@ -371,4 +373,35 @@ public class DBManager {
             return anuncios;
 
     	}	
+    	
+    	public void actualizarUsuario(Usuario user) {
+    		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+    		PersistenceManager pm = pmf.getPersistenceManager();
+    		Transaction tx = pm.currentTransaction();
+
+            try {
+                tx.begin();
+
+                Extent<Usuario> e = pm.getExtent(Usuario.class, true);
+                Iterator<Usuario> iter = e.iterator();
+                while (iter.hasNext()) {
+                    Usuario usuario = (Usuario) iter.next();
+                    if (usuario.getId() == user.getId()) {
+                        System.out.println("* Updating: " + usuario + "\n* To: " + user);
+                        usuario.setNomUsuario(user.getNomUsuario());
+                        usuario.setCorreo(user.getCorreo());
+                        usuario.setContrasenya(user.getContrasenya());
+                    }
+                }
+                tx.commit();
+            } catch (Exception ex) {
+                System.out.println("$ Error updating: " + ex.getMessage());
+            } finally {
+                if (tx != null && tx.isActive()) {
+                    tx.rollback();
+                }
+
+                pm.close();
+            }
+        }
 }
