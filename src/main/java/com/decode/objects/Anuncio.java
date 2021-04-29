@@ -17,6 +17,8 @@ public class Anuncio {
 	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT, primaryKey = "true")
 	private int id;
 	@ForeignKey
+	private Usuario usuario;
+	@ForeignKey
 	private Apartamento apartamento;
 	private String titulo;
 	private String descripcion;
@@ -24,12 +26,11 @@ public class Anuncio {
 	private boolean disponibilidad;
 	private int numPersonas;
 	
-	
-	
-	public Anuncio(Apartamento apartamento, String titulo, String descripcion, double precioNoche,
+
+	public Anuncio(Usuario usuario, Apartamento apartamento, String titulo, String descripcion, double precioNoche,
 			boolean disponibilidad, int numPersonas) {
 		super();
-	
+		this.usuario = usuario;
 		this.apartamento = apartamento;
 		this.titulo = titulo;
 		this.descripcion = descripcion;
@@ -38,12 +39,16 @@ public class Anuncio {
 		this.numPersonas = numPersonas;
 	}
 
-	
-	
+
+
+
+
 
 	public int getId() {
 		return id;
 	}
+
+
 
 
 
@@ -55,9 +60,31 @@ public class Anuncio {
 
 
 
+
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+
+
+
+
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+
+
+
+
+
 	public Apartamento getApartamento() {
 		return apartamento;
 	}
+
+
 
 
 
@@ -69,9 +96,13 @@ public class Anuncio {
 
 
 
+
+
 	public String getTitulo() {
 		return titulo;
 	}
+
+
 
 
 
@@ -83,9 +114,13 @@ public class Anuncio {
 
 
 
+
+
 	public String getDescripcion() {
 		return descripcion;
 	}
+
+
 
 
 
@@ -97,9 +132,13 @@ public class Anuncio {
 
 
 
+
+
 	public double getPrecioNoche() {
 		return precioNoche;
 	}
+
+
 
 
 
@@ -111,9 +150,13 @@ public class Anuncio {
 
 
 
+
+
 	public boolean isDisponibilidad() {
 		return disponibilidad;
 	}
+
+
 
 
 
@@ -125,9 +168,13 @@ public class Anuncio {
 
 
 
+
+
 	public int getNumPersonas() {
 		return numPersonas;
 	}
+
+
 
 
 
@@ -137,14 +184,6 @@ public class Anuncio {
 	}
 
 
-
-
-	@Override
-	public String toString() {
-		return "Anuncio [id=" + id + ", apartamento=" + apartamento + ", titulo=" + titulo + ", descripcion="
-				+ descripcion + ", precioNoche=" + precioNoche + ", disponibilidad=" + disponibilidad + ", numPersonas="
-				+ numPersonas + "]";
-	}
 
 
 

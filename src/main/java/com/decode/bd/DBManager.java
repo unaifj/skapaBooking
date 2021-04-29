@@ -3,6 +3,7 @@ package com.decode.bd;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.jdo.Extent;
@@ -11,7 +12,6 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
-
 
 import com.decode.objects.Anuncio;
 import com.decode.objects.Apartamento;
@@ -61,11 +61,11 @@ public class DBManager {
 			Apartamento apar3= new Apartamento(8,120,barakaldo1, null);
 			pm.makePersistent(apar3);
 
-			Anuncio anun1=new Anuncio(apar1,"Apartamento soleado en la margen izquierda de Sevilla", "Apartamento soleado con vistas al mar ideal para pasar unos dias en el sur de España", 25, true, 4);
+			Anuncio anun1=new Anuncio(userA, apar1,"Apartamento soleado en la margen izquierda de Sevilla", "Apartamento soleado con vistas al mar ideal para pasar unos dias en el sur de España", 25, true, 4);
 			pm.makePersistent(anun1);
-			Anuncio anun2=new Anuncio(apar2,"Apartamento soleado muy bien situado en Conil", "Apartamento muy bien situado con vistas a la cala santo amor muy grande y espaciosa", 32, true, 6);
+			Anuncio anun2=new Anuncio(userB, apar2,"Apartamento soleado muy bien situado en Conil", "Apartamento muy bien situado con vistas a la cala santo amor muy grande y espaciosa", 32, true, 6);
 			pm.makePersistent(anun2);
-			Anuncio anun3=new Anuncio(apar3,"Apartamento muy bueno y completo para conocer Vizcaya", "Apartamento muy completo con lo basico para dormir cocinar y descansar, lo demas lo dejamos a gusto del cliente", 20, true, 3);
+			Anuncio anun3=new Anuncio(userC, apar3,"Apartamento muy bueno y completo para conocer Vizcaya", "Apartamento muy completo con lo basico para dormir cocinar y descansar, lo demas lo dejamos a gusto del cliente", 20, true, 3);
 			pm.makePersistent(anun3);
 
 			tx.commit();
@@ -251,7 +251,12 @@ public class DBManager {
                 			anuncio.getApartamento().getLocalidad().getCp(), anuncio.getApartamento().getLocalidad().getDireccion());
                 	Apartamento aparta = new Apartamento(anuncio.getApartamento().getNumHabitaciones(), 
                 			anuncio.getApartamento().getMetrosCuad(), loc, anuncio.getApartamento().getReservas());
-                	Anuncio a = new Anuncio(aparta, anuncio.getTitulo(), 
+                	
+                	Usuario user = new Usuario(anuncio.getUsuario().getNomUsuario(), 
+                			anuncio.getUsuario().getCorreo(), anuncio.getUsuario().getContrasenya());
+                	user.setId(anuncio.getUsuario().getId());
+                	
+                	Anuncio a = new Anuncio(user, aparta, anuncio.getTitulo(), 
                 			anuncio.getDescripcion(), anuncio.getPrecioNoche(), anuncio.isDisponibilidad(), anuncio.getNumPersonas());
                 
                 	anuncios.add(a);
@@ -271,7 +276,27 @@ public class DBManager {
             return anuncios;
 
         }
-
+        
+      //CREAR NUEVO APARTAMENTO
+    	public void insertarApartamento(Apartamento apartamento) throws DBException{
+    		
+    		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+    		PersistenceManager pm = pmf.getPersistenceManager();
+    		Transaction tx = pm.currentTransaction();
+    		
+    		try {
+    			tx.begin();
+    			pm.makePersistent(apartamento);
+    			tx.commit();
+    			
+    		} finally {
+    			if (tx.isActive()) {
+    				tx.rollback();
+    			}
+    			pm.close();
+    		}
+    	}
+    	
     	//MOSTRAR ANUNCIOS POR FILTROS
     	public List<Anuncio> getFiltrados(String titulo, Calendar fechaEntrada, Calendar fechaSalida, int numPersonas, int precioMin, int precioMax) {
     		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
@@ -295,8 +320,12 @@ public class DBManager {
                     			anuncio.getApartamento().getMetrosCuad(), loc, anuncio.getApartamento().getReservas());
                     	aparta.setReservas(anuncio.getApartamento().getReservas());
 
-                    	Anuncio a = new Anuncio(aparta, anuncio.getTitulo(), 
-                    			anuncio.getDescripcion(), anuncio.getPrecioNoche(), anuncio.isDisponibilidad(), anuncio.getNumPersonas());    
+                    	Usuario user = new Usuario(anuncio.getUsuario().getNomUsuario(), 
+                    			anuncio.getUsuario().getCorreo(), anuncio.getUsuario().getContrasenya());
+                    	user.setId(anuncio.getUsuario().getId());
+                    	
+                    	Anuncio a = new Anuncio(user, aparta, anuncio.getTitulo(), anuncio.getDescripcion(), 
+                    			anuncio.getPrecioNoche(), anuncio.isDisponibilidad(), anuncio.getNumPersonas());    
      
                     	int cont = 0;
                     	int contV = 0;
@@ -349,4 +378,35 @@ public class DBManager {
             return anuncios;
 
     	}	
+    	
+    	public void actualizarUsuario(Usuario user) {
+    		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+    		PersistenceManager pm = pmf.getPersistenceManager();
+    		Transaction tx = pm.currentTransaction();
+
+            try {
+                tx.begin();
+
+                Extent<Usuario> e = pm.getExtent(Usuario.class, true);
+                Iterator<Usuario> iter = e.iterator();
+                while (iter.hasNext()) {
+                    Usuario usuario = (Usuario) iter.next();
+                    if (usuario.getId() == user.getId()) {
+                        System.out.println("* Updating: " + usuario + "\n* To: " + user);
+                        usuario.setNomUsuario(user.getNomUsuario());
+                        usuario.setCorreo(user.getCorreo());
+                        usuario.setContrasenya(user.getContrasenya());
+                    }
+                }
+                tx.commit();
+            } catch (Exception ex) {
+                System.out.println("$ Error updating: " + ex.getMessage());
+            } finally {
+                if (tx != null && tx.isActive()) {
+                    tx.rollback();
+                }
+
+                pm.close();
+            }
+        }
 }
