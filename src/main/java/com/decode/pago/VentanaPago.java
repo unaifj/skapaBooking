@@ -33,12 +33,8 @@ public class VentanaPago extends JFrame {
 
 	private JPanel contentPane;
 	private DBManager dbm;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
 
+	
 	/**
 	 * Launch the application.
 	 */
@@ -106,160 +102,60 @@ public class VentanaPago extends JFrame {
 		panelNorte.add(btnLogin);
 		
 		ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");
+		ImageIcon ico2= new ImageIcon("imagenes/pago-en-efectivo.png");
+		ImageIcon ico3 = new ImageIcon("imagenes/tarjeta-de-credito.png");
 		
 		JLabel lblIntro = new JLabel("Seleccione el metodo de pago que desea");
 		lblIntro.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblIntro.setBounds(31, 121, 576, 55);
+		lblIntro.setBounds(272, 121, 576, 55);
 		contentPane.add(lblIntro);
 		
 		JButton btnGuardar = new JButton("Confirmar pago");
 		btnGuardar.setBounds(1061, 674, 130, 37);
 		contentPane.add(btnGuardar);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Pagar contrarembolso (en mano el dia de la entrega de llaves)");
-		rdbtnNewRadioButton.setBounds(41, 188, 426, 23);
-		contentPane.add(rdbtnNewRadioButton);
+		JButton btnContrareembolso = new JButton("Pagar contrarembolso (en mano el dia de la entrega de llaves)");
+		btnContrareembolso.setBounds(526, 527, 329, 29);
+		contentPane.add(btnContrareembolso);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Tarjeta de credito ");
-		rdbtnNewRadioButton_1.setBounds(40, 223, 199, 23);
-		contentPane.add(rdbtnNewRadioButton_1);
+		JButton btnTarjeta = new JButton("Tarjeta de credito");
+		btnTarjeta.setBounds(316, 530, 124, 23);
+		contentPane.add(btnTarjeta);
 		
-		JLabel lblNewLabel = new JLabel("Nombre y apellidos: ");
-		lblNewLabel.setBounds(41, 283, 232, 16);
-		contentPane.add(lblNewLabel);
-		
-		textField = new JTextField();
-		textField.setBounds(41, 311, 130, 26);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		JLabel lblNewLabel_1 = new JLabel("Numero de tarjeta de credito:");
-		lblNewLabel_1.setBounds(41, 426, 184, 16);
-		contentPane.add(lblNewLabel_1);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(41, 453, 130, 26);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
-		
-		JLabel lblNewLabel_2 = new JLabel("Fecha de caducidad:");
-		lblNewLabel_2.setBounds(41, 508, 138, 16);
-		contentPane.add(lblNewLabel_2);
-		
-		textField_2 = new JTextField();
-		textField_2.setBounds(41, 534, 130, 26);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
-		
-		JLabel lblNewLabel_3 = new JLabel("CVV:");
-		lblNewLabel_3.setBounds(41, 572, 61, 16);
-		contentPane.add(lblNewLabel_3);
-		
-		textField_3 = new JTextField();
-		textField_3.setBounds(41, 600, 130, 26);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
-		
-		JLabel lblNewLabel_4 = new JLabel("Direccion de facrturacion: ");
-		lblNewLabel_4.setBounds(41, 349, 184, 16);
-		contentPane.add(lblNewLabel_4);
-		
-		textField_4 = new JTextField();
-		textField_4.setBounds(41, 377, 130, 26);
-		contentPane.add(textField_4);
-		textField_4.setColumns(10);
-		
-		JButton btnNewButton = new JButton("Siguiente");
-		btnNewButton.setBounds(345, 239, 117, 29);
+		JButton btnNewButton = new JButton("Volver");
+		btnNewButton.setBounds(10, 140, 89, 23);
 		contentPane.add(btnNewButton);
 		
-		if (rdbtnNewRadioButton.isSelected()==true) {
-			lblNewLabel.setVisible(true);
-			textField.setVisible(true);
-			lblNewLabel_4.setVisible(true);
-			textField_4.setVisible(true);
-			lblNewLabel_1.setVisible(false);
-			textField_1.setVisible(false);
-			lblNewLabel_2.setVisible(false);
-			textField_2.setVisible(false);
-			lblNewLabel_3.setVisible(false);
-			textField_3.setVisible(false);
+		btnTarjeta.addActionListener(new ActionListener() {
 			
-		}else if(rdbtnNewRadioButton_1.isSelected()==true) {
-			lblNewLabel.setVisible(true);
-			textField.setVisible(true);
-			lblNewLabel_4.setVisible(true);
-			textField_4.setVisible(true);
-			lblNewLabel_1.setVisible(true);
-			textField_1.setVisible(true);
-			lblNewLabel_2.setVisible(true);
-			textField_2.setVisible(true);
-			lblNewLabel_3.setVisible(true);
-			textField_3.setVisible(true);
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		btnContrareembolso.addActionListener(new ActionListener() {
 			
-		}else {
-			lblNewLabel.setVisible(false);
-			textField.setVisible(false);
-			lblNewLabel_4.setVisible(false);
-			textField_4.setVisible(false);
-			lblNewLabel_1.setVisible(false);
-			textField_1.setVisible(false);
-			lblNewLabel_2.setVisible(false);
-			textField_2.setVisible(false);
-			lblNewLabel_3.setVisible(false);
-			textField_3.setVisible(false);
+			@Override
+			public void actionPerformed(ActionEvent e) {
 
+				 VentanaContrareembolso C = new VentanaContrareembolso();
+				 setVisible(false);
+				 C.setVisible(true);
+			}
+		});
+		
+		btnNewButton.addActionListener(new ActionListener() {
 			
-		}
-		
-		 btnNewButton.addActionListener(new ActionListener() {
-			 public void actionPerformed(ActionEvent e) {
-			 VentanaPago C = new VentanaPago();
-			 setVisible(false);
-			 C.setVisible(true);
-			 
-			 if (rdbtnNewRadioButton.isSelected()==true) {
-					lblNewLabel.setVisible(true);
-					textField.setVisible(true);
-					lblNewLabel_4.setVisible(true);
-					textField_4.setVisible(true);
-					lblNewLabel_1.setVisible(false);
-					textField_1.setVisible(false);
-					lblNewLabel_2.setVisible(false);
-					textField_2.setVisible(false);
-					lblNewLabel_3.setVisible(false);
-					textField_3.setVisible(false);
-					
-				}else if(rdbtnNewRadioButton_1.isSelected()==true) {
-					lblNewLabel.setVisible(true);
-					textField.setVisible(true);
-					lblNewLabel_4.setVisible(true);
-					textField_4.setVisible(true);
-					lblNewLabel_1.setVisible(true);
-					textField_1.setVisible(true);
-					lblNewLabel_2.setVisible(true);
-					textField_2.setVisible(true);
-					lblNewLabel_3.setVisible(true);
-					textField_3.setVisible(true);
-					
-				}else {
-					lblNewLabel.setVisible(false);
-					textField.setVisible(false);
-					lblNewLabel_4.setVisible(false);
-					textField_4.setVisible(false);
-					lblNewLabel_1.setVisible(false);
-					textField_1.setVisible(false);
-					lblNewLabel_2.setVisible(false);
-					textField_2.setVisible(false);
-					lblNewLabel_3.setVisible(false);
-					textField_3.setVisible(false);
-
-					
-				}
-			 }
-			 });
-		
-		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VentanaPrincipal C = new VentanaPrincipal();
+				 setVisible(false);
+				 C.setVisible(true);
+				
+			}
+		});
 		
 	}
 }
