@@ -28,6 +28,7 @@ import javax.swing.JTextField;
 import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
 import com.decode.contacto.Contacto;
+import com.decode.crearAnuncio.VentanaCrearAnuncio;
 import com.decode.objects.Anuncio;
 import com.decode.objects.Usuario;
 import com.decode.sesion.VentanaInicio;
@@ -257,6 +258,10 @@ public class VentanaConfiguacion extends JFrame  {
 		btnContrasenya.setBounds(954, 366, 89, 23);
 		getContentPane().add(btnContrasenya);
 		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(72, 415, 89, 23);
+		getContentPane().add(btnNewButton);
+		
 		DBManager dbm = new DBManager();
 		
 	
@@ -348,6 +353,16 @@ public class VentanaConfiguacion extends JFrame  {
 			}
 		});
 		
+		btnNewButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				 VentanaCrearAnuncio C = new VentanaCrearAnuncio();
+				 setVisible(false);
+				 C.setVisible(true);				
+			}
+			
+		});
 		btnEditarImagen.addActionListener(new ActionListener() {
 			
 			@Override
@@ -367,7 +382,7 @@ public class VentanaConfiguacion extends JFrame  {
 		
 		
 		
-		
+
 	
 		
 		

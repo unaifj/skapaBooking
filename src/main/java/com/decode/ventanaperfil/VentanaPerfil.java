@@ -28,6 +28,7 @@ import javax.swing.JTextField;
 import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
 import com.decode.contacto.Contacto;
+import com.decode.crearAnuncio.VentanaCrearAnuncio;
 import com.decode.objects.Anuncio;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
@@ -197,6 +198,8 @@ public class VentanaPerfil extends JFrame  {
 		JButton btnNewButton_2 = new JButton("Seleccionar");
 		btnNewButton_2.setBounds(689, 253, 89, 23);
 		getContentPane().add(btnNewButton_2);
+		
+		
 	
 		
 		btnNewButton_2.addActionListener(new ActionListener() {
@@ -216,6 +219,7 @@ public class VentanaPerfil extends JFrame  {
 			}
 		});
 		
+	
 		
 		
 		
