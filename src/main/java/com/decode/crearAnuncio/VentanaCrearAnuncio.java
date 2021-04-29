@@ -8,6 +8,8 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,6 +25,7 @@ import com.decode.bd.DBManager;
 import com.decode.objects.Anuncio;
 import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
+import com.decode.objects.Reserva;
 import com.decode.sesion.VentanaInicio;
 import com.decode.ventanaperfil.VentanaPerfil;
 
@@ -37,7 +40,6 @@ public class VentanaCrearAnuncio extends JFrame {
 	private JTextField txtHabitaciones;
 	private JTextField txtPrecio;
 	private JTextField txtDescripcion;
-	private DBManager dbm;
 	private JTextField textField;
 	private JTextField txtCodigoPostal;
 	private JTextField txtMunicipio;
@@ -243,18 +245,19 @@ public class VentanaCrearAnuncio extends JFrame {
             	float puntuacion = Float.parseFloat(textField.getText());
             	
             	Localidad loc= new Localidad(provincia, municipio,codigo,direccion);
-				Apartamento aparta = new Apartamento(numHab, m2, loc,null);
+            	List<Reserva> reservas = new ArrayList<Reserva>();
+				Apartamento aparta = new Apartamento(numHab, m2, loc,reservas);
 				Anuncio anuncio = new Anuncio(VentanaInicio.getUser(),aparta,nombre, desc, precio, false, m2);
+
+				System.out.println("EL ANUNCIO" + anuncio);
 				
-                try {
-                	dbm.insertarLocalidad(loc);
-                	dbm.insertarApartamento(aparta);
-                    dbm.insertarAnuncio(anuncio);
-                    
-                } catch (DBException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
+				DBManager dbm = new DBManager();
+				try {
+					dbm.insertarAnuncio(anuncio);
+				} catch (DBException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
                 VentanaPerfil C = new VentanaPerfil();
 				 setVisible(false);
 				 C.setVisible(true);
