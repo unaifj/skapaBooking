@@ -19,10 +19,15 @@ import jakarta.ws.rs.core.Response.Status;
 public class FuncionalidadesUsuarios {
 
 	private static List<Usuario> listaUsuarios = new ArrayList<Usuario>() {
-        {
-            add(new Usuario("Paco", "Paquito2","paco@gmail.com"));
-            add(new Usuario("Raul", "Raulito","raul@gmail.com"));
-            add(new Usuario("Pedro", "Pedrosa","pedro@gmail.com"));
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		{
+            add(new Usuario(0, "Paco", "Paquito2","paco@gmail.com"));
+            add(new Usuario(0, "Raul", "Raulito","raul@gmail.com"));
+            add(new Usuario(0, "Pedro", "Pedrosa","pedro@gmail.com"));
         }
     };
  
