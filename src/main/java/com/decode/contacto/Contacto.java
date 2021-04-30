@@ -15,14 +15,14 @@ import javax.swing.JLabel;
 import com.decode.chat.ChatSkapaBooking;
 import com.decode.chat.ChatSkapaBookingCliente;
 import com.decode.ventanaPrincipal.VentanaPrincipal;
-
+import com.decode.opinion.*;
 
 
 public class Contacto extends JFrame{
 	public Contacto() {
 		getContentPane().setBackground(Color.BLUE);
 		getContentPane().setLayout(null);
-		setBounds(300,250,453,500);
+		setBounds(300,250,462,560);
 
 		JButton btnChat = new JButton("Chat.S");
 		
@@ -47,7 +47,7 @@ public class Contacto extends JFrame{
 			});
 		
 		JButton btnCorreo = new JButton("Correo");
-		btnCorreo.setBounds(167, 240, 89, 23);
+		btnCorreo.setBounds(10, 289, 89, 23);
 		getContentPane().add(btnCorreo);
 		
 		btnCorreo.addActionListener(new ActionListener() {
@@ -71,7 +71,7 @@ public class Contacto extends JFrame{
 		});
 		
 		JButton btnTelefono = new JButton("Teléfono");
-		btnTelefono.setBounds(167, 289, 89, 23);
+		btnTelefono.setBounds(10, 323, 89, 23);
 		getContentPane().add(btnTelefono);
 		
 		btnTelefono.addActionListener(new ActionListener() {
@@ -103,7 +103,7 @@ public class Contacto extends JFrame{
 		getContentPane().add(texto4);
 		
 		JButton btnVideoLLamada = new JButton("Videollamada\r\n");
-		btnVideoLLamada.setBounds(156, 340, 115, 23);
+		btnVideoLLamada.setBounds(10, 357, 115, 23);
 		getContentPane().add(btnVideoLLamada);
 		
 		btnVideoLLamada.addActionListener(new ActionListener() {
@@ -133,7 +133,7 @@ public class Contacto extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnCOVID.setBounds(303, 391, 89, 23);
+		btnCOVID.setBounds(277, 289, 89, 23);
 		getContentPane().add(btnCOVID);
 		
 		btnCOVID.addActionListener(new ActionListener() {
@@ -155,20 +155,24 @@ public class Contacto extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnAyuda.setBounds(33, 391, 89, 23);
+		btnAyuda.setBounds(10, 391, 89, 23);
 		getContentPane().add(btnAyuda);
 		
 		JButton botonCorreo = new JButton("Nuestro correo\r\n");
-		botonCorreo.setBounds(277, 240, 127, 23);
+		botonCorreo.setBounds(277, 255, 127, 23);
 		getContentPane().add(botonCorreo);
 		
 		JButton botonRedesSociales = new JButton("Redes Sociales\r\n");
-		botonRedesSociales.setBounds(10, 240, 129, 23);
+		botonRedesSociales.setBounds(10, 255, 129, 23);
 		getContentPane().add(botonRedesSociales);
 		
 		JButton botonVP = new JButton("Ventana Principal\r\n");
-		botonVP.setBounds(141, 427, 142, 23);
+		botonVP.setBounds(143, 474, 142, 23);
 		getContentPane().add(botonVP);
+		
+		JButton btnOpinion = new JButton("Opinion");
+		btnOpinion.setBounds(277, 323, 89, 23);
+		getContentPane().add(btnOpinion);
 		
 		botonVP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -199,6 +203,17 @@ public class Contacto extends JFrame{
 				A.setVisible(true);
 				}
 			});
+		
+		btnOpinion.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					VentanaOpiniones vo = new VentanaOpiniones();
+					setVisible(false);
+					vo.setVisible(true);
+				
+			}
+		});
 		
 		
 		
