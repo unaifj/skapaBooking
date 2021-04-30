@@ -22,7 +22,7 @@ jobs:
       - name: Prepare database for integration tests
         run: | 
           sudo /etc/init.d/mysql start
-          mysql -uroot -proot < src/main/resources/database.sql
+          mysql -uroot -proot < src/main/resources/database2.sql
           mvn --batch-mode --update-snapshots compile 
           mvn --batch-mode --update-snapshots datanucleus:enhance
           mvn --batch-mode --update-snapshots datanucleus:schema-create
