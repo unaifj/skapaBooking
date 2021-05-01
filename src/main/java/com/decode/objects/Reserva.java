@@ -22,8 +22,9 @@ public class Reserva {
 	private Calendar fechaEntrada;
 	private Calendar fechaSalida;
 	private int numPersonas;
+	private String metodoPago;
 	
-	public Reserva(Usuario usuario, Calendar fechaEntrada, Calendar fechaSalida, int numPersonas) {
+	public Reserva(Usuario usuario, String metodoPago, Calendar fechaEntrada, Calendar fechaSalida, int numPersonas) {
 		super();
 		this.usuario = usuario;
 		this.fechaEntrada = fechaEntrada;

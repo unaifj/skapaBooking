@@ -27,7 +27,6 @@ public class VentanaCrearOpinion extends JFrame {
 	private JTextField textTitulo;
 	private JTextField textDesc;
 	private JTextField textField;
-	private DBManager dbm;
 	
 	public VentanaCrearOpinion() {
 		
@@ -86,6 +85,7 @@ public class VentanaCrearOpinion extends JFrame {
 			btnCancelar.setBounds(266, 396, 89, 35);
 			getContentPane().add(btnCancelar);
 			
+			DBManager dbm = new DBManager();
 			
 			btnPublicar.addActionListener(new ActionListener() {
 				
@@ -93,12 +93,11 @@ public class VentanaCrearOpinion extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
 					
-				    int idUsuario = idU;
 					String titulo = textTitulo.getText();
 					String descripcion = textDesc.getText();
 					float puntuacion = Float.parseFloat(textField.getText());
 					
-					Opinion opinion = new Opinion(idUsuario, titulo, descripcion, puntuacion);
+					Opinion opinion = new Opinion(VentanaInicio.getUser(), titulo, descripcion, puntuacion);
 					try {
 						dbm.insertarOpinion(opinion);
 					} catch (DBException e1) {

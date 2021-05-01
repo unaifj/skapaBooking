@@ -24,10 +24,11 @@ import com.decode.ventanaPrincipal.VentanaPrincipal;
 
 
 import com.decode.opinion.*;
+import java.awt.SystemColor;
 
 public class VentanaOpiniones extends JFrame {
 	
-	DBManager dbm;
+	
 	
 	private JPanel contentPane;
 	
@@ -49,13 +50,13 @@ public class VentanaOpiniones extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 403, 559);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.PINK);
+		contentPane.setBackground(SystemColor.textHighlight);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panelOpiniones = new JPanel();
-		panelOpiniones.setBackground(Color.PINK);
+		panelOpiniones.setBackground(SystemColor.textHighlight);
 		panelOpiniones.setBounds(27, 11, 366, 439);
 		contentPane.add(panelOpiniones);
 		panelOpiniones.setLayout(null);
@@ -70,23 +71,21 @@ public class VentanaOpiniones extends JFrame {
 		btnNuevoComentario.setBounds(205, 466, 161, 29);
 		contentPane.add(btnNuevoComentario);
 		
-	
+		DBManager dbm = new DBManager();
 			
-		List<Opinion> opiniones;
+		List<Opinion> opiniones = new ArrayList<Opinion>();
 		
 		int y =0;
+		opiniones = dbm.getOpiniones(VentanaInicio.getUser());
+		System.out.println(opiniones);
+		for(Opinion op : opiniones){
+			PanelOpinion PanelOp = new PanelOpinion(op);
+			PanelOp.setVisible(true);
+			panelOpiniones.add(PanelOp);
+			PanelOp.setBounds(PanelOp.getX(), y, PanelOp.getWidth(), PanelOp.getHeight());
+			y = y + 125;
+		}
 		
-			
-			opiniones = dbm.getOpiniones(VentanaInicio.getUser().getId());
-			System.out.println(opiniones);
-			for(Opinion op : opiniones){
-				PanelOpinion PanelOp = new PanelOpinion(op);
-				PanelOp.setVisible(true);
-				panelOpiniones.add(PanelOp);
-				PanelOp.setBounds(PanelOp.getX(), y, PanelOp.getWidth(), PanelOp.getHeight());
-				y = y + 125;
-			}
-			
 		
 			
 			
