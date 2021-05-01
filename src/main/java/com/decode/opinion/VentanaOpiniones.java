@@ -24,6 +24,7 @@ import com.decode.ventanaPrincipal.VentanaPrincipal;
 
 
 import com.decode.opinion.*;
+import java.awt.SystemColor;
 
 public class VentanaOpiniones extends JFrame {
 	
@@ -49,13 +50,13 @@ public class VentanaOpiniones extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 403, 559);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.PINK);
+		contentPane.setBackground(SystemColor.textHighlight);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panelOpiniones = new JPanel();
-		panelOpiniones.setBackground(Color.PINK);
+		panelOpiniones.setBackground(SystemColor.textHighlight);
 		panelOpiniones.setBounds(27, 11, 366, 439);
 		contentPane.add(panelOpiniones);
 		panelOpiniones.setLayout(null);

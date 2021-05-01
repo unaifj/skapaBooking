@@ -23,7 +23,7 @@ public class TestOpinion {
 	public void testGetidUsuario() {
 		Usuario user = new Usuario("Micho", "Misga@opendesuto.es", "micho123");
 		Opinion opinion = new Opinion(user, "Gran casa", "Muy buena casa para familias con hijos", 8.5f);
-		assertEquals(opinion.getUsuario().getId(), 1);
+		assertEquals(opinion.getUsuario().getId(), user);
 		
 	}
 	
