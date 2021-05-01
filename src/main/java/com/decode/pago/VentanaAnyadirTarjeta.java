@@ -36,7 +36,7 @@ import javax.swing.JComboBox;
 public class VentanaAnyadirTarjeta extends JFrame {
 
 	private JPanel contentPane;
-	private DBManager dbm;
+	
 	private JTextField textField;
 	private JTextField textField_4;
 	private JTextField textField_1;
@@ -164,6 +164,8 @@ public class VentanaAnyadirTarjeta extends JFrame {
 		contentPane.add(txtCVV);
 		txtCVV.setColumns(10);
 		
+		DBManager dbm = new DBManager();
+		
 		btnAnyadir.addActionListener(new ActionListener() {
 			
 			@Override
@@ -183,7 +185,7 @@ public class VentanaAnyadirTarjeta extends JFrame {
 					dbm.insertarReserva(reserva);
 					
 					JOptionPane.showMessageDialog(null, "Tarejta correctamente añadida", "Añadido correctamente", 1, null);
-					VentanaVerTarejtas C = new VentanaVerTarejtas();
+					VentanaVerTarjetas C = new VentanaVerTarjetas();
 					setVisible(false);
 					C.setVisible(true);
 					

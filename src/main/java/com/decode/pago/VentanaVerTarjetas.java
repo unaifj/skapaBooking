@@ -8,7 +8,10 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -23,6 +26,8 @@ import com.decode.bd.DBManager;
 import com.decode.objects.Anuncio;
 import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
+import com.decode.objects.TarjetaCredito;
+import com.decode.sesion.VentanaInicio;
 import com.decode.ventanaPrincipal.VentanaPrincipal;
 
 import javax.swing.JTextField;
@@ -30,7 +35,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
 import javax.swing.JList;
 
-public class VentanaVerTarejtas extends JFrame {
+public class VentanaVerTarjetas extends JFrame {
 
 	private JPanel contentPane;
 	private DBManager dbm;
@@ -55,7 +60,7 @@ public class VentanaVerTarejtas extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaVerTarejtas() {
+	public VentanaVerTarjetas() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 200, 1289, 809);
@@ -106,8 +111,20 @@ public class VentanaVerTarejtas extends JFrame {
 		btnNewButton.setBounds(10, 140, 89, 23);
 		contentPane.add(btnNewButton);
 		
-		JList list = new JList();
+		
+		List <TarjetaCredito> tarjetas = new ArrayList<TarjetaCredito>();
+		DBManager dbm = new DBManager();
+		tarjetas = dbm.getTarjeta(VentanaInicio.getUser());
+
+		DefaultListModel<String> modelo = new DefaultListModel<String>();
+	
+		for (TarjetaCredito t : tarjetas) {
+			modelo.addElement(t.toString());
+		}
+		
+		JList<String> list = new JList<String>();
 		list.setBounds(185, 190, 566, 400);
+		list.setModel(modelo);
 		contentPane.add(list);
 		
 		btnNewButton.addActionListener(new ActionListener() {
