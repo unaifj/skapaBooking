@@ -23,6 +23,8 @@ import com.decode.bd.DBManager;
 import com.decode.objects.Anuncio;
 import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
+import com.decode.sesion.VentanaInicio;
+import com.decode.ventanaperfil.VentanaPerfil;
 
 import javax.swing.JTextField;
 
@@ -36,6 +38,10 @@ public class VentanaCrearAnuncio extends JFrame {
 	private JTextField txtPrecio;
 	private JTextField txtDescripcion;
 	private DBManager dbm;
+	private JTextField textField;
+	private JTextField txtCodigoPostal;
+	private JTextField txtMunicipio;
+	private JTextField txtDireccion;
 
 	/**
 	 * Launch the application.
@@ -86,11 +92,6 @@ public class VentanaCrearAnuncio extends JFrame {
 		lblMoneda.setBounds(765, 8, 46, 24);
 		panelNorte.add(lblMoneda);
 		
-		JLabel lblBandera = new JLabel("New label");
-		lblBandera.setIcon(new ImageIcon("C:\\Users\\mikel\\Downloads\\descarga.png"));
-		lblBandera.setBounds(821, 11, 40, 27);
-		panelNorte.add(lblBandera);
-		
 		JButton btnRegistro = new JButton("Hazte cuenta");
 		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -107,122 +108,161 @@ public class VentanaCrearAnuncio extends JFrame {
 		btnLogin.setBounds(1087, 13, 123, 23);
 		panelNorte.add(btnLogin);
 		
-		ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en la bd
-		
-		ImageIcon img1= new ImageIcon(ico1.getImage().getScaledInstance(lblBandera.getWidth(), lblBandera.getHeight(), Image.SCALE_SMOOTH));
-		lblBandera.setIcon(img1);
+		ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");
 		
 		JLabel lblIntro = new JLabel("Introduzca los datos de su apartamento");
 		lblIntro.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblIntro.setBounds(10, 120, 576, 55);
 		contentPane.add(lblIntro);
 		
-		JLabel lblFoto = new JLabel("Foto");
-		lblFoto.setBounds(918, 176, 378, 408);
+		JLabel lblFoto = new JLabel("FOOOOTOOO");
+		lblFoto.setBounds(623, 153, 378, 408);
 		contentPane.add(lblFoto);
 		
 		txtNombre = new JTextField();
-		txtNombre.setText("Introduzca el nombre de su apartamento");
 		txtNombre.setBounds(207, 178, 258, 30);
 		contentPane.add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		txtLocalizacion = new JTextField();
-		txtLocalizacion.setText("Localizacion exacta de la vivienda");
 		txtLocalizacion.setColumns(10);
-		txtLocalizacion.setBounds(207, 219, 258, 30);
+		txtLocalizacion.setBounds(207, 223, 258, 23);
 		contentPane.add(txtLocalizacion);
 		
 		txtMetrosCuadrados = new JTextField();
-		txtMetrosCuadrados.setText("Metros cuadrados de la vivienda");
 		txtMetrosCuadrados.setColumns(10);
-		txtMetrosCuadrados.setBounds(207, 260, 258, 30);
+		txtMetrosCuadrados.setBounds(207, 355, 258, 30);
 		contentPane.add(txtMetrosCuadrados);
 		
 		txtHabitaciones = new JTextField();
-		txtHabitaciones.setText("Introduzca el numero de habitaciones de su vivienda");
 		txtHabitaciones.setColumns(10);
-		txtHabitaciones.setBounds(207, 301, 258, 30);
+		txtHabitaciones.setBounds(207, 396, 258, 30);
 		contentPane.add(txtHabitaciones);
 		
 		txtPrecio = new JTextField();
-		txtPrecio.setText("Introduzca el precio deseado por noche para su vivienda");
 		txtPrecio.setColumns(10);
-		txtPrecio.setBounds(207, 342, 258, 30);
+		txtPrecio.setBounds(207, 446, 258, 30);
 		contentPane.add(txtPrecio);
 		
 		txtDescripcion = new JTextField();
-		txtDescripcion.setText("Descripcion");
-		txtDescripcion.setBounds(207, 383, 258, 180);
+		txtDescripcion.setBounds(207, 579, 258, 180);
 		contentPane.add(txtDescripcion);
 		txtDescripcion.setColumns(10);
 		
 		JButton btnImagen = new JButton("Añadir imagen");
-		btnImagen.setBounds(872, 582, 130, 23);
+		btnImagen.setBounds(548, 594, 130, 23);
 		contentPane.add(btnImagen);
 		btnImagen.setBackground(Color.WHITE);
 		
-		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(1061, 674, 130, 37);
-		contentPane.add(btnGuardar);
+		JButton btnPublicar = new JButton("Publicar");
+		btnPublicar.setBounds(1066, 693, 130, 37);
+		contentPane.add(btnPublicar);
 		
-		JLabel lblNewLabel = new JLabel("Titulo");
+		JLabel lblNewLabel = new JLabel("Titulo:");
 		lblNewLabel.setBounds(10, 186, 46, 14);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Loxcalizacion");
-		lblNewLabel_1.setBounds(10, 227, 70, 14);
+		JLabel lblNewLabel_1 = new JLabel("Provincia:");
+		lblNewLabel_1.setBounds(10, 227, 104, 14);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Metros cuadrados (m2)");
-		lblNewLabel_2.setBounds(10, 268, 122, 14);
+		JLabel lblNewLabel_2 = new JLabel("Metros cuadrados (m2):");
+		lblNewLabel_2.setBounds(10, 363, 160, 14);
 		contentPane.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("Numero de habitaciones");
-		lblNewLabel_3.setBounds(10, 309, 122, 14);
+		JLabel lblNewLabel_3 = new JLabel("Numero de habitaciones:");
+		lblNewLabel_3.setBounds(10, 409, 160, 14);
 		contentPane.add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_4 = new JLabel("Precio por noche");
-		lblNewLabel_4.setBounds(10, 342, 122, 14);
+		JLabel lblNewLabel_4 = new JLabel("Precio por noche:");
+		lblNewLabel_4.setBounds(10, 454, 122, 14);
 		contentPane.add(lblNewLabel_4);
 		
-		JLabel lblNewLabel_5 = new JLabel("Descripcion");
-		lblNewLabel_5.setBounds(10, 373, 92, 14);
+		JLabel lblNewLabel_5 = new JLabel("Descripcion:");
+		lblNewLabel_5.setBounds(10, 579, 92, 14);
 		contentPane.add(lblNewLabel_5);
 		
+		JLabel lblNewLabel_6 = new JLabel("Numero de personas:");
+		lblNewLabel_6.setBounds(10, 495, 141, 16);
+		contentPane.add(lblNewLabel_6);
+		
+		textField = new JTextField();
+		textField.setBounds(207, 487, 258, 26);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblNewLabel_7 = new JLabel("Codigo Postal: ");
+		lblNewLabel_7.setBounds(10, 318, 104, 14);
+		contentPane.add(lblNewLabel_7);
+		
+		txtCodigoPostal = new JTextField();
+		txtCodigoPostal.setBounds(207, 315, 258, 20);
+		contentPane.add(txtCodigoPostal);
+		txtCodigoPostal.setColumns(10);
+		
+		JLabel lblNewLabel_8 = new JLabel("Municipio:");
+		lblNewLabel_8.setBounds(10, 272, 75, 14);
+		contentPane.add(lblNewLabel_8);
+		
+		txtMunicipio = new JTextField();
+		txtMunicipio.setBounds(207, 269, 258, 20);
+		contentPane.add(txtMunicipio);
+		txtMunicipio.setColumns(10);
+		
+		JLabel lblNewLabel_9 = new JLabel("Direccion:");
+		lblNewLabel_9.setBounds(10, 547, 75, 14);
+		contentPane.add(lblNewLabel_9);
+		
+		txtDireccion = new JTextField();
+		txtDireccion.setBounds(207, 544, 263, 20);
+		contentPane.add(txtDireccion);
+		txtDireccion.setColumns(10);
+		
 		//BOTON IMAGEN 
-		btnImagen.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JFileChooser fileChooser = new JFileChooser();
-				JFileChooser fc = new JFileChooser();
-				fc.setCurrentDirectory(new File(".")); //Abre el directorio raiz de mi proyecto
-				//fc.setCurrentDirectory(new File("src")); //Abre la carpeta src de mi proyecto
-				int seleccionado = fc.showOpenDialog(null);
-				if(seleccionado == JFileChooser.APPROVE_OPTION) {
-					File ficheroSeleccionado = fc.getSelectedFile();
-					ficheroSeleccionado.getAbsolutePath();
-				}
-				
-				String nombre = txtNombre.getText();
-				String desc = txtDescripcion.getText();
-				String loc = txtLocalizacion.getText();
+//		btnImagen.addActionListener(new ActionListener() {
+//			
+//			
+//		});
+		
+		btnPublicar.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+            	
+            	String nombre = txtNombre.getText();
+            	String desc = txtDescripcion.getText();
+				String provincia = txtLocalizacion.getText();
 				int numHab = Integer.parseInt(txtHabitaciones.getText());
 				double precio = Double.parseDouble(txtPrecio.getText());
 				int m2 = Integer.parseInt(txtMetrosCuadrados.getText());
+				String municipio= txtMunicipio.getText();
+				int codigo= Integer.parseInt(txtCodigoPostal.getText());
+				String direccion= txtDireccion.getText();
+            	
+            	float puntuacion = Float.parseFloat(textField.getText());
+            	
+            	Localidad loc= new Localidad(provincia, municipio,codigo,direccion);
+				Apartamento aparta = new Apartamento(numHab, m2, loc,null);
+				Anuncio anuncio = new Anuncio(VentanaInicio.getUser(),aparta,nombre, desc, precio, false, m2);
 				
-				Localidad local = new Localidad("", "", 00000, loc);
-				Apartamento aparta = new Apartamento(numHab, m2, null);
-				Anuncio anuncio = new Anuncio(aparta, loc, desc, precio, false, m2);
-				
-				try {
-					dbm.insertarAnuncio(anuncio);
-				} catch (DBException e1) {
-					e1.printStackTrace();
-				}
-				
-			}
-		});
+                try {
+                	dbm.insertarLocalidad(loc);
+                	dbm.insertarApartamento(aparta);
+                    dbm.insertarAnuncio(anuncio);
+                    
+                } catch (DBException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+                VentanaPerfil C = new VentanaPerfil();
+				 setVisible(false);
+				 C.setVisible(true);
+
+
+
+            }
+        });
 		
 		
 		

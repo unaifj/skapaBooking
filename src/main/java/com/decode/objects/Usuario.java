@@ -1,12 +1,17 @@
 package com.decode.objects;
 
+import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class Usuario {
+	@PrimaryKey
+	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT, primaryKey = "true")
 	private int id;
 	private String nomUsuario;
 	private String correo;
@@ -18,17 +23,14 @@ public class Usuario {
 		this.correo = correo;
 		this.contrasenya = contrasenya;
 	}
-	
 
 	public int getId() {
 		return id;
 	}
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 
 	public String getNomUsuario() {
 		return nomUsuario;
@@ -56,8 +58,12 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [nomUsuario=" + nomUsuario + ", correo=" + correo + ", contrasenya=" + contrasenya + "]";
+		return "Usuario [id=" + id + ", nomUsuario=" + nomUsuario + ", correo=" + correo + ", contrasenya="
+				+ contrasenya + "]";
 	}
+	
+
+	
 	
 
 }

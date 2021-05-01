@@ -24,6 +24,7 @@ import com.decode.bd.DBManager;
 import com.decode.objects.Anuncio;
 import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
+import com.decode.objects.Reserva;
 import com.decode.sesion.VentanaInicio;
 import com.decode.ventanaPrincipal.VentanaPrincipal;
 
@@ -141,29 +142,29 @@ public class VentanaContrareembolso extends JFrame {
 			}
 		});
 		
-//		btnNewButton.addActionListener(new ActionListener() {
-//			
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				// TODO Auto-generated method stub
-//				try {
-//				//	Reserva reserva= new Reserva(VentanaInicio.getUser(),"Contrareembolso", );
-//					
-//				//	dbm.insertarReserva(reserva);
-//					 JOptionPane.showMessageDialog(null, "Pago correctamente realizado", "Pago correcto", 1, null);
-//						VentanaPrincipal C = new VentanaPrincipal();
-//						 setVisible(false);
-//						 C.setVisible(true);
-//					
-//			//	} catch (DBException e1) {
-//					e1.printStackTrace();
-//				}
-//				
-//			   
-//				
-//				
-//			}
-//		});
+		btnNewButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				try {
+					Reserva reserva= new Reserva(VentanaInicio.getUser(),"Contrareembolso", null, null, 0 );
+					dbm.insertarReserva(reserva);
+					
+					 JOptionPane.showMessageDialog(null, "Pago correctamente realizado", "Pago correcto", 1, null);
+					VentanaPrincipal C = new VentanaPrincipal();
+						 setVisible(false);
+						 C.setVisible(true);
+					
+				} catch (DBException e1) {
+					e1.printStackTrace();
+				}
+				
+			   
+				
+				
+			}
+		});
 		
 
 			

@@ -46,27 +46,32 @@ public class DBManager {
 			Localidad barakaldo1=new Localidad("Pais Vasco","Barakaldo",48300, "Avd Bagatza 8");
 			pm.makePersistent(barakaldo1);
 			
-			Calendar fechaEntrada = new GregorianCalendar(2021, 6, 24);
-			Calendar fechaSalida = new GregorianCalendar(2021, 6, 31);
-			Reserva res1 = new Reserva(userA, fechaEntrada, fechaSalida, 5);
-			pm.makePersistent(res1);
-			
-			List<Reserva>reservasA = new ArrayList<Reserva>();
-			reservasA.add(res1);
-			
-			Apartamento apar1= new Apartamento(4,100,triana1, reservasA);
+			Apartamento apar1= new Apartamento(4,100,triana1, null);
 			pm.makePersistent(apar1);
 			Apartamento apar2= new Apartamento(6,105,conil1, null);
 			pm.makePersistent(apar2);
 			Apartamento apar3= new Apartamento(8,120,barakaldo1, null);
 			pm.makePersistent(apar3);
-
+			
 			Anuncio anun1=new Anuncio(userA, apar1,"Apartamento soleado en la margen izquierda de Sevilla", "Apartamento soleado con vistas al mar ideal para pasar unos dias en el sur de España", 25, true, 4);
 			pm.makePersistent(anun1);
 			Anuncio anun2=new Anuncio(userB, apar2,"Apartamento soleado muy bien situado en Conil", "Apartamento muy bien situado con vistas a la cala santo amor muy grande y espaciosa", 32, true, 6);
 			pm.makePersistent(anun2);
 			Anuncio anun3=new Anuncio(userC, apar3,"Apartamento muy bueno y completo para conocer Vizcaya", "Apartamento muy completo con lo basico para dormir cocinar y descansar, lo demas lo dejamos a gusto del cliente", 20, true, 3);
 			pm.makePersistent(anun3);
+			
+			Calendar fechaEntrada = new GregorianCalendar(2021, 6, 24);
+			Calendar fechaSalida = new GregorianCalendar(2021, 6, 31);
+			
+			Reserva res1 = new Reserva(userA,"Contrareembolso", fechaEntrada, fechaSalida, 5);
+			pm.makePersistent(res1);
+			
+			List<Reserva>reservasA = new ArrayList<Reserva>();
+			reservasA.add(res1);
+			
+			
+
+			
 
 			tx.commit();
 			
@@ -161,7 +166,31 @@ public class DBManager {
 		}
 	}
 	
-
+	
+	//INSERTAR RESERVA
+		public void insertarReserva(Reserva reserva) throws DBException{
+			
+			System.out.println("----ANUNCIO DBM----- ");
+			System.out.println("A: " + reserva);
+			
+			PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+			PersistenceManager pm = pmf.getPersistenceManager();
+			Transaction tx = pm.currentTransaction();
+			
+			try {
+				tx.begin();
+				
+				pm.makePersistent(reserva.getUsuario());	
+				pm.makePersistent(reserva);
+				tx.commit();
+				
+			} finally {
+				if (tx.isActive()) {
+					tx.rollback();
+				}
+				pm.close();
+			}
+		}
 	
 	//INSERTAR NUEVA OPINION 
 	
@@ -189,6 +218,8 @@ public class DBManager {
         
         //LISTAR OPINIONES
         public List<Opinion>getOpiniones(int idUsuario){
+
+        
         	PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
     		PersistenceManager pm = pmf.getPersistenceManager();
     		Transaction tx = pm.currentTransaction();
@@ -212,6 +243,9 @@ public class DBManager {
     				}
     				
     				
+
+    				opiniones.add(op);
+
     				
     			}
     			
@@ -283,6 +317,45 @@ public class DBManager {
 
         }
         
+
+      //CREAR NUEVO APARTAMENTO
+    	public void insertarApartamento(Apartamento apartamento) throws DBException{
+    		
+    		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+    		PersistenceManager pm = pmf.getPersistenceManager();
+    		Transaction tx = pm.currentTransaction();
+    		
+    		try {
+    			tx.begin();
+    			pm.makePersistent(apartamento);
+    			tx.commit();
+    			
+    		} finally {
+    			if (tx.isActive()) {
+    				tx.rollback();
+    			}
+    			pm.close();
+    		}
+    	}
+    	  //CREAR NUEVA LOCALIDAD
+    	public void insertarLocalidad(Localidad localidad) throws DBException{
+    		
+    		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+    		PersistenceManager pm = pmf.getPersistenceManager();
+    		Transaction tx = pm.currentTransaction();
+    		
+    		try {
+    			tx.begin();
+    			pm.makePersistent(localidad);
+    			tx.commit();
+    			
+    		} finally {
+    			if (tx.isActive()) {
+    				tx.rollback();
+    			}
+    			pm.close();
+    		}
+    	}
     	
     	//MOSTRAR ANUNCIOS POR FILTROS
     	public List<Anuncio> getFiltrados(String titulo, Calendar fechaEntrada, Calendar fechaSalida, int numPersonas, int precioMin, int precioMax) {
@@ -291,6 +364,7 @@ public class DBManager {
     		Transaction tx = pm.currentTransaction();
 
             List<Anuncio> anuncios = new ArrayList<Anuncio>();
+    
 
             try {
                 System.out.println("* Viendo todos Anuncios filtrados");
@@ -362,6 +436,7 @@ public class DBManager {
 
                 pm.close();
             }
+            
             return anuncios;
 
     	}	
