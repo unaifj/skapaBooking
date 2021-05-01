@@ -1,6 +1,6 @@
 SKAPABOOKING
 ===============================
-![java ci workflow](https://github.com/aitorcavia/skapabooking/actions/workflows/java-ci.yml/badge.svg) [![codecov](https://codecov.io/gh/aitorcavia/skapaBooking/branch/master/graph/badge.svg?token=BII2KWC71L)](https://app.codecov.io/gh/aitorcavia/skapaBooking/)
+![java ci workflow](https://github.com/aitorcavia/skapaBooking/actions/workflows/java-ci.yml/badge.svg) [![codecov](https://codecov.io/gh/aitorcavia/skapaBooking/branch/master/graph/badge.svg?token=BII2KWC71L)](https://app.codecov.io/gh/aitorcavia/skapaBooking/)
 
 Configuración
 ------------- 
