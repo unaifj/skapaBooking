@@ -13,7 +13,7 @@ public class Usuario {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT, primaryKey = "true")
 	private int id;
-	private String nomUsuario;
+	private static String nomUsuario;
 	private String correo;
 	private String contrasenya;
 	
@@ -32,7 +32,7 @@ public class Usuario {
 		this.id = id;
 	}
 
-	public String getNomUsuario() {
+	public static String getNomUsuario() {
 		return nomUsuario;
 	}
 
