@@ -35,7 +35,7 @@ import javax.swing.JComboBox;
 public class VentanaContrareembolso extends JFrame {
 
 	private JPanel contentPane;
-	private DBManager dbm;
+
 	private JTextField textField;
 	private JTextField textField_4;
 	private JTextField textField_1;
@@ -142,6 +142,7 @@ public class VentanaContrareembolso extends JFrame {
 			}
 		});
 		
+		DBManager dbm = new DBManager();
 		btnNewButton.addActionListener(new ActionListener() {
 			
 			@Override

@@ -226,33 +226,29 @@ public class DBManager {
 		
 	//LISTAR TARJETAS DE CREDITOS
 		
-        public List<TarjetaCredito> getTarjeta() {
+        public List<TarjetaCredito> getTarjeta(Usuario user) {
     		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
     		PersistenceManager pm = pmf.getPersistenceManager();
     		Transaction tx = pm.currentTransaction();
         	
-
-            List<TarjetaCredito> tarjetaCreditoLista = new ArrayList<TarjetaCredito>();
+    		List<TarjetaCredito> tarjetasUsuario = new ArrayList<TarjetaCredito>();
 
             try {
-                System.out.println("* Viendo todos Anuncios");
+                System.out.println("* Viendo todas las tarjetas");
                 tx.begin();
 
-                Extent<TarjetaCredito> TarjetaCreditoExtent = pm.getExtent(TarjetaCredito.class, true);
+                Extent<TarjetaCredito> tarjetaCreditoExtent = pm.getExtent(TarjetaCredito.class, true);
 
-                for (TarjetaCredito TarjetaCredito : TarjetaCreditoExtent) {
+                for (TarjetaCredito tarjeta : tarjetaCreditoExtent) {
                 	
-                            	
-                	TarjetaCredito tarjeta=new TarjetaCredito(TarjetaCredito.getUsuario(), TarjetaCredito.getNumTarjeta(), TarjetaCredito.getFecha(),TarjetaCredito.getCvv());
+                	Usuario usuario = new Usuario(tarjeta.getUsuario().getNomUsuario(), tarjeta.getUsuario().getCorreo(), tarjeta.getUsuario().getContrasenya());
+             	
+                	TarjetaCredito t = new TarjetaCredito(usuario, tarjeta.getNumTarjeta(), tarjeta.getNumTarjeta(), tarjeta.getCvv());
                 	
-                	Usuario user = new Usuario(TarjetaCredito.getUsuario().getNomUsuario(), 
-                			TarjetaCredito.getUsuario().getCorreo(), TarjetaCredito.getUsuario().getContrasenya());
-                	user.setId(TarjetaCredito.getUsuario().getId());
-                	
-             
-                
-                	tarjetaCreditoLista.add(tarjeta);
-                	
+                	if (t.getUsuario().getId() == user.getId()) {
+                		tarjetasUsuario.add(tarjeta);
+                	}
+          
                 }
 
                 tx.commit();
@@ -265,7 +261,7 @@ public class DBManager {
 
                 pm.close();
             }
-            return tarjetaCreditoLista;
+            return tarjetasUsuario;
 
         }
 		

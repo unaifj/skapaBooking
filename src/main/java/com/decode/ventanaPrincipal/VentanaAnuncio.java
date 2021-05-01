@@ -26,6 +26,7 @@ import javax.swing.SpinnerNumberModel;
 import com.decode.bd.DBManager;
 import com.decode.contacto.Contacto;
 import com.decode.objects.Anuncio;
+import com.decode.pago.VentanaPago;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
 import com.decode.ventanaperfil.VentanaConfiguacion;
@@ -162,11 +163,14 @@ public class VentanaAnuncio extends JFrame{
 		lblBandera.setIcon(img1);
 		
 		Panel panelCentro = new Panel();
-		panelCentro.setEnabled(false);
 		panelCentro.setBackground(Color.WHITE);
 		panelCentro.setBounds(6, 167, 943, 608);
 		getContentPane().add(panelCentro);
 		panelCentro.setLayout(null);
+		
+		JButton btnAtras = new JButton("ATRAS\r\n");
+		btnAtras.setBounds(364, 570, 117, 29);
+		panelCentro.add(btnAtras);
 		
 		JLabel labelDesc = new JLabel(anuncio.getDescripcion());
 		labelDesc.setVerticalAlignment(SwingConstants.TOP);
@@ -197,13 +201,11 @@ public class VentanaAnuncio extends JFrame{
 		lblNewLabel_3.setBounds(71, 26, 642, 250);
 		panelCentro.add(lblNewLabel_3);
 		
-		JButton btnNewButton = new JButton("RESERVAR");
-		btnNewButton.setBounds(144, 567, 117, 29);
-		panelCentro.add(btnNewButton);
+		JButton btnReservar = new JButton("Reservar");
+		btnReservar.setBounds(135, 573, 89, 23);
+		panelCentro.add(btnReservar);
 		
-		JButton btnAtras = new JButton("ATRAS\r\n");
-		btnAtras.setBounds(364, 570, 117, 29);
-		panelCentro.add(btnAtras);
+		
 		
 		
 		
@@ -270,5 +272,18 @@ public class VentanaAnuncio extends JFrame{
 				
 			}
 		});
+
+		btnReservar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaPago vp = new VentanaPago();
+				setVisible(false);
+				vp.setVisible(true);
+				
+			}
+		});
+		
+		
 	}
 }
