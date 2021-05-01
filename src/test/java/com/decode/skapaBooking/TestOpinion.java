@@ -21,9 +21,9 @@ public class TestOpinion {
 	
 	@Test
 	public void testGetidUsuario() {
-		Usuario userA = new Usuario("Micho", "Misga@opendesuto.es", "micho123");
-		Opinion opinion = new Opinion(userA, "Gran casa", "Muy buena casa para familias con hijos", 8.5f);
-		assertEquals(opinion.getUsuario().getId(), userA);
+		Usuario user = new Usuario("Micho", "Misga@opendesuto.es", "micho123");
+		Opinion opinion = new Opinion(user, "Gran casa", "Muy buena casa para familias con hijos", 8.5f);
+		assertEquals(opinion.getUsuario(), user);
 		
 	}
 	
