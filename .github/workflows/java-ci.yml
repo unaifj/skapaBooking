@@ -14,3 +14,9 @@ jobs:
           java-version: 1.8
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots verify
+     
+      - uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+    
