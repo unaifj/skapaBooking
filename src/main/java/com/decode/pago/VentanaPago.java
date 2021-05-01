@@ -141,7 +141,9 @@ public class VentanaPago extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				VentanaVerTarejtas C = new VentanaVerTarejtas();
+				 setVisible(false);
+				 C.setVisible(true);
 			}
 		});
 		

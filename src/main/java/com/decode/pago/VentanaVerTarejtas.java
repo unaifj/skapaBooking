@@ -28,6 +28,7 @@ import com.decode.ventanaPrincipal.VentanaPrincipal;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
+import javax.swing.JList;
 
 public class VentanaVerTarejtas extends JFrame {
 
@@ -94,28 +95,43 @@ public class VentanaVerTarejtas extends JFrame {
 		
 		JLabel lblIntro = new JLabel("Tarjetas");
 		lblIntro.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblIntro.setBounds(272, 121, 156, 55);
+		lblIntro.setBounds(485, 121, 156, 55);
 		contentPane.add(lblIntro);
 		
-		JButton btnGuardar = new JButton("Confirmar pago");
-		btnGuardar.setBounds(1061, 674, 130, 37);
-		contentPane.add(btnGuardar);
+		JButton btnAnyadirTarjeta = new JButton("Añadir tarjeta");
+		btnAnyadirTarjeta.setBounds(789, 649, 130, 37);
+		contentPane.add(btnAnyadirTarjeta);
 		
 		JButton btnNewButton = new JButton("Volver");
 		btnNewButton.setBounds(10, 140, 89, 23);
 		contentPane.add(btnNewButton);
+		
+		JList list = new JList();
+		list.setBounds(185, 190, 566, 400);
+		contentPane.add(list);
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				VentanaPrincipal C = new VentanaPrincipal();
+				VentanaAnyadirTarjeta C = new VentanaAnyadirTarjeta();
 				 setVisible(false);
 				 C.setVisible(true);
 				
 			}
 		});
+		btnAnyadirTarjeta.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VentanaAnyadirTarjeta C = new VentanaAnyadirTarjeta();
+				 setVisible(false);
+				 C.setVisible(true);
+			}
+		}
+		);
 		
 	}
 }

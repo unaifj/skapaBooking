@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
@@ -23,6 +24,10 @@ import com.decode.bd.DBManager;
 import com.decode.objects.Anuncio;
 import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
+import com.decode.objects.Reserva;
+import com.decode.objects.TarjetaCredito;
+import com.decode.sesion.VentanaInicio;
+import com.decode.ventanaPrincipal.VentanaPrincipal;
 
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
@@ -35,6 +40,9 @@ public class VentanaAnyadirTarjeta extends JFrame {
 	private JTextField textField;
 	private JTextField textField_4;
 	private JTextField textField_1;
+	private JTextField txtNumTarjeta;
+	private JTextField txtFecha;
+	private JTextField txtCVV;
 
 	
 
@@ -112,9 +120,9 @@ public class VentanaAnyadirTarjeta extends JFrame {
 		contentPane.add(textField_4);
 		textField_4.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Pagar");
-		btnNewButton.setBounds(372, 541, 117, 29);
-		contentPane.add(btnNewButton);
+		JButton btnAnyadir = new JButton("Añadir");
+		btnAnyadir.setBounds(372, 541, 117, 29);
+		contentPane.add(btnAnyadir);
 		
 		JButton btnAtras = new JButton("Atras");
 		btnAtras.setBounds(24, 132, 117, 29);
@@ -129,12 +137,64 @@ public class VentanaAnyadirTarjeta extends JFrame {
 		textField_1.setBounds(43, 420, 244, 26);
 		contentPane.add(textField_1);
 		
+		JLabel lblNewLabel_1 = new JLabel("Numero tarjeta:");
+		lblNewLabel_1.setBounds(386, 246, 88, 14);
+		contentPane.add(lblNewLabel_1);
 		
+		txtNumTarjeta = new JTextField();
+		txtNumTarjeta.setBounds(386, 275, 232, 23);
+		contentPane.add(txtNumTarjeta);
+		txtNumTarjeta.setColumns(10);
+		
+		JLabel lblFecha = new JLabel("Fecha de caducidad:");
+		lblFecha.setBounds(386, 320, 173, 14);
+		contentPane.add(lblFecha);
+		
+		txtFecha = new JTextField();
+		txtFecha.setBounds(386, 349, 232, 26);
+		contentPane.add(txtFecha);
+		txtFecha.setColumns(10);
+		
+		JLabel lblNewLabel_3 = new JLabel("CVV:");
+		lblNewLabel_3.setBounds(386, 405, 46, 14);
+		contentPane.add(lblNewLabel_3);
+		
+		txtCVV = new JTextField();
+		txtCVV.setBounds(388, 423, 230, 23);
+		contentPane.add(txtCVV);
+		txtCVV.setColumns(10);
+		
+		btnAnyadir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				Integer numTarjeta= Integer.parseInt(txtNumTarjeta.getText());
+				Integer fecha= Integer.parseInt(txtFecha.getText());
+				Integer cvv = Integer.parseInt(txtCVV.getText());
+				
+				TarjetaCredito tarjeta=new TarjetaCredito(VentanaInicio.getUser(),numTarjeta,fecha,cvv);
+				
+				try {
+					
+					dbm.insertarTarjeta(tarjeta);
+					Reserva reserva= new Reserva(VentanaInicio.getUser(),"Tarjeta de credito", null, null, 0 );
+					dbm.insertarReserva(reserva);
+					
+					JOptionPane.showMessageDialog(null, "Tarejta correctamente añadida", "Añadido correctamente", 1, null);
+					VentanaVerTarejtas C = new VentanaVerTarejtas();
+					setVisible(false);
+					C.setVisible(true);
+					
+				}catch (DBException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+			}
+		});
 
 			
 		}
-		
-		
-		
 	}
 

@@ -18,7 +18,9 @@ import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
 import com.decode.objects.Opinion;
 import com.decode.objects.Reserva;
+import com.decode.objects.TarjetaCredito;
 import com.decode.objects.Usuario;
+import com.decode.sesion.VentanaInicio;
 
 
 public class DBManager {
@@ -191,6 +193,77 @@ public class DBManager {
 				pm.close();
 			}
 		}
+		
+		//INSERTAR TARJETA
+				public void insertarTarjeta(TarjetaCredito tarjeta) throws DBException{
+					
+					System.out.println("----TARJETA DBM----- ");
+					System.out.println("A: " + tarjeta);
+					
+					PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+					PersistenceManager pm = pmf.getPersistenceManager();
+					Transaction tx = pm.currentTransaction();
+					
+					try {
+						tx.begin();
+						
+						pm.makePersistent(tarjeta.getUsuario());	
+						pm.makePersistent(tarjeta);
+						tx.commit();
+						
+					} finally {
+						if (tx.isActive()) {
+							tx.rollback();
+						}
+						pm.close();
+					}
+				}
+		
+	//LISTAR TARJETAS DE CREDITOS
+		
+        public List<TarjetaCredito> getTarjeta() {
+    		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+    		PersistenceManager pm = pmf.getPersistenceManager();
+    		Transaction tx = pm.currentTransaction();
+        	
+
+            List<TarjetaCredito> tarjetaCreditoLista = new ArrayList<TarjetaCredito>();
+
+            try {
+                System.out.println("* Viendo todos Anuncios");
+                tx.begin();
+
+                Extent<TarjetaCredito> TarjetaCreditoExtent = pm.getExtent(TarjetaCredito.class, true);
+
+                for (TarjetaCredito TarjetaCredito : TarjetaCreditoExtent) {
+                	
+                            	
+                	TarjetaCredito tarjeta=new TarjetaCredito(TarjetaCredito.getUsuario(), TarjetaCredito.getNumTarjeta(), TarjetaCredito.getFecha(),TarjetaCredito.getCvv());
+                	
+                	Usuario user = new Usuario(TarjetaCredito.getUsuario().getNomUsuario(), 
+                			TarjetaCredito.getUsuario().getCorreo(), TarjetaCredito.getUsuario().getContrasenya());
+                	user.setId(TarjetaCredito.getUsuario().getId());
+                	
+             
+                
+                	tarjetaCreditoLista.add(tarjeta);
+                	
+                }
+
+                tx.commit();
+            } catch (Exception ex) {
+                System.out.println("$ Error viendo todos Metodos de pago: " + ex.getMessage());
+            } finally {
+                if (tx != null && tx.isActive()) {
+                    tx.rollback();
+                }
+
+                pm.close();
+            }
+            return tarjetaCreditoLista;
+
+        }
+		
 	
 	//INSERTAR NUEVA OPINION 
 	

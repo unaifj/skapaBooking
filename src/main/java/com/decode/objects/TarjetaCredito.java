@@ -1,10 +1,8 @@
-package com.decode.pago;
+package com.decode.objects;
 
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
-
-import com.decode.objects.Usuario;
 
 @PersistenceCapable
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
