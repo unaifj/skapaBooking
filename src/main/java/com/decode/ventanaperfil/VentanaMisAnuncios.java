@@ -155,7 +155,7 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 		panelOeste.add(lblPrecio);
 		
 		Panel panelSuroeste = new Panel();
-		panelSuroeste.setBounds(0, 400, 323, 248);
+		panelSuroeste.setBounds(0, 400, 308, 248);
 		getContentPane().add(panelSuroeste);
 		panelSuroeste.setLayout(null);
 		
@@ -195,7 +195,7 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 		panelSuroeste.add(chckbxRurales);
 		
 		Panel panelCentro = new Panel();
-		panelCentro.setBounds(345, 156, 944, 619);
+		panelCentro.setBounds(314, 156, 975, 619);
 		getContentPane().add(panelCentro);
 		panelCentro.setLayout(null);
 		
@@ -207,7 +207,7 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 		
 		JLabel lblAlojamientosEncontrados = new JLabel("Mis alojamientos");
 		lblAlojamientosEncontrados.setFont(new Font("Tahoma", Font.BOLD, 19));
-		lblAlojamientosEncontrados.setBounds(351, 120, 338, 23);
+		lblAlojamientosEncontrados.setBounds(318, 120, 338, 23);
 		getContentPane().add(lblAlojamientosEncontrados);
 		
 		JPanel panel = new JPanel();

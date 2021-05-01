@@ -15,6 +15,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import com.decode.bd.DBException;
+import com.decode.bd.DBManager;
+import  com.decode.objects.Opinion;
+import com.decode.sesion.VentanaInicio;
+
+
 
 public class VentanaCrearOpinion extends JFrame {
 	
@@ -24,6 +30,7 @@ public class VentanaCrearOpinion extends JFrame {
 	
 	public VentanaCrearOpinion() {
 		
+		int idU = VentanaInicio.getUser().getId();
 			
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			setBounds(100, 100, 440, 522);
@@ -65,13 +72,45 @@ public class VentanaCrearOpinion extends JFrame {
 			getContentPane().add(textField);
 			textField.setColumns(10);
 			
-			JButton btnPublicar = new JButton("Publicar ");
+			JButton btnPublicar = new JButton("Publicar\r\n ");
+			btnPublicar.addMouseListener(new MouseAdapter() {
+				public void mouseClicked(MouseEvent e) {
+					JOptionPane.showMessageDialog(null, "Gracias por tu opinión", "Correcto", 1);
+				}
+			});
 			btnPublicar.setBounds(61, 396, 96, 35);
 			getContentPane().add(btnPublicar);
 			
 			JButton btnCancelar = new JButton("Cancelar\r\n");
 			btnCancelar.setBounds(266, 396, 89, 35);
 			getContentPane().add(btnCancelar);
+			
+			DBManager dbm = new DBManager();
+			
+			btnPublicar.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					
+					String titulo = textTitulo.getText();
+					String descripcion = textDesc.getText();
+					float puntuacion = Float.parseFloat(textField.getText());
+					
+					Opinion opinion = new Opinion(VentanaInicio.getUser(), titulo, descripcion, puntuacion);
+					try {
+						dbm.insertarOpinion(opinion);
+					} catch (DBException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				
+					
+					
+				}
+			});
+			
+			
 			
 			
 			
