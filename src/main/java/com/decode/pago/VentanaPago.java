@@ -123,9 +123,6 @@ public class VentanaPago extends JFrame {
 		lblIntro.setBounds(272, 121, 576, 55);
 		contentPane.add(lblIntro);
 		
-		JButton btnGuardar = new JButton("Confirmar pago");
-		btnGuardar.setBounds(1061, 674, 130, 37);
-		contentPane.add(btnGuardar);
 		
 		JButton btnContrareembolso = new JButton("Pagar contrarembolso (en mano el dia de la entrega de llaves)");
 		btnContrareembolso.setBounds(526, 527, 362, 29);

@@ -24,6 +24,7 @@ import com.decode.bd.DBManager;
 import com.decode.objects.Anuncio;
 import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
+import com.decode.sesion.VentanaInicio;
 import com.decode.ventanaPrincipal.VentanaPrincipal;
 
 import javax.swing.JTextField;
@@ -92,10 +93,6 @@ public class VentanaContrareembolso extends JFrame {
 		
 		ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");
 		
-		JButton btnGuardar = new JButton("Confirmar pago");
-		btnGuardar.setBounds(1061, 674, 130, 37);
-		contentPane.add(btnGuardar);
-		
 		JLabel lblNewLabel = new JLabel("Nombre y apellidos: ");
 		lblNewLabel.setBounds(43, 245, 232, 16);
 		contentPane.add(lblNewLabel);
@@ -115,7 +112,7 @@ public class VentanaContrareembolso extends JFrame {
 		textField_4.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Pagar");
-		btnNewButton.setBounds(372, 541, 117, 29);
+		btnNewButton.setBounds(562, 603, 117, 29);
 		contentPane.add(btnNewButton);
 		
 		JButton btnAtras = new JButton("Atras");
@@ -144,19 +141,29 @@ public class VentanaContrareembolso extends JFrame {
 			}
 		});
 		
-		btnNewButton.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-			    JOptionPane.showMessageDialog(null, "Pago correctamente realizado", "Pago correcto", 1, null);
-				VentanaPrincipal C = new VentanaPrincipal();
-				 setVisible(false);
-				 C.setVisible(true);
-				
-				
-			}
-		});
+//		btnNewButton.addActionListener(new ActionListener() {
+//			
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				// TODO Auto-generated method stub
+//				try {
+//				//	Reserva reserva= new Reserva(VentanaInicio.getUser(),"Contrareembolso", );
+//					
+//				//	dbm.insertarReserva(reserva);
+//					 JOptionPane.showMessageDialog(null, "Pago correctamente realizado", "Pago correcto", 1, null);
+//						VentanaPrincipal C = new VentanaPrincipal();
+//						 setVisible(false);
+//						 C.setVisible(true);
+//					
+//			//	} catch (DBException e1) {
+//					e1.printStackTrace();
+//				}
+//				
+//			   
+//				
+//				
+//			}
+//		});
 		
 
 			

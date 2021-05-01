@@ -85,79 +85,25 @@ public class VentanaVerTarejtas extends JFrame {
 		lblMoneda.setBounds(765, 8, 46, 24);
 		panelNorte.add(lblMoneda);
 		
-		JButton btnRegistro = new JButton("Hazte cuenta");
-		btnRegistro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnRegistro.setBounds(960, 13, 117, 23);
-		panelNorte.add(btnRegistro);
 		
-		JButton btnLogin = new JButton("Iniciar Sesion");
-		btnLogin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnLogin.setBounds(1087, 13, 123, 23);
-		panelNorte.add(btnLogin);
 		
-		JLabel lblTarjeta = new JLabel("");
-		lblTarjeta.setBounds(243, 285, 229, 137);
-		contentPane.add(lblTarjeta);
-		
-		JLabel lblReembolso = new JLabel("");
-		lblReembolso.setBounds(540, 285, 229, 137);
-		contentPane.add(lblReembolso);
 		
 		//ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");
 		ImageIcon ico2= new ImageIcon("imagenes/pago-en-efectivo.png");
 		ImageIcon ico3 = new ImageIcon("imagenes/tarjeta-de-credito.png");
 		
-		ImageIcon img2= new ImageIcon(ico2.getImage().getScaledInstance(lblReembolso.getWidth(), lblReembolso.getHeight(), Image.SCALE_SMOOTH));
-		lblReembolso.setIcon(img2);
-		ImageIcon img3= new ImageIcon(ico3.getImage().getScaledInstance(lblTarjeta.getWidth(), lblTarjeta.getHeight(), Image.SCALE_SMOOTH));
-		lblTarjeta.setIcon(img3);
-		
-		JLabel lblIntro = new JLabel("Seleccione el metodo de pago que desea");
+		JLabel lblIntro = new JLabel("Tarjetas");
 		lblIntro.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblIntro.setBounds(272, 121, 576, 55);
+		lblIntro.setBounds(272, 121, 156, 55);
 		contentPane.add(lblIntro);
 		
 		JButton btnGuardar = new JButton("Confirmar pago");
 		btnGuardar.setBounds(1061, 674, 130, 37);
 		contentPane.add(btnGuardar);
 		
-		JButton btnContrareembolso = new JButton("Pagar contrarembolso (en mano el dia de la entrega de llaves)");
-		btnContrareembolso.setBounds(526, 527, 362, 29);
-		contentPane.add(btnContrareembolso);
-		
-		JButton btnTarjeta = new JButton("Tarjeta de credito");
-		btnTarjeta.setBounds(316, 530, 124, 23);
-		contentPane.add(btnTarjeta);
-		
 		JButton btnNewButton = new JButton("Volver");
 		btnNewButton.setBounds(10, 140, 89, 23);
 		contentPane.add(btnNewButton);
-		
-		
-		btnTarjeta.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		
-		btnContrareembolso.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				 VentanaContrareembolso C = new VentanaContrareembolso();
-				 setVisible(false);
-				 C.setVisible(true);
-			}
-		});
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			
