@@ -67,6 +67,9 @@ public class DBManager {
 			pm.makePersistent(anun2);
 			Anuncio anun3=new Anuncio(userC, apar3,"Apartamento muy bueno y completo para conocer Vizcaya", "Apartamento muy completo con lo basico para dormir cocinar y descansar, lo demas lo dejamos a gusto del cliente", 20, true, 3);
 			pm.makePersistent(anun3);
+			
+			Opinion op = new Opinion(userA, "opinion titulo", "Descripcion", 8.7f);
+			pm.makePersistent(op);
 
 			tx.commit();
 			
@@ -188,7 +191,7 @@ public class DBManager {
         }
         
         //LISTAR OPINIONES
-        public List<Opinion>getOpiniones(int idUsuario){
+        public List<Opinion>getOpiniones(Usuario user){
         	PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
     		PersistenceManager pm = pmf.getPersistenceManager();
     		Transaction tx = pm.currentTransaction();
@@ -204,9 +207,9 @@ public class DBManager {
     			
     			for(Opinion opinion: opinionExtent) {
     				
-    				Opinion op = new Opinion(opinion.getIdUsuario(), opinion.getTitulo(), opinion.getDescripcion(), opinion.getPuntuacion());
+    				Opinion op = new Opinion(opinion.getUsuario(), opinion.getTitulo(), opinion.getDescripcion(), opinion.getPuntuacion());
     				
-    				if(op.getIdUsuario() == idUsuario) {
+    				if(op.getUsuario().getId() == user.getId()) {
     					
     					opiniones.add(op);
     				}

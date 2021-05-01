@@ -27,7 +27,7 @@ import com.decode.opinion.*;
 
 public class VentanaOpiniones extends JFrame {
 	
-	DBManager dbm;
+	
 	
 	private JPanel contentPane;
 	
@@ -70,23 +70,21 @@ public class VentanaOpiniones extends JFrame {
 		btnNuevoComentario.setBounds(205, 466, 161, 29);
 		contentPane.add(btnNuevoComentario);
 		
-	
+		DBManager dbm = new DBManager();
 			
-		List<Opinion> opiniones;
+		List<Opinion> opiniones = new ArrayList<Opinion>();
 		
 		int y =0;
+		opiniones = dbm.getOpiniones(VentanaInicio.getUser());
+		System.out.println(opiniones);
+		for(Opinion op : opiniones){
+			PanelOpinion PanelOp = new PanelOpinion(op);
+			PanelOp.setVisible(true);
+			panelOpiniones.add(PanelOp);
+			PanelOp.setBounds(PanelOp.getX(), y, PanelOp.getWidth(), PanelOp.getHeight());
+			y = y + 125;
+		}
 		
-			
-			opiniones = dbm.getOpiniones(VentanaInicio.getUser().getId());
-			System.out.println(opiniones);
-			for(Opinion op : opiniones){
-				PanelOpinion PanelOp = new PanelOpinion(op);
-				PanelOp.setVisible(true);
-				panelOpiniones.add(PanelOp);
-				PanelOp.setBounds(PanelOp.getX(), y, PanelOp.getWidth(), PanelOp.getHeight());
-				y = y + 125;
-			}
-			
 		
 			
 			

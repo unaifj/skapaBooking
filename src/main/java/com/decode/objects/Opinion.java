@@ -9,66 +9,59 @@ import javax.jdo.annotations.PersistenceCapable;
 
 public class Opinion {
 
-	private int idUsuario;
+	private Usuario usuario;
 	private String titulo;
 	private String descripcion;
 	private float puntuacion;
 	
-	
-	public Opinion(int idUsuario, String titulo, String descripcion, float puntuacion) {
+	public Opinion(Usuario usuario, String titulo, String descripcion, float puntuacion) {
 		super();
-		this.idUsuario = idUsuario;
+		this.usuario = usuario;
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.puntuacion = puntuacion;
 	}
 
-
-	public int getIdUsuario() {
-		return idUsuario;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
-
 
 	public String getTitulo() {
 		return titulo;
 	}
 
-
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-
 
 	public String getDescripcion() {
 		return descripcion;
 	}
 
-
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
 
 	public float getPuntuacion() {
 		return puntuacion;
 	}
 
-
 	public void setPuntuacion(float puntuacion) {
 		this.puntuacion = puntuacion;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Opinion [idUsuario=" + idUsuario + ", titulo=" + titulo + ", descripcion=" + descripcion
-				+ ", puntuacion=" + puntuacion + "]";
+		return "Opinion [usuario=" + usuario + ", titulo=" + titulo + ", descripcion=" + descripcion + ", puntuacion="
+				+ puntuacion + "]";
 	}
+	
+	
+	
 	
 
 
