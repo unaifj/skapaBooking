@@ -32,7 +32,7 @@ public class TestReserva {
 			Usuario user = new Usuario("tony", "tony.@gmail.com", "123");
 			Calendar fechaEntrada = new GregorianCalendar(2021, 6, 24);
 			Calendar fechaSalida = new GregorianCalendar(2021, 6, 31);
-			Reserva reserva = new Reserva(user, fechaEntrada, fechaSalida, 6);
+			Reserva reserva = new Reserva(user, null, fechaEntrada, fechaSalida, 6);
 			assertEquals(reserva.getUsuario(), user);	
 		}
 		
@@ -41,7 +41,7 @@ public class TestReserva {
 			Usuario user = new Usuario("tony", "tony.@gmail.com", "123");
 			Calendar fechaEntrada = new GregorianCalendar(2021, 6, 24);
 			Calendar fechaSalida = new GregorianCalendar(2021, 6, 31);
-			Reserva reserva = new Reserva(user, fechaEntrada, fechaSalida, 6);
+			Reserva reserva = new Reserva(user, null, fechaEntrada, fechaSalida, 6);
 			assertEquals(reserva.getNumPersonas(), 6);
 			
 		}
