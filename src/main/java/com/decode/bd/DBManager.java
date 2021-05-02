@@ -19,6 +19,7 @@ import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
 import com.decode.objects.Opinion;
 import com.decode.objects.Reserva;
+import com.decode.objects.Servidor;
 import com.decode.objects.TarjetaCredito;
 import com.decode.objects.Usuario;
 
@@ -133,7 +134,39 @@ public class DBManager {
           return usuarios;
 
       }
-	
+	//LISTAR SERVIDORES DE BD
+	  public List<Servidor> getServidor() {
+  		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+  		PersistenceManager pm = pmf.getPersistenceManager();
+  		Transaction tx = pm.currentTransaction();
+      	
+  		List<Servidor> servidores = new ArrayList<Servidor>();
+
+          try {
+              System.out.println("* Viendo todos los servidores");
+              tx.begin();
+
+              Extent<Servidor> servidorExtent = pm.getExtent(Servidor.class, true);
+
+              for (Servidor ser : servidorExtent) {
+              	
+              	Servidor servidor = new Servidor(0, ser.getNomServidor(), ser.getCorreoS(), ser.getContrasenyaS(), 9000);
+              	servidores.add(servidor);
+              }
+
+              tx.commit();
+          } catch (Exception ex) {
+              System.out.println("$ Error viendo todos los servidores: " + ex.getMessage());
+          } finally {
+              if (tx != null && tx.isActive()) {
+                  tx.rollback();
+              }
+
+              pm.close();
+          }
+          return servidores;
+
+      }
 	//COMPROBAR SI USUARIO EXISTE
 	public boolean exiteUsuario(Usuario usuario) throws DBException{
 		
@@ -171,7 +204,28 @@ public class DBManager {
 			pm.close();
 		}	
 	}
-	
+	//AGREGAR SERVIDOR
+		public void agregarServidor(Servidor servidores){
+			
+			PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+			PersistenceManager pm = pmf.getPersistenceManager();
+			Transaction tx = pm.currentTransaction();
+			
+			try {
+				tx.begin();
+				
+				pm.makePersistent(servidores);
+
+				tx.commit();
+				
+			} finally {
+				if (tx.isActive()) {
+					tx.rollback();
+				}
+				pm.close();
+			}	
+		}
+		
 	//ELIMINAR USUARIO
 	 public void deleteUsuarioByNomUsuario(String nomUsuario) {
 		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
@@ -193,6 +247,35 @@ public class DBManager {
 	            tx.commit();
 	        } catch (Exception ex) {
 	            System.out.println("Error obteniendo usuario: " + ex.getMessage());
+	        } finally {
+	            if (tx != null && tx.isActive()) {
+	                tx.rollback();
+	            }
+	            pm.close();
+	        }
+	    }
+	//ELIMINAR SERVIDOR
+	 public void eliminarServidorPorNombreServidor(String nombreServidor) {
+		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+	        try {
+	            System.out.println("Eliminando servidor por el nombre que contenga: " + nombreServidor);
+	            tx.begin();
+
+	            Extent<Servidor> e = pm.getExtent(Servidor.class, true);
+	            Iterator<Servidor> iter = e.iterator();
+	            
+	            while (iter.hasNext()) {
+	            	Servidor servidor = (Servidor) iter.next();
+	                if (servidor.getNomServidor() == null ? nombreServidor == null : servidor.getNomServidor().equals(nombreServidor)) {
+	                    pm.deletePersistent(servidor);
+	                }
+	            }
+
+	            tx.commit();
+	        } catch (Exception ex) {
+	            System.out.println("Error obteniendo servidor: " + ex.getMessage());
 	        } finally {
 	            if (tx != null && tx.isActive()) {
 	                tx.rollback();
@@ -606,4 +689,38 @@ public class DBManager {
                 pm.close();
             }
         }
+    	//ACTUALIZAR LOS SERVIDORES
+    	public void actualizarServidor(Servidor servidores) {
+    		
+    		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+    		PersistenceManager pm = pmf.getPersistenceManager();
+    		Transaction tx = pm.currentTransaction();
+
+            try {
+                tx.begin();
+
+                Extent<Servidor> e = pm.getExtent(Servidor.class, true);
+                Iterator<Servidor> iter = e.iterator();
+                
+                while (iter.hasNext()) {
+                	Servidor servidor = (Servidor) iter.next();
+                    if (servidor.getId() == servidores.getId()) {
+                        System.out.println("* Updating: " + servidores + "\n* To: " + servidores);
+                        servidor.setNomServidor(servidores.getNomServidor());
+                        servidor.setCorreoS(servidores.getCorreoS());
+                        servidor.setContrasenyaS(servidores.getContrasenyaS());
+                    }
+                }
+                tx.commit();
+            } catch (Exception ex) {
+                System.out.println("$ Error updating: " + ex.getMessage());
+            } finally {
+                if (tx != null && tx.isActive()) {
+                    tx.rollback();
+                }
+
+                pm.close();
+            }
+        }
+		
 }
