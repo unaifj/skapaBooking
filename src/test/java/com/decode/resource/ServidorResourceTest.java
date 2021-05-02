@@ -27,6 +27,7 @@ public class ServidorResourceTest {
 	    private static Servidor servidor1;
 	    private static Servidor servidor2;
 	    private static Servidor servidor3;
+	    private static Servidor servidor4;
 	    private List<Servidor> servidorDB;
 	    
 	    
@@ -43,6 +44,7 @@ public class ServidorResourceTest {
 	        servidor1 = new Servidor(0, "S1", "S1@gmail.com", "1234", 0);
 	        servidor2 = new Servidor(0, "S2", "S2@gmail.com", "3455", 0);
 	        servidor3 = new Servidor(0, "S3", "S3@gmail.com", "7574", 0);
+	        servidor4 = new Servidor(0, "S4", "S4@gmail.com", "7645", 0);
 	     
 	    }
 	    
@@ -53,7 +55,6 @@ public class ServidorResourceTest {
 	    }
 	    @Before
 	    public void PrepareData() {
-	    	// Store test
 	        System.out.println(
 	                "================================================Creando los servidores ...================================================");
 	        rsh.agregarServidor(servidor1);
@@ -104,18 +105,18 @@ public class ServidorResourceTest {
 		public void testAgregarServidores() {
 	        System.out.println(
 	                "================================================Test agregar servidores================================================");
-	        rsh.agregarServidor(servidor3);
+	        rsh.agregarServidor(servidor4);
 	        servidorDB = rsh.getServidor();
-	        assertEquals(servidorDB.size(), 3);
+	        assertEquals(servidorDB.size(), 4);
 	        
-	        boolean servidor3_found = false;
+	        boolean servidor4_found = false;
 	        
 	        for (Servidor servidor : servidorDB) {
-				if(servidor.equals(servidor3)) {
-					servidor3_found = true;
+				if(servidor.equals(servidor4)) {
+					servidor4_found = true;
 				}
 			}
-	        assertTrue(servidor3_found);
+	        assertTrue(servidor4_found);
 	        
 		}
 		
@@ -125,7 +126,7 @@ public class ServidorResourceTest {
 	                "================================================Test eliminando servidores================================================");
 	        rsh.eliminarServidor(servidor1);
 	        servidorDB = rsh.getServidor();
-	        assertEquals(servidorDB.size(), 4);
+	        assertEquals(servidorDB.size(), 2);
 			
 	        boolean servidor1_found = false;
 	        boolean servidor2_found = false;
