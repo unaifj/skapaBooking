@@ -27,9 +27,6 @@ public class ServidorResourceTest {
 	    private static Servidor servidor1;
 	    private static Servidor servidor2;
 	    private static Servidor servidor3;
-	    private static Servidor servidor4;
-	    private static Servidor servidor5;
-	    private static Servidor servidor6;
 	    private List<Servidor> servidorDB;
 	    
 	    
@@ -43,12 +40,10 @@ public class ServidorResourceTest {
 	    	server = Main.startServer();
 	        rsh = ServidorRSH.getInstance();
 	       
-	        servidor1 = new Servidor(0, "Juan", "Lopez", "1234", 0);
-	        servidor2 = new Servidor(0, "Silvia", "Montejo", "1234", 0);
-	        servidor3 = new Servidor(0, "Luis", "Alonso", "1234", 0);
-	        servidor4 = new Servidor(0, "Silvia", "Montejo", "1234", 0);
-	        servidor5 = new Servidor(0, "Luis", "Alonso", "1234", 0);
-	        servidor6 = new Servidor(0, "Jorge", "Casas", "1234", 0);
+	        servidor1 = new Servidor(0, "S1", "S1@gmail.com", "1234", 0);
+	        servidor2 = new Servidor(0, "S2", "S2@gmail.com", "3455", 0);
+	        servidor3 = new Servidor(0, "S3", "S3@gmail.com", "7574", 0);
+	     
 	    }
 	    
 	    @AfterClass
@@ -64,8 +59,7 @@ public class ServidorResourceTest {
 	        rsh.agregarServidor(servidor1);
 	        rsh.agregarServidor(servidor2);
 	        rsh.agregarServidor(servidor3);
-	        rsh.agregarServidor(servidor4);
-	        rsh.agregarServidor(servidor5);
+	  
 	        
 	    }
 	    
@@ -74,8 +68,8 @@ public class ServidorResourceTest {
 	        System.out.println(
 	                "================================================Borrando un servidor ...================================================");
 	        servidorDB = rsh.getServidor();
-	        for (Servidor cl : servidorDB) {
-	            rsh.eliminarServidor(cl);
+	        for (Servidor s : servidorDB) {
+	            rsh.eliminarServidor(s);
 	        }
 	    }
 	    
@@ -86,13 +80,12 @@ public class ServidorResourceTest {
 	                "================================================Test visualizar los distintos Servidores================================================");
 	        
 	        servidorDB = rsh.getServidor();
-	        assertEquals(servidorDB.size(), 5);
+	        assertEquals(servidorDB.size(), 3);
 	        
 	        boolean servidor1_found = false;
 	        boolean servidor2_found = false;
 	        boolean servidor3_found = false;
-	        boolean servidor4_found = false;
-	        boolean servidor5_found = false;
+	      
 	        
 			for (Servidor servidor : servidorDB) {
 				if (servidor.equals(servidor1)) {
@@ -101,31 +94,28 @@ public class ServidorResourceTest {
 					servidor2_found = true;
 				} else if (servidor.equals(servidor3)) {
 					servidor3_found = true;
-				} else if (servidor.equals(servidor4)) {
-					servidor4_found = true;
-				} else if (servidor.equals(servidor5)) {
-					servidor5_found = true;
+				
 				}
 			}
-			assertTrue(servidor1_found && servidor2_found&& servidor3_found&& servidor4_found&& servidor5_found);
+			assertTrue(servidor1_found && servidor2_found && servidor3_found);
 		}
 		
 		@Test
 		public void testAgregarServidores() {
 	        System.out.println(
 	                "================================================Test agregar servidores================================================");
-	        rsh.agregarServidor(servidor6);
+	        rsh.agregarServidor(servidor3);
 	        servidorDB = rsh.getServidor();
-	        assertEquals(servidorDB.size(), 6);
+	        assertEquals(servidorDB.size(), 3);
 	        
-	        boolean servidor6_found = false;
+	        boolean servidor3_found = false;
 	        
 	        for (Servidor servidor : servidorDB) {
-				if(servidor.equals(servidor6)) {
-					servidor6_found = true;
+				if(servidor.equals(servidor3)) {
+					servidor3_found = true;
 				}
 			}
-	        assertTrue(servidor6_found);
+	        assertTrue(servidor3_found);
 	        
 		}
 		
@@ -140,8 +130,6 @@ public class ServidorResourceTest {
 	        boolean servidor1_found = false;
 	        boolean servidor2_found = false;
 	        boolean servidor3_found = false;
-	        boolean servidor4_found = false;
-	        boolean servidor5_found = false;
 	        
 			for (Servidor servidor : servidorDB) {
 				if (servidor.equals(servidor1)) {
@@ -150,13 +138,10 @@ public class ServidorResourceTest {
 					servidor2_found = true;
 				} else if (servidor.equals(servidor3)) {
 					servidor3_found = true;
-				} else if (servidor.equals(servidor4)) {
-					servidor4_found = true;
-				} else if (servidor.equals(servidor5)) {
-					servidor5_found = true;
-				}
+				
 			}
-			assertTrue(!servidor1_found && servidor2_found&& servidor3_found&& servidor4_found&& servidor5_found);
+			assertTrue(!servidor1_found && servidor2_found&& servidor3_found);
 		}
 	    
+		}
 }

@@ -50,8 +50,8 @@ public class ServidorRSH {
 	    /**
 	     * Hacer una petición PUT al servidor para guardar un nuevo Servidor.
 	     * 
-	     * @param Servidor a guardar.
-	     * @return <Code>Usuario</Code> Usuario con el dni ya guardado en la DB.
+	     * @param Guardar Servidor.
+	     * @return <Code>Servidor</Code> Devuelve el servidor.
 	     */
 	    public Servidor agregarServidor(Servidor servidor) {
 	        Invocation.Builder ib = target.request(MediaType.APPLICATION_JSON);
