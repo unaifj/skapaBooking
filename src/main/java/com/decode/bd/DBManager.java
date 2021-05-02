@@ -13,6 +13,7 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
+
 import com.decode.objects.Anuncio;
 import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
@@ -20,10 +21,19 @@ import com.decode.objects.Opinion;
 import com.decode.objects.Reserva;
 import com.decode.objects.TarjetaCredito;
 import com.decode.objects.Usuario;
-import com.decode.sesion.VentanaInicio;
 
 
 public class DBManager {
+	
+	private static DBManager instance = null;
+
+    public static DBManager getInstance() {
+        if (instance == null) {
+            instance = new DBManager();
+        }
+
+        return instance;
+    }
 
 	//INSTALACION DE DATOS
 	public void preparedData () throws DBException{
@@ -91,29 +101,44 @@ public class DBManager {
 	}
 	
 	//LISTAR USUARIOS DE BD
-	public List<Usuario> listarUsuarios() throws DBException{
-		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
-		
-		tx.begin();
-		
-		Query<Usuario> query = pm.newQuery("javax.jdo.query.SQL","select * from " + "usuario");
-		query.setClass(Usuario.class);
-			
-		List<Usuario> results = query.executeList();
-		
-		tx.commit();
-		pm.close();
-		return results;
-		
-	}
+	  public List<Usuario> getUsuarios() {
+  		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+  		PersistenceManager pm = pmf.getPersistenceManager();
+  		Transaction tx = pm.currentTransaction();
+      	
+  		List<Usuario> usuarios = new ArrayList<Usuario>();
+
+          try {
+              System.out.println("* Viendo todas los usuarios");
+              tx.begin();
+
+              Extent<Usuario> usuarioExtent = pm.getExtent(Usuario.class, true);
+
+              for (Usuario user : usuarioExtent) {
+              	
+              	Usuario usuario = new Usuario(user.getNomUsuario(), user.getCorreo(), user.getContrasenya());
+              	usuarios.add(usuario);
+              }
+
+              tx.commit();
+          } catch (Exception ex) {
+              System.out.println("$ Error viendo todos Metodos de pago: " + ex.getMessage());
+          } finally {
+              if (tx != null && tx.isActive()) {
+                  tx.rollback();
+              }
+
+              pm.close();
+          }
+          return usuarios;
+
+      }
 	
 	//COMPROBAR SI USUARIO EXISTE
 	public boolean exiteUsuario(Usuario usuario) throws DBException{
 		
 		boolean existe = false;
-		List<Usuario> usuarios = listarUsuarios();
+		List<Usuario> usuarios = getUsuarios();
 		
 		for (Usuario user : usuarios) {
 			if (user.getNomUsuario().equals(usuario.getNomUsuario())) {
@@ -126,7 +151,7 @@ public class DBManager {
 	}
 	
 	//INSERTAR USUARIO
-	public void insertarUsuario(Usuario user) throws DBException{
+	public void insertarUsuario(Usuario user){
 		
 		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -146,6 +171,35 @@ public class DBManager {
 			pm.close();
 		}	
 	}
+	
+	//ELIMINAR USUARIO
+	 public void deleteUsuarioByDNI(String nomUsuario) {
+		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+	        try {
+	            System.out.println("Eliminando usuario con nomusuario: " + nomUsuario);
+	            tx.begin();
+
+	            Extent<Usuario> e = pm.getExtent(Usuario.class, true);
+	            Iterator<Usuario> iter = e.iterator();
+	            while (iter.hasNext()) {
+	                Usuario usuario = (Usuario) iter.next();
+	                if (usuario.getNomUsuario() == null ? nomUsuario == null : usuario.getNomUsuario().equals(nomUsuario)) {
+	                    pm.deletePersistent(usuario);
+	                }
+	            }
+
+	            tx.commit();
+	        } catch (Exception ex) {
+	            System.out.println("Error obteniendo usuario: " + ex.getMessage());
+	        } finally {
+	            if (tx != null && tx.isActive()) {
+	                tx.rollback();
+	            }
+	            pm.close();
+	        }
+	    }
 	
 	//INSERTAR ANUNCIO
 	public void insertarAnuncio(Anuncio anuncio) throws DBException{
@@ -176,9 +230,6 @@ public class DBManager {
 	
 	//INSERTAR RESERVA
 		public void insertarReserva(Reserva reserva) throws DBException{
-			
-			System.out.println("----ANUNCIO DBM----- ");
-			System.out.println("A: " + reserva);
 			
 			PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 			PersistenceManager pm = pmf.getPersistenceManager();
@@ -211,8 +262,7 @@ public class DBManager {
 					
 					try {
 						tx.begin();
-						
-						pm.makePersistent(tarjeta.getUsuario());	
+				
 						pm.makePersistent(tarjeta);
 						tx.commit();
 						
@@ -224,7 +274,7 @@ public class DBManager {
 					}
 				}
 		
-	//LISTAR TARJETAS DE CREDITOS
+		//LISTAR TARJETAS DE CREDITOS
 		
         public List<TarjetaCredito> getTarjeta(Usuario user) {
     		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
@@ -242,10 +292,13 @@ public class DBManager {
                 for (TarjetaCredito tarjeta : tarjetaCreditoExtent) {
                 	
                 	Usuario usuario = new Usuario(tarjeta.getUsuario().getNomUsuario(), tarjeta.getUsuario().getCorreo(), tarjeta.getUsuario().getContrasenya());
+                	usuario.setId(user.getId());
              	
                 	TarjetaCredito t = new TarjetaCredito(usuario, tarjeta.getNumTarjeta(), tarjeta.getNumTarjeta(), tarjeta.getCvv());
                 	
-                	if (t.getUsuario().getId() == user.getId()) {
+                	System.out.println(t);
+                	
+                	if (t.getUsuario().getNomUsuario() == user.getNomUsuario()) {
                 		tarjetasUsuario.add(tarjeta);
                 	}
           

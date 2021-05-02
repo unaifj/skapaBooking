@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
@@ -30,15 +31,15 @@ import com.decode.objects.TarjetaCredito;
 import com.decode.sesion.VentanaInicio;
 import com.decode.ventanaPrincipal.VentanaPrincipal;
 
+
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
-import javax.swing.JList;
+
 
 public class VentanaVerTarjetas extends JFrame {
 
 	private JPanel contentPane;
-	private DBManager dbm;
 
 	
 	/**
@@ -111,20 +112,25 @@ public class VentanaVerTarjetas extends JFrame {
 		btnNewButton.setBounds(10, 140, 89, 23);
 		contentPane.add(btnNewButton);
 		
+		//Modelo para organizar y acumular info
+			
+			
+				
+				
 		
 		List <TarjetaCredito> tarjetas = new ArrayList<TarjetaCredito>();
 		DBManager dbm = new DBManager();
 		tarjetas = dbm.getTarjeta(VentanaInicio.getUser());
 
-		DefaultListModel<String> modelo = new DefaultListModel<String>();
+		DefaultListModel modelo = new DefaultListModel<>();
 	
 		for (TarjetaCredito t : tarjetas) {
-			modelo.addElement(t.toString());
+			modelo.addElement(t.getNumTarjeta());
 		}
 		
-		JList<String> list = new JList<String>();
+		JList list = new JList(modelo);
 		list.setBounds(185, 190, 566, 400);
-		list.setModel(modelo);
+	
 		contentPane.add(list);
 		
 		btnNewButton.addActionListener(new ActionListener() {

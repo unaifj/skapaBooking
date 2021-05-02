@@ -181,8 +181,6 @@ public class VentanaAnyadirTarjeta extends JFrame {
 				try {
 					
 					dbm.insertarTarjeta(tarjeta);
-					Reserva reserva= new Reserva(VentanaInicio.getUser(),"Tarjeta de credito", null, null, 0 );
-					dbm.insertarReserva(reserva);
 					
 					JOptionPane.showMessageDialog(null, "Tarejta correctamente añadida", "Añadido correctamente", 1, null);
 					VentanaVerTarjetas C = new VentanaVerTarjetas();

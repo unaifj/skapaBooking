@@ -114,12 +114,9 @@ public class VentanaRegistro extends JFrame {
 		contentPane.add(btnSingUp);
 		
 		dbm = new DBManager();
-		try {
-			usuarios = dbm.listarUsuarios();
-		} catch (DBException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+	
+		usuarios = dbm.getUsuarios();
+		
 		
 	
 		btnSingUp.addActionListener(new ActionListener() {
@@ -137,13 +134,11 @@ public class VentanaRegistro extends JFrame {
 					if (!dbm.exiteUsuario(user)) {
 						if (contrasenya.equals(contrasenya2)) {
 
-							try {
-								
-								dbm.insertarUsuario(user);
 							
-							} catch (DBException e1) {
-								e1.printStackTrace();
-							}
+								
+							dbm.insertarUsuario(user);
+							
+						
 							JOptionPane.showMessageDialog(null, "Cuenta creada con exito", "Exito", 1, null);
 							
 							VentanaInicio vi = new VentanaInicio();
