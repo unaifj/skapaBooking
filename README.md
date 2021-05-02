@@ -16,6 +16,10 @@ Crear una base de datos llamada *skapadb* y dar permisos al usuario por defecto
 
 La configuración por defecto para la base de datos y los usuarios puede ser actualizada en el fichero *resources/datanucleus.properties*.
 
+
+Las clases de datos deben ser procesadas antes de generar las tablas con el comando 
+
+    mvn datanucleus:enhance
 **Creación de las tablas**
 
 Para la creación de las tablas se debe ejecutar el comando de maven
@@ -31,10 +35,11 @@ Se pueden introducir datos de prueba en la aplicación utilizando el comando de 
 
 **Inicio de la aplicación**
 
-La aplicación se inicializa utilizando el comando
+El servidor REST de la aplicación se lanza utilizando el comando
 
     mvn exec:java
 
+Si el servidor ha sido iniciado correctamente se pueden obtener los datos de prueba accediendo con el navegador a la URL http://localhost:8080/myapp/usuario
 
     
     
