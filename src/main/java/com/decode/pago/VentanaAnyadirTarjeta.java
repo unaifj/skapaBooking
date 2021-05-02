@@ -98,10 +98,6 @@ public class VentanaAnyadirTarjeta extends JFrame {
 		
 		ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");
 		
-		JButton btnGuardar = new JButton("Confirmar pago");
-		btnGuardar.setBounds(1061, 674, 130, 37);
-		contentPane.add(btnGuardar);
-		
 		JLabel lblNewLabel = new JLabel("Nombre y apellidos: ");
 		lblNewLabel.setBounds(43, 245, 232, 16);
 		contentPane.add(lblNewLabel);
@@ -166,6 +162,18 @@ public class VentanaAnyadirTarjeta extends JFrame {
 		
 		DBManager dbm = new DBManager();
 		
+		btnAtras.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VentanaVerTarjetas C= new VentanaVerTarjetas();
+				setVisible(false);
+				C.setVisible(true);
+			}
+			
+		});
+		
 		btnAnyadir.addActionListener(new ActionListener() {
 			
 			@Override
@@ -182,7 +190,7 @@ public class VentanaAnyadirTarjeta extends JFrame {
 					
 					dbm.insertarTarjeta(tarjeta);
 					
-					JOptionPane.showMessageDialog(null, "Tarejta correctamente añadida", "Añadido correctamente", 1, null);
+					JOptionPane.showMessageDialog(null, "Tarjeta correctamente añadida", "Añadido correctamente", 1, null);
 					VentanaVerTarjetas C = new VentanaVerTarjetas();
 					setVisible(false);
 					C.setVisible(true);

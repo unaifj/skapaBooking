@@ -138,7 +138,7 @@ public class VentanaVerTarjetas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				VentanaAnyadirTarjeta C = new VentanaAnyadirTarjeta();
+				 VentanaPago C = new VentanaPago();
 				 setVisible(false);
 				 C.setVisible(true);
 				
