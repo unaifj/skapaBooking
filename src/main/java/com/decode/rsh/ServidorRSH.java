@@ -42,9 +42,9 @@ public class ServidorRSH {
 	    public List<Servidor> getServidor() {
 	        Invocation.Builder ib = target.request(); 
 	        Response response = ib.get(); 
-	        List<Servidor> usuarios = response.readEntity(new GenericType<List<Servidor>>() { // Crear una lista de servidores
+	        List<Servidor> servidores = response.readEntity(new GenericType<List<Servidor>>() { // Crear una lista de servidores
 	        });
-	        return usuarios;
+	        return servidores;
 	    }
 
 	    /**
