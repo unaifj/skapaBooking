@@ -15,8 +15,11 @@ import org.junit.experimental.categories.Category;
 
 import com.decode.categories.IntegrationTest;
 import com.decode.main.Main;
+import com.decode.objects.Anuncio;
+import com.decode.objects.Apartamento;
+import com.decode.objects.Localidad;
 import com.decode.objects.Usuario;
-import com.decode.rsh.UsuarioRSH;
+import com.decode.rsh.AnuncioRSH;
 
 
 
@@ -28,31 +31,69 @@ import com.decode.rsh.UsuarioRSH;
 public class AnuncioResourceTest {
 	
     private static HttpServer server;
-    private static UsuarioRSH rsh;
+    private static AnuncioRSH rsh;
     
     private static Usuario usuario1;
     private static Usuario usuario2;
     private static Usuario usuario3;
     private static Usuario usuario4;
     private static Usuario usuario5;
-    private static Usuario usuario6;
-    private List<Usuario> usuariosBD;
+    
+    private static Localidad localidad1;
+    private static Localidad localidad2;
+    private static Localidad localidad3;
+    private static Localidad localidad4;
+    private static Localidad localidad5;
+
+    private static Apartamento apartamento1;
+    private static Apartamento apartamento2;
+    private static Apartamento apartamento3;
+    private static Apartamento apartamento4;
+    private static Apartamento apartamento5;
+    
+    private static Anuncio anuncio1;
+    private static Anuncio anuncio2;
+    private static Anuncio anuncio3;
+    private static Anuncio anuncio4;
+    private static Anuncio anuncio5;
+    private static Anuncio anuncio6;
+
+    private List<Anuncio> anunciosBD;
 
     public AnuncioResourceTest() {
     }
     
     @BeforeClass
     public static void setUp() {
-    	// start the server
+    	// arrancar servidor
     	server = Main.startServer();
-        rsh = UsuarioRSH.getInstance();
+        rsh = AnuncioRSH.getInstance();
        
         usuario1 = new Usuario("Juan", "Lopez", "1234");
         usuario2 = new Usuario("Silvia", "Montejo", "1234");
         usuario3 = new Usuario("Luis", "Alonso", "1234");
         usuario4 = new Usuario("Silvia", "Montejo", "1234");
         usuario5 = new Usuario("Luis", "Alonso", "1234");
-        usuario6 = new Usuario("Jorge", "Casas", "1234");
+        
+        localidad1= new Localidad("Vizcaya", "Barakaldo", 58600, "Avd Mazarredo");
+        localidad2= new Localidad("Madrid", "Bianco", 76600, "Avd Minero");
+        localidad3= new Localidad("Canatabria", "Noja", 59600, "Avd Areilza");
+        localidad4= new Localidad("Andalucia", "Conil", 58670, "Avd El Cerro");
+        localidad5= new Localidad("Vizcaya", "Algorta", 48600, "Avd Los pitufos");
+        
+        apartamento1= new Apartamento(5,100,localidad1,null);
+        apartamento2= new Apartamento(3,80,localidad2,null);
+        apartamento3= new Apartamento(2,300,localidad3,null);
+        apartamento4= new Apartamento(1,43,localidad4,null);
+        apartamento5= new Apartamento(4,95,localidad5,null);
+
+       
+        anuncio1=new Anuncio(usuario1,apartamento1,"Anuncio del titulo 1","descripcion del primer anuncio",57.00,true,4 );
+        anuncio2=new Anuncio(usuario2,apartamento2,"Anuncio del titulo 2","descripcion del segundo anuncio",32.00,false,5 );
+        anuncio3=new Anuncio(usuario3,apartamento3,"Anuncio del titulo 3","descripcion del tercer anuncio",70.00,true,3 );
+        anuncio4=new Anuncio(usuario4,apartamento4,"Anuncio del titulo 4","descripcion del cuarto anuncio",17.00,false,4 );
+        anuncio5=new Anuncio(usuario5,apartamento5,"Anuncio del titulo 5","descripcion del quinto anuncio",5.00,true,4 );
+        anuncio6= new Anuncio(usuario1,apartamento2,"Anuncio del titulo 6","descripcion del sexto anuncio",5.00,true,4);
     }
     
     @AfterClass
@@ -66,11 +107,11 @@ public class AnuncioResourceTest {
     	// Store test
         System.out.println(
                 "================================================Creating data ...================================================");
-        rsh.guardarUsuario(usuario1);
-        rsh.guardarUsuario(usuario2);
-        rsh.guardarUsuario(usuario3);
-        rsh.guardarUsuario(usuario4);
-        rsh.guardarUsuario(usuario5);
+        rsh.guardarAnuncio(anuncio1);
+        rsh.guardarAnuncio(anuncio2);
+        rsh.guardarAnuncio(anuncio3);
+        rsh.guardarAnuncio(anuncio4);
+        rsh.guardarAnuncio(anuncio5);
         
     }
     
@@ -78,90 +119,90 @@ public class AnuncioResourceTest {
     public void Clean() {
         System.out.println(
                 "================================================Cleaning data ...================================================");
-        usuariosBD = rsh.verUsuarios();
-        for (Usuario cl : usuariosBD) {
-            rsh.borrarUsuario(cl);
+        anunciosBD = rsh.verAnuncios();
+        for (Anuncio a : anunciosBD) {
+            rsh.borrarAnuncio(a);
         }
     }
     
 
 	@Test
-	public void testVerUsuarios() {
+	public void testVerAnuncios() {
         System.out.println(
                 "================================================Test ver usuarios================================================");
         
-        usuariosBD = rsh.verUsuarios();
-        assertEquals(usuariosBD.size(), 5);
+        anunciosBD = rsh.verAnuncios();
+        assertEquals(anunciosBD.size(), 5);
         
-        boolean usuario1_found = false;
-        boolean usuario2_found = false;
-        boolean usuario3_found = false;
-        boolean usuario4_found = false;
-        boolean usuario5_found = false;
+        boolean anuncio1_found = false;
+        boolean anuncio2_found = false;
+        boolean anuncio3_found = false;
+        boolean anuncio4_found = false;
+        boolean anuncio5_found = false;
         
-		for (Usuario usuario : usuariosBD) {
-			if (usuario.equals(usuario1)) {
-				usuario1_found = true;
-			} else if (usuario.equals(usuario2)) {
-				usuario2_found = true;
-			} else if (usuario.equals(usuario3)) {
-				usuario3_found = true;
-			} else if (usuario.equals(usuario4)) {
-				usuario4_found = true;
-			} else if (usuario.equals(usuario5)) {
-				usuario5_found = true;
+		for (Anuncio anuncio : anunciosBD) {
+			if (anuncio.equals(anuncio1)) {
+				anuncio1_found = true;
+			} else if (anuncio.equals(anuncio2)) {
+				anuncio2_found = true;
+			} else if (anuncio.equals(anuncio3)) {
+				anuncio3_found = true;
+			} else if (anuncio.equals(anuncio4)) {
+				anuncio4_found = true;
+			} else if (anuncio.equals(anuncio5)) {
+				anuncio5_found = true;
 			}
 		}
-		assertTrue(usuario1_found && usuario2_found&& usuario3_found&& usuario4_found&& usuario5_found);
+		assertTrue(anuncio1_found && anuncio2_found&& anuncio3_found&& anuncio4_found&& anuncio5_found);
 	}
 	
 	@Test
-	public void testSubirUsuarios() {
+	public void testInsertarAnuncios() {
         System.out.println(
-                "================================================Test subir usuarios================================================");
-        rsh.guardarUsuario(usuario6);
-        usuariosBD = rsh.verUsuarios();
-        assertEquals(usuariosBD.size(), 6);
+                "================================================Test insertar anuncios================================================");
+        rsh.guardarAnuncio(anuncio6);
+        anunciosBD = rsh.verAnuncios();
+        assertEquals(anunciosBD.size(), 6);
         
-        boolean usuario6_found = false;
+        boolean anuncio6_found = false;
         
-        for (Usuario usuario : usuariosBD) {
-			if(usuario.equals(usuario6)) {
-				usuario6_found = true;
+        for (Anuncio anuncio : anunciosBD) {
+			if(anuncio.equals(anuncio6)) {
+				anuncio6_found = true;
 			}
 		}
-        assertTrue(usuario6_found);
+        assertTrue(anuncio6_found);
         
 	}
 	
 	@Test
-    public void testEliminarUsuario() {
+    public void testEliminarAnuncio() {
         System.out.println(
-                "================================================Test eliminar usuarios================================================");
-        rsh.borrarUsuario(usuario1);
-        usuariosBD = rsh.verUsuarios();
-        assertEquals(usuariosBD.size(), 4);
+                "================================================Test eliminar anuncios================================================");
+        rsh.borrarAnuncio(anuncio1);
+        anunciosBD = rsh.verAnuncios();
+        assertEquals(anunciosBD.size(), 4);
 		
-        boolean usuario1_found = false;
-        boolean usuario2_found = false;
-        boolean usuario3_found = false;
-        boolean usuario4_found = false;
-        boolean usuario5_found = false;
+        boolean anuncio1_found = false;
+        boolean anuncio2_found = false;
+        boolean anuncio3_found = false;
+        boolean anuncio4_found = false;
+        boolean anuncio5_found = false;
         
-		for (Usuario usuario : usuariosBD) {
-			if (usuario.equals(usuario1)) {
-				usuario1_found = true;
-			} else if (usuario.equals(usuario2)) {
-				usuario2_found = true;
-			} else if (usuario.equals(usuario3)) {
-				usuario3_found = true;
-			} else if (usuario.equals(usuario4)) {
-				usuario4_found = true;
-			} else if (usuario.equals(usuario5)) {
-				usuario5_found = true;
+		for (Anuncio anuncio : anunciosBD) {
+			if (anuncio.equals(anuncio1)) {
+				anuncio1_found = true;
+			} else if (anuncio.equals(anuncio2)) {
+				anuncio2_found = true;
+			} else if (anuncio.equals(anuncio3)) {
+				anuncio3_found = true;
+			} else if (anuncio.equals(anuncio4)) {
+				anuncio4_found = true;
+			} else if (anuncio.equals(anuncio5)) {
+				anuncio5_found = true;
 			}
 		}
-		assertTrue(!usuario1_found && usuario2_found&& usuario3_found&& usuario4_found&& usuario5_found);
+		assertTrue(!anuncio1_found && anuncio2_found&& anuncio3_found&& anuncio4_found&& anuncio5_found);
 	}
 
 }

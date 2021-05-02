@@ -7,7 +7,6 @@ import java.util.List;
 import org.glassfish.jersey.client.HttpUrlConnectorProvider;
 
 import com.decode.objects.Anuncio;
-import com.decode.objects.Usuario;
 
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;

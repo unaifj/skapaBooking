@@ -5,7 +5,6 @@ import java.util.List;
 import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
 import com.decode.objects.Anuncio;
-import com.decode.objects.Usuario;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
