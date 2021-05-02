@@ -254,7 +254,7 @@ public class DBManager {
 	            pm.close();
 	        }
 	    }
-<<<<<<< HEAD
+
 	//ELIMINAR SERVIDOR
 	 public void eliminarServidorPorNombreServidor(String nombreServidor) {
 		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
@@ -284,7 +284,7 @@ public class DBManager {
 	            pm.close();
 	        }
 	    }
-=======
+
 	 
 	 //ELIMINAR OPINION
 	 public void deleteOpinionByTitulo(String titulo) {
@@ -315,7 +315,7 @@ public class DBManager {
 				 pm.close();
 			}
 	 }
->>>>>>> master
+
 	
 	//INSERTAR ANUNCIO
 	public void insertarAnuncio(Anuncio anuncio) throws DBException{
@@ -724,7 +724,7 @@ public class DBManager {
                 pm.close();
             }
         }
-<<<<<<< HEAD
+
     	//ACTUALIZAR LOS SERVIDORES
     	public void actualizarServidor(Servidor servidores) {
     		
@@ -759,7 +759,7 @@ public class DBManager {
             }
         }
 		
-=======
+
     	
     	//Actualizar opinion
     	
@@ -799,5 +799,4 @@ public class DBManager {
     		}
     		
     	}
->>>>>>> master
 }
