@@ -254,6 +254,7 @@ public class DBManager {
 	            pm.close();
 	        }
 	    }
+<<<<<<< HEAD
 	//ELIMINAR SERVIDOR
 	 public void eliminarServidorPorNombreServidor(String nombreServidor) {
 		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
@@ -283,6 +284,38 @@ public class DBManager {
 	            pm.close();
 	        }
 	    }
+=======
+	 
+	 //ELIMINAR OPINION
+	 public void deleteOpinionByTitulo(String titulo) {
+		 PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+			PersistenceManager pm = pmf.getPersistenceManager();
+			Transaction tx = pm.currentTransaction();
+			
+			try {
+				System.out.println("Eliminando opinion con idUsuario: " + titulo);
+				tx.begin();
+				
+				Extent<Opinion> e = pm.getExtent(Opinion.class, true);
+    			Iterator<Opinion> iter = e.iterator();
+    			  while (iter.hasNext()) {
+    				  Opinion opinion = (Opinion) iter.next();
+    				  if(opinion.getTitulo() == null ? titulo == null : opinion.getTitulo().equals(titulo) ) {
+    					  pm.deletePersistent(opinion);  
+    				  }
+    			  }
+				tx.commit();
+				
+			}catch (Exception ex) {
+				System.out.println("Error obteniendo la id del usuario: " + ex.getMessage());
+			}finally {
+				 if (tx != null && tx.isActive()) {
+					 tx.rollback();
+				 }
+				 pm.close();
+			}
+	 }
+>>>>>>> master
 	
 	//INSERTAR ANUNCIO
 	public void insertarAnuncio(Anuncio anuncio) throws DBException{
@@ -659,6 +692,8 @@ public class DBManager {
 
     	}	
     	
+    	//Actualizar usuario
+    	
     	public void actualizarUsuario(Usuario user) {
     		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
     		PersistenceManager pm = pmf.getPersistenceManager();
@@ -689,6 +724,7 @@ public class DBManager {
                 pm.close();
             }
         }
+<<<<<<< HEAD
     	//ACTUALIZAR LOS SERVIDORES
     	public void actualizarServidor(Servidor servidores) {
     		
@@ -723,4 +759,45 @@ public class DBManager {
             }
         }
 		
+=======
+    	
+    	//Actualizar opinion
+    	
+    	
+    	public void actualizarOpinion(Opinion op) {
+    		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+    		PersistenceManager pm = pmf.getPersistenceManager();
+    		Transaction tx = pm.currentTransaction();
+    		
+    		try {
+    			
+    			tx.begin();
+    			
+    			Extent<Opinion> e = pm.getExtent(Opinion.class, true);
+    			Iterator<Opinion> iter = e.iterator();
+    			  while (iter.hasNext()) {
+    				  Opinion opinion = (Opinion) iter.next();
+    				  if (opinion.getTitulo() == op.getTitulo()) {
+    					  System.out.println("* Updating: " + opinion + "\n* To: " + op);
+    					  opinion.setUsuario(op.getUsuario());
+    					  opinion.setTitulo(op.getTitulo());
+    					  opinion.setPuntuacion(op.getPuntuacion());
+    					  opinion.setDescripcion(op.getDescripcion());
+    					  
+    				  }
+    			  }
+    			  tx.commit();
+    			
+    		}catch (Exception ex) {
+    			System.out.println("$ Error updating: " + ex.getMessage());
+    		}finally {
+    			if (tx != null && tx.isActive()) {
+    				 tx.rollback();
+    			}
+    			
+    			pm.close();
+    		}
+    		
+    	}
+>>>>>>> master
 }
