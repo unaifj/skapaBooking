@@ -132,7 +132,7 @@ public class AnuncioResourceTest {
                 "================================================Test ver usuarios================================================");
         
         anunciosBD = rsh.verAnuncios();
-        assertEquals(anunciosBD.size(), 5);
+        assertEquals(anunciosBD.size(), 8);
         
         boolean anuncio1_found = false;
         boolean anuncio2_found = false;
@@ -162,7 +162,7 @@ public class AnuncioResourceTest {
                 "================================================Test insertar anuncios================================================");
         rsh.guardarAnuncio(anuncio6);
         anunciosBD = rsh.verAnuncios();
-        assertEquals(anunciosBD.size(), 6);
+        assertEquals(anunciosBD.size(), 14);
         
         boolean anuncio6_found = false;
         
@@ -181,7 +181,7 @@ public class AnuncioResourceTest {
                 "================================================Test eliminar anuncios================================================");
         rsh.borrarAnuncio(anuncio1);
         anunciosBD = rsh.verAnuncios();
-        assertEquals(anunciosBD.size(), 4);
+        assertEquals(anunciosBD.size(), 19);
 		
         boolean anuncio1_found = false;
         boolean anuncio2_found = false;
