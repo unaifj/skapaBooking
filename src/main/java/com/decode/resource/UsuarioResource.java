@@ -43,8 +43,8 @@ public class UsuarioResource {
 	@DELETE
 	@Path("/ids/{usuarioDni}")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String eliminarUsuario(@PathParam("usuarioDni") String noomUsuario) {
-		DBManager.getInstance().deleteUsuarioByDNI(noomUsuario);
+	public String eliminarUsuario(@PathParam("usuarioNomUsuario") String nomUsuario) {
+		DBManager.getInstance().deleteUsuarioByNomUsuario(nomUsuario);
 		return "Done deleteUsuario";
 	}
 }
