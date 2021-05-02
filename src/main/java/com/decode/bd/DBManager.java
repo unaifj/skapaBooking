@@ -173,7 +173,7 @@ public class DBManager {
 	}
 	
 	//ELIMINAR USUARIO
-	 public void deleteUsuarioByDNI(String nomUsuario) {
+	 public void deleteUsuarioByNomUsuario(String nomUsuario) {
 		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
