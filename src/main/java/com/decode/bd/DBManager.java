@@ -200,6 +200,35 @@ public class DBManager {
 	            pm.close();
 	        }
 	    }
+	 
+	//ELIMINAR ANUNCIO
+		 public void deleteAnuncioPorTitulo(String titulo) {
+			PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+			PersistenceManager pm = pmf.getPersistenceManager();
+			Transaction tx = pm.currentTransaction();
+		        try {
+		            System.out.println("Eliminando anuncio con titulo de anuncio: " + titulo);
+		            tx.begin();
+
+		            Extent<Anuncio> e = pm.getExtent(Anuncio.class, true);
+		            Iterator<Anuncio> iter = e.iterator();
+		            while (iter.hasNext()) {
+		                Anuncio anuncio = (Anuncio) iter.next();
+		                if (anuncio.getTitulo() == null ? titulo == null : anuncio.getTitulo().equals(titulo)) {
+		                    pm.deletePersistent(titulo);
+		                }
+		            }
+
+		            tx.commit();
+		        } catch (Exception ex) {
+		            System.out.println("Error obteniendo anuncio: " + ex.getMessage());
+		        } finally {
+		            if (tx != null && tx.isActive()) {
+		                tx.rollback();
+		            }
+		            pm.close();
+		        }
+		    }
 	
 	//INSERTAR ANUNCIO
 	public void insertarAnuncio(Anuncio anuncio) throws DBException{
@@ -593,6 +622,41 @@ public class DBManager {
                         usuario.setNomUsuario(user.getNomUsuario());
                         usuario.setCorreo(user.getCorreo());
                         usuario.setContrasenya(user.getContrasenya());
+                    }
+                }
+                tx.commit();
+            } catch (Exception ex) {
+                System.out.println("$ Error updating: " + ex.getMessage());
+            } finally {
+                if (tx != null && tx.isActive()) {
+                    tx.rollback();
+                }
+
+                pm.close();
+            }
+        }
+    	
+    	public void actualizarAnuncio(Anuncio anun) {
+    		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+    		PersistenceManager pm = pmf.getPersistenceManager();
+    		Transaction tx = pm.currentTransaction();
+
+            try {
+                tx.begin();
+
+                Extent<Anuncio> e = pm.getExtent(Anuncio.class, true);
+                Iterator<Anuncio> iter = e.iterator();
+                while (iter.hasNext()) {
+                    Anuncio anuncio = (Anuncio) iter.next();
+                    if (anuncio.getId() == anun.getId()) {
+                        System.out.println("* Updating: " + anuncio + "\n* To: " + anun);
+                        anuncio.setDescripcion(anun.getDescripcion());
+                        anuncio.setTitulo(anun.getTitulo());
+                        anuncio.setPrecioNoche(anun.getPrecioNoche());
+                        anuncio.setUsuario(anun.getUsuario());
+                        anuncio.setApartamento(anun.getApartamento());
+                        anuncio.setId(anun.getId());
+                    
                     }
                 }
                 tx.commit();
