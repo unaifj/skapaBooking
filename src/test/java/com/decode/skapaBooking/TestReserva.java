@@ -17,7 +17,7 @@ import com.decode.objects.Usuario;
 
 public class TestReserva {
 	
-	public class TestAnuncio {
+	//public class TestAnuncio {
 
 		@Before
 		public void setUp() throws Exception {
@@ -47,6 +47,6 @@ public class TestReserva {
 		}
 		
 		
-	}
+	//}
 
 }
