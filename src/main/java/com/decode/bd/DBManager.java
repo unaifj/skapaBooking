@@ -82,13 +82,17 @@ public class DBManager {
 			
 			List<Reserva>reservasA = new ArrayList<Reserva>();
 			reservasA.add(res1);
-			
-			
-
-			
+		
 
 			Opinion op = new Opinion(userA, "opinion titulo", "Descripcion", 8.7f);
 			pm.makePersistent(op);
+			
+			Servidor s1 = new Servidor(0, "Server1", "servidor@gmail.com", "server1233", 80);
+			pm.makePersistent(s1);
+			Servidor s2 = new Servidor(0, "Server2", "servidor@gmail.com", "server1233", 90);
+			pm.makePersistent(s2);
+			Servidor s3 = new Servidor(0, "Server3", "servidor@gmail.com", "server1233", 78);
+			pm.makePersistent(s3);
 
 
 			tx.commit();
