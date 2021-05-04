@@ -34,6 +34,18 @@ Se pueden introducir datos de prueba en la aplicación utilizando el comando de 
 La aplicación se inicializa utilizando el comando
 
     mvn exec:java
+    
+**Teses unitarios**
+
+Los teses de unitarios se ejecutaran utilizando en comando
+
+    mvn test
+    
+**Teses de integracion**
+
+Los teses de integracion se ejecutaran utilizando en comando
+
+    mvn verify -Pintegracion
 
 
     
