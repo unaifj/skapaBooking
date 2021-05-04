@@ -17,7 +17,11 @@ import com.decode.objects.Usuario;
 
 public class TestReserva {
 	
-	//public class TestAnuncio {
+	Usuario user = new Usuario("tony", "tony.@gmail.com", "123");
+	Calendar fechaEntrada = new GregorianCalendar(2021, 6, 24);
+	Calendar fechaSalida = new GregorianCalendar(2021, 6, 31);
+	Reserva reserva = new Reserva(user, null, fechaEntrada, fechaSalida, 6);
+	
 
 		@Before
 		public void setUp() throws Exception {
@@ -29,24 +33,39 @@ public class TestReserva {
 
 		@Test
 		public void testGetUsuario() {
-			Usuario user = new Usuario("tony", "tony.@gmail.com", "123");
-			Calendar fechaEntrada = new GregorianCalendar(2021, 6, 24);
-			Calendar fechaSalida = new GregorianCalendar(2021, 6, 31);
-			Reserva reserva = new Reserva(user, null, fechaEntrada, fechaSalida, 6);
 			assertEquals(reserva.getUsuario(), user);	
 		}
 		
 		@Test
 		public void testGetNumPersonas() {
-			Usuario user = new Usuario("tony", "tony.@gmail.com", "123");
-			Calendar fechaEntrada = new GregorianCalendar(2021, 6, 24);
-			Calendar fechaSalida = new GregorianCalendar(2021, 6, 31);
-			Reserva reserva = new Reserva(user, null, fechaEntrada, fechaSalida, 6);
 			assertEquals(reserva.getNumPersonas(), 6);
 			
 		}
 		
+		@Test
+		public void testGetIdUsuario() {
+			assertEquals(reserva.getUsuario().getNomUsuario(), "tony");
+			
+		}
 		
-	//}
+		@Test
+		public void testGetIdReserva() {
+			reserva.setId(0);
+			assertEquals(reserva.getId(), 0);
+		}
+		
+		@Test
+		public void testGetFechaEntrada() {
+			assertEquals(reserva.getFechaEntrada(), fechaEntrada);
+			
+		}
+		
+		@Test
+		public void testFechaSalida() {
+			assertEquals(reserva.getFechaSalida(), fechaSalida);
+			
+		}
+		
+		
 
 }
