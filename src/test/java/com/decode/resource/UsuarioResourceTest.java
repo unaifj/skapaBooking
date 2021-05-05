@@ -13,15 +13,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
+import com.decode.bd.DBManager;
 import com.decode.categories.IntegrationTest;
 import com.decode.main.Main;
 import com.decode.objects.Usuario;
 import com.decode.rsh.UsuarioRSH;
-
-
-
-
-
 
 
 @Category(IntegrationTest.class)
@@ -44,9 +40,14 @@ public class UsuarioResourceTest {
     @BeforeClass
     public static void setUp() {
     	// start the server
+    	
+    	
     	server = Main.startServer();
         rsh = UsuarioRSH.getInstance();
        
+        DBManager dbm = new DBManager();
+    	dbm.deleteUsuarios();
+    	
         usuario1 = new Usuario("Juan", "Lopez", "1234");
         usuario2 = new Usuario("Silvia", "Montejo", "1234");
         usuario3 = new Usuario("Luis", "Alonso", "1234");

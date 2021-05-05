@@ -105,6 +105,35 @@ public class DBManager {
 		}
 	}
 	
+	//VACIAR TABLAS 
+	 public void deleteUsuarios() {
+		 PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+	  		PersistenceManager pm = pmf.getPersistenceManager();
+	  		Transaction tx = pm.currentTransaction();
+	        try {
+	     
+	            tx.begin();
+
+	            Extent<Usuario> e = pm.getExtent(Usuario.class, true);
+	            Iterator<Usuario> iter = e.iterator();
+	            while (iter.hasNext()) {
+	            	Usuario usuario = (Usuario) iter.next();
+	                 pm.deletePersistent(usuario);
+	                
+	            }
+
+	            tx.commit();
+	        } catch (Exception ex) {
+	            
+	        } finally {
+	            if (tx != null && tx.isActive()) {
+	                tx.rollback();
+	            }
+	            pm.close();
+	        }
+	    }
+
+	
 	//LISTAR USUARIOS DE BD
 	  public List<Usuario> getUsuarios() {
   		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
