@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 
 import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
+import com.decode.contacto.Ayuda;
 import  com.decode.objects.Opinion;
 import com.decode.sesion.VentanaInicio;
 
@@ -81,7 +82,7 @@ public class VentanaCrearOpinion extends JFrame {
 			btnPublicar.setBounds(61, 396, 96, 35);
 			getContentPane().add(btnPublicar);
 			
-			JButton btnCancelar = new JButton("Cancelar\r\n");
+			JButton btnCancelar = new JButton("Volver\r\n");
 			btnCancelar.setBounds(266, 396, 89, 35);
 			getContentPane().add(btnCancelar);
 			
@@ -92,7 +93,7 @@ public class VentanaCrearOpinion extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					
+										
 					String titulo = textTitulo.getText();
 					String descripcion = textDesc.getText();
 					float puntuacion = Float.parseFloat(textField.getText());
@@ -109,7 +110,13 @@ public class VentanaCrearOpinion extends JFrame {
 					
 				}
 			});
-			
+			btnCancelar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					VentanaOpiniones vo = new VentanaOpiniones();
+					setVisible(false);
+					vo.setVisible(true);
+					}
+				});
 			
 			
 			
