@@ -17,7 +17,10 @@ Crear una base de datos llamada *skapadb* y dar permisos al usuario por defecto
 La configuración por defecto para la base de datos y los usuarios puede ser actualizada en el fichero *resources/datanucleus.properties*.
 
 **Creación de las tablas**
+Las clases de datos deben ser procesadas antes de generar las tablas con el comando 
 
+    mvn datanucleus:enhance
+    
 Para la creación de las tablas se debe ejecutar el comando de maven
 
     mvn compile datanucleus:schema-create
@@ -29,26 +32,23 @@ Se pueden introducir datos de prueba en la aplicación utilizando el comando de 
 
     mvn -Pdatos exec:java
 
-**Inicio de la aplicación**
-
-La aplicación se inicializa utilizando el comando
-
-    mvn exec:java
-    
-**Teses unitarios**
-
-Los teses de unitarios se ejecutaran utilizando en comando
-
-    mvn test
-    
 **Teses de integracion**
 
 Los teses de integracion se ejecutaran utilizando en comando
 
     mvn verify -Pintegracion
 
+**Inicio de la aplicación**
 
+La aplicación se inicializa utilizando el comando
+
+    mvn exec:java
     
+**Construcción y prueba**
+
+Se puede construir el proyecto y lanzar las pruebas unitarias con el comando
+
+    mvn test       
     
     
     
@@ -70,10 +70,12 @@ Para poder acceder tendremos que realizar un registro (Para acceder al registro 
 
 **Ventana Principal**
 
-Una vez inicies sesión llegaras a la ventana principal en ella podrás seleccionar diferentes fechas pero no podrás realizar una busqueda.
-En esa misma ventana habrá un botón contacto donde accederas a toda la funcionalidad de contacto que hemos realizado.
-
-
+Una vez inicies sesión llegaras a la ventana principal en ella podrás seleccionar diferentes fechas y destinos y realizar busquedas.
+Si clicka en el botón Entrar se le abrira una nueva ventana donde visualizará una descripción de los distintos apartados del apartamento y en un futuro una imagen.
+Dentro de esta ventana visualizará un botón reserva que le dirigirá a una nueva ventana en la que selecionará el método de pago.
+Una de las opciones seria el pago con tarjeta que guardaria los datos de una tarjeta de un usuario y se visualizaría en un panel(Se crea pero no se visualiza).
+La otra opción es la de contrarembolso. 
+En esa misma ventana en la parte inferior derecha habrá un botón (contacta con nosotros) donde accederas a toda la funcionalidad de contacto que hemos realizado.
 
 
 
@@ -106,6 +108,7 @@ Nuestro Correo: Aparece la información de nuestro correo electrónico
 
 Videollamada : Este botón es una invitación a nuestro servidor(Discord) propio de SkapaBooking para que el usuario pueda realizar llamadas y videollamadas con nuestra empresa.
 
+Opinión : Con este botón se mostrará las diferentes opiniones de un usuario acerca de múltiples apartamentos además le dara la opción de crear una nueva opinión(Botón Publicar).
 
 Chat:
 
