@@ -26,6 +26,7 @@ import javax.swing.JTextField;
 import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
 import com.decode.contacto.Contacto;
+import com.decode.multilenguaje.Idioma;
 import com.decode.objects.Anuncio;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
@@ -42,6 +43,9 @@ public class VentanaPrincipal extends JFrame  {
 	private JTextField textDestino;
 	private JTextField txtIntroduzcaElPrecio;
 	
+	private Idioma idiom;
+
+	
 	/**
 	 * Ejecutamos la aplicación.
 	 */
@@ -50,7 +54,7 @@ public class VentanaPrincipal extends JFrame  {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaPrincipal frame = new VentanaPrincipal();
+					VentanaPrincipal frame = new VentanaPrincipal(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,7 +63,9 @@ public class VentanaPrincipal extends JFrame  {
 		});
 	}
 	
-	public VentanaPrincipal() {
+	public VentanaPrincipal(String idioma) {
+		
+		idiom = new Idioma(idioma);
 		
 		getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 62));
 		getContentPane().setLayout(null);
@@ -93,11 +99,67 @@ public class VentanaPrincipal extends JFrame  {
 		panelNorte.add(lblBandera);
 		
 		
-ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en la bd
+		ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en la bd
 		
 		ImageIcon img1= new ImageIcon(ico1.getImage().getScaledInstance(lblBandera.getWidth(), lblBandera.getHeight(), Image.SCALE_SMOOTH));
-		lblBandera.setIcon(img1);
 		
+		
+		ImageIcon ico2= new ImageIcon("img/banderaEN.png");//meter las rutas en la bd
+		
+		ImageIcon img2= new ImageIcon(ico2.getImage().getScaledInstance(lblBandera.getWidth(), lblBandera.getHeight(), Image.SCALE_SMOOTH));
+		
+		if (idioma.equals("ES")) {
+			lblBandera.setIcon(img1);
+		}else {
+			lblBandera.setIcon(img2);
+		}
+		
+		lblBandera.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			if (idioma.equals("EN")) {
+				VentanaPrincipal vp = new VentanaPrincipal("ES");
+				setVisible(false);
+				vp.setVisible(true);
+					
+			}else {
+				VentanaPrincipal vp = new VentanaPrincipal("EN");
+				setVisible(false);
+				vp.setVisible(true);
+				
+			}
+			
+				
+				
+				
+			}
+		});
 		
 		
 		
@@ -108,7 +170,7 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 		panelOeste.setBackground(Color.ORANGE);
 		panelOeste.setLayout(null);
 		
-		JLabel lblBuscar = new JLabel("Buscar");
+		JLabel lblBuscar = new JLabel(idiom.getProperty("buscar"));
 		lblBuscar.setFont(new Font("Tahoma", Font.BOLD, 19));
 		lblBuscar.setBounds(10, 11, 88, 23);
 		panelOeste.add(lblBuscar);
@@ -123,7 +185,7 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 		panelOeste.add(textDestino);
 		textDestino.setColumns(10);
 		
-		JLabel lblFechaEn = new JLabel("Fecha de entrada");
+		JLabel lblFechaEn = new JLabel(idiom.getProperty("fechaEntrada"));
 		lblFechaEn.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblFechaEn.setBounds(10, 107, 247, 23);
 		panelOeste.add(lblFechaEn);
@@ -132,7 +194,7 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 		fechaEntrada.setBounds(10, 135, 276, 30);
 		panelOeste.add(fechaEntrada);
 		
-		JLabel lblFechaDeSalida = new JLabel("Fecha de salida");
+		JLabel lblFechaDeSalida = new JLabel(idiom.getProperty("fechaSalida"));
 		lblFechaDeSalida.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblFechaDeSalida.setBounds(10, 176, 247, 23);
 		panelOeste.add(lblFechaDeSalida);
@@ -157,16 +219,16 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 		spinnerPrecioMax.setBounds(153, 318, 133, 23);
 		panelOeste.add(spinnerPrecioMax);
 		
-		Button buttonBuscar = new Button("Buscar");
+		Button buttonBuscar = new Button(idiom.getProperty("buscar"));
 		buttonBuscar.setActionCommand("");
 		buttonBuscar.setBounds(101, 358, 100, 30);
 		panelOeste.add(buttonBuscar);
 		
-		JLabel lblNNumPersonas = new JLabel("Numero de personas");
+		JLabel lblNNumPersonas = new JLabel(idiom.getProperty("numeroPersonas"));
 		lblNNumPersonas.setBounds(10, 239, 127, 14);
 		panelOeste.add(lblNNumPersonas);
 		
-		JLabel lblPrecio = new JLabel("Precio por noche");
+		JLabel lblPrecio = new JLabel(idiom.getProperty("precioNoche"));
 		lblPrecio.setBounds(10, 293, 112, 14);
 		panelOeste.add(lblPrecio);
 		
@@ -175,7 +237,7 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 		getContentPane().add(panelSuroeste);
 		panelSuroeste.setLayout(null);
 		
-		JLabel lblFiltradoPor = new JLabel("Filtrado por:");
+		JLabel lblFiltradoPor = new JLabel(idiom.getProperty("filtrarPor"));
 		lblFiltradoPor.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblFiltradoPor.setBounds(10, 28, 128, 23);
 		panelSuroeste.add(lblFiltradoPor);
@@ -221,7 +283,7 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 		btnMapa.setBounds(1049, 120, 123, 23);
 		getContentPane().add(btnMapa);
 		
-		JLabel lblAlojamientosEncontrados = new JLabel("Alojamientos encontrados");
+		JLabel lblAlojamientosEncontrados = new JLabel(idiom.getProperty("alojamientosEncontrados"));
 		lblAlojamientosEncontrados.setFont(new Font("Tahoma", Font.BOLD, 19));
 		lblAlojamientosEncontrados.setBounds(351, 120, 338, 23);
 		getContentPane().add(lblAlojamientosEncontrados);
@@ -235,11 +297,11 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 		
 		if (VentanaInicio.getUser() == null) {
 			
-			JButton btnRegistro = new JButton("Hazte cuenta");
+			JButton btnRegistro = new JButton(idiom.getProperty("crearCuenta"));
 			btnRegistro.setBounds(960, 13, 117, 23);
 			panelNorte.add(btnRegistro);
 			
-			JButton btnLogin = new JButton("Iniciar Sesion");
+			JButton btnLogin = new JButton(idiom.getProperty("iniciarSesion"));
 			btnLogin.setBounds(1087, 13, 123, 23);
 			panelNorte.add(btnLogin);
 			
@@ -266,7 +328,7 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 			});
 			
 		}else {
-			JLabel lblNewLabel = new JLabel("Has iniciado sesion como:  " + VentanaInicio.getUser().getNomUsuario());
+			JLabel lblNewLabel = new JLabel(idiom.getProperty("hasIniciadoComo") + " "   + VentanaInicio.getUser().getNomUsuario());
 			lblNewLabel.setForeground(Color.LIGHT_GRAY);
 			lblNewLabel.setBounds(991, 36, 201, 14);
 			panelNorte.add(lblNewLabel);
@@ -277,14 +339,14 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 
 
 			ImageIcon iconoperfil = new ImageIcon("img/perfil.PNG");               
-			ImageIcon img2= new ImageIcon(iconoperfil.getImage().getScaledInstance(lblImagenPerfil.getWidth(), lblImagenPerfil.getHeight(), Image.SCALE_SMOOTH));    
-			lblImagenPerfil.setIcon(img2);
+			ImageIcon img3= new ImageIcon(iconoperfil.getImage().getScaledInstance(lblImagenPerfil.getWidth(), lblImagenPerfil.getHeight(), Image.SCALE_SMOOTH));    
+			lblImagenPerfil.setIcon(img3);
 			
-			JButton btnAnuncios = new JButton("Mis anuncios");
+			JButton btnAnuncios = new JButton(idiom.getProperty("misAnuncios"));
 			btnAnuncios.setBounds(1023, 85, 113, 21);
 			panelNorte.add(btnAnuncios);
 			
-			JButton btnConfig = new JButton("Configuracion");
+			JButton btnConfig = new JButton(idiom.getProperty("configuracion"));
 			btnConfig.setBounds(1150, 85, 113, 21);
 			panelNorte.add(btnConfig);
 			

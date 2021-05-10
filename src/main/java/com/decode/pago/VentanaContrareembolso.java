@@ -153,7 +153,7 @@ public class VentanaContrareembolso extends JFrame {
 					dbm.insertarReserva(reserva);
 					
 					 JOptionPane.showMessageDialog(null, "Pago correctamente realizado", "Pago correcto", 1, null);
-					VentanaPrincipal C = new VentanaPrincipal();
+					VentanaPrincipal C = new VentanaPrincipal("ES");
 						 setVisible(false);
 						 C.setVisible(true);
 					
