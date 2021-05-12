@@ -386,7 +386,7 @@ public class VentanaPrincipal extends JFrame  {
 		
 		
 		
-		JLabel lblContacto = new JLabel("Contacta con nosotros");
+		JLabel lblContacto = new JLabel(idiom.getProperty("contacta"));
 		lblContacto.setBounds(1122, 11, 141, 14);
 		panel.add(lblContacto);
 		

@@ -8,8 +8,10 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,6 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.FileChooserUI;
 
 import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
@@ -44,6 +47,7 @@ public class VentanaCrearAnuncio extends JFrame {
 	private JTextField txtCodigoPostal;
 	private JTextField txtMunicipio;
 	private JTextField txtDireccion;
+	private JFileChooser fileChooser ;
 
 	/**
 	 * Launch the application.
@@ -65,6 +69,9 @@ public class VentanaCrearAnuncio extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaCrearAnuncio() {
+
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 200, 1289, 809);
 		contentPane = new JPanel();
@@ -221,10 +228,15 @@ public class VentanaCrearAnuncio extends JFrame {
 		txtDireccion.setColumns(10);
 		
 		//BOTON IMAGEN 
-//		btnImagen.addActionListener(new ActionListener() {
-//			
-//			
-//		});
+		btnImagen.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+		       fileChooser = new JFileChooser();
+		       fileChooser.showOpenDialog(fileChooser);
+			}
+			
+		});
 		
 		btnPublicar.addActionListener(new ActionListener() {
 
@@ -241,13 +253,13 @@ public class VentanaCrearAnuncio extends JFrame {
 				String municipio= txtMunicipio.getText();
 				int codigo= Integer.parseInt(txtCodigoPostal.getText());
 				String direccion= txtDireccion.getText();
-            	
+            	String ruta = fileChooser.getSelectedFile().getAbsolutePath();
             	float puntuacion = Float.parseFloat(textField.getText());
             	
             	Localidad loc= new Localidad(provincia, municipio,codigo,direccion);
             	List<Reserva> reservas = new ArrayList<Reserva>();
 				Apartamento aparta = new Apartamento(numHab, m2, loc,reservas);
-				Anuncio anuncio = new Anuncio(VentanaInicio.getUser(),aparta,nombre, desc, precio, false, m2);
+				Anuncio anuncio = new Anuncio(VentanaInicio.getUser(),aparta,nombre, desc, precio, false, m2, ruta);
 
 				System.out.println("EL ANUNCIO" + anuncio);
 				
@@ -262,14 +274,8 @@ public class VentanaCrearAnuncio extends JFrame {
 				 setVisible(false);
 				 C.setVisible(true);
 
-
-
             }
         });
-		
-		
-		
-		
-		
+
 	}
 }

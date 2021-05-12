@@ -27,7 +27,8 @@ public class TestAnuncio {
 		Localidad Triana= new Localidad("Andalucia", "Conil", 49503, "Avd maeda 3");
 		Apartamento apartamento= new Apartamento(4, 100, Triana, null);
 		Usuario user = new Usuario ("Tony", "tomny@gmail.com", "tonyMontana");
-		Anuncio anuncio=new Anuncio(user, apartamento, "Titulo anuncio", "Descripcion anuncio", 50, true,6);
+		String ruta = "/ruta";
+		Anuncio anuncio=new Anuncio(user, apartamento, "Titulo anuncio", "Descripcion anuncio", 50, true,6, ruta);
 		assertEquals(anuncio.getApartamento(),apartamento);
 		}
 
@@ -36,7 +37,8 @@ public class TestAnuncio {
 		Localidad Triana= new Localidad("Andalucia", "Conil", 49503, "Avd maeda 3");
 		Apartamento apartamento= new Apartamento(4, 100, Triana, null);
 		Usuario user = new Usuario ("Tony", "tomny@gmail.com", "tonyMontana");
-		Anuncio anuncio=new Anuncio(user, apartamento, "Titulo anuncio", "Descripcion anuncio", 50, true,6);
+		String ruta = "/ruta";
+		Anuncio anuncio=new Anuncio(user, apartamento, "Titulo anuncio", "Descripcion anuncio", 50, true,6, ruta);
 		assertEquals(anuncio.getTitulo(),"Titulo anuncio");	}
 
 	@Test
@@ -44,7 +46,8 @@ public class TestAnuncio {
 		Localidad Triana= new Localidad("Andalucia", "Conil", 49503, "Avd maeda 3");
 		Apartamento apartamento= new Apartamento(4, 100, Triana, null);
 		Usuario user = new Usuario ("Tony", "tomny@gmail.com", "tonyMontana");
-		Anuncio anuncio=new Anuncio(user, apartamento, "Titulo anuncio", "Descripcion anuncio", 50, true,6);
+		String ruta = "/ruta";
+		Anuncio anuncio=new Anuncio(user, apartamento, "Titulo anuncio", "Descripcion anuncio", 50, true,6, ruta);
 		assertEquals(anuncio.getDescripcion(),"Descripcion anuncio");	}
 
 	
@@ -54,7 +57,8 @@ public class TestAnuncio {
 		Localidad Triana= new Localidad("Andalucia", "Conil", 49503, "Avd maeda 3");
 		Apartamento apartamento= new Apartamento(4, 100, Triana, null);
 		Usuario user = new Usuario ("Tony", "tomny@gmail.com", "tonyMontana");
-		Anuncio anuncio=new Anuncio(user, apartamento, "Titulo anuncio", "Descripcion anuncio", 50, true,6);
+		String ruta = "/ruta";
+		Anuncio anuncio=new Anuncio(user, apartamento, "Titulo anuncio", "Descripcion anuncio", 50, true,6, ruta);
 		assertEquals(anuncio.getNumPersonas(),6);	}
 
 }

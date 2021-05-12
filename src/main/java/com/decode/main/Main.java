@@ -9,6 +9,7 @@ import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import com.decode.sesion.VentanaInicio;
+import com.decode.ventanaPrincipal.VentanaPrincipal;
 
 /**
  * Main class.
@@ -60,7 +61,7 @@ public class Main {
                 @Override
                 public void run() {
                     try {
-                        new VentanaInicio().setVisible(true);
+                       	new VentanaPrincipal("ES").setVisible(true);
                     } catch (Exception e) {
                     }
                 }
