@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.decode.admin.VentanaAdmin;
 import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
 import com.decode.objects.Usuario;
@@ -35,6 +36,7 @@ public class VentanaInicio extends JFrame {
 	private String nomUsuario;
 	private String contrasenya;
 	private boolean acceso;
+	private boolean accesoAdmin;
 
 	/**
 	 * Launch the application.
@@ -109,6 +111,7 @@ public class VentanaInicio extends JFrame {
 		
 		
 		acceso = false;
+		accesoAdmin=false;
 		
 		btnLogIn.addActionListener(new ActionListener() {
 			@Override
@@ -122,6 +125,9 @@ public class VentanaInicio extends JFrame {
 						acceso = true;
 						VentanaInicio.user = user;
 						
+					} else if(user.getNomUsuario().equals("admin") && user.getContrasenya().equals("admin123")) {
+						accesoAdmin=true;
+						
 					}
 					
 				}
@@ -129,6 +135,13 @@ public class VentanaInicio extends JFrame {
 					JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Incio correcto", 1, null);
 					
 					VentanaPrincipal vp = new VentanaPrincipal();
+					vp.setVisible(true);
+					setVisible(false);
+					
+				}else if(accesoAdmin){
+					JOptionPane.showMessageDialog(null, "Inicio de sesion como admin correcto", "Incio correcto", 1, null);
+					
+					VentanaAdmin vp = new VentanaAdmin();
 					vp.setVisible(true);
 					setVisible(false);
 					
