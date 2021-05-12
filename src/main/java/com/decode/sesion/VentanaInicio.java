@@ -125,7 +125,7 @@ public class VentanaInicio extends JFrame {
 						acceso = true;
 						VentanaInicio.user = user;
 						
-					} else if(user.getNomUsuario().equals("admin") && user.getContrasenya().equals("admin123")) {
+					} else if(nomUsuario.equals("admin") && contrasenya.equals("admin123")) {
 						accesoAdmin=true;
 						
 					}
