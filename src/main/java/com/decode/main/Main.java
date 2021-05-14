@@ -44,6 +44,9 @@ public class Main {
     public static void main(String[] args) throws IOException {
         // Lanzar la ventana si se ejecuta desde el jar normal
         // Lanzar el servidor si se ejecuta desde la consola
+    	
+    	VentanaPrincipal vp = new VentanaPrincipal("ES");
+    	vp.setVisible(true);
 
         if (args.length == 1 && args[0].equals("--server")) {
             // Para ejecturar el servidor " mvn exec:java -Dexec.args="--server" "

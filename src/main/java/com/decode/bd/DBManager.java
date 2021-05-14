@@ -66,11 +66,11 @@ public class DBManager {
 			Apartamento apar3= new Apartamento(8,120,barakaldo1, null);
 			pm.makePersistent(apar3);
 			
-			Anuncio anun1=new Anuncio(userA, apar1,"Apartamento soleado en la margen izquierda de Sevilla", "Apartamento soleado con vistas al mar ideal para pasar unos dias en el sur de España", 25, true, 4, "imagenes/anuncios/13880304.png");
+			Anuncio anun1=new Anuncio(userA, apar1,"Apartamento soleado en la margen izquierda de Sevilla", "Apartamento soleado con vistas al mar ideal para pasar unos dias en el sur de España", 25, true, 4, "img/anuncios/13880304.png");
 			pm.makePersistent(anun1);
-			Anuncio anun2=new Anuncio(userB, apar2,"Apartamento soleado muy bien situado en Conil", "Apartamento muy bien situado con vistas a la cala santo amor muy grande y espaciosa", 32, true, 6, "imagenes/anuncios/13880304.png");
+			Anuncio anun2=new Anuncio(userB, apar2,"Apartamento soleado muy bien situado en Conil", "Apartamento muy bien situado con vistas a la cala santo amor muy grande y espaciosa", 32, true, 6, "img/anuncios/13880304.png");
 			pm.makePersistent(anun2);
-			Anuncio anun3=new Anuncio(userC, apar3,"Apartamento muy bueno y completo para conocer Vizcaya", "Apartamento muy completo con lo basico para dormir cocinar y descansar, lo demas lo dejamos a gusto del cliente", 20, true, 3, "imagenes/anuncios/13880304.png");
+			Anuncio anun3=new Anuncio(userC, apar3,"Apartamento muy bueno y completo para conocer Vizcaya", "Apartamento muy completo con lo basico para dormir cocinar y descansar, lo demas lo dejamos a gusto del cliente", 20, true, 3, "img/anuncios/13880304.png");
 			pm.makePersistent(anun3);
 			
 

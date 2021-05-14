@@ -9,6 +9,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -31,6 +38,7 @@ import com.decode.objects.Localidad;
 import com.decode.objects.Reserva;
 import com.decode.sesion.VentanaInicio;
 import com.decode.ventanaperfil.VentanaPerfil;
+
 
 import javax.swing.JTextField;
 
@@ -234,6 +242,19 @@ public class VentanaCrearAnuncio extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 		       fileChooser = new JFileChooser();
 		       fileChooser.showOpenDialog(fileChooser);
+	
+		       String orig = fileChooser.getSelectedFile().getPath();
+		       Path origen = Paths.get(orig); 
+		       String dest = System.getProperty("user.dir") + "/img/anuncios/" + fileChooser.getSelectedFile().getName();
+		       Path destino = Paths.get(dest); 
+		      
+		       try {
+				Files.copy(origen, destino, StandardCopyOption.REPLACE_EXISTING);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		
 			}
 			
 		});
@@ -253,7 +274,7 @@ public class VentanaCrearAnuncio extends JFrame {
 				String municipio= txtMunicipio.getText();
 				int codigo= Integer.parseInt(txtCodigoPostal.getText());
 				String direccion= txtDireccion.getText();
-            	String ruta = fileChooser.getSelectedFile().getAbsolutePath();
+            	String ruta = "/img/anuncios/" + fileChooser.getSelectedFile().getName();
             	float puntuacion = Float.parseFloat(textField.getText());
             	
             	Localidad loc= new Localidad(provincia, municipio,codigo,direccion);
