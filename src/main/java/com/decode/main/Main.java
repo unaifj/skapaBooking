@@ -44,31 +44,12 @@ public class Main {
     public static void main(String[] args) throws IOException {
         // Lanzar la ventana si se ejecuta desde el jar normal
         // Lanzar el servidor si se ejecuta desde la consola
-    	
+    
+
     	VentanaPrincipal vp = new VentanaPrincipal("ES");
     	vp.setVisible(true);
-
-        if (args.length == 1 && args[0].equals("--server")) {
-            // Para ejecturar el servidor " mvn exec:java -Dexec.args="--server" "
-            // En power shell es " mvn exec:java "-Dexec.args='--server'" "
-            // Si args esta vacio lanzamos el servidor
-
-            final HttpServer server = startServer();
-            System.out.println(String.format(
-                    "Jersey app started with WADL available at " + "%sapplication.wadl\n Hit enter to stop it...",
-                    BASE_URI));
-            System.in.read();
-            server.shutdownNow();
-        } else {
-            EventQueue.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                       	new VentanaPrincipal("ES").setVisible(true);
-                    } catch (Exception e) {
-                    }
-                }
-            });
-        }
+                       	
+              
+        
     }
 }
