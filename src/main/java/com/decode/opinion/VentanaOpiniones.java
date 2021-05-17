@@ -90,7 +90,7 @@ public class VentanaOpiniones extends JFrame {
 			
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaPrincipal vp = new VentanaPrincipal();
+				VentanaPrincipal vp = new VentanaPrincipal("ES");
 				setVisible(false);
 				vp.setVisible(true);
 				}

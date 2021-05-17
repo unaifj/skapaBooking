@@ -25,10 +25,11 @@ public class Anuncio {
 	private double precioNoche;
 	private boolean disponibilidad;
 	private int numPersonas;
+	private String img;
 	
 
 	public Anuncio(Usuario usuario, Apartamento apartamento, String titulo, String descripcion, double precioNoche,
-			boolean disponibilidad, int numPersonas) {
+			boolean disponibilidad, int numPersonas, String img) {
 		super();
 		this.usuario = usuario;
 		this.apartamento = apartamento;
@@ -37,9 +38,10 @@ public class Anuncio {
 		this.precioNoche = precioNoche;
 		this.disponibilidad = disponibilidad;
 		this.numPersonas = numPersonas;
+		this.img = img;
 	}
 
-
+	
 
 
 
@@ -186,14 +188,19 @@ public class Anuncio {
 
 
 
-	
 
 
-	@Override
-	public String toString() {
-		return "Anuncio [id=" + id + ", usuario=" + usuario + ", apartamento=" + apartamento + ", titulo=" + titulo
-				+ ", descripcion=" + descripcion + ", precioNoche=" + precioNoche + ", disponibilidad=" + disponibilidad
-				+ ", numPersonas=" + numPersonas + "]";
+	public String getImg() {
+		return img;
+	}
+
+
+
+
+
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 

@@ -134,7 +134,7 @@ public class VentanaInicio extends JFrame {
 				if (acceso) {
 					JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Incio correcto", 1, null);
 					
-					VentanaPrincipal vp = new VentanaPrincipal();
+					VentanaPrincipal vp = new VentanaPrincipal("ES");
 					vp.setVisible(true);
 					setVisible(false);
 					

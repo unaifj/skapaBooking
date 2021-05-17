@@ -87,13 +87,14 @@ public class AnuncioResourceTest {
         apartamento4= new Apartamento(1,43,localidad4,null);
         apartamento5= new Apartamento(4,95,localidad5,null);
 
+        String ruta = "/ruta";
        
-        anuncio1=new Anuncio(usuario1,apartamento1,"Anuncio del titulo 1","descripcion del primer anuncio",57.00,true,4 );
-        anuncio2=new Anuncio(usuario2,apartamento2,"Anuncio del titulo 2","descripcion del segundo anuncio",32.00,false,5 );
-        anuncio3=new Anuncio(usuario3,apartamento3,"Anuncio del titulo 3","descripcion del tercer anuncio",70.00,true,3 );
-        anuncio4=new Anuncio(usuario4,apartamento4,"Anuncio del titulo 4","descripcion del cuarto anuncio",17.00,false,4 );
-        anuncio5=new Anuncio(usuario5,apartamento5,"Anuncio del titulo 5","descripcion del quinto anuncio",5.00,true,4 );
-        anuncio6= new Anuncio(usuario1,apartamento2,"Anuncio del titulo 6","descripcion del sexto anuncio",5.00,true,4);
+        anuncio1=new Anuncio(usuario1,apartamento1,"Anuncio del titulo 1","descripcion del primer anuncio",57.00,true,4, ruta);
+        anuncio2=new Anuncio(usuario2,apartamento2,"Anuncio del titulo 2","descripcion del segundo anuncio",32.00,false,5, ruta );
+        anuncio3=new Anuncio(usuario3,apartamento3,"Anuncio del titulo 3","descripcion del tercer anuncio",70.00,true,3, ruta );
+        anuncio4=new Anuncio(usuario4,apartamento4,"Anuncio del titulo 4","descripcion del cuarto anuncio",17.00,false,4, ruta );
+        anuncio5=new Anuncio(usuario5,apartamento5,"Anuncio del titulo 5","descripcion del quinto anuncio",5.00,true,4, ruta );
+        anuncio6= new Anuncio(usuario1,apartamento2,"Anuncio del titulo 6","descripcion del sexto anuncio",5.00,true,4, ruta);
     }
     
     @AfterClass

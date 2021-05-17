@@ -9,6 +9,7 @@ import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import com.decode.sesion.VentanaInicio;
+import com.decode.ventanaPrincipal.VentanaPrincipal;
 
 /**
  * Main class.
@@ -43,28 +44,12 @@ public class Main {
     public static void main(String[] args) throws IOException {
         // Lanzar la ventana si se ejecuta desde el jar normal
         // Lanzar el servidor si se ejecuta desde la consola
+    
 
-        if (args.length == 1 && args[0].equals("--server")) {
-            // Para ejecturar el servidor " mvn exec:java -Dexec.args="--server" "
-            // En power shell es " mvn exec:java "-Dexec.args='--server'" "
-            // Si args esta vacio lanzamos el servidor
-
-            final HttpServer server = startServer();
-            System.out.println(String.format(
-                    "Jersey app started with WADL available at " + "%sapplication.wadl\n Hit enter to stop it...",
-                    BASE_URI));
-            System.in.read();
-            server.shutdownNow();
-        } else {
-            EventQueue.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        new VentanaInicio().setVisible(true);
-                    } catch (Exception e) {
-                    }
-                }
-            });
-        }
+    	VentanaPrincipal vp = new VentanaPrincipal("ES");
+    	vp.setVisible(true);
+                       	
+              
+        
     }
 }

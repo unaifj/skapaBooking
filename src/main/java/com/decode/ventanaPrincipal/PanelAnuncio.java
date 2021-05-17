@@ -48,13 +48,17 @@ public class PanelAnuncio extends JPanel implements ActionListener {
 		lblPers.setBounds(10, 99, 13, 14);
 		add(lblPers);
 		
-		JLabel lblImage = new JLabel("[IMAGEN]");
-		lblImage.setBounds(790, 11, 46, 14);
+		
+		JLabel lblImage = new JLabel();
+		lblImage.setBounds(755, 11, 81, 73);
 		add(lblImage);
-			
+		ImageIcon ico= new ImageIcon(anuncio.getImg());
+		System.out.println(anuncio.getImg());
+		ImageIcon img= new ImageIcon(ico.getImage().getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_SMOOTH));
+		lblImage.setIcon(img);
 		
 		
-		JLabel lblIconoPers = new JLabel("New label");
+		JLabel lblIconoPers = new JLabel();
 		lblIconoPers.setBounds(20, 95, 13, 22);
 		add(lblIconoPers);
 		

@@ -166,7 +166,7 @@ public class VentanaPago extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				VentanaPrincipal C = new VentanaPrincipal();
+				VentanaPrincipal C = new VentanaPrincipal("ES");
 				 setVisible(false);
 				 C.setVisible(true);
 				

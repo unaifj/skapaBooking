@@ -176,7 +176,7 @@ public class Contacto extends JFrame{
 		
 		botonVP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaPrincipal VP = new VentanaPrincipal();
+				VentanaPrincipal VP = new VentanaPrincipal("ES");
 				setVisible(false);
 				VP.setVisible(true);
 				}
