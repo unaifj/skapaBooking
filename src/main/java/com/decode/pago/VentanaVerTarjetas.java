@@ -129,7 +129,7 @@ public class VentanaVerTarjetas extends JFrame {
 		}
 		
 		JList list = new JList(modelo);
-		list.setBounds(185, 190, 566, 400);
+		list.setBounds(238, 187, 566, 400);
 	
 		contentPane.add(list);
 		

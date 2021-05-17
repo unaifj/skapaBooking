@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -30,19 +31,21 @@ import com.decode.bd.DBManager;
 import com.decode.contacto.Contacto;
 import com.decode.crearAnuncio.VentanaCrearAnuncio;
 import com.decode.objects.Anuncio;
+import com.decode.objects.TarjetaCredito;
+import com.decode.objects.Usuario;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
 import com.toedter.calendar.JDateChooser;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+
+import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.JList;
 
 public class VentanaAdminUsuarios extends JFrame  {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
 	
 	/**
 	 * Ejecutamos la aplicación.
@@ -142,85 +145,41 @@ public class VentanaAdminUsuarios extends JFrame  {
 		ImageIcon img1= new ImageIcon(ico1.getImage().getScaledInstance(lblBandera.getWidth(), lblBandera.getHeight(), Image.SCALE_SMOOTH));
 		lblBandera.setIcon(img1);
 		
-		JLabel lblNewLabel_1 = new JLabel("Configuracion general");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_1.setBounds(10, 120, 179, 14);
-		getContentPane().add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("Configuracion avanzada");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_2.setBounds(10, 458, 152, 14);
-		getContentPane().add(lblNewLabel_2);
-		
-		JLabel lblNewLabel_3 = new JLabel("Informacion de la cuenta");
-		lblNewLabel_3.setBounds(59, 145, 130, 14);
-		getContentPane().add(lblNewLabel_3);
-		
-		textField = new JTextField();
-		textField.setBounds(218, 187, 130, 20);
-		getContentPane().add(textField);
-		textField.setColumns(10);
-		
-		JLabel lblNewLabel_4 = new JLabel("Nombre de usuario");
-		lblNewLabel_4.setBounds(82, 190, 107, 14);
-		getContentPane().add(lblNewLabel_4);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(218, 229, 130, 20);
-		getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		JList list = new JList();
+		list.setBounds(241, 176, 515, 561);
+		getContentPane().add(list);
 		
 		JButton btnNewButton = new JButton("Editar");
-		btnNewButton.setBounds(381, 186, 80, 23);
+		btnNewButton.setBounds(781, 665, 89, 23);
 		getContentPane().add(btnNewButton);
 		
-		JLabel lblNewLabel_5 = new JLabel("Nombre");
-		lblNewLabel_5.setBounds(82, 232, 46, 14);
-		getContentPane().add(lblNewLabel_5);
-		
-		JLabel lblNewLabel_6 = new JLabel("Apellidos");
-		lblNewLabel_6.setBounds(82, 257, 46, 14);
-		getContentPane().add(lblNewLabel_6);
-		
-		textField_2 = new JTextField();
-		textField_2.setBounds(218, 254, 130, 20);
-		getContentPane().add(textField_2);
-		textField_2.setColumns(10);
-		
-		JButton btnNewButton_1 = new JButton("Editar");
-		btnNewButton_1.setBounds(381, 253, 80, 23);
+		JButton btnNewButton_1 = new JButton("Eliminar");
+		btnNewButton_1.setBounds(781, 714, 89, 23);
 		getContentPane().add(btnNewButton_1);
 		
-		JLabel lblNewLabel_7 = new JLabel("Imagen");
-		lblNewLabel_7.setBounds(594, 257, 46, 14);
-		getContentPane().add(lblNewLabel_7);
-		
-		JButton btnNewButton_2 = new JButton("Seleccionar");
-		btnNewButton_2.setBounds(689, 253, 89, 23);
+		JButton btnNewButton_2 = new JButton("Atras");
+		btnNewButton_2.setBounds(26, 137, 89, 23);
 		getContentPane().add(btnNewButton_2);
 		
+		JLabel lblNewLabel_1 = new JLabel("LISTA DE USUARIOS");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel_1.setBounds(387, 141, 369, 14);
+		getContentPane().add(lblNewLabel_1);
 		
 	
-		
-		btnNewButton_2.addActionListener(new ActionListener() {
+		List <Usuario> usuarios = new ArrayList<Usuario>();
+		DBManager dbm = new DBManager();
+		usuarios= dbm.getUsuarios();
+
+		DefaultListModel modelo = new DefaultListModel<>();
+	
+		for (Usuario u : usuarios) {
 			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JFileChooser fileChooser = new JFileChooser();
-				JFileChooser fc = new JFileChooser();
-				fc.setCurrentDirectory(new File(".")); //Abre el directorio raiz de mi proyecto
-				//fc.setCurrentDirectory(new File("src")); //Abre la carpeta src de mi proyecto
-				int seleccionado = fc.showOpenDialog(null);
-				if(seleccionado == JFileChooser.APPROVE_OPTION) {
-					File ficheroSeleccionado = fc.getSelectedFile();
-					ficheroSeleccionado.getAbsolutePath();
-				}
-				
-			}
-		});
+			//list.addElement(u.getNomUsuario());
+		}
 		
 	
-		
+		//contentPane.add(list);
 		
 		
 	
