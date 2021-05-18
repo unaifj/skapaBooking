@@ -25,6 +25,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class VentanaInicio extends JFrame {
 
@@ -68,50 +69,109 @@ public class VentanaInicio extends JFrame {
 
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 329, 274);
+		setBounds(100, 100, 867, 676);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.YELLOW);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JPanel panelNorte = new JPanel();
+		panelNorte.setLayout(null);
+		panelNorte.setBackground(Color.BLUE);
+		panelNorte.setBounds(0, 0, 858, 106);
+		contentPane.add(panelNorte);
+		
+		JLabel lblTitulo = new JLabel("SKAPABOOKING.COM");
+		lblTitulo.setForeground(Color.WHITE);
+		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 26));
+		lblTitulo.setBounds(10, 0, 250, 37);
+		panelNorte.add(lblTitulo);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(10, 117, 400, 379);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
 		JLabel lblNomUsuario = new JLabel("Nombre de usuario:");
-		lblNomUsuario.setBounds(10, 78, 103, 14);
-		contentPane.add(lblNomUsuario);
+		lblNomUsuario.setBounds(10, 100, 103, 14);
+		panel.add(lblNomUsuario);
 		
 		JLabel lblContraseña = new JLabel("Contraseña:");
-		lblContraseña.setBounds(10, 118, 86, 14);
-		contentPane.add(lblContraseña);
+		lblContraseña.setBounds(10, 128, 86, 14);
+		panel.add(lblContraseña);
 		
 		textNomUsuario = new JTextField();
-		textNomUsuario.setBounds(154, 75, 137, 20);
-		contentPane.add(textNomUsuario);
+		textNomUsuario.setBounds(148, 97, 137, 20);
+		panel.add(textNomUsuario);
 		textNomUsuario.setColumns(10);
 		
 		textContrasenya = new JTextField();
-		textContrasenya.setBounds(154, 115, 137, 20);
-		contentPane.add(textContrasenya);
+		textContrasenya.setBounds(148, 125, 137, 20);
+		panel.add(textContrasenya);
 		textContrasenya.setColumns(10);
 		
 		JButton btnLogIn = new JButton("LogIn");
+		btnLogIn.setBounds(193, 194, 89, 23);
+		panel.add(btnLogIn);
+		
+		JLabel lblReg = new JLabel("No tengo una cuenta skapa");
+		lblReg.setBounds(10, 198, 142, 14);
+		panel.add(lblReg);
+		
+		JLabel lblNewLabel = new JLabel("Inicio de sesion");
+		lblNewLabel.setBounds(10, 22, 156, 20);
+		panel.add(lblNewLabel);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setLayout(null);
+		panel_1.setBackground(Color.LIGHT_GRAY);
+		panel_1.setBounds(0, 507, 851, 130);
+		contentPane.add(panel_1);
+		
+		JLabel lblContacto = new JLabel("Contacta con nosotros");
+		lblContacto.setBounds(1122, 11, 141, 14);
+		panel_1.add(lblContacto);
+		
+		lblReg.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VentanaRegistro vr = new VentanaRegistro();
+				vr.setVisible(true);
+				setVisible(false);
+				
+			}
+		});
 		btnLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnLogIn.setBounds(202, 163, 89, 23);
-		contentPane.add(btnLogIn);
-		
-		JLabel lblNewLabel = new JLabel("SKAPABOOKING");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel.setBounds(10, 11, 156, 20);
-		contentPane.add(lblNewLabel);
-		
-		JLabel lblReg = new JLabel("No tengo una cuenta skapa");
-		lblReg.setBounds(161, 210, 142, 14);
-		contentPane.add(lblReg);
-		
-		
-		acceso = false;
-		accesoAdmin=false;
 		
 		btnLogIn.addActionListener(new ActionListener() {
 			@Override
@@ -153,40 +213,9 @@ public class VentanaInicio extends JFrame {
 			}
 		});
 		
-		lblReg.addMouseListener(new MouseListener() {
-			
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				VentanaRegistro vr = new VentanaRegistro();
-				vr.setVisible(true);
-				setVisible(false);
-				
-			}
-		});
+		
+		acceso = false;
+		accesoAdmin=false;
 		
 		
 		

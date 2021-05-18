@@ -41,8 +41,7 @@ import javax.swing.SpinnerNumberModel;
 
 public class VentanaPrincipal extends JFrame  {
 	private JTextField textDestino;
-	private JTextField txtIntroduzcaElPrecio;
-	
+	private JTextField txtIntroduzcaElPrecio;	
 	private Idioma idiom;
 
 	
@@ -480,11 +479,13 @@ public class VentanaPrincipal extends JFrame  {
 				
 			}
 		});
+
 		
-		
+	}
 	
+	public Idioma getIdiom () {
 		
-		
+		return idiom;
 		
 	}
 }

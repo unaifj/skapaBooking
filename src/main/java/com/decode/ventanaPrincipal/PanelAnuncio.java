@@ -2,6 +2,7 @@ package com.decode.ventanaPrincipal;
 
 import java.awt.Image;
 import java.awt.SystemColor;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -52,8 +53,8 @@ public class PanelAnuncio extends JPanel implements ActionListener {
 		JLabel lblImage = new JLabel();
 		lblImage.setBounds(755, 11, 81, 73);
 		add(lblImage);
+		
 		ImageIcon ico= new ImageIcon(anuncio.getImg());
-		System.out.println(anuncio.getImg());
 		ImageIcon img= new ImageIcon(ico.getImage().getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_SMOOTH));
 		lblImage.setIcon(img);
 		
@@ -73,7 +74,10 @@ public class PanelAnuncio extends JPanel implements ActionListener {
 		btnAnuncio.addActionListener(new ActionListener() {	
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
+				for (Window win : Window.getWindows()) {
+					win.setVisible(false);
+				}
+				
 				VentanaAnuncio vr = new VentanaAnuncio(anuncio);
 				vr.setVisible(true);
 			}

@@ -25,6 +25,7 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
@@ -37,6 +38,7 @@ import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
 import com.decode.objects.Reserva;
 import com.decode.sesion.VentanaInicio;
+import com.decode.ventanaperfil.VentanaMisAnuncios;
 import com.decode.ventanaperfil.VentanaPerfil;
 
 
@@ -282,18 +284,18 @@ public class VentanaCrearAnuncio extends JFrame {
 				Apartamento aparta = new Apartamento(numHab, m2, loc,reservas);
 				Anuncio anuncio = new Anuncio(VentanaInicio.getUser(),aparta,nombre, desc, precio, false, m2, ruta);
 
-				System.out.println("EL ANUNCIO" + anuncio);
 				
 				DBManager dbm = new DBManager();
 				try {
 					dbm.insertarAnuncio(anuncio);
+					JOptionPane.showMessageDialog(null, "El anuncio se a creado correctamente", "Correcto", 1);
 				} catch (DBException e1) {
-					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(null, "Error creando el anuncio", "Error de conexion", 0);
 					e1.printStackTrace();
 				}
-                VentanaPerfil C = new VentanaPerfil();
-				 setVisible(false);
-				 C.setVisible(true);
+				setVisible(false);
+                VentanaMisAnuncios vma = new VentanaMisAnuncios(VentanaInicio.getUser());
+                vma.setVisible(true);
 
             }
         });

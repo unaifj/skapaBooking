@@ -1,38 +1,28 @@
 package com.decode.ventanaPrincipal;
 
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Panel;
-import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JSpinner;
-import javax.swing.JTextField;
-import javax.swing.SpinnerNumberModel;
+import javax.swing.SwingConstants;
 
-import com.decode.bd.DBManager;
 import com.decode.contacto.Contacto;
 import com.decode.objects.Anuncio;
 import com.decode.pago.VentanaPago;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
 import com.decode.ventanaperfil.VentanaConfiguacion;
-import com.google.protobuf.StringValue;
-import com.toedter.calendar.JDateChooser;
-import javax.swing.SwingConstants;
 
 public class VentanaAnuncio extends JFrame{
 	
@@ -164,13 +154,9 @@ public class VentanaAnuncio extends JFrame{
 		
 		Panel panelCentro = new Panel();
 		panelCentro.setBackground(Color.WHITE);
-		panelCentro.setBounds(6, 167, 943, 608);
+		panelCentro.setBounds(6, 158, 943, 617);
 		getContentPane().add(panelCentro);
 		panelCentro.setLayout(null);
-		
-		JButton btnAtras = new JButton("ATRAS\r\n");
-		btnAtras.setBounds(364, 570, 117, 29);
-		panelCentro.add(btnAtras);
 		
 		JLabel labelDesc = new JLabel(anuncio.getDescripcion());
 		labelDesc.setVerticalAlignment(SwingConstants.TOP);
@@ -195,15 +181,23 @@ public class VentanaAnuncio extends JFrame{
 		lblNewLabel_2.setBounds(72, 374, 165, 21);
 		panelCentro.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("FOTO");
+		JLabel lblNewLabel_3 = new JLabel();
 		lblNewLabel_3.setForeground(Color.LIGHT_GRAY);
 		lblNewLabel_3.setBackground(Color.BLACK);
-		lblNewLabel_3.setBounds(71, 26, 642, 250);
+		lblNewLabel_3.setBounds(48, 11, 837, 265);
 		panelCentro.add(lblNewLabel_3);
 		
+		ImageIcon ico= new ImageIcon(anuncio.getImg());
+		ImageIcon img= new ImageIcon(ico.getImage().getScaledInstance(lblNewLabel_3.getWidth(), lblNewLabel_3.getHeight(), Image.SCALE_SMOOTH));
+		lblNewLabel_3.setIcon(img);
+		
 		JButton btnReservar = new JButton("Reservar");
-		btnReservar.setBounds(135, 573, 89, 23);
+		btnReservar.setBounds(817, 573, 89, 23);
 		panelCentro.add(btnReservar);
+		
+		JButton btnAtras = new JButton("Atras");
+		btnAtras.setBounds(26, 573, 89, 23);
+		panelCentro.add(btnAtras);
 		
 		
 		
@@ -280,6 +274,18 @@ public class VentanaAnuncio extends JFrame{
 				VentanaPago vp = new VentanaPago();
 				setVisible(false);
 				vp.setVisible(true);
+				
+			}
+		});
+		
+		btnAtras.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				VentanaPrincipal vp = new VentanaPrincipal("ES");
+				vp.setVisible(true);
+				
 				
 			}
 		});
