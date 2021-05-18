@@ -28,6 +28,7 @@ import com.decode.objects.Anuncio;
 import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
 import com.decode.objects.TarjetaCredito;
+import com.decode.objects.Usuario;
 import com.decode.sesion.VentanaInicio;
 import com.decode.ventanaPrincipal.VentanaPrincipal;
 
@@ -112,9 +113,10 @@ public class VentanaVerTarjetas extends JFrame {
 		btnNewButton.setBounds(10, 140, 89, 23);
 		contentPane.add(btnNewButton);
 		
+	
 		//Modelo para organizar y acumular info
 			
-			
+		
 				
 				
 		
@@ -122,15 +124,16 @@ public class VentanaVerTarjetas extends JFrame {
 		DBManager dbm = new DBManager();
 		tarjetas = dbm.getTarjeta(VentanaInicio.getUser());
 
-		DefaultListModel modelo = new DefaultListModel<>();
-	
+		DefaultListModel<Object> modelo = new DefaultListModel<>();
+		
 		for (TarjetaCredito t : tarjetas) {
+			modelo.addElement(t.getUsuario().getNomUsuario());
 			modelo.addElement(t.getNumTarjeta());
+			modelo.addElement(t.getFecha());
 		}
 		
-		JList list = new JList(modelo);
-		list.setBounds(238, 187, 566, 400);
-	
+		JList<Object> list = new JList<Object>(modelo);
+		list.setBounds(305, 188, 494, 429);
 		contentPane.add(list);
 		
 		btnNewButton.addActionListener(new ActionListener() {

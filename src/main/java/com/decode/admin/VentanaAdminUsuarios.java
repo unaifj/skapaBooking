@@ -33,6 +33,7 @@ import com.decode.crearAnuncio.VentanaCrearAnuncio;
 import com.decode.objects.Anuncio;
 import com.decode.objects.TarjetaCredito;
 import com.decode.objects.Usuario;
+import com.decode.pago.VentanaVerTarjetas;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
 import com.toedter.calendar.JDateChooser;
@@ -44,6 +45,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 public class VentanaAdminUsuarios extends JFrame  {
 	
@@ -182,7 +184,24 @@ public class VentanaAdminUsuarios extends JFrame  {
 		getContentPane().add(list);
 		
 		
-		
+		btnNewButton_1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			
+				
+				Usuario u= new Usuario(getTitle(), getWarningString(), getName());
+				
+				dbm.deleteUsuarioByNomUsuario(getName());
+				
+				JOptionPane.showMessageDialog(null, "Tarjeta correctamente añadida", "Añadido correctamente", 1, null);
+				VentanaVerTarjetas C = new VentanaVerTarjetas();
+				setVisible(false);
+				C.setVisible(true);
+			}
+		});
 		
 		
 	

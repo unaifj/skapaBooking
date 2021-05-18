@@ -443,7 +443,7 @@ public class DBManager {
 					
 					try {
 						tx.begin();
-				
+						pm.makePersistent(tarjeta.getUsuario());
 						pm.makePersistent(tarjeta);
 						tx.commit();
 						
