@@ -5,8 +5,17 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JList;
 import javax.swing.ListModel;
+
+import com.decode.bd.DBManager;
+import com.decode.objects.Anuncio;
+import com.decode.objects.Usuario;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
 public class VentanaListaAnuncios extends JFrame  {
@@ -41,9 +50,7 @@ public class VentanaListaAnuncios extends JFrame  {
 		lblContacto.setBounds(900, 11, 141, 14);
 		panel.add(lblContacto);
 		
-		JList list = new JList((ListModel) null);
-		list.setBounds(183, 167, 701, 400);
-		getContentPane().add(list);
+		
 		
 		JLabel lblAnuncios = new JLabel("Anuncios");
 		lblAnuncios.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -61,5 +68,21 @@ public class VentanaListaAnuncios extends JFrame  {
 		JButton btnNewButton_2 = new JButton("Volver\r\n");
 		btnNewButton_2.setBounds(616, 587, 89, 23);
 		getContentPane().add(btnNewButton_2);
+		
+		List <Anuncio> anuncios = new ArrayList<Anuncio>();
+		DBManager dbm = new DBManager();
+		anuncios= dbm.getAnuncios();
+
+		DefaultListModel<Object> modelo = new DefaultListModel<>();
+	
+		for (Anuncio a : anuncios) {
+			
+			modelo.addElement(a.getTitulo());
+		}
+		
+	
+		JList<Object> list = new JList<Object>(modelo);
+		list.setBounds(183, 167, 701, 400);
+		getContentPane().add(list);
 	}
 }

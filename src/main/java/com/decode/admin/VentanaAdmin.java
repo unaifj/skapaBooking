@@ -32,6 +32,7 @@ import com.decode.crearAnuncio.VentanaCrearAnuncio;
 import com.decode.objects.Anuncio;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
+import com.decode.ventanaPrincipal.VentanaListaAnuncios;
 import com.decode.ventanaPrincipal.VentanaPrincipal;
 import com.toedter.calendar.JDateChooser;
 import java.awt.BorderLayout;
@@ -179,10 +180,26 @@ public class VentanaAdmin extends JFrame  {
 			}
 		});
 		
-		
+		btnNewButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaAdminUsuarios p = new VentanaAdminUsuarios();
+				setVisible(false);
+				p.setVisible(true);
+			}
+		});
 	
 		
-		
+		btnAdministrarAnuncios.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaListaAnuncios p = new VentanaListaAnuncios();
+				setVisible(false);
+				p.setVisible(true);
+			}
+		});
 	
 		
 		

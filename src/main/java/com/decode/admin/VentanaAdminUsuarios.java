@@ -145,9 +145,8 @@ public class VentanaAdminUsuarios extends JFrame  {
 		ImageIcon img1= new ImageIcon(ico1.getImage().getScaledInstance(lblBandera.getWidth(), lblBandera.getHeight(), Image.SCALE_SMOOTH));
 		lblBandera.setIcon(img1);
 		
-		JList list = new JList();
-		list.setBounds(241, 176, 515, 561);
-		getContentPane().add(list);
+		
+		
 		
 		JButton btnNewButton = new JButton("Editar");
 		btnNewButton.setBounds(781, 665, 89, 23);
@@ -171,15 +170,19 @@ public class VentanaAdminUsuarios extends JFrame  {
 		DBManager dbm = new DBManager();
 		usuarios= dbm.getUsuarios();
 
-		DefaultListModel modelo = new DefaultListModel<>();
+		DefaultListModel<Object> modelo = new DefaultListModel<>();
 	
 		for (Usuario u : usuarios) {
 			
-			//list.addElement(u.getNomUsuario());
+			modelo.addElement(u.getNomUsuario());
 		}
 		
-	
-		//contentPane.add(list);
+		JList<Object> list = new JList<Object>(modelo);
+		list.setBounds(241, 176, 515, 561);
+		getContentPane().add(list);
+		
+		
+		
 		
 		
 	
