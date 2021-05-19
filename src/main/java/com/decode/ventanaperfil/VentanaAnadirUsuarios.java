@@ -17,6 +17,7 @@ public class VentanaAnadirUsuarios extends JFrame{
 	private JTextField txtContrasea;
 	private JTextField txtRepetirContrasea;
 	public VentanaAnadirUsuarios() {
+		setBounds(300, 200, 1289, 809);
 		getContentPane().setLayout(null);
 		
 		JPanel panelNorte = new JPanel();
