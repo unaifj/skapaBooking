@@ -18,7 +18,7 @@ import javax.swing.JButton;
 public class PanelAnuncio extends JPanel implements ActionListener {
 
 
-    public PanelAnuncio(Anuncio anuncio)
+    public PanelAnuncio(Anuncio anuncio, boolean editable)
     {
     	setBackground(SystemColor.window);
     	
@@ -71,6 +71,26 @@ public class PanelAnuncio extends JPanel implements ActionListener {
 		JButton btnAnuncio = new JButton("Entrar");
 		btnAnuncio.setBounds(661, 95, 89, 23);
 		add(btnAnuncio);
+		
+		if (editable) {
+			
+			JButton btnEditar = new JButton();
+			btnEditar.setBounds(603, 95, 24, 23);
+			add(btnEditar);
+			
+			JButton btnEliminar = new JButton();
+			btnEliminar.setBounds(569, 95, 24, 23);
+			add(btnEliminar);
+			
+			ImageIcon iconoEditar = new ImageIcon("img/lapiz.png");
+			ImageIcon iconoEliminar = new ImageIcon("img/eliminar.png");
+			
+			ImageIcon imgEditar= new ImageIcon(iconoEditar.getImage().getScaledInstance(btnEditar.getWidth(), btnEditar.getHeight(), Image.SCALE_SMOOTH));
+			ImageIcon imgEliminar= new ImageIcon(iconoEliminar.getImage().getScaledInstance(btnEliminar.getWidth(), btnEliminar.getHeight(), Image.SCALE_SMOOTH));
+			btnEditar.setIcon(imgEditar);
+			btnEliminar.setIcon(imgEliminar);
+			
+		}
 		btnAnuncio.addActionListener(new ActionListener() {	
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -87,10 +107,10 @@ public class PanelAnuncio extends JPanel implements ActionListener {
        
     }
 
-    public void Mi_Componente(Anuncio anuncio)
+    public void Mi_Componente(Anuncio anuncio, boolean editable)
     {        
         //instancia nueva a componente
-        PanelAnuncio jpc = new PanelAnuncio(anuncio);
+        PanelAnuncio jpc = new PanelAnuncio(anuncio, editable);
         this.add(jpc);//se añade al jpanel
         this.validate();
         //se añade al MAP

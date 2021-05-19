@@ -33,12 +33,12 @@ import javax.swing.plaf.FileChooserUI;
 
 import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
+import com.decode.misanuncios.VentanaMisAnuncios;
 import com.decode.objects.Anuncio;
 import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
 import com.decode.objects.Reserva;
 import com.decode.sesion.VentanaInicio;
-import com.decode.ventanaperfil.VentanaMisAnuncios;
 import com.decode.ventanaperfil.VentanaPerfil;
 
 
@@ -134,9 +134,7 @@ public class VentanaCrearAnuncio extends JFrame {
 		lblIntro.setBounds(10, 120, 576, 55);
 		contentPane.add(lblIntro);
 		
-		JLabel lblFoto = new JLabel("FOOOOTOOO");
-		lblFoto.setBounds(623, 153, 378, 408);
-		contentPane.add(lblFoto);
+		
 		
 		txtNombre = new JTextField();
 		txtNombre.setBounds(207, 178, 258, 30);
@@ -152,6 +150,11 @@ public class VentanaCrearAnuncio extends JFrame {
 		txtMetrosCuadrados.setColumns(10);
 		txtMetrosCuadrados.setBounds(207, 355, 258, 30);
 		contentPane.add(txtMetrosCuadrados);
+		
+		JLabel lblFoto = new JLabel();
+		lblFoto.setBounds(623, 153, 378, 408);
+		contentPane.add(lblFoto);
+		lblFoto.setVisible(false);
 		
 		txtHabitaciones = new JTextField();
 		txtHabitaciones.setColumns(10);
@@ -252,6 +255,16 @@ public class VentanaCrearAnuncio extends JFrame {
 		      
 		       try {
 				Files.copy(origen, destino, StandardCopyOption.REPLACE_EXISTING);
+				
+				
+				
+				
+				ImageIcon ico2= new ImageIcon("/img/anuncios/" + fileChooser.getSelectedFile().getName());
+				ImageIcon img2= new ImageIcon(ico2.getImage().getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH));
+				lblFoto.setIcon(img2);
+				
+				lblFoto.setVisible(true);
+				
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

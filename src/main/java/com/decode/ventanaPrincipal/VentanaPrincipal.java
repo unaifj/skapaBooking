@@ -26,12 +26,12 @@ import javax.swing.JTextField;
 import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
 import com.decode.contacto.Contacto;
+import com.decode.misanuncios.VentanaMisAnuncios;
 import com.decode.multilenguaje.Idioma;
 import com.decode.objects.Anuncio;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
 import com.decode.ventanaperfil.VentanaConfiguacion;
-import com.decode.ventanaperfil.VentanaMisAnuncios;
 import com.toedter.calendar.JDateChooser;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -396,7 +396,7 @@ public class VentanaPrincipal extends JFrame  {
 		anuncios = dbm.getAnuncios();
 		System.out.println(anuncios);
 		for (Anuncio a : anuncios) {
-			PanelAnuncio pa = new PanelAnuncio(a);
+			PanelAnuncio pa = new PanelAnuncio(a, false);
 			pa.setVisible(true);
 			panelCentro.add(pa);
 			pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
@@ -428,7 +428,7 @@ public class VentanaPrincipal extends JFrame  {
 						
 						//COMPROBACION FECHAS
 					
-						PanelAnuncio pa = new PanelAnuncio(a);
+						PanelAnuncio pa = new PanelAnuncio(a, false);
 						pa.setVisible(true);
 						panelCentro.add(pa);
 						pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
