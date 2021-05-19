@@ -172,14 +172,15 @@ public class VentanaAdminUsuarios extends JFrame  {
 		DBManager dbm = new DBManager();
 		usuarios= dbm.getUsuarios();
 
-		DefaultListModel<Object> modelo = new DefaultListModel<>();
+		DefaultListModel<Usuario> modelo = new DefaultListModel<>();
 	
 		for (Usuario u : usuarios) {
+			//modelo.addElement(u.getNomUsuario());
+			modelo.addElement(u);
 			
-			modelo.addElement(u.getNomUsuario());
 		}
 		
-		JList<Object> list = new JList<Object>(modelo);
+		JList<Usuario> list = new JList<Usuario>(modelo);
 		list.setBounds(241, 176, 515, 561);
 		getContentPane().add(list);
 		
@@ -190,16 +191,14 @@ public class VentanaAdminUsuarios extends JFrame  {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				
-			
+					DBManager dbm = new DBManager();
+					Usuario u=list.getSelectedValue();
+					dbm.deleteUsuarioByNomUsuario(u.getNomUsuario());
 				
-				Usuario u= new Usuario(getTitle(), getWarningString(), getName());
 				
-				dbm.deleteUsuarioByNomUsuario(getName());
 				
-				JOptionPane.showMessageDialog(null, "Tarjeta correctamente añadida", "Añadido correctamente", 1, null);
-				VentanaVerTarjetas C = new VentanaVerTarjetas();
-				setVisible(false);
-				C.setVisible(true);
+				JOptionPane.showMessageDialog(null, "Usuario correctamente eliminada", "Eliminado correctamente", 1, null);
+				
 			}
 		});
 		
