@@ -26,18 +26,21 @@ import javax.swing.JTextField;
 import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
 import com.decode.contacto.Contacto;
+import com.decode.misanuncios.VentanaMisAnuncios;
 import com.decode.multilenguaje.Idioma;
 import com.decode.objects.Anuncio;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
 import com.decode.ventanaperfil.VentanaConfiguacion;
-import com.decode.ventanaperfil.VentanaMisAnuncios;
 import com.toedter.calendar.JDateChooser;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.JScrollBar;
+import java.awt.ScrollPane;
+import java.awt.Scrollbar;
 
 public class VentanaPrincipal extends JFrame  {
 	private JTextField textDestino;
@@ -271,11 +274,23 @@ public class VentanaPrincipal extends JFrame  {
 		chckbxRurales.setBounds(10, 167, 189, 23);
 		panelSuroeste.add(chckbxRurales);
 		
-		Panel panelCentro = new Panel();
-		panelCentro.setBounds(345, 156, 944, 619);
+		JPanel panelCentro = new JPanel();
+		panelCentro.setBounds(345, 156, 918, 619);
 		getContentPane().add(panelCentro);
 		panelCentro.setLayout(null);
 		
+		JScrollBar scrollBar = new JScrollBar(Scrollbar.VERTICAL, 10, 60, 0, 100);
+		scrollBar.setBounds(901, 0, 17, 619);
+		panelCentro.add(scrollBar);
+
+	
+		
+		
+
+
+	
+		
+
 		
 		
 		JButton btnMapa = new JButton("Mapa");
@@ -289,7 +304,7 @@ public class VentanaPrincipal extends JFrame  {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.LIGHT_GRAY);
-		panel.setBounds(0, 781, 1273, 130);
+		panel.setBounds(37, 781, 1273, 130);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -396,8 +411,9 @@ public class VentanaPrincipal extends JFrame  {
 		anuncios = dbm.getAnuncios();
 		System.out.println(anuncios);
 		for (Anuncio a : anuncios) {
-			PanelAnuncio pa = new PanelAnuncio(a);
+			PanelAnuncio pa = new PanelAnuncio(a, false);
 			pa.setVisible(true);
+			scrollBar.add(pa);
 			panelCentro.add(pa);
 			pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
 			y = y + 125;
@@ -428,7 +444,7 @@ public class VentanaPrincipal extends JFrame  {
 						
 						//COMPROBACION FECHAS
 					
-						PanelAnuncio pa = new PanelAnuncio(a);
+						PanelAnuncio pa = new PanelAnuncio(a, false);
 						pa.setVisible(true);
 						panelCentro.add(pa);
 						pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
