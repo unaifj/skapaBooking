@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.decode.crearAnuncio.VentanaEditarAnuncio;
 import com.decode.objects.Anuncio;
 import com.decode.sesion.VentanaRegistro;
 
@@ -89,6 +90,16 @@ public class PanelAnuncio extends JPanel implements ActionListener {
 			ImageIcon imgEliminar= new ImageIcon(iconoEliminar.getImage().getScaledInstance(btnEliminar.getWidth(), btnEliminar.getHeight(), Image.SCALE_SMOOTH));
 			btnEditar.setIcon(imgEditar);
 			btnEliminar.setIcon(imgEliminar);
+			
+			btnEditar.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					VentanaEditarAnuncio vea = new VentanaEditarAnuncio(anuncio);
+					vea.setVisible(true);
+					
+				}
+			});
 			
 		}
 		btnAnuncio.addActionListener(new ActionListener() {	
