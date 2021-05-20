@@ -204,6 +204,19 @@ public class Anuncio {
 	}
 
 
+	
+
+
+
+
+	@Override
+	public String toString() {
+		return "Anuncio [id=" + id + ", usuario=" + usuario + ", apartamento=" + apartamento + ", titulo=" + titulo
+				+ ", descripcion=" + descripcion + ", precioNoche=" + precioNoche + ", disponibilidad=" + disponibilidad
+				+ ", numPersonas=" + numPersonas + ", img=" + img + "]";
+	}
+
+
 
 
 

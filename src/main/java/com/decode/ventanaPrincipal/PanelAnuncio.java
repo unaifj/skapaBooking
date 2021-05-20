@@ -8,9 +8,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import com.decode.bd.DBManager;
 import com.decode.crearAnuncio.VentanaEditarAnuncio;
+import com.decode.misanuncios.VentanaMisAnuncios;
 import com.decode.objects.Anuncio;
 import com.decode.sesion.VentanaRegistro;
 
@@ -91,6 +94,8 @@ public class PanelAnuncio extends JPanel implements ActionListener {
 			btnEditar.setIcon(imgEditar);
 			btnEliminar.setIcon(imgEliminar);
 			
+			DBManager dbm = new DBManager();
+			
 			btnEditar.addActionListener(new ActionListener() {
 				
 				@Override
@@ -99,6 +104,29 @@ public class PanelAnuncio extends JPanel implements ActionListener {
 					vea.setVisible(true);
 					
 				}
+			});
+			
+			btnEliminar.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					int conf = JOptionPane.showConfirmDialog(null, "¿Eliminar " + anuncio.getTitulo() + " ?");
+					if (JOptionPane.OK_OPTION == conf ) {
+						System.out.println("AN:" + anuncio);
+						dbm.deleteAnuncio(anuncio);
+						JOptionPane.showMessageDialog(null, "Anuncio eliminado correctamente", "Correcto", 1);
+						
+						for (Window win : Window.getWindows()) {
+							win.setVisible(false);
+						}
+						
+						VentanaMisAnuncios vma = new VentanaMisAnuncios(anuncio.getUsuario());
+						vma.setVisible(true);
+					}else {
+						
+						System.out.println("vale... no borro nada...");
+					
+				}}
 			});
 			
 		}

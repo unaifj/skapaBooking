@@ -105,6 +105,44 @@ public class DBManager {
 		}
 	}
 	
+	
+	
+	
+	 public void deleteAnuncio(Anuncio anuncio) {
+		 PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+	  		PersistenceManager pm = pmf.getPersistenceManager();
+	  		Transaction tx = pm.currentTransaction();
+	        try {
+	     
+	            tx.begin();
+
+	            Extent<Anuncio> e = pm.getExtent(Anuncio.class, true);
+	            Iterator<Anuncio> iter = e.iterator();
+	            while (iter.hasNext()) {
+	            	Anuncio anuncio1 = (Anuncio) iter.next();
+	            	System.out.println(anuncio.getId() + " - " + anuncio1.getId());
+	            	if (anuncio1.getTitulo().equals(anuncio.getTitulo())) {
+	            		pm.deletePersistent(anuncio1);
+	      
+	            	
+	            	}else {
+	            	
+	            	}
+	                 
+	                
+	            }
+
+	            tx.commit();
+	        } catch (Exception ex) {
+	            
+	        } finally {
+	            if (tx != null && tx.isActive()) {
+	                tx.rollback();
+	            }
+	            pm.close();
+	        }
+	    }
+	
 	//VACIAR TABLAS 
 	 public void deleteUsuarios() {
 		 PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");

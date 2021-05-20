@@ -336,7 +336,7 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 		int y = 0;
 		anuncios = dbm.getAnuncios();
 		for (Anuncio a : anuncios) {
-			if (a.getUsuario().getId() == user.getId()) {
+			if (a.getUsuario().getNomUsuario().equals(user.getNomUsuario())) {
 				PanelAnuncio pa = new PanelAnuncio(a, true);
 				pa.setVisible(true);
 				panelCentro.add(pa);
