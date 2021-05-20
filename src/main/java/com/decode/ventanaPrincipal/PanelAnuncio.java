@@ -8,8 +8,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import com.decode.bd.DBManager;
+import com.decode.crearAnuncio.VentanaEditarAnuncio;
+import com.decode.misanuncios.VentanaMisAnuncios;
 import com.decode.objects.Anuncio;
 import com.decode.sesion.VentanaRegistro;
 
@@ -18,7 +22,7 @@ import javax.swing.JButton;
 public class PanelAnuncio extends JPanel implements ActionListener {
 
 
-    public PanelAnuncio(Anuncio anuncio)
+    public PanelAnuncio(Anuncio anuncio, boolean editable)
     {
     	setBackground(SystemColor.window);
     	
@@ -71,6 +75,61 @@ public class PanelAnuncio extends JPanel implements ActionListener {
 		JButton btnAnuncio = new JButton("Entrar");
 		btnAnuncio.setBounds(661, 95, 89, 23);
 		add(btnAnuncio);
+		
+		if (editable) {
+			
+			JButton btnEditar = new JButton();
+			btnEditar.setBounds(603, 95, 24, 23);
+			add(btnEditar);
+			
+			JButton btnEliminar = new JButton();
+			btnEliminar.setBounds(569, 95, 24, 23);
+			add(btnEliminar);
+			
+			ImageIcon iconoEditar = new ImageIcon("img/lapiz.png");
+			ImageIcon iconoEliminar = new ImageIcon("img/eliminar.png");
+			
+			ImageIcon imgEditar= new ImageIcon(iconoEditar.getImage().getScaledInstance(btnEditar.getWidth(), btnEditar.getHeight(), Image.SCALE_SMOOTH));
+			ImageIcon imgEliminar= new ImageIcon(iconoEliminar.getImage().getScaledInstance(btnEliminar.getWidth(), btnEliminar.getHeight(), Image.SCALE_SMOOTH));
+			btnEditar.setIcon(imgEditar);
+			btnEliminar.setIcon(imgEliminar);
+			
+			DBManager dbm = new DBManager();
+			
+			btnEditar.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					VentanaEditarAnuncio vea = new VentanaEditarAnuncio(anuncio);
+					vea.setVisible(true);
+					
+				}
+			});
+			
+			btnEliminar.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					int conf = JOptionPane.showConfirmDialog(null, "¿Eliminar " + anuncio.getTitulo() + " ?");
+					if (JOptionPane.OK_OPTION == conf ) {
+						System.out.println("AN:" + anuncio);
+						dbm.deleteAnuncio(anuncio);
+						JOptionPane.showMessageDialog(null, "Anuncio eliminado correctamente", "Correcto", 1);
+						
+						for (Window win : Window.getWindows()) {
+							win.setVisible(false);
+						}
+						
+						VentanaMisAnuncios vma = new VentanaMisAnuncios(anuncio.getUsuario());
+						vma.setVisible(true);
+					}else {
+						
+						System.out.println("vale... no borro nada...");
+					
+				}}
+			});
+			
+		}
 		btnAnuncio.addActionListener(new ActionListener() {	
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -87,10 +146,10 @@ public class PanelAnuncio extends JPanel implements ActionListener {
        
     }
 
-    public void Mi_Componente(Anuncio anuncio)
+    public void Mi_Componente(Anuncio anuncio, boolean editable)
     {        
         //instancia nueva a componente
-        PanelAnuncio jpc = new PanelAnuncio(anuncio);
+        PanelAnuncio jpc = new PanelAnuncio(anuncio, editable);
         this.add(jpc);//se añade al jpanel
         this.validate();
         //se añade al MAP

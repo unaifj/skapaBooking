@@ -180,10 +180,10 @@ public class VentanaInicio extends JFrame {
 				nomUsuario = textNomUsuario.getText();
 				contrasenya = textContrasenya.getText();
 				
-				for (Usuario user : usuarios) {
-					if (user.getNomUsuario().equals(nomUsuario) && user.getContrasenya().equals(contrasenya)) {
+				for (Usuario user1 : usuarios) {
+					if (user1.getNomUsuario().equals(nomUsuario) && user1.getContrasenya().equals(contrasenya)) {
 						acceso = true;
-						VentanaInicio.user = user;
+						user = user1;
 						
 					} else if(nomUsuario.equals("admin") && contrasenya.equals("admin123")) {
 						accesoAdmin=true;

@@ -1,4 +1,4 @@
-package com.decode.ventanaperfil;
+package com.decode.misanuncios;
 
 import java.awt.Button;
 import java.awt.Color;
@@ -26,13 +26,13 @@ import javax.swing.JTextField;
 import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
 import com.decode.contacto.Contacto;
+import com.decode.misanuncios.VentanaMisAnuncios;
 import com.decode.objects.Anuncio;
 import com.decode.objects.Usuario;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
 import com.decode.ventanaPrincipal.PanelAnuncio;
 import com.decode.ventanaperfil.VentanaConfiguacion;
-import com.decode.ventanaperfil.VentanaMisAnuncios;
 import com.toedter.calendar.JDateChooser;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -336,9 +336,8 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 		int y = 0;
 		anuncios = dbm.getAnuncios();
 		for (Anuncio a : anuncios) {
-			System.out.println("\n\n" + a.getId() + " " + user.getId());
-			if (a.getUsuario().getId() == user.getId()) {
-				PanelAnuncio pa = new PanelAnuncio(a);
+			if (a.getUsuario().getNomUsuario().equals(user.getNomUsuario())) {
+				PanelAnuncio pa = new PanelAnuncio(a, true);
 				pa.setVisible(true);
 				panelCentro.add(pa);
 				pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
@@ -369,7 +368,7 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 				for (Anuncio a : anunciosFiltrados) {
 					if (a.getUsuario().getId() == user.getId()) {
 		
-						PanelAnuncio pa = new PanelAnuncio(a);
+						PanelAnuncio pa = new PanelAnuncio(a, true);
 						pa.setVisible(true);
 						panelCentro.add(pa);
 						pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
