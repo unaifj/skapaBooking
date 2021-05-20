@@ -14,6 +14,7 @@ import javax.swing.ListModel;
 import com.decode.admin.VentanaAdmin;
 
 import javax.swing.JButton;
+import com.decode.*;
 
 public class VentanaListaOpiniones extends JFrame {
 	public VentanaListaOpiniones() {
@@ -51,7 +52,7 @@ public class VentanaListaOpiniones extends JFrame {
 		lblTusOpiniones.setBounds(509, 135, 173, 26);
 		getContentPane().add(lblTusOpiniones);
 		
-		JButton btnAñadir = new JButton("Añadir Anuncio");
+		JButton btnAñadir = new JButton("Añadir Opinion");
 		btnAñadir.setBounds(288, 603, 105, 23);
 		getContentPane().add(btnAñadir);
 		
@@ -73,7 +74,21 @@ public class VentanaListaOpiniones extends JFrame {
 				va.setVisible(true);
 				
 				
+				
 			}
+		});
+		
+		btnEditar.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				setVisible(false);
+				VentanaEditarOpiniones veo = new VentanaEditarOpiniones();
+				veo.setVisible(true);
+				
+			}
+			
 		});
 		
 	}
