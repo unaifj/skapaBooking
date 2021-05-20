@@ -150,16 +150,12 @@ public class VentanaAdmin extends JFrame  {
 		btnNewButton.setBounds(364, 271, 228, 39);
 		getContentPane().add(btnNewButton);
 		
-		JButton btnAdministrarApartamentos = new JButton("Administrar apartamentos");
-		btnAdministrarApartamentos.setBounds(364, 345, 228, 39);
-		getContentPane().add(btnAdministrarApartamentos);
-		
 		JButton btnAdministrarAnuncios = new JButton("Administrar anuncios");
-		btnAdministrarAnuncios.setBounds(364, 413, 228, 39);
+		btnAdministrarAnuncios.setBounds(364, 365, 228, 39);
 		getContentPane().add(btnAdministrarAnuncios);
 		
 		JButton btnAdministrarOpiniones = new JButton("Administrar opiniones");
-		btnAdministrarOpiniones.setBounds(364, 484, 228, 39);
+		btnAdministrarOpiniones.setBounds(364, 459, 228, 39);
 		getContentPane().add(btnAdministrarOpiniones);
 		
 		JButton btnNewButton_1 = new JButton("SALIR");
@@ -200,7 +196,16 @@ public class VentanaAdmin extends JFrame  {
 				p.setVisible(true);
 			}
 		});
-	
+		
+		btnAdministrarOpiniones.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaListaOpiniones p = new VentanaListaOpiniones();
+				setVisible(false);
+				p.setVisible(true);
+			}
+		});
 		
 		
 		

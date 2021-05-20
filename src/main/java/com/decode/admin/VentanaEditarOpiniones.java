@@ -1,4 +1,4 @@
-package com.decode.opinion;
+package com.decode.admin;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;

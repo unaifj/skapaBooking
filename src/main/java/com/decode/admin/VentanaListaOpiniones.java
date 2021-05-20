@@ -1,4 +1,4 @@
-package com.decode.opinion;
+package com.decode.admin;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -7,14 +7,18 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.ListModel;
-
-import com.decode.admin.VentanaAdmin;
-
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import com.decode.*;
+import com.decode.bd.DBManager;
+import com.decode.objects.Opinion;
+import com.decode.objects.Usuario;
 
 public class VentanaListaOpiniones extends JFrame {
 	public VentanaListaOpiniones() {
@@ -43,18 +47,16 @@ public class VentanaListaOpiniones extends JFrame {
 		lblContacto.setBounds(1122, 27, 141, 14);
 		panel.add(lblContacto);
 		
-		JList listOpiniones = new JList((ListModel) null);
-		listOpiniones.setBounds(228, 172, 725, 420);
-		getContentPane().add(listOpiniones);
+		
 		
 		JLabel lblTusOpiniones = new JLabel("Tus Opiniones");
 		lblTusOpiniones.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblTusOpiniones.setBounds(509, 135, 173, 26);
 		getContentPane().add(lblTusOpiniones);
 		
-		JButton btnAñadir = new JButton("Añadir Opinion");
-		btnAñadir.setBounds(288, 603, 105, 23);
-		getContentPane().add(btnAñadir);
+		JButton btnEliminar = new JButton("Eliminar Opinion");
+		btnEliminar.setBounds(288, 603, 128, 23);
+		getContentPane().add(btnEliminar);
 		
 		JButton btnEditar = new JButton("Editar");
 		btnEditar.setBounds(556, 603, 89, 23);
@@ -63,6 +65,21 @@ public class VentanaListaOpiniones extends JFrame {
 		JButton btnAtras = new JButton("Atras");
 		btnAtras.setBounds(848, 603, 89, 23);
 		getContentPane().add(btnAtras);
+		
+		List <Opinion> opiniones = new ArrayList<Opinion>();
+		DBManager dbm = new DBManager();
+		opiniones= dbm.getOpinionesSinUser();
+
+		DefaultListModel<Opinion> modelo = new DefaultListModel<>();
+	
+		for (Opinion o : opiniones) {
+			modelo.addElement(o);;
+			
+			
+		}
+		JList listOpiniones = new JList(modelo);
+		listOpiniones.setBounds(228, 172, 725, 420);
+		getContentPane().add(listOpiniones);
 		
 		btnAtras.addActionListener(new ActionListener() {
 			
@@ -75,6 +92,21 @@ public class VentanaListaOpiniones extends JFrame {
 				
 				
 				
+			}
+		});
+		
+		btnEliminar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				DBManager dbm = new DBManager();
+				Opinion o=(Opinion) listOpiniones.getSelectedValue();
+				dbm.deleteOpinionByTitulo(o.getTitulo());
+			
+			
+			
+			JOptionPane.showMessageDialog(null, "Usuario correctamente eliminada", "Eliminado correctamente", 1, null);
 			}
 		});
 		
