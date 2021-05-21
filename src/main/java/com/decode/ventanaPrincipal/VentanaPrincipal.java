@@ -411,7 +411,7 @@ public class VentanaPrincipal extends JFrame  {
 		anuncios = dbm.getAnuncios();
 		System.out.println(anuncios);
 		for (Anuncio a : anuncios) {
-			PanelAnuncio pa = new PanelAnuncio(a, false);
+			PanelAnuncio pa = new PanelAnuncio(a, false, null);
 			pa.setVisible(true);
 			scrollBar.add(pa);
 			panelCentro.add(pa);
@@ -444,7 +444,7 @@ public class VentanaPrincipal extends JFrame  {
 						
 						//COMPROBACION FECHAS
 					
-						PanelAnuncio pa = new PanelAnuncio(a, false);
+						PanelAnuncio pa = new PanelAnuncio(a, false, null);
 						pa.setVisible(true);
 						panelCentro.add(pa);
 						pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());

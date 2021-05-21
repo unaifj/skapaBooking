@@ -15,6 +15,7 @@ import com.decode.bd.DBManager;
 import com.decode.crearAnuncio.VentanaEditarAnuncio;
 import com.decode.misanuncios.VentanaMisAnuncios;
 import com.decode.objects.Anuncio;
+import com.decode.objects.Usuario;
 import com.decode.sesion.VentanaRegistro;
 
 import javax.swing.JButton;
@@ -22,7 +23,7 @@ import javax.swing.JButton;
 public class PanelAnuncio extends JPanel implements ActionListener {
 
 
-    public PanelAnuncio(Anuncio anuncio, boolean editable)
+    public PanelAnuncio(Anuncio anuncio, boolean editable, Usuario user)
     {
     	setBackground(SystemColor.window);
     	
@@ -100,7 +101,10 @@ public class PanelAnuncio extends JPanel implements ActionListener {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					VentanaEditarAnuncio vea = new VentanaEditarAnuncio(anuncio);
+					for (Window win : Window.getWindows()) {
+						win.setVisible(false);
+					}
+					VentanaEditarAnuncio vea = new VentanaEditarAnuncio(anuncio, user);
 					vea.setVisible(true);
 					
 				}
@@ -146,10 +150,10 @@ public class PanelAnuncio extends JPanel implements ActionListener {
        
     }
 
-    public void Mi_Componente(Anuncio anuncio, boolean editable)
+    public void Mi_Componente(Anuncio anuncio, boolean editable, Usuario user)
     {        
         //instancia nueva a componente
-        PanelAnuncio jpc = new PanelAnuncio(anuncio, editable);
+        PanelAnuncio jpc = new PanelAnuncio(anuncio, editable, user);
         this.add(jpc);//se añade al jpanel
         this.validate();
         //se añade al MAP

@@ -46,7 +46,7 @@ import com.decode.ventanaperfil.VentanaPerfil;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
-public class VentanaEditarAnuncio extends JFrame {
+public class VentanaNuevoAnuncio extends JFrame {
 
 	private JPanel contentPane;
 	private JFileChooser fileChooser ;
@@ -69,7 +69,7 @@ public class VentanaEditarAnuncio extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaEditarAnuncio frame = new VentanaEditarAnuncio(null, null);
+					VentanaNuevoAnuncio frame = new VentanaNuevoAnuncio(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -81,7 +81,7 @@ public class VentanaEditarAnuncio extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaEditarAnuncio(Anuncio anuncio, Usuario user) {
+	public VentanaNuevoAnuncio(Usuario user) {
 
 		
 		
@@ -194,37 +194,37 @@ public class VentanaEditarAnuncio extends JFrame {
 		lblNewLabel_7.setBounds(40, 668, 135, 14);
 		contentPane.add(lblNewLabel_7);
 		
-		textNumHab = new JTextField(String.valueOf(anuncio.getApartamento().getNumHabitaciones()));
+		textNumHab = new JTextField();
 		textNumHab.setBounds(273, 448, 201, 20);
 		contentPane.add(textNumHab);
 		textNumHab.setColumns(10);
 		
-		textTitulo = new JTextField(anuncio.getTitulo());
+		textTitulo = new JTextField();
 		textTitulo.setColumns(10);
 		textTitulo.setBounds(273, 237, 201, 20);
 		contentPane.add(textTitulo);
 		
-		textDesc = new JTextField(anuncio.getDescripcion());
+		textDesc = new JTextField();
 		textDesc.setColumns(10);
 		textDesc.setBounds(273, 263, 201, 55);
 		contentPane.add(textDesc);
 		
-		textNumPers = new JTextField(String.valueOf(anuncio.getNumPersonas()));
+		textNumPers = new JTextField();
 		textNumPers.setColumns(10);
 		textNumPers.setBounds(273, 347, 201, 20);
 		contentPane.add(textNumPers);
 		
-		textPrecioNoche = new JTextField(String.valueOf(anuncio.getPrecioNoche()));
+		textPrecioNoche = new JTextField();
 		textPrecioNoche.setColumns(10);
 		textPrecioNoche.setBounds(273, 372, 201, 20);
 		contentPane.add(textPrecioNoche);
 		
-		textM2 = new JTextField(String.valueOf(anuncio.getApartamento().getMetrosCuad()));
+		textM2 = new JTextField();
 		textM2.setColumns(10);
 		textM2.setBounds(273, 473, 201, 20);
 		contentPane.add(textM2);
 		
-		textDir = new JTextField(anuncio.getApartamento().getLocalidad().getDireccion());
+		textDir = new JTextField();
 		textDir.setColumns(10);
 		textDir.setBounds(273, 560, 201, 20);
 		contentPane.add(textDir);
@@ -234,7 +234,7 @@ public class VentanaEditarAnuncio extends JFrame {
 		textIndic.setBounds(273, 585, 201, 20);
 		contentPane.add(textIndic);
 		
-		textcp = new JTextField(String.valueOf(anuncio.getApartamento().getLocalidad().getCp()));
+		textcp = new JTextField();
 		textcp.setColumns(10);
 		textcp.setBounds(273, 665, 201, 20);
 		contentPane.add(textcp);
@@ -252,11 +252,10 @@ public class VentanaEditarAnuncio extends JFrame {
 		contentPane.add(lblDescripcion_1);
 		
 		JTextPane textDesc_1 = new JTextPane();
-		textDesc_1.setText(anuncio.getDescripcion());
 		textDesc_1.setBounds(587, 531, 634, 154);
 		contentPane.add(textDesc_1);
 		
-		textProvincia = new JTextField(anuncio.getApartamento().getLocalidad().getProvincia());
+		textProvincia = new JTextField();
 		textProvincia.setColumns(10);
 		textProvincia.setBounds(273, 610, 201, 20);
 		contentPane.add(textProvincia);
@@ -265,7 +264,7 @@ public class VentanaEditarAnuncio extends JFrame {
 		lblNewLabel_7_1.setBounds(40, 613, 135, 14);
 		contentPane.add(lblNewLabel_7_1);
 		
-		textMunicipio = new JTextField(anuncio.getApartamento().getLocalidad().getMunicipio());
+		textMunicipio = new JTextField();
 		textMunicipio.setColumns(10);
 		textMunicipio.setBounds(273, 638, 201, 20);
 		contentPane.add(textMunicipio);
@@ -273,11 +272,11 @@ public class VentanaEditarAnuncio extends JFrame {
 		JLabel lblNewLabel_7_2 = new JLabel("Municipio");
 		lblNewLabel_7_2.setBounds(40, 641, 135, 14);
 		contentPane.add(lblNewLabel_7_2);
-		
-		ImageIcon iconoImg= new ImageIcon(anuncio.getImg());
-		ImageIcon img2= new ImageIcon(iconoImg.getImage().getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_SMOOTH));
-		lblImagen.setIcon(img2);
-		
+			
+//		ImageIcon iconoImg= new ImageIcon();
+//		ImageIcon img2= new ImageIcon(iconoImg.getImage().getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_SMOOTH));
+//		lblImagen.setIcon(img2);
+//		
 		//BOTON IMAGEN 
 		btnActImagen.addActionListener(new ActionListener() {
 
@@ -297,7 +296,11 @@ public class VentanaEditarAnuncio extends JFrame {
 				
 				
 				
+				ImageIcon ico2= new ImageIcon("/img/anuncios/" + fileChooser.getSelectedFile().getName());
+				ImageIcon img2= new ImageIcon(ico2.getImage().getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_SMOOTH));
+				lblImagen.setIcon(img2);
 				
+				lblImagen.setVisible(true);
 				
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
@@ -312,32 +315,36 @@ public class VentanaEditarAnuncio extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                
-            	anuncio.setTitulo(textTitulo.getText());
-            	anuncio.setDescripcion(textDesc_1.getText());
+                // TODO Auto-generated method stub
             	
-//            	if (fileChooser.getSelectedFile() != null) {
-//            		anuncio.setImg("/img/anuncios/" + fileChooser.getSelectedFile().getName());
-//            	}
+            	String titulo = textTitulo.getText();
+            	String desc = textDesc.getText();
+				String provincia = textProvincia.getText();
+				int numHab = Integer.parseInt(textNumHab.getText());
+				double precio = Double.parseDouble(textPrecioNoche.getText());
+				int m2 = Integer.parseInt(textM2.getText());
+				String municipio= textMunicipio.getText();
+				int codigo= Integer.parseInt(textcp.getText());
+				String direccion= textDir.getText();
+            	String ruta = "/img/anuncios/" + fileChooser.getSelectedFile().getName();
+            	//float puntuacion = Float.parseFloat(textField.getText());
             	
-            	anuncio.setNumPersonas(Integer.parseInt(textNumPers.getText()));
-            	anuncio.setPrecioNoche(Double.parseDouble(textPrecioNoche.getText()));
-            	Apartamento aparta = anuncio.getApartamento();
-            	aparta.setMetrosCuad(Integer.parseInt(textM2.getText()));
-            	aparta.setNumHabitaciones(Integer.parseInt(textNumHab.getText()));
-            	Localidad loc = aparta.getLocalidad();
-            	loc.setCp(Integer.parseInt(textcp.getText()));
-            	loc.setDireccion(textDir.getText());
-            	loc.setMunicipio(textMunicipio.getText());
-            	loc.setProvincia(textProvincia.getText());
-            	aparta.setLocalidad(loc);
-            	anuncio.setApartamento(aparta);
- 
+            	Localidad loc= new Localidad(provincia, municipio,codigo,direccion);
+            	List<Reserva> reservas = new ArrayList<Reserva>();
+				Apartamento aparta = new Apartamento(numHab, m2, loc,reservas);
+				Anuncio anuncio = new Anuncio(VentanaInicio.getUser(),aparta,titulo, desc, precio, false, m2, ruta);
+
+				
 				DBManager dbm = new DBManager();
-				dbm.actualizarAnuncio(anuncio);
-				JOptionPane.showMessageDialog(null, "El anuncio se a actualizado correctamente", "Correcto", 1);
+				try {
+					dbm.insertarAnuncio(anuncio);
+					JOptionPane.showMessageDialog(null, "El anuncio se a creado correctamente", "Correcto", 1);
+				} catch (DBException e1) {
+					JOptionPane.showMessageDialog(null, "Error creando el anuncio", "Error de conexion", 0);
+					e1.printStackTrace();
+				}
 				setVisible(false);
-                VentanaMisAnuncios vma = new VentanaMisAnuncios(VentanaInicio.getUser());
+                VentanaMisAnuncios vma = new VentanaMisAnuncios(user);
                 vma.setVisible(true);
 
             }

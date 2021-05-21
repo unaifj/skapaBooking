@@ -26,6 +26,8 @@ import javax.swing.JTextField;
 import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
 import com.decode.contacto.Contacto;
+import com.decode.crearAnuncio.VentanaCrearAnuncio;
+import com.decode.crearAnuncio.VentanaNuevoAnuncio;
 import com.decode.misanuncios.VentanaMisAnuncios;
 import com.decode.objects.Anuncio;
 import com.decode.objects.Usuario;
@@ -195,14 +197,14 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 		panelSuroeste.add(chckbxRurales);
 		
 		Panel panelCentro = new Panel();
-		panelCentro.setBounds(314, 156, 975, 619);
+		panelCentro.setBounds(314, 167, 975, 608);
 		getContentPane().add(panelCentro);
 		panelCentro.setLayout(null);
 		
 		
 		
 		JButton btnMapa = new JButton("Mapa");
-		btnMapa.setBounds(1049, 120, 123, 23);
+		btnMapa.setBounds(908, 120, 123, 23);
 		getContentPane().add(btnMapa);
 		
 		JLabel lblAlojamientosEncontrados = new JLabel("Mis alojamientos");
@@ -330,6 +332,51 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 		lblContacto.setBounds(1122, 11, 141, 14);
 		panel.add(lblContacto);
 		
+		JLabel lblAgregarArchivo = new JLabel("New label");
+		lblAgregarArchivo.setBounds(1199, 114, 64, 47);
+		getContentPane().add(lblAgregarArchivo);
+		
+        ImageIcon icoNuevo = new ImageIcon("img/agregar-archivo.png");
+		
+		ImageIcon imgNuevo= new ImageIcon(icoNuevo.getImage().getScaledInstance(lblAgregarArchivo.getWidth(), lblAgregarArchivo.getHeight(), Image.SCALE_SMOOTH));
+		lblAgregarArchivo.setIcon(imgNuevo);
+		
+		
+		lblAgregarArchivo.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setVisible(false);
+				VentanaNuevoAnuncio vca = new VentanaNuevoAnuncio(user);
+				vca.setVisible(true);
+				
+			}
+		});
+		
 		DBManager dbm = new DBManager();
 		List<Anuncio> anuncios;
 		
@@ -337,7 +384,7 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 		anuncios = dbm.getAnuncios();
 		for (Anuncio a : anuncios) {
 			if (a.getUsuario().getNomUsuario().equals(user.getNomUsuario())) {
-				PanelAnuncio pa = new PanelAnuncio(a, true);
+				PanelAnuncio pa = new PanelAnuncio(a, true, user);
 				pa.setVisible(true);
 				panelCentro.add(pa);
 				pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
@@ -368,7 +415,7 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 				for (Anuncio a : anunciosFiltrados) {
 					if (a.getUsuario().getId() == user.getId()) {
 		
-						PanelAnuncio pa = new PanelAnuncio(a, true);
+						PanelAnuncio pa = new PanelAnuncio(a, true, user);
 						pa.setVisible(true);
 						panelCentro.add(pa);
 						pa.setBounds(pa.getX(), y, pa.getWidth(), pa.getHeight());
