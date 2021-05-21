@@ -75,21 +75,6 @@ public class PanelOpinion extends JPanel implements ActionListener  {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

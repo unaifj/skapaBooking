@@ -34,7 +34,7 @@ public class VentanaCrearOpinion extends JFrame {
 		int idU = VentanaInicio.getUser().getId();
 			
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			setBounds(100, 100, 440, 522);
+			setBounds(100, 100, 473, 551);
 			getContentPane().setBackground(new Color(30, 144, 255));
 			getContentPane().setLayout(null);
 			
@@ -79,11 +79,11 @@ public class VentanaCrearOpinion extends JFrame {
 					JOptionPane.showMessageDialog(null, "Gracias por tu opinión", "Correcto", 1);
 				}
 			});
-			btnPublicar.setBounds(61, 396, 96, 35);
+			btnPublicar.setBounds(61, 407, 96, 35);
 			getContentPane().add(btnPublicar);
 			
 			JButton btnCancelar = new JButton("Volver\r\n");
-			btnCancelar.setBounds(266, 396, 89, 35);
+			btnCancelar.setBounds(284, 407, 89, 35);
 			getContentPane().add(btnCancelar);
 			
 			DBManager dbm = new DBManager();

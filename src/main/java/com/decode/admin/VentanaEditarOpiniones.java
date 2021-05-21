@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -59,9 +61,21 @@ public class VentanaEditarOpiniones extends JFrame {
 		btnEditar.setBounds(71, 428, 96, 35);
 		getContentPane().add(btnEditar);
 		
-		JButton btnCancelar = new JButton("Volver\r\n");
-		btnCancelar.setBounds(256, 428, 89, 35);
-		getContentPane().add(btnCancelar);
+		JButton btnVolver = new JButton("Volver\r\n");
+		btnVolver.setBounds(256, 428, 89, 35);
+		getContentPane().add(btnVolver);
+		
+		btnVolver.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VentanaListaOpiniones vlo = new VentanaListaOpiniones();
+				setVisible(false);
+				vlo.setVisible(true);
+				
+			}
+		});
 		
 		
 		

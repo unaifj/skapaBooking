@@ -8,6 +8,10 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JTextPane;
+import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class VentanaEditarUsuario extends JFrame{
 	private JTextField txtNombre;
@@ -18,6 +22,7 @@ public class VentanaEditarUsuario extends JFrame{
 	private JTextField txtContrasea;
 	private JTextField txtRepetirContrasea;
 	public VentanaEditarUsuario() {
+		setBounds(300, 200, 1289, 907);
 		getContentPane().setLayout(null);
 		
 		JPanel panelNorte = new JPanel();
@@ -94,22 +99,25 @@ public class VentanaEditarUsuario extends JFrame{
 		txtRepetirContrasea.setBounds(21, 247, 297, 25);
 		panel.add(txtRepetirContrasea);
 		
-		JButton btnNewButton = new JButton("Inscribirse");
-		btnNewButton.setBounds(50, 393, 89, 23);
-		panel.add(btnNewButton);
+		JButton btnInscribirse = new JButton("Inscribirse");
+		btnInscribirse.setBounds(50, 393, 89, 23);
+		panel.add(btnInscribirse);
 		
-		JButton btnNewButton_1 = new JButton("Atras");
-		btnNewButton_1.setBounds(184, 393, 89, 23);
-		panel.add(btnNewButton_1);
+		JButton btnAtras = new JButton("Atras");
+		btnAtras.setBounds(184, 393, 89, 23);
+		panel.add(btnAtras);
 		
-		JLabel lblNewLabel = new JLabel("¿Porque SkapaBooking recopila tu datos?");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel.setBounds(684, 23, 318, 37);
-		panel.add(lblNewLabel);
+		JLabel lblPregunta = new JLabel("¿Porque SkapaBooking recopila tu datos?");
+		lblPregunta.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblPregunta.setBounds(641, 23, 395, 37);
+		panel.add(lblPregunta);
 		
-		JLabel lblNewLabel_1 = new JLabel("El principal motivo por el que te pedimos tus datos personales es para ayudarte a gestionar\r\n tus Reservas de viajes online y asegurar que recibes el mejor servicio posible.\r\n\r\nTambién usamos tus datos personales para ponernos en contacto contigo e informarte de los últimos descuentos y ofertas especiales, así como de otros productos o servicios que podamos considerar de interés para ti, entre otras cosas. Si quieres saber más, sigue leyendo y encontrarás una explicación más detallada.");
-		lblNewLabel_1.setBounds(597, 65, 454, 292);
-		panel.add(lblNewLabel_1);
+		JTextPane txtpnElPrincipalMotivo = new JTextPane();
+		txtpnElPrincipalMotivo.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		txtpnElPrincipalMotivo.setBackground(SystemColor.control);
+		txtpnElPrincipalMotivo.setText("El principal motivo por el que te pedimos tus datos personales es para ayudarte a gestionar\r\n tus Reservas de viajes online y asegurar que recibes el mejor servicio posible.\r\n\r\nTambién usamos tus datos personales para ponernos en contacto contigo e informarte de los últimos descuentos y ofertas especiales, así como de otros productos o servicios que podamos considerar de interés para ti, entre otras cosas. Si quieres saber más, sigue leyendo y encontrarás una explicación más detallada.");
+		txtpnElPrincipalMotivo.setBounds(651, 71, 385, 243);
+		panel.add(txtpnElPrincipalMotivo);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
@@ -120,5 +128,21 @@ public class VentanaEditarUsuario extends JFrame{
 		JLabel lblContacto = new JLabel("Contacta con nosotros");
 		lblContacto.setBounds(959, 11, 141, 14);
 		panel_1.add(lblContacto);
+		
+		btnAtras.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VentanaAdmin va = new VentanaAdmin();
+				setVisible(true);
+				va.setVisible(true);
+				
+			}
+			
+		});
+		
+		
+		
 	}
 }
