@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
+import com.decode.chat.ChatSkapaBookingCliente;
 import com.decode.contacto.Contacto;
 import com.decode.objects.Anuncio;
 import com.decode.pago.VentanaPago;
@@ -77,7 +78,7 @@ public class VentanaAnuncio extends JFrame{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
-					VentanaInicio vi = new VentanaInicio();
+					VentanaInicio vi = new VentanaInicio(null);
 					vi.setVisible(true);
 					
 				}
@@ -199,6 +200,10 @@ public class VentanaAnuncio extends JFrame{
 		btnAtras.setBounds(26, 573, 89, 23);
 		panelCentro.add(btnAtras);
 		
+		JButton btnChat = new JButton("Chat");
+		btnChat.setBounds(703, 573, 89, 23);
+		panelCentro.add(btnChat);
+		
 		
 		
 		
@@ -228,6 +233,7 @@ public class VentanaAnuncio extends JFrame{
 		panelColorDerecha.setBackground(Color.WHITE);
 		panelColorDerecha.setBounds(955, 113, 318, 662);
 		getContentPane().add(panelColorDerecha);
+		panelColorDerecha.setLayout(null);
 		
 	
 		
@@ -285,6 +291,16 @@ public class VentanaAnuncio extends JFrame{
 				setVisible(false);
 				VentanaPrincipal vp = new VentanaPrincipal("ES");
 				vp.setVisible(true);
+				
+				
+			}
+		});
+		btnChat.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ChatSkapaBookingCliente vc = new ChatSkapaBookingCliente();
+				vc.setVisible(true);
 				
 				
 			}

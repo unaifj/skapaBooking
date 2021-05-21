@@ -115,7 +115,7 @@ public class VentanaAdminUsuarios extends JFrame  {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
-					VentanaInicio vi = new VentanaInicio();
+					VentanaInicio vi = new VentanaInicio(null);
 					vi.setVisible(true);
 					
 				}

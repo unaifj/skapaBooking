@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
+import com.decode.multilenguaje.Idioma;
 import com.decode.objects.Usuario;
 
 import javax.swing.JLabel;
@@ -59,7 +60,7 @@ public class VentanaRegistro extends JFrame {
 	 */
 	public VentanaRegistro() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 999, 759);
+		setBounds(100, 100, 475, 759);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.YELLOW);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -83,7 +84,7 @@ public class VentanaRegistro extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNomUsuario = new JLabel("Nombre de usuario");
+		JLabel lblNomUsuario = new JLabel("nombredeusuario");
 		lblNomUsuario.setBounds(10, 80, 90, 14);
 		panel.add(lblNomUsuario);
 		
@@ -123,7 +124,7 @@ public class VentanaRegistro extends JFrame {
 		btnSingUp.setBounds(285, 224, 89, 23);
 		panel.add(btnSingUp);
 		
-		JLabel lblNewLabel = new JLabel("Resgitrate");
+		JLabel lblNewLabel = new JLabel("Registrate");
 		lblNewLabel.setBounds(10, 11, 137, 14);
 		panel.add(lblNewLabel);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -166,7 +167,7 @@ public class VentanaRegistro extends JFrame {
 						
 							JOptionPane.showMessageDialog(null, "Cuenta creada con exito", "Exito", 1, null);
 							
-							VentanaInicio vi = new VentanaInicio();
+							VentanaInicio vi = new VentanaInicio(null);
 							setVisible(false);
 							vi.setVisible(true);
 

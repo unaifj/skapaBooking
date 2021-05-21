@@ -304,7 +304,7 @@ public class VentanaPrincipal extends JFrame  {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.LIGHT_GRAY);
-		panel.setBounds(37, 781, 1273, 130);
+		panel.setBounds(0, 781, 1273, 130);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -324,7 +324,7 @@ public class VentanaPrincipal extends JFrame  {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
-					VentanaInicio vi = new VentanaInicio();
+					VentanaInicio vi = new VentanaInicio(idiom);
 					vi.setVisible(true);
 					
 				}
@@ -401,7 +401,7 @@ public class VentanaPrincipal extends JFrame  {
 		
 		
 		JLabel lblContacto = new JLabel(idiom.getProperty("contacta"));
-		lblContacto.setBounds(1122, 11, 141, 14);
+		lblContacto.setBounds(1031, 11, 141, 14);
 		panel.add(lblContacto);
 		
 		DBManager dbm = new DBManager();

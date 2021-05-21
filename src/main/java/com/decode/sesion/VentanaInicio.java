@@ -10,6 +10,8 @@ import javax.swing.border.EmptyBorder;
 import com.decode.admin.VentanaAdmin;
 import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
+import com.decode.contacto.Contacto;
+import com.decode.multilenguaje.Idioma;
 import com.decode.objects.Usuario;
 import com.decode.ventanaPrincipal.VentanaPrincipal;
 
@@ -46,7 +48,7 @@ public class VentanaInicio extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaInicio frame = new VentanaInicio();
+					VentanaInicio frame = new VentanaInicio(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -58,18 +60,17 @@ public class VentanaInicio extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaInicio() {
+	public VentanaInicio(Idioma idiom) {
 		
-
 		DBManager dbm = new DBManager();
 	
-			
+		
 		usuarios =dbm.getUsuarios();
 			
 
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 867, 676);
+		setBounds(100, 100, 436, 539);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.YELLOW);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -93,36 +94,49 @@ public class VentanaInicio extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNomUsuario = new JLabel("Nombre de usuario:");
-		lblNomUsuario.setBounds(10, 100, 103, 14);
+		JLabel lblNomUsuario = new JLabel((idiom.getProperty("nombredeusuario")));
+		lblNomUsuario.setBounds(10, 100, 161, 14);
 		panel.add(lblNomUsuario);
 		
-		JLabel lblContraseña = new JLabel("Contraseña:");
-		lblContraseña.setBounds(10, 128, 86, 14);
+		JLabel lblContraseña = new JLabel((idiom.getProperty("contraseña")));
+		lblContraseña.setBounds(10, 128, 142, 14);
 		panel.add(lblContraseña);
 		
 		textNomUsuario = new JTextField();
-		textNomUsuario.setBounds(148, 97, 137, 20);
+		textNomUsuario.setBounds(181, 97, 137, 20);
 		panel.add(textNomUsuario);
 		textNomUsuario.setColumns(10);
 		
 		textContrasenya = new JTextField();
-		textContrasenya.setBounds(148, 125, 137, 20);
+		textContrasenya.setBounds(181, 125, 137, 20);
 		panel.add(textContrasenya);
 		textContrasenya.setColumns(10);
 		
-		JButton btnLogIn = new JButton("LogIn");
-		btnLogIn.setBounds(193, 194, 89, 23);
+		JButton btnLogIn = new JButton(idiom.getProperty("acceder"));
+		btnLogIn.setBounds(229, 194, 105, 23);
 		panel.add(btnLogIn);
 		
-		JLabel lblReg = new JLabel("No tengo una cuenta skapa");
-		lblReg.setBounds(10, 198, 142, 14);
+		JLabel lblReg = new JLabel(idiom.getProperty("notengocuentaskapa"));
+		lblReg.setBounds(10, 198, 209, 14);
 		panel.add(lblReg);
 		
-		JLabel lblNewLabel = new JLabel("Inicio de sesion");
+		JLabel lblNewLabel = new JLabel(idiom.getProperty("iniciodesesion"));
 		lblNewLabel.setBounds(10, 22, 156, 20);
 		panel.add(lblNewLabel);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		
+		JButton btnAtras = new JButton(idiom.getProperty("atras"));
+		btnAtras.setBounds(20, 318, 89, 23);
+		panel.add(btnAtras);
+		
+		btnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaPrincipal vp = new VentanaPrincipal("ES");
+				setVisible(false);
+				vp.setVisible(true);
+				}
+			});
+		
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);

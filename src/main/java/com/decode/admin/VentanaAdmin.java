@@ -109,7 +109,7 @@ public class VentanaAdmin extends JFrame  {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
-					VentanaInicio vi = new VentanaInicio();
+					VentanaInicio vi = new VentanaInicio(null);
 					vi.setVisible(true);
 					
 				}
