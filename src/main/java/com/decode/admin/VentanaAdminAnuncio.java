@@ -1,53 +1,32 @@
 package com.decode.admin;
 
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSpinner;
-import javax.swing.JTextField;
-
-import com.decode.bd.DBException;
-import com.decode.bd.DBManager;
-import com.decode.contacto.Contacto;
-import com.decode.crearAnuncio.VentanaCrearAnuncio;
-import com.decode.objects.Anuncio;
-import com.decode.objects.TarjetaCredito;
-import com.decode.objects.Usuario;
-import com.decode.pago.VentanaVerTarjetas;
-import com.decode.sesion.VentanaInicio;
-import com.decode.sesion.VentanaRegistro;
-import com.toedter.calendar.JDateChooser;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-
-import javax.swing.DefaultListModel;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.SpinnerNumberModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
-public class VentanaAdminUsuarios extends JFrame  {
+import com.decode.bd.DBManager;
+import com.decode.crearAnuncio.VentanaEditarAnuncio;
+import com.decode.objects.Anuncio;
+import com.decode.objects.Usuario;
+import com.decode.sesion.VentanaInicio;
+import com.decode.sesion.VentanaRegistro;
+
+public class VentanaAdminAnuncio extends JFrame  {
 	
 	/**
 	 * Ejecutamos la aplicación.
@@ -66,7 +45,7 @@ public class VentanaAdminUsuarios extends JFrame  {
 		});
 	}
 	
-	public VentanaAdminUsuarios() {
+	public VentanaAdminAnuncio() {
 		getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 62));
 		setBounds(300, 200, 1289, 907);
 		getContentPane().setLayout(null);
@@ -162,25 +141,25 @@ public class VentanaAdminUsuarios extends JFrame  {
 		btnNewButton_2.setBounds(26, 137, 89, 23);
 		getContentPane().add(btnNewButton_2);
 		
-		JLabel lblNewLabel_1 = new JLabel("LISTA DE USUARIOS");
+		JLabel lblNewLabel_1 = new JLabel("LISTA DE ANUNCIOS");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblNewLabel_1.setBounds(387, 141, 369, 14);
 		getContentPane().add(lblNewLabel_1);
 		
 	
-		List <Usuario> usuarios = new ArrayList<Usuario>();
+		List <Anuncio> anuncios = new ArrayList<Anuncio>();
 		DBManager dbm = new DBManager();
-		usuarios= dbm.getUsuarios();
+		anuncios= dbm.getAnuncios();
 
-		DefaultListModel<Usuario> modelo = new DefaultListModel<>();
+		DefaultListModel<Anuncio> modelo = new DefaultListModel<>();
 	
-		for (Usuario u : usuarios) {
-			//modelo.addElement(u.getNomUsuario());
-			modelo.addElement(u);
+		for (Anuncio a : anuncios) {
+			
+			modelo.addElement(a);
 			
 		}
 		
-		JList<Usuario> list = new JList<Usuario>(modelo);
+		JList<Anuncio> list = new JList<Anuncio>(modelo);
 		list.setBounds(241, 176, 515, 561);
 		getContentPane().add(list);
 		
@@ -192,12 +171,12 @@ public class VentanaAdminUsuarios extends JFrame  {
 				// TODO Auto-generated method stub
 				
 					DBManager dbm = new DBManager();
-					Usuario u=list.getSelectedValue();
-					dbm.deleteUsuarioByNomUsuario(u.getNomUsuario());
+					Anuncio a=list.getSelectedValue();
+					dbm.deleteAnuncio(a);
 				
 				
 				
-				JOptionPane.showMessageDialog(null, "Usuario correctamente eliminada", "Eliminado correctamente", 1, null);
+				JOptionPane.showMessageDialog(null, "Anuncio correctamente eliminado", "Eliminado correctamente", 1, null);
 				
 			}
 		});
@@ -209,8 +188,8 @@ public class VentanaAdminUsuarios extends JFrame  {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				DBManager dbm = new DBManager();
-				Usuario u=list.getSelectedValue();
-				VentanaEditarUsuario p= new VentanaEditarUsuario(u);
+				Anuncio anuncio=list.getSelectedValue();
+				VentanaEditarAnuncioAdmin p= new VentanaEditarAnuncioAdmin(anuncio);
 				p.setVisible(true);
 				setVisible(false);
 				

@@ -20,8 +20,8 @@ import com.decode.bd.DBManager;
 import com.decode.objects.Opinion;
 import com.decode.objects.Usuario;
 
-public class VentanaListaOpiniones extends JFrame {
-	public VentanaListaOpiniones() {
+public class VentanaAdminOpinion extends JFrame {
+	public VentanaAdminOpinion() {
 		setBounds(300, 200, 1289, 809);
 		getContentPane().setLayout(null);
 		
@@ -115,8 +115,10 @@ public class VentanaListaOpiniones extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				DBManager dbm = new DBManager();
+				Opinion o=(Opinion) listOpiniones.getSelectedValue();
 				setVisible(false);
-				VentanaEditarOpiniones veo = new VentanaEditarOpiniones();
+				VentanaEditarOpiniones veo = new VentanaEditarOpiniones(o);
 				veo.setVisible(true);
 				
 			}

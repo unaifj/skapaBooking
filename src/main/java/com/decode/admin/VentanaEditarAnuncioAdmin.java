@@ -1,24 +1,16 @@
-package com.decode.crearAnuncio;
+package com.decode.admin;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -28,25 +20,19 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
-import javax.swing.plaf.FileChooserUI;
 
-import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
 import com.decode.misanuncios.VentanaMisAnuncios;
 import com.decode.objects.Anuncio;
 import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
-import com.decode.objects.Reserva;
 import com.decode.objects.Usuario;
 import com.decode.sesion.VentanaInicio;
-import com.decode.ventanaperfil.VentanaPerfil;
 
-
-import javax.swing.JTextField;
-import javax.swing.JTextPane;
-
-public class VentanaEditarAnuncio extends JFrame {
+public class VentanaEditarAnuncioAdmin extends JFrame {
 
 	private JPanel contentPane;
 	private JFileChooser fileChooser ;
@@ -69,7 +55,7 @@ public class VentanaEditarAnuncio extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaEditarAnuncio frame = new VentanaEditarAnuncio(null,null);
+					VentanaEditarAnuncioAdmin frame = new VentanaEditarAnuncioAdmin(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -81,7 +67,7 @@ public class VentanaEditarAnuncio extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaEditarAnuncio(Anuncio anuncio,Usuario user) {
+	public VentanaEditarAnuncioAdmin(Anuncio anuncio) {
 
 		
 		
@@ -142,7 +128,7 @@ public class VentanaEditarAnuncio extends JFrame {
 		contentPane.add(btnActImagen);
 		btnActImagen.setBackground(Color.WHITE);
 		
-		JButton btnPublicar = new JButton("Publicar");
+		JButton btnPublicar = new JButton("Guardar");
 		btnPublicar.setBounds(1091, 696, 130, 37);
 		contentPane.add(btnPublicar);
 		
@@ -316,9 +302,7 @@ public class VentanaEditarAnuncio extends JFrame {
             	anuncio.setTitulo(textTitulo.getText());
             	anuncio.setDescripcion(textDesc_1.getText());
             	
-//            	if (fileChooser.getSelectedFile() != null) {
-//            		anuncio.setImg("/img/anuncios/" + fileChooser.getSelectedFile().getName());
-//            	}
+
             	
             	anuncio.setNumPersonas(Integer.parseInt(textNumPers.getText()));
             	anuncio.setPrecioNoche(Double.parseDouble(textPrecioNoche.getText()));
@@ -337,7 +321,7 @@ public class VentanaEditarAnuncio extends JFrame {
 				dbm.actualizarAnuncio(anuncio);
 				JOptionPane.showMessageDialog(null, "El anuncio se a actualizado correctamente", "Correcto", 1);
 				setVisible(false);
-                VentanaMisAnuncios vma = new VentanaMisAnuncios(VentanaInicio.getUser());
+                VentanaAdminAnuncio vma = new VentanaAdminAnuncio();
                 vma.setVisible(true);
 
             }

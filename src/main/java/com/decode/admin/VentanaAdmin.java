@@ -191,7 +191,7 @@ public class VentanaAdmin extends JFrame  {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaListaAnuncios p = new VentanaListaAnuncios();
+				VentanaAdminAnuncio p = new VentanaAdminAnuncio();
 				setVisible(false);
 				p.setVisible(true);
 			}
@@ -201,7 +201,7 @@ public class VentanaAdmin extends JFrame  {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaListaOpiniones p = new VentanaListaOpiniones();
+				VentanaAdminOpinion p = new VentanaAdminOpinion();
 				setVisible(false);
 				p.setVisible(true);
 			}
