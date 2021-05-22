@@ -106,7 +106,9 @@ public class VentanaCrearOpinion extends JFrame {
 						e1.printStackTrace();
 					}
 				
-					
+					VentanaOpiniones vo = new VentanaOpiniones();
+					setVisible(false);
+					vo.setVisible(true);
 					
 				}
 			});

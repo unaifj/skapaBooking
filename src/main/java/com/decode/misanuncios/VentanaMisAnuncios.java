@@ -245,7 +245,7 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
-					VentanaRegistro vr = new VentanaRegistro();
+					VentanaRegistro vr = new VentanaRegistro(null);
 					vr.setVisible(true);
 					
 				}

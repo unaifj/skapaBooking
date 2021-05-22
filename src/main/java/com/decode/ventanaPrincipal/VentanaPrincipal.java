@@ -177,7 +177,7 @@ public class VentanaPrincipal extends JFrame  {
 		lblBuscar.setBounds(10, 11, 88, 23);
 		panelOeste.add(lblBuscar);
 		
-		JLabel lblDestino = new JLabel("Destino / Nombre alojamiento:");
+		JLabel lblDestino = new JLabel(idiom.getProperty("destino"));
 		lblDestino.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblDestino.setBounds(10, 45, 247, 23);
 		panelOeste.add(lblDestino);
@@ -312,7 +312,7 @@ public class VentanaPrincipal extends JFrame  {
 		if (VentanaInicio.getUser() == null) {
 			
 			JButton btnRegistro = new JButton(idiom.getProperty("crearCuenta"));
-			btnRegistro.setBounds(960, 13, 117, 23);
+			btnRegistro.setBounds(874, 13, 146, 23);
 			panelNorte.add(btnRegistro);
 			
 			JButton btnLogin = new JButton(idiom.getProperty("iniciarSesion"));
@@ -335,7 +335,7 @@ public class VentanaPrincipal extends JFrame  {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
-					VentanaRegistro vr = new VentanaRegistro();
+					VentanaRegistro vr = new VentanaRegistro(idiom);
 					vr.setVisible(true);
 					
 				}

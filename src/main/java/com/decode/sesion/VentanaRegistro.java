@@ -49,7 +49,7 @@ public class VentanaRegistro extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaRegistro frame = new VentanaRegistro();
+					VentanaRegistro frame = new VentanaRegistro(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -61,7 +61,7 @@ public class VentanaRegistro extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaRegistro() {
+	public VentanaRegistro(Idioma idiom) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 475, 759);
 		contentPane = new JPanel();
@@ -73,7 +73,7 @@ public class VentanaRegistro extends JFrame {
 		JPanel panelNorte = new JPanel();
 		panelNorte.setLayout(null);
 		panelNorte.setBackground(Color.BLUE);
-		panelNorte.setBounds(0, 0, 1273, 106);
+		panelNorte.setBounds(0, 0, 459, 106);
 		contentPane.add(panelNorte);
 		
 		JLabel lblTitulo = new JLabel("SKAPABOOKING.COM");
@@ -87,52 +87,52 @@ public class VentanaRegistro extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNomUsuario = new JLabel("nombredeusuario");
-		lblNomUsuario.setBounds(10, 80, 90, 14);
+		JLabel lblNomUsuario = new JLabel((idiom.getProperty("nombredeusuario")));
+		lblNomUsuario.setBounds(10, 80, 177, 14);
 		panel.add(lblNomUsuario);
 		
-		JLabel lblCorreo = new JLabel("Correo electronico");
-		lblCorreo.setBounds(10, 105, 90, 14);
+		JLabel lblCorreo = new JLabel((idiom.getProperty("correoelectronico")));;
+		lblCorreo.setBounds(10, 105, 177, 14);
 		panel.add(lblCorreo);
 		
-		JLabel lblContrasenya = new JLabel("Contraseña");
-		lblContrasenya.setBounds(10, 130, 90, 14);
+		JLabel lblContrasenya = new JLabel((idiom.getProperty("contraseña")));;
+		lblContrasenya.setBounds(10, 130, 177, 14);
 		panel.add(lblContrasenya);
 		
-		JLabel lblContrasenya2 = new JLabel("Repite la contraseña");
-		lblContrasenya2.setBounds(11, 155, 99, 14);
+		JLabel lblContrasenya2 = new JLabel((idiom.getProperty("repitecontraseña")));
+		lblContrasenya2.setBounds(11, 155, 176, 14);
 		panel.add(lblContrasenya2);
 		
 		textNomUsuario = new JTextField();
-		textNomUsuario.setBounds(152, 80, 222, 20);
+		textNomUsuario.setBounds(197, 77, 222, 20);
 		panel.add(textNomUsuario);
 		textNomUsuario.setColumns(10);
 		
 		textCorreo = new JTextField();
-		textCorreo.setBounds(152, 105, 222, 20);
+		textCorreo.setBounds(197, 102, 222, 20);
 		panel.add(textCorreo);
 		textCorreo.setColumns(10);
 		
 		textContrasenya = new JTextField();
-		textContrasenya.setBounds(152, 130, 222, 20);
+		textContrasenya.setBounds(197, 127, 222, 20);
 		panel.add(textContrasenya);
 		textContrasenya.setColumns(10);
 		
 		textContrasenya2 = new JTextField();
-		textContrasenya2.setBounds(152, 155, 222, 20);
+		textContrasenya2.setBounds(197, 152, 222, 20);
 		panel.add(textContrasenya2);
 		textContrasenya2.setColumns(10);
 		
-		JButton btnSingUp = new JButton("SingUp");
-		btnSingUp.setBounds(285, 224, 89, 23);
+		JButton btnSingUp = new JButton((idiom.getProperty("registro")));
+		btnSingUp.setBounds(330, 224, 89, 23);
 		panel.add(btnSingUp);
 		
-		JLabel lblRegistrarse = new JLabel("Registrate");
+		JLabel lblRegistrarse = new JLabel((idiom.getProperty("registrate")));
 		lblRegistrarse.setBounds(10, 11, 137, 14);
 		panel.add(lblRegistrarse);
 		lblRegistrarse.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		JButton btnAtras = new JButton("Atras\r\n");
+		JButton btnAtras = new JButton((idiom.getProperty("atras")));
 		btnAtras.setBounds(21, 286, 89, 23);
 		panel.add(btnAtras);
 		

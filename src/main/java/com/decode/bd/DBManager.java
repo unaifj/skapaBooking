@@ -589,16 +589,11 @@ public class DBManager {
     					
     					opiniones.add(op);
     				}
+    				   					
     				
     				
 
-    				
-    				
-
-    				opiniones.add(op);
-
-
-    				
+    				    				
     			}
     			
     			tx.commit();

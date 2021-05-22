@@ -89,7 +89,7 @@ public class VentanaAnuncio extends JFrame{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
-					VentanaRegistro vr = new VentanaRegistro();
+					VentanaRegistro vr = new VentanaRegistro(null);
 					vr.setVisible(true);
 					
 				}

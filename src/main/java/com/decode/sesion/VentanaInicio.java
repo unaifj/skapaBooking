@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.SystemColor;
 
 public class VentanaInicio extends JFrame {
 
@@ -72,7 +73,7 @@ public class VentanaInicio extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 436, 539);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.YELLOW);
+		contentPane.setBackground(SystemColor.menu);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -80,7 +81,7 @@ public class VentanaInicio extends JFrame {
 		JPanel panelNorte = new JPanel();
 		panelNorte.setLayout(null);
 		panelNorte.setBackground(Color.BLUE);
-		panelNorte.setBounds(0, 0, 858, 106);
+		panelNorte.setBounds(0, 0, 420, 106);
 		contentPane.add(panelNorte);
 		
 		JLabel lblTitulo = new JLabel("SKAPABOOKING.COM");
@@ -176,7 +177,7 @@ public class VentanaInicio extends JFrame {
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				VentanaRegistro vr = new VentanaRegistro();
+				VentanaRegistro vr = new VentanaRegistro(null);
 				vr.setVisible(true);
 				setVisible(false);
 				

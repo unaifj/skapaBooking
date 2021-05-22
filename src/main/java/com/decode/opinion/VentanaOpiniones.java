@@ -25,6 +25,7 @@ import com.decode.ventanaPrincipal.VentanaPrincipal;
 
 import com.decode.opinion.*;
 import java.awt.SystemColor;
+import javax.swing.JScrollBar;
 
 public class VentanaOpiniones extends JFrame {
 	
@@ -48,7 +49,7 @@ public class VentanaOpiniones extends JFrame {
 	public VentanaOpiniones() {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 403, 559);
+		setBounds(500,300, 600, 559);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.textHighlight);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -57,19 +58,23 @@ public class VentanaOpiniones extends JFrame {
 		
 		JPanel panelOpiniones = new JPanel();
 		panelOpiniones.setBackground(SystemColor.textHighlight);
-		panelOpiniones.setBounds(27, 11, 366, 439);
+		panelOpiniones.setBounds(27, 11, 549, 439);
 		contentPane.add(panelOpiniones);
 		panelOpiniones.setLayout(null);
 		
 		
 		
 		JButton btnAtras = new JButton("Atras");
-		btnAtras.setBounds(15, 466, 115, 29);
+		btnAtras.setBounds(61, 466, 115, 29);
 		contentPane.add(btnAtras);
 		
 		JButton btnNuevoComentario = new JButton("Nuevo comentario");
-		btnNuevoComentario.setBounds(205, 466, 161, 29);
+		btnNuevoComentario.setBounds(368, 466, 161, 29);
 		contentPane.add(btnNuevoComentario);
+		
+		JScrollBar scrollBar = new JScrollBar();
+		scrollBar.setBounds(573, 11, 17, 439);
+		contentPane.add(scrollBar);
 		
 		DBManager dbm = new DBManager();
 			
@@ -91,7 +96,6 @@ public class VentanaOpiniones extends JFrame {
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanaPrincipal vp = new VentanaPrincipal("ES");
-				setVisible(false);
 				vp.setVisible(true);
 				}
 			});
@@ -105,7 +109,7 @@ public class VentanaOpiniones extends JFrame {
 				// TODO Auto-generated method stub
 				VentanaCrearOpinion vco = new VentanaCrearOpinion();
 				vco.setVisible(true);
-				setVisible(false);
+				
 				
 				
 			}
