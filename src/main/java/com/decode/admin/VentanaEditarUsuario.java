@@ -5,10 +5,19 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
+
+import com.decode.bd.DBException;
+import com.decode.bd.DBManager;
+import com.decode.misanuncios.VentanaMisAnuncios;
+import com.decode.objects.Usuario;
+import com.decode.sesion.VentanaInicio;
+
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,10 +27,8 @@ public class VentanaEditarUsuario extends JFrame{
 	private JTextField txtApellidos;
 	private JTextField txtCorreo;
 	private JTextField txtDireccion;
-	private JTextField txtNombreParaSkapabooking;
-	private JTextField txtContrasea;
-	private JTextField txtRepetirContrasea;
-	public VentanaEditarUsuario() {
+	
+	public VentanaEditarUsuario(Usuario u) {
 		setBounds(300, 200, 1289, 907);
 		getContentPane().setLayout(null);
 		
@@ -52,77 +59,41 @@ public class VentanaEditarUsuario extends JFrame{
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblFormulario = new JLabel("Formulario para nuevos clientes\r\n");
+		JLabel lblFormulario = new JLabel("EDICIÓN DE USUARIO");
 		lblFormulario.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblFormulario.setBounds(27, 11, 358, 32);
+		lblFormulario.setBounds(458, 27, 358, 32);
 		panel.add(lblFormulario);
 		
 		txtNombre = new JTextField();
-		txtNombre.setText("Nombre\r\n");
-		txtNombre.setBounds(21, 65, 297, 25);
+		txtNombre.setText(u.getNomUsuario());
+		txtNombre.setBounds(458, 113, 297, 25);
 		panel.add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		txtApellidos = new JTextField();
-		txtApellidos.setText("Apellidos");
+		txtApellidos.setText(u.getContrasenya());
 		txtApellidos.setColumns(10);
-		txtApellidos.setBounds(21, 113, 297, 25);
+		txtApellidos.setBounds(458, 176, 297, 25);
 		panel.add(txtApellidos);
 		
 		txtCorreo = new JTextField();
-		txtCorreo.setText("Correo");
+		txtCorreo.setText(u.getCorreo());
 		txtCorreo.setColumns(10);
-		txtCorreo.setBounds(21, 289, 297, 25);
+		txtCorreo.setBounds(458, 242, 297, 25);
 		panel.add(txtCorreo);
 		
-		txtDireccion = new JTextField();
-		txtDireccion.setText("Direccion\r\n");
-		txtDireccion.setColumns(10);
-		txtDireccion.setBounds(21, 337, 297, 25);
-		panel.add(txtDireccion);
-		
-		txtNombreParaSkapabooking = new JTextField();
-		txtNombreParaSkapabooking.setText("Nombre para skapabooking\r\n");
-		txtNombreParaSkapabooking.setColumns(10);
-		txtNombreParaSkapabooking.setBounds(21, 160, 297, 25);
-		panel.add(txtNombreParaSkapabooking);
-		
-		txtContrasea = new JTextField();
-		txtContrasea.setText("Contraseña");
-		txtContrasea.setColumns(10);
-		txtContrasea.setBounds(21, 201, 297, 25);
-		panel.add(txtContrasea);
-		
-		txtRepetirContrasea = new JTextField();
-		txtRepetirContrasea.setText("Repetir Contraseña");
-		txtRepetirContrasea.setColumns(10);
-		txtRepetirContrasea.setBounds(21, 247, 297, 25);
-		panel.add(txtRepetirContrasea);
-		
-		JButton btnInscribirse = new JButton("Inscribirse");
-		btnInscribirse.setBounds(50, 393, 89, 23);
+		JButton btnInscribirse = new JButton("Guardar");
+		btnInscribirse.setBounds(458, 334, 89, 23);
 		panel.add(btnInscribirse);
 		
 		JButton btnAtras = new JButton("Atras");
-		btnAtras.setBounds(184, 393, 89, 23);
+		btnAtras.setBounds(666, 334, 89, 23);
 		panel.add(btnAtras);
-		
-		JLabel lblPregunta = new JLabel("¿Porque SkapaBooking recopila tu datos?");
-		lblPregunta.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblPregunta.setBounds(641, 23, 395, 37);
-		panel.add(lblPregunta);
-		
-		JTextPane txtpnElPrincipalMotivo = new JTextPane();
-		txtpnElPrincipalMotivo.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		txtpnElPrincipalMotivo.setBackground(SystemColor.control);
-		txtpnElPrincipalMotivo.setText("El principal motivo por el que te pedimos tus datos personales es para ayudarte a gestionar\r\n tus Reservas de viajes online y asegurar que recibes el mejor servicio posible.\r\n\r\nTambién usamos tus datos personales para ponernos en contacto contigo e informarte de los últimos descuentos y ofertas especiales, así como de otros productos o servicios que podamos considerar de interés para ti, entre otras cosas. Si quieres saber más, sigue leyendo y encontrarás una explicación más detallada.");
-		txtpnElPrincipalMotivo.setBounds(651, 71, 385, 243);
-		panel.add(txtpnElPrincipalMotivo);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
 		panel_1.setBackground(Color.LIGHT_GRAY);
-		panel_1.setBounds(0, 546, 1102, 118);
+		panel_1.setBounds(0, 750, 1102, 118);
 		getContentPane().add(panel_1);
 		
 		JLabel lblContacto = new JLabel("Contacta con nosotros");
@@ -142,6 +113,27 @@ public class VentanaEditarUsuario extends JFrame{
 			
 		});
 		
+		btnInscribirse.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String nombre= txtNombre.getText();	
+				String contra= txtApellidos.getText();
+				String correo= txtCorreo.getText();
+				
+				u.setNomUsuario(nombre);
+				u.setContrasenya(contra);
+				u.setCorreo(correo);
+				
+				DBManager dbm = new DBManager();
+				dbm.actualizarUsuario(u);
+				JOptionPane.showMessageDialog(null, "El usuario se ha actualizado correctamente", "Correcto", 1);
+				setVisible(false);
+                VentanaAdminUsuarios vma = new VentanaAdminUsuarios();
+                vma.setVisible(true);
+			}
+		});
 		
 		
 	}

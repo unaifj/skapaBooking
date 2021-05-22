@@ -2,12 +2,18 @@ package com.decode.admin;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
 import javax.swing.JTextField;
+
+import com.decode.bd.DBManager;
+import com.decode.objects.Opinion;
+
 import javax.swing.JButton;
 
 public class VentanaEditarOpiniones extends JFrame {
@@ -16,7 +22,7 @@ public class VentanaEditarOpiniones extends JFrame {
 	private JTextField textField_1;
 	
 	
-	public VentanaEditarOpiniones() {
+	public VentanaEditarOpiniones(Opinion o) {
 		getContentPane().setBackground(new Color(30, 144, 255));
 		getContentPane().setForeground(SystemColor.textHighlight);
 		setBounds(100, 100, 473, 551);
@@ -33,6 +39,7 @@ public class VentanaEditarOpiniones extends JFrame {
 		getContentPane().add(lblTitulo);
 		
 		textTitulo = new JTextField();
+		textTitulo.setText(o.getTitulo());
 		textTitulo.setColumns(10);
 		textTitulo.setBounds(10, 124, 343, 26);
 		getContentPane().add(textTitulo);
@@ -43,6 +50,7 @@ public class VentanaEditarOpiniones extends JFrame {
 		getContentPane().add(lblDescripcion);
 		
 		textDesc = new JTextField();
+		textDesc.setText(o.getDescripcion());
 		textDesc.setColumns(10);
 		textDesc.setBounds(10, 228, 343, 83);
 		getContentPane().add(textDesc);
@@ -53,11 +61,12 @@ public class VentanaEditarOpiniones extends JFrame {
 		getContentPane().add(lblPuntacion);
 		
 		textField_1 = new JTextField();
+		textField_1.setText(String.valueOf(o.getPuntuacion()));
 		textField_1.setColumns(10);
 		textField_1.setBounds(116, 352, 113, 26);
 		getContentPane().add(textField_1);
 		
-		JButton btnEditar = new JButton("Editar");
+		JButton btnEditar = new JButton("Guardar");
 		btnEditar.setBounds(71, 428, 96, 35);
 		getContentPane().add(btnEditar);
 		
@@ -70,13 +79,36 @@ public class VentanaEditarOpiniones extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				VentanaListaOpiniones vlo = new VentanaListaOpiniones();
+				VentanaAdminOpinion vlo = new VentanaAdminOpinion();
 				setVisible(false);
 				vlo.setVisible(true);
 				
 			}
 		});
 		
+		btnEditar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				// TODO Auto-generated method stub
+				String titulo= textTitulo.getText();	
+				String descripcion= textDesc.getText();
+				Float puntuacion=  Float.parseFloat(textField_1.getText());
+				
+				o.setTitulo(titulo);
+				o.setDescripcion(descripcion);
+				o.setPuntuacion(puntuacion);
+				
+				DBManager dbm = new DBManager();
+				dbm.actualizarOpinion(o);
+				JOptionPane.showMessageDialog(null, "Opinion actualizada correctamente", "Correcto", 1);
+				setVisible(false);
+                VentanaAdminOpinion vma = new VentanaAdminOpinion();
+                vma.setVisible(true);
+			}
+		});
 		
 		
 		

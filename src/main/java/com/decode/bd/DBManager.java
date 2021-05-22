@@ -831,7 +831,7 @@ public class DBManager {
     	
     	//Actualizar usuario
     	
-    	public void actualizarUsuario(Usuario user) {
+    	public void actualizarUsuario(Usuario u) {
     		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
     		PersistenceManager pm = pmf.getPersistenceManager();
     		Transaction tx = pm.currentTransaction();
@@ -843,11 +843,11 @@ public class DBManager {
                 Iterator<Usuario> iter = e.iterator();
                 while (iter.hasNext()) {
                     Usuario usuario = (Usuario) iter.next();
-                    if (usuario.getId() == user.getId()) {
-                        System.out.println("* Updating: " + usuario + "\n* To: " + user);
-                        usuario.setNomUsuario(user.getNomUsuario());
-                        usuario.setCorreo(user.getCorreo());
-                        usuario.setContrasenya(user.getContrasenya());
+                    if (usuario.getId() == u.getId()) {
+                        System.out.println("* Updating: " + usuario + "\n* To: " + u);
+                        usuario.setNomUsuario(u.getNomUsuario());
+                        usuario.setCorreo(u.getCorreo());
+                        usuario.setContrasenya(u.getContrasenya());
                     }
                 }
                 tx.commit();
