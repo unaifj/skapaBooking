@@ -20,9 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import com.decode.bd.DBManager;
-import com.decode.crearAnuncio.VentanaEditarAnuncio;
 import com.decode.objects.Anuncio;
-import com.decode.objects.Usuario;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
 
