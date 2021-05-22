@@ -39,6 +39,7 @@ import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
 import com.decode.objects.Reserva;
 import com.decode.sesion.VentanaInicio;
+import com.decode.ventanaPrincipal.VentanaPrincipal;
 import com.decode.ventanaperfil.VentanaPerfil;
 
 
@@ -184,29 +185,29 @@ public class VentanaCrearAnuncio extends JFrame {
 		lblNewLabel.setBounds(10, 186, 46, 14);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Provincia:");
-		lblNewLabel_1.setBounds(10, 227, 104, 14);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblProvincia = new JLabel("Provincia:");
+		lblProvincia.setBounds(10, 227, 104, 14);
+		contentPane.add(lblProvincia);
 		
-		JLabel lblNewLabel_2 = new JLabel("Metros cuadrados (m2):");
-		lblNewLabel_2.setBounds(10, 363, 160, 14);
-		contentPane.add(lblNewLabel_2);
+		JLabel lblMetros = new JLabel("Metros cuadrados (m2):");
+		lblMetros.setBounds(10, 363, 160, 14);
+		contentPane.add(lblMetros);
 		
-		JLabel lblNewLabel_3 = new JLabel("Numero de habitaciones:");
-		lblNewLabel_3.setBounds(10, 409, 160, 14);
-		contentPane.add(lblNewLabel_3);
+		JLabel lblNumHa = new JLabel("Numero de habitaciones:");
+		lblNumHa.setBounds(10, 409, 160, 14);
+		contentPane.add(lblNumHa);
 		
-		JLabel lblNewLabel_4 = new JLabel("Precio por noche:");
-		lblNewLabel_4.setBounds(10, 454, 122, 14);
-		contentPane.add(lblNewLabel_4);
+		JLabel lblPrecioNoche = new JLabel("Precio por noche:");
+		lblPrecioNoche.setBounds(10, 454, 122, 14);
+		contentPane.add(lblPrecioNoche);
 		
-		JLabel lblNewLabel_5 = new JLabel("Descripcion:");
-		lblNewLabel_5.setBounds(10, 579, 92, 14);
-		contentPane.add(lblNewLabel_5);
+		JLabel lblDesc = new JLabel("Descripcion:");
+		lblDesc.setBounds(10, 579, 92, 14);
+		contentPane.add(lblDesc);
 		
-		JLabel lblNewLabel_6 = new JLabel("Numero de personas:");
-		lblNewLabel_6.setBounds(10, 495, 141, 16);
-		contentPane.add(lblNewLabel_6);
+		JLabel lblNumPers = new JLabel("Numero de personas:");
+		lblNumPers.setBounds(10, 495, 141, 16);
+		contentPane.add(lblNumPers);
 		
 		textField = new JTextField();
 		textField.setBounds(207, 487, 258, 26);
@@ -222,9 +223,9 @@ public class VentanaCrearAnuncio extends JFrame {
 		contentPane.add(txtCodigoPostal);
 		txtCodigoPostal.setColumns(10);
 		
-		JLabel lblNewLabel_8 = new JLabel("Municipio:");
-		lblNewLabel_8.setBounds(10, 272, 75, 14);
-		contentPane.add(lblNewLabel_8);
+		JLabel lblMunicipio = new JLabel("Municipio:");
+		lblMunicipio.setBounds(10, 272, 75, 14);
+		contentPane.add(lblMunicipio);
 		
 		txtMunicipio = new JTextField();
 		txtMunicipio.setBounds(207, 269, 258, 20);
@@ -239,6 +240,10 @@ public class VentanaCrearAnuncio extends JFrame {
 		txtDireccion.setBounds(207, 544, 263, 20);
 		contentPane.add(txtDireccion);
 		txtDireccion.setColumns(10);
+		
+		JButton btnAtras = new JButton("Atras");
+		btnAtras.setBounds(765, 693, 104, 37);
+		contentPane.add(btnAtras);
 		
 		//BOTON IMAGEN 
 		btnImagen.addActionListener(new ActionListener() {
@@ -312,6 +317,18 @@ public class VentanaCrearAnuncio extends JFrame {
 
             }
         });
+		
+		btnAtras.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				setVisible(false);
+				VentanaPrincipal vp = new VentanaPrincipal(null);
+				vp.setVisible(true);
+				
+			}
+		});
 
 	}
 }
