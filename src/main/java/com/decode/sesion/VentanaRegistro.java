@@ -10,6 +10,7 @@ import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
 import com.decode.multilenguaje.Idioma;
 import com.decode.objects.Usuario;
+import com.decode.ventanaPrincipal.VentanaPrincipal;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -24,6 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import javax.swing.UIManager;
+import java.awt.SystemColor;
 
 public class VentanaRegistro extends JFrame {
 
@@ -62,7 +65,7 @@ public class VentanaRegistro extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 475, 759);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.YELLOW);
+		contentPane.setBackground(SystemColor.menu);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -80,7 +83,7 @@ public class VentanaRegistro extends JFrame {
 		panelNorte.add(lblTitulo);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 154, 440, 324);
+		panel.setBounds(10, 154, 440, 349);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -124,10 +127,14 @@ public class VentanaRegistro extends JFrame {
 		btnSingUp.setBounds(285, 224, 89, 23);
 		panel.add(btnSingUp);
 		
-		JLabel lblNewLabel = new JLabel("Registrate");
-		lblNewLabel.setBounds(10, 11, 137, 14);
-		panel.add(lblNewLabel);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		JLabel lblRegistrarse = new JLabel("Registrate");
+		lblRegistrarse.setBounds(10, 11, 137, 14);
+		panel.add(lblRegistrarse);
+		lblRegistrarse.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		
+		JButton btnAtras = new JButton("Atras\r\n");
+		btnAtras.setBounds(21, 286, 89, 23);
+		panel.add(btnAtras);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
@@ -194,10 +201,22 @@ public class VentanaRegistro extends JFrame {
 	
 		usuarios = dbm.getUsuarios();
 		
+		btnAtras.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				setVisible(false);
+				VentanaPrincipal vp = new VentanaPrincipal("es");
+				vp.setVisible(true);
+				
+				
+			}
+		});
+		
 		
 		
 		
 		
 	}
-
 }
