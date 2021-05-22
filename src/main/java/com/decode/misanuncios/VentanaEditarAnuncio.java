@@ -263,12 +263,14 @@ public class VentanaEditarAnuncio extends JFrame {
 		ImageIcon img2= new ImageIcon(iconoImg.getImage().getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_SMOOTH));
 		lblImagen.setIcon(img2);
 		
+		
+		fileChooser = new JFileChooser();
 		//BOTON IMAGEN 
 		btnActImagen.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-		       fileChooser = new JFileChooser();
+		       
 		       fileChooser.showOpenDialog(fileChooser);
 	
 		       String orig = fileChooser.getSelectedFile().getPath();
@@ -300,10 +302,9 @@ public class VentanaEditarAnuncio extends JFrame {
                 
             	anuncio.setTitulo(textTitulo.getText());
             	anuncio.setDescripcion(textDesc_1.getText());
-            	
-//            	if (fileChooser.getSelectedFile() != null) {
-//            		anuncio.setImg("/img/anuncios/" + fileChooser.getSelectedFile().getName());
-//            	}
+            	if (fileChooser.getSelectedFile() != null) {
+            		anuncio.setImg("img/anuncios/" + fileChooser.getSelectedFile().getName());
+            	}
             	
             	anuncio.setNumPersonas(Integer.parseInt(textNumPers.getText()));
             	anuncio.setPrecioNoche(Double.parseDouble(textPrecioNoche.getText()));
@@ -322,7 +323,7 @@ public class VentanaEditarAnuncio extends JFrame {
 				dbm.actualizarAnuncio(anuncio);
 				JOptionPane.showMessageDialog(null, "El anuncio se a actualizado correctamente", "Correcto", 1);
 				setVisible(false);
-                VentanaMisAnuncios vma = new VentanaMisAnuncios(VentanaInicio.getUser());
+                VentanaMisAnuncios vma = new VentanaMisAnuncios(user);
                 vma.setVisible(true);
 
             }

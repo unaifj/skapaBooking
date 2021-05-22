@@ -16,6 +16,8 @@ public class Usuario {
 	private String nomUsuario;
 	private String correo;
 	private String contrasenya;
+	private String nombre;
+	private String apellidos;
 	
 	public Usuario(String nomUsuario, String correo, String contrasenya) {
 		super();
@@ -54,6 +56,24 @@ public class Usuario {
 
 	public void setContrasenya(String contrasenya) {
 		this.contrasenya = contrasenya;
+	}
+	
+	
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
 	}
 
 	@Override

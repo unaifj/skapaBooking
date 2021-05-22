@@ -878,7 +878,7 @@ public class DBManager {
 
                     while (iter.hasNext()) {
                     	Anuncio anuncio = (Anuncio) iter.next();
-                        if (anuncio.getId() == anun.getId()) {
+                        if (anuncio.getTitulo().equals(anun.getTitulo())) {
                             System.out.println("* Updating: " + anuncio + "\n* To: " + anun);
                             anuncio.setApartamento(anun.getApartamento());
                             anuncio.setDescripcion(anun.getDescripcion());
