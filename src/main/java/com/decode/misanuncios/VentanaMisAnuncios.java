@@ -10,7 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -22,25 +21,16 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 
-import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
+import com.decode.configuracion.VentanaConfiguacion;
 import com.decode.contacto.Contacto;
-import com.decode.crearAnuncio.VentanaCrearAnuncio;
-import com.decode.crearAnuncio.VentanaNuevoAnuncio;
-import com.decode.misanuncios.VentanaMisAnuncios;
 import com.decode.objects.Anuncio;
 import com.decode.objects.Usuario;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
 import com.decode.ventanaPrincipal.PanelAnuncio;
-import com.decode.ventanaperfil.VentanaConfiguacion;
-import com.toedter.calendar.JDateChooser;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.SpinnerNumberModel;
 
 public class VentanaMisAnuncios extends JFrame  {
 	private JTextField textDestino;

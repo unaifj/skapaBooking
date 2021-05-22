@@ -1,4 +1,4 @@
-package com.decode.ventanaperfil;
+package com.decode.configuracion;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;

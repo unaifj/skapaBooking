@@ -1,24 +1,18 @@
-package com.decode.crearAnuncio;
+package com.decode.misanuncios;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -28,23 +22,18 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
-import javax.swing.plaf.FileChooserUI;
 
 import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
-import com.decode.misanuncios.VentanaMisAnuncios;
 import com.decode.objects.Anuncio;
 import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
 import com.decode.objects.Reserva;
 import com.decode.objects.Usuario;
 import com.decode.sesion.VentanaInicio;
-import com.decode.ventanaperfil.VentanaPerfil;
-
-
-import javax.swing.JTextField;
-import javax.swing.JTextPane;
 
 public class VentanaNuevoAnuncio extends JFrame {
 
@@ -137,7 +126,7 @@ public class VentanaNuevoAnuncio extends JFrame {
 		lblIntro.setBounds(10, 120, 576, 55);
 		contentPane.add(lblIntro);
 		
-		JButton btnActImagen = new JButton("Actualizar imagen");
+		JButton btnActImagen = new JButton("Seleccionar imagen");
 		btnActImagen.setBounds(587, 422, 130, 23);
 		contentPane.add(btnActImagen);
 		btnActImagen.setBackground(Color.WHITE);
@@ -179,14 +168,14 @@ public class VentanaNuevoAnuncio extends JFrame {
 		contentPane.add(lblMetrosCuadrados);
 		
 		JLabel lblNewLabel_5 = new JLabel("Localidad");
-		lblNewLabel_5.setBounds(10, 531, 46, 14);
+		lblNewLabel_5.setBounds(10, 531, 165, 14);
 		contentPane.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("Direccion");
 		lblNewLabel_6.setBounds(40, 563, 135, 14);
 		contentPane.add(lblNewLabel_6);
 		
-		JLabel lblNewLabel_6_1 = new JLabel("Indicaciones");
+		JLabel lblNewLabel_6_1 = new JLabel("Observaciones");
 		lblNewLabel_6_1.setBounds(40, 588, 135, 14);
 		contentPane.add(lblNewLabel_6_1);
 		
@@ -216,12 +205,12 @@ public class VentanaNuevoAnuncio extends JFrame {
 		
 		textPrecioNoche = new JTextField();
 		textPrecioNoche.setColumns(10);
-		textPrecioNoche.setBounds(273, 372, 201, 20);
+		textPrecioNoche.setBounds(273, 372, 163, 20);
 		contentPane.add(textPrecioNoche);
 		
 		textM2 = new JTextField();
 		textM2.setColumns(10);
-		textM2.setBounds(273, 473, 201, 20);
+		textM2.setBounds(273, 473, 163, 20);
 		contentPane.add(textM2);
 		
 		textDir = new JTextField();
@@ -243,9 +232,13 @@ public class VentanaNuevoAnuncio extends JFrame {
 		lblNewLabel_8.setBounds(587, 215, 165, 14);
 		contentPane.add(lblNewLabel_8);
 		
-		JLabel lblImagen = new JLabel("IMAGEN");
+		JLabel lblImagen = new JLabel();
 		lblImagen.setBounds(587, 240, 555, 176);
 		contentPane.add(lblImagen);
+		
+		ImageIcon iconoImg= new ImageIcon("img/imagen-galeria.png");
+		ImageIcon img= new ImageIcon(iconoImg.getImage().getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_SMOOTH));
+		lblImagen.setIcon(img);
 		
 		JLabel lblDescripcion_1 = new JLabel("Descripcion");
 		lblDescripcion_1.setBounds(587, 495, 135, 14);
@@ -272,6 +265,14 @@ public class VentanaNuevoAnuncio extends JFrame {
 		JLabel lblNewLabel_7_2 = new JLabel("Municipio");
 		lblNewLabel_7_2.setBounds(40, 641, 135, 14);
 		contentPane.add(lblNewLabel_7_2);
+		
+		JLabel lblNewLabel_9 = new JLabel("m2");
+		lblNewLabel_9.setBounds(446, 476, 28, 14);
+		contentPane.add(lblNewLabel_9);
+		
+		JLabel lblNewLabel_10 = new JLabel("€");
+		lblNewLabel_10.setBounds(446, 375, 28, 14);
+		contentPane.add(lblNewLabel_10);
 			
 //		ImageIcon iconoImg= new ImageIcon();
 //		ImageIcon img2= new ImageIcon(iconoImg.getImage().getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_SMOOTH));
@@ -329,23 +330,31 @@ public class VentanaNuevoAnuncio extends JFrame {
             	String ruta = "/img/anuncios/" + fileChooser.getSelectedFile().getName();
             	//float puntuacion = Float.parseFloat(textField.getText());
             	
-            	Localidad loc= new Localidad(provincia, municipio,codigo,direccion);
-            	List<Reserva> reservas = new ArrayList<Reserva>();
-				Apartamento aparta = new Apartamento(numHab, m2, loc,reservas);
-				Anuncio anuncio = new Anuncio(VentanaInicio.getUser(),aparta,titulo, desc, precio, false, m2, ruta);
+            	if (titulo.equals("") || desc.equals("") || provincia.equals("") || numHab == 0 || precio == 0.0 || m2 == 0 ||
+            			municipio.equals("") || codigo == 0 || direccion.equals("") || ruta.equals("")) {
+            		JOptionPane.showMessageDialog(null, "Error creando el anuncio", "Alguno de los campos es incorrecto o nulo", 0);
+            		
+            	}else {
+            		Localidad loc= new Localidad(provincia, municipio,codigo,direccion);
+                	List<Reserva> reservas = new ArrayList<Reserva>();
+    				Apartamento aparta = new Apartamento(numHab, m2, loc,reservas);
+    				Anuncio anuncio = new Anuncio(VentanaInicio.getUser(),aparta,titulo, desc, precio, false, m2, ruta);
 
-				
-				DBManager dbm = new DBManager();
-				try {
-					dbm.insertarAnuncio(anuncio);
-					JOptionPane.showMessageDialog(null, "El anuncio se a creado correctamente", "Correcto", 1);
-				} catch (DBException e1) {
-					JOptionPane.showMessageDialog(null, "Error creando el anuncio", "Error de conexion", 0);
-					e1.printStackTrace();
-				}
-				setVisible(false);
-                VentanaMisAnuncios vma = new VentanaMisAnuncios(user);
-                vma.setVisible(true);
+    				
+    				DBManager dbm = new DBManager();
+    				try {
+    					dbm.insertarAnuncio(anuncio);
+    					JOptionPane.showMessageDialog(null, "El anuncio se a creado correctamente", "Correcto", 1);
+    				} catch (DBException e1) {
+    					JOptionPane.showMessageDialog(null, "Error creando el anuncio", "Error de conexion", 0);
+    					e1.printStackTrace();
+    				}
+    				setVisible(false);
+                    VentanaMisAnuncios vma = new VentanaMisAnuncios(user);
+                    vma.setVisible(true);
+            	}
+            	
+            	
 
             }
         });

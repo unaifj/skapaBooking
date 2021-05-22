@@ -18,12 +18,12 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
 import com.decode.chat.ChatSkapaBookingCliente;
+import com.decode.configuracion.VentanaConfiguacion;
 import com.decode.contacto.Contacto;
 import com.decode.objects.Anuncio;
 import com.decode.pago.VentanaPago;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
-import com.decode.ventanaperfil.VentanaConfiguacion;
 
 public class VentanaAnuncio extends JFrame{
 	

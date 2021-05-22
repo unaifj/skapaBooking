@@ -25,13 +25,13 @@ import javax.swing.JTextField;
 
 import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
+import com.decode.configuracion.VentanaConfiguacion;
 import com.decode.contacto.Contacto;
 import com.decode.misanuncios.VentanaMisAnuncios;
 import com.decode.multilenguaje.Idioma;
 import com.decode.objects.Anuncio;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
-import com.decode.ventanaperfil.VentanaConfiguacion;
 import com.toedter.calendar.JDateChooser;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;

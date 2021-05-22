@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.decode.bd.DBManager;
-import com.decode.crearAnuncio.VentanaEditarAnuncio;
+import com.decode.misanuncios.VentanaEditarAnuncio;
 import com.decode.misanuncios.VentanaMisAnuncios;
 import com.decode.objects.Anuncio;
 import com.decode.objects.Usuario;
