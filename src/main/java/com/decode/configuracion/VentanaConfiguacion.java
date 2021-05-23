@@ -156,7 +156,7 @@ public class VentanaConfiguacion extends JFrame  {
 		lblNewLabel_4.setBounds(82, 190, 107, 14);
 		getContentPane().add(lblNewLabel_4);
 		
-		textNom = new JTextField();
+		textNom = new JTextField(user.getNombre());
 		textNom.setEditable(false);
 		textNom.setBounds(218, 229, 130, 20);
 		getContentPane().add(textNom);
@@ -174,7 +174,7 @@ public class VentanaConfiguacion extends JFrame  {
 		lblNewLabel_6.setBounds(82, 257, 46, 14);
 		getContentPane().add(lblNewLabel_6);
 		
-		textApe = new JTextField();
+		textApe = new JTextField(user.getApellidos());
 		textApe.setEditable(false);
 		textApe.setBounds(218, 254, 130, 20);
 		getContentPane().add(textApe);
@@ -196,7 +196,7 @@ public class VentanaConfiguacion extends JFrame  {
 		lblNewLabel_4_1.setBounds(643, 183, 107, 14);
 		getContentPane().add(lblNewLabel_4_1);
 		
-		textCorreo = new JTextField(user.getNomUsuario());
+		textCorreo = new JTextField(user.getCorreo());
 		textCorreo.setEditable(false);
 		textCorreo.setColumns(10);
 		textCorreo.setBounds(760, 180, 149, 20);
@@ -283,6 +283,8 @@ public class VentanaConfiguacion extends JFrame  {
 				}else {
 					textNom.setEditable(false);
 					textApe.setEditable(false);
+					user.setNombre(textNom.getText());
+					user.setApellidos(textApe.getText());
 					btnEditarNombreApp.setText("Editar");
 					
 				}

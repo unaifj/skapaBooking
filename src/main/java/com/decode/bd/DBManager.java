@@ -843,7 +843,7 @@ public class DBManager {
                 Iterator<Usuario> iter = e.iterator();
                 while (iter.hasNext()) {
                     Usuario usuario = (Usuario) iter.next();
-                    if (usuario.getId() == u.getId()) {
+                    if (usuario.getNomUsuario().equals(u.getNomUsuario())) {
                         System.out.println("* Updating: " + usuario + "\n* To: " + u);
                         usuario.setNomUsuario(u.getNomUsuario());
                         usuario.setCorreo(u.getCorreo());

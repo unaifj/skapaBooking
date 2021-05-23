@@ -1,18 +1,18 @@
 package com.decode.objects;
 
-import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class Usuario {
-	@PrimaryKey
-	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT, primaryKey = "true")
+	
+	private static int cont = 0;
+	
 	private int id;
+	@PrimaryKey
 	private String nomUsuario;
 	private String correo;
 	private String contrasenya;
@@ -21,9 +21,11 @@ public class Usuario {
 	
 	public Usuario(String nomUsuario, String correo, String contrasenya) {
 		super();
+		this.id = cont;
 		this.nomUsuario = nomUsuario;
 		this.correo = correo;
 		this.contrasenya = contrasenya;
+		cont++;
 	}
 
 	public int getId() {
