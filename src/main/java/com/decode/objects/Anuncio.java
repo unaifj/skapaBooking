@@ -3,18 +3,18 @@ package com.decode.objects;
 import java.util.Calendar;
 
 import javax.jdo.annotations.ForeignKey;
-import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class Anuncio {
+	
+	private static int cont = 0;
+	
 	@PrimaryKey
-	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT, primaryKey = "true")
 	private int id;
 	@ForeignKey
 	private Usuario usuario;
@@ -31,6 +31,7 @@ public class Anuncio {
 	public Anuncio(Usuario usuario, Apartamento apartamento, String titulo, String descripcion, double precioNoche,
 			boolean disponibilidad, int numPersonas, String img) {
 		super();
+		this.id = cont;
 		this.usuario = usuario;
 		this.apartamento = apartamento;
 		this.titulo = titulo;
@@ -39,6 +40,7 @@ public class Anuncio {
 		this.disponibilidad = disponibilidad;
 		this.numPersonas = numPersonas;
 		this.img = img;
+		cont++;
 	}
 
 	
