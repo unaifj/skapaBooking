@@ -124,7 +124,7 @@ public class PanelAnuncio extends JPanel implements ActionListener {
 							win.setVisible(false);
 						}
 						
-						VentanaMisAnuncios vma = new VentanaMisAnuncios(anuncio.getUsuario());
+						VentanaMisAnuncios vma = new VentanaMisAnuncios(anuncio.getIdUsuario());
 						vma.setVisible(true);
 					}else {
 						
@@ -141,7 +141,7 @@ public class PanelAnuncio extends JPanel implements ActionListener {
 					win.setVisible(false);
 				}
 				
-				VentanaAnuncio vr = new VentanaAnuncio(anuncio);
+				VentanaAnuncio vr = new VentanaAnuncio(anuncio, user);
 				vr.setVisible(true);
 			}
 		});

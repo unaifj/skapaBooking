@@ -174,7 +174,7 @@ public class VentanaRegistro extends JFrame {
 						
 							JOptionPane.showMessageDialog(null, "Cuenta creada con exito", "Exito", 1, null);
 							
-							VentanaInicio vi = new VentanaInicio(null);
+							VentanaInicio vi = new VentanaInicio(idiom);
 							setVisible(false);
 							vi.setVisible(true);
 
@@ -207,7 +207,7 @@ public class VentanaRegistro extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				setVisible(false);
-				VentanaPrincipal vp = new VentanaPrincipal("es");
+				VentanaPrincipal vp = new VentanaPrincipal("ES", null);
 				vp.setVisible(true);
 				
 				

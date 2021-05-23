@@ -343,7 +343,7 @@ public class VentanaConfiguacion extends JFrame  {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				 VentanaNuevoAnuncio vna = new VentanaNuevoAnuncio(user);
+				 VentanaNuevoAnuncio vna = new VentanaNuevoAnuncio(user.getId());
 				 vna.setVisible(true);				
 			}
 			

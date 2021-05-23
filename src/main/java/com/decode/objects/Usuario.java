@@ -11,8 +11,8 @@ public class Usuario {
 	
 	private static int cont = 0;
 	
-	private int id;
 	@PrimaryKey
+	private int id;
 	private String nomUsuario;
 	private String correo;
 	private String contrasenya;

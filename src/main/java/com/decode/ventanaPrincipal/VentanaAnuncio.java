@@ -21,13 +21,14 @@ import com.decode.chat.ChatSkapaBookingCliente;
 import com.decode.configuracion.VentanaConfiguacion;
 import com.decode.contacto.Contacto;
 import com.decode.objects.Anuncio;
+import com.decode.objects.Usuario;
 import com.decode.pago.VentanaPago;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
 
 public class VentanaAnuncio extends JFrame{
 	
-	public VentanaAnuncio(Anuncio anuncio) {
+	public VentanaAnuncio(Anuncio anuncio, Usuario user) {
 		getContentPane().setBackground(Color.WHITE);
 
 		getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 62));
@@ -289,7 +290,7 @@ public class VentanaAnuncio extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				VentanaPrincipal vp = new VentanaPrincipal("ES");
+				VentanaPrincipal vp = new VentanaPrincipal("ES", user);
 				vp.setVisible(true);
 				
 				

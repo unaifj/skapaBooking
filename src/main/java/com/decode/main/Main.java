@@ -46,7 +46,7 @@ public class Main {
         // Lanzar el servidor si se ejecuta desde la consola
     
 
-    	VentanaPrincipal vp = new VentanaPrincipal("ES");
+    	VentanaPrincipal vp = new VentanaPrincipal("ES", null);
     	vp.setVisible(true);
                        	
               

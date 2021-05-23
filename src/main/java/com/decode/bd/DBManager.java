@@ -66,11 +66,11 @@ public class DBManager {
 			Apartamento apar3= new Apartamento(8,120,barakaldo1, null);
 			pm.makePersistent(apar3);
 			
-			Anuncio anun1=new Anuncio(userA, apar1,"Apartamento soleado en la margen izquierda de Sevilla", "Apartamento soleado con vistas al mar ideal para pasar unos dias en el sur de España", 25, true, 4, "img/anuncios/13880304.png");
+			Anuncio anun1=new Anuncio(userA.getId(), apar1,"Apartamento soleado en la margen izquierda de Sevilla", "Apartamento soleado con vistas al mar ideal para pasar unos dias en el sur de España", 25, true, 4, "img/anuncios/13880304.png");
 			pm.makePersistent(anun1);
-			Anuncio anun2=new Anuncio(userB, apar2,"Apartamento soleado muy bien situado en Conil", "Apartamento muy bien situado con vistas a la cala santo amor muy grande y espaciosa", 32, true, 6, "img/anuncios/13880304.png");
+			Anuncio anun2=new Anuncio(userB.getId(), apar2,"Apartamento soleado muy bien situado en Conil", "Apartamento muy bien situado con vistas a la cala santo amor muy grande y espaciosa", 32, true, 6, "img/anuncios/13880304.png");
 			pm.makePersistent(anun2);
-			Anuncio anun3=new Anuncio(userC, apar3,"Apartamento muy bueno y completo para conocer Vizcaya", "Apartamento muy completo con lo basico para dormir cocinar y descansar, lo demas lo dejamos a gusto del cliente", 20, true, 3, "img/anuncios/13880304.png");
+			Anuncio anun3=new Anuncio(userC.getId(), apar3,"Apartamento muy bueno y completo para conocer Vizcaya", "Apartamento muy completo con lo basico para dormir cocinar y descansar, lo demas lo dejamos a gusto del cliente", 20, true, 3, "img/anuncios/13880304.png");
 			pm.makePersistent(anun3);
 			
 
@@ -106,7 +106,44 @@ public class DBManager {
 	}
 	
 	
-	
+	public Usuario selectUsuario (int idUsuario) {
+		
+  		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+  		PersistenceManager pm = pmf.getPersistenceManager();
+  		Transaction tx = pm.currentTransaction();
+      	
+  	
+  		Usuario usuario = null;
+  		 
+          try {
+              System.out.println("* Viendo todas los usuarios");
+              tx.begin();
+
+              Extent<Usuario> usuarioExtent = pm.getExtent(Usuario.class, true);
+             
+              for (Usuario user : usuarioExtent) {
+              	if (idUsuario == user.getId()) {
+              		
+              		usuario = new Usuario(user.getNomUsuario(), user.getCorreo(), user.getContrasenya());
+              		usuario.setId(user.getId());
+              	}
+           
+              }
+
+              tx.commit();
+          } catch (Exception ex) {
+              System.out.println("$ Error viendo todos Metodos de pago: " + ex.getMessage());
+          } finally {
+              if (tx != null && tx.isActive()) {
+                  tx.rollback();
+              }
+
+              pm.close();
+          }
+          return usuario;
+
+	      
+	}
 	
 	 public void deleteAnuncio(Anuncio anuncio) {
 		 PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
@@ -433,9 +470,10 @@ public class DBManager {
 		try {
 			tx.begin();
 			
-			pm.makePersistent(anuncio.getApartamento().getLocalidad());
-			pm.makePersistent(anuncio.getApartamento());	
 			pm.makePersistent(anuncio);
+		
+	
+			
 			tx.commit();
 			
 		} finally {
@@ -678,11 +716,8 @@ public class DBManager {
                 	Apartamento aparta = new Apartamento(anuncio.getApartamento().getNumHabitaciones(), 
                 			anuncio.getApartamento().getMetrosCuad(), loc, anuncio.getApartamento().getReservas());
                 	
-                	Usuario user = new Usuario(anuncio.getUsuario().getNomUsuario(), 
-                			anuncio.getUsuario().getCorreo(), anuncio.getUsuario().getContrasenya());
-                	user.setId(anuncio.getUsuario().getId());
                 	
-                	Anuncio a = new Anuncio(user, aparta, anuncio.getTitulo(), 
+                	Anuncio a = new Anuncio(anuncio.getIdUsuario(), aparta, anuncio.getTitulo(), 
                 			anuncio.getDescripcion(), anuncio.getPrecioNoche(), anuncio.isDisponibilidad(), anuncio.getNumPersonas(), anuncio.getImg());
                 
                 	anuncios.add(a);
@@ -769,11 +804,9 @@ public class DBManager {
                     			anuncio.getApartamento().getMetrosCuad(), loc, anuncio.getApartamento().getReservas());
                     	aparta.setReservas(anuncio.getApartamento().getReservas());
 
-                    	Usuario user = new Usuario(anuncio.getUsuario().getNomUsuario(), 
-                    			anuncio.getUsuario().getCorreo(), anuncio.getUsuario().getContrasenya());
-                    	user.setId(anuncio.getUsuario().getId());
+                  
                     	
-                    	Anuncio a = new Anuncio(user, aparta, anuncio.getTitulo(), anuncio.getDescripcion(), 
+                    	Anuncio a = new Anuncio(anuncio.getIdUsuario(), aparta, anuncio.getTitulo(), anuncio.getDescripcion(), 
                     			anuncio.getPrecioNoche(), anuncio.isDisponibilidad(), anuncio.getNumPersonas(), anuncio.getImg());    
      
                     	int cont = 0;
@@ -878,7 +911,7 @@ public class DBManager {
 
                     while (iter.hasNext()) {
                     	Anuncio anuncio = (Anuncio) iter.next();
-                        if (anuncio.getTitulo().equals(anun.getTitulo())) {
+                        if (anuncio.getTitulo() == anun.getTitulo()) {
                             System.out.println("* Updating: " + anuncio + "\n* To: " + anun);
                             anuncio.setApartamento(anun.getApartamento());
                             anuncio.setDescripcion(anun.getDescripcion());
@@ -886,7 +919,7 @@ public class DBManager {
                             anuncio.setNumPersonas(anun.getNumPersonas());
                             anuncio.setPrecioNoche(anun.getPrecioNoche());
                             anuncio.setTitulo(anun.getTitulo());
-                            anuncio.setUsuario(anun.getUsuario());
+                         
                         }
                     }
                     tx.commit();

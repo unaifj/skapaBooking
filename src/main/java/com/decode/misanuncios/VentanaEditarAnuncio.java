@@ -127,7 +127,7 @@ public class VentanaEditarAnuncio extends JFrame {
 		contentPane.add(btnActImagen);
 		btnActImagen.setBackground(Color.WHITE);
 		
-		JButton btnPublicar = new JButton("Publicar");
+		JButton btnPublicar = new JButton("Guardar");
 		btnPublicar.setBounds(1091, 696, 130, 37);
 		contentPane.add(btnPublicar);
 		
@@ -323,7 +323,7 @@ public class VentanaEditarAnuncio extends JFrame {
 				dbm.actualizarAnuncio(anuncio);
 				JOptionPane.showMessageDialog(null, "El anuncio se a actualizado correctamente", "Correcto", 1);
 				setVisible(false);
-                VentanaMisAnuncios vma = new VentanaMisAnuncios(user);
+                VentanaMisAnuncios vma = new VentanaMisAnuncios(user.getId());
                 vma.setVisible(true);
 
             }

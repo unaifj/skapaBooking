@@ -13,9 +13,9 @@ import javax.jdo.annotations.PrimaryKey;
 @PersistenceCapable
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class Apartamento {
+	private static int cont = 0;
 	
 	@PrimaryKey
-	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT, primaryKey = "true")
 	private int id;
 	private int numHabitaciones;
 	private int metrosCuad;
@@ -26,10 +26,12 @@ public class Apartamento {
 	
 	public Apartamento(int numHabitaciones, int metrosCuad, Localidad localidad, List<Reserva> reservas) {
 		super();
+		this.id = cont;
 		this.numHabitaciones = numHabitaciones;
 		this.metrosCuad = metrosCuad;
 		this.localidad = localidad;
 		this.reservas = reservas;
+		cont++;
 	}
 
 	public int getId() {

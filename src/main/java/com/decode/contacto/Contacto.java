@@ -14,8 +14,8 @@ import javax.swing.JLabel;
 
 import com.decode.chat.ChatSkapaBooking;
 import com.decode.chat.ChatSkapaBookingCliente;
+import com.decode.opinion.VentanaOpiniones;
 import com.decode.ventanaPrincipal.VentanaPrincipal;
-import com.decode.opinion.*;
 
 
 public class Contacto extends JFrame{
@@ -176,7 +176,7 @@ public class Contacto extends JFrame{
 		
 		botonVP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaPrincipal VP = new VentanaPrincipal("ES");
+				VentanaPrincipal VP = new VentanaPrincipal("ES", null);
 				setVisible(false);
 				VP.setVisible(true);
 				}

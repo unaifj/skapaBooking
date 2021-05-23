@@ -58,7 +58,7 @@ public class VentanaNuevoAnuncio extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaNuevoAnuncio frame = new VentanaNuevoAnuncio(null);
+					VentanaNuevoAnuncio frame = new VentanaNuevoAnuncio(0);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -70,9 +70,10 @@ public class VentanaNuevoAnuncio extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaNuevoAnuncio(Usuario user) {
+	public VentanaNuevoAnuncio(int  idUsuario) {
 
-		
+		DBManager dbm = new DBManager();
+		Usuario user = dbm.selectUsuario(idUsuario);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 200, 1289, 809);
@@ -338,7 +339,7 @@ public class VentanaNuevoAnuncio extends JFrame {
             		Localidad loc= new Localidad(provincia, municipio,codigo,direccion);
                 	List<Reserva> reservas = new ArrayList<Reserva>();
     				Apartamento aparta = new Apartamento(numHab, m2, loc,reservas);
-    				Anuncio anuncio = new Anuncio(VentanaInicio.getUser(),aparta,titulo, desc, precio, false, m2, ruta);
+    				Anuncio anuncio = new Anuncio(user.getId(),aparta,titulo, desc, precio, false, m2, ruta);
 
     				
     				DBManager dbm = new DBManager();
@@ -350,7 +351,7 @@ public class VentanaNuevoAnuncio extends JFrame {
     					e1.printStackTrace();
     				}
     				setVisible(false);
-                    VentanaMisAnuncios vma = new VentanaMisAnuncios(user);
+                    VentanaMisAnuncios vma = new VentanaMisAnuncios(user.getId());
                     vma.setVisible(true);
             	}
             	

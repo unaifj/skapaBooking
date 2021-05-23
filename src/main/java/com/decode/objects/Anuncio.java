@@ -16,8 +16,7 @@ public class Anuncio {
 	
 	@PrimaryKey
 	private int id;
-	@ForeignKey
-	private Usuario usuario;
+	private int idUsuario;
 	@ForeignKey
 	private Apartamento apartamento;
 	private String titulo;
@@ -28,11 +27,11 @@ public class Anuncio {
 	private String img;
 	
 
-	public Anuncio(Usuario usuario, Apartamento apartamento, String titulo, String descripcion, double precioNoche,
-			boolean disponibilidad, int numPersonas, String img) {
+	public Anuncio(int idUsuario, Apartamento apartamento, String titulo, String descripcion,
+			double precioNoche, boolean disponibilidad, int numPersonas, String img) {
 		super();
 		this.id = cont;
-		this.usuario = usuario;
+		this.idUsuario = idUsuario;
 		this.apartamento = apartamento;
 		this.titulo = titulo;
 		this.descripcion = descripcion;
@@ -48,9 +47,15 @@ public class Anuncio {
 
 
 
+
+
+
 	public int getId() {
 		return id;
 	}
+
+
+
 
 
 
@@ -66,8 +71,11 @@ public class Anuncio {
 
 
 
-	public Usuario getUsuario() {
-		return usuario;
+
+
+
+	public int getIdUsuario() {
+		return idUsuario;
 	}
 
 
@@ -75,9 +83,15 @@ public class Anuncio {
 
 
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+
+
+
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
 	}
+
+
+
 
 
 
@@ -93,9 +107,15 @@ public class Anuncio {
 
 
 
+
+
+
 	public void setApartamento(Apartamento apartamento) {
 		this.apartamento = apartamento;
 	}
+
+
+
 
 
 
@@ -111,9 +131,15 @@ public class Anuncio {
 
 
 
+
+
+
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
+
+
+
 
 
 
@@ -129,9 +155,15 @@ public class Anuncio {
 
 
 
+
+
+
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
+
+
 
 
 
@@ -147,9 +179,15 @@ public class Anuncio {
 
 
 
+
+
+
 	public void setPrecioNoche(double precioNoche) {
 		this.precioNoche = precioNoche;
 	}
+
+
+
 
 
 
@@ -165,9 +203,15 @@ public class Anuncio {
 
 
 
+
+
+
 	public void setDisponibilidad(boolean disponibilidad) {
 		this.disponibilidad = disponibilidad;
 	}
+
+
+
 
 
 
@@ -183,9 +227,15 @@ public class Anuncio {
 
 
 
+
+
+
 	public void setNumPersonas(int numPersonas) {
 		this.numPersonas = numPersonas;
 	}
+
+
+
 
 
 
@@ -201,22 +251,30 @@ public class Anuncio {
 
 
 
+
+
+
 	public void setImg(String img) {
 		this.img = img;
 	}
 
 
-	
+
+
+
 
 
 
 
 	@Override
 	public String toString() {
-		return "Anuncio [id=" + id + ", usuario=" + usuario + ", apartamento=" + apartamento + ", titulo=" + titulo
+		return "Anuncio [id=" + id + ", idUsuario=" + idUsuario + ", apartamento=" + apartamento + ", titulo=" + titulo
 				+ ", descripcion=" + descripcion + ", precioNoche=" + precioNoche + ", disponibilidad=" + disponibilidad
 				+ ", numPersonas=" + numPersonas + ", img=" + img + "]";
 	}
+
+
+
 
 
 

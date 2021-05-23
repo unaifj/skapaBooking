@@ -30,6 +30,7 @@ import com.decode.contacto.Contacto;
 import com.decode.misanuncios.VentanaMisAnuncios;
 import com.decode.multilenguaje.Idioma;
 import com.decode.objects.Anuncio;
+import com.decode.objects.Usuario;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
 import com.toedter.calendar.JDateChooser;
@@ -56,7 +57,7 @@ public class VentanaPrincipal extends JFrame  {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaPrincipal frame = new VentanaPrincipal(null);
+					VentanaPrincipal frame = new VentanaPrincipal(null, null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -65,7 +66,7 @@ public class VentanaPrincipal extends JFrame  {
 		});
 	}
 	
-	public VentanaPrincipal(String idioma) {
+	public VentanaPrincipal(String idioma, Usuario user) {
 		
 		idiom = new Idioma(idioma);
 		
@@ -146,12 +147,12 @@ public class VentanaPrincipal extends JFrame  {
 			public void mouseClicked(MouseEvent e) {
 				
 			if (idioma.equals("EN")) {
-				VentanaPrincipal vp = new VentanaPrincipal("ES");
+				VentanaPrincipal vp = new VentanaPrincipal("ES", user);
 				setVisible(false);
 				vp.setVisible(true);
 					
 			}else {
-				VentanaPrincipal vp = new VentanaPrincipal("EN");
+				VentanaPrincipal vp = new VentanaPrincipal("EN", user);
 				setVisible(false);
 				vp.setVisible(true);
 				
@@ -370,7 +371,7 @@ public class VentanaPrincipal extends JFrame  {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
-					VentanaMisAnuncios vma = new VentanaMisAnuncios(VentanaInicio.getUser());
+					VentanaMisAnuncios vma = new VentanaMisAnuncios(user.getId());
 					vma.setVisible(true);
 					
 					

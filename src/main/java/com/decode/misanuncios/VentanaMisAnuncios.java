@@ -35,6 +35,7 @@ import com.decode.ventanaPrincipal.PanelAnuncio;
 public class VentanaMisAnuncios extends JFrame  {
 	private JTextField textDestino;
 	private JTextField txtIntroduzcaElPrecio;
+	private Usuario user = null;
 	
 	/**
 	 * Ejecutamos la aplicación.
@@ -44,7 +45,7 @@ public class VentanaMisAnuncios extends JFrame  {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaMisAnuncios frame = new VentanaMisAnuncios(null);
+					VentanaMisAnuncios frame = new VentanaMisAnuncios(0);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,7 +54,10 @@ public class VentanaMisAnuncios extends JFrame  {
 		});
 	}
 	
-	public VentanaMisAnuncios(Usuario user) {
+	public VentanaMisAnuncios(int idUsuario) {
+		
+		DBManager dbm = new DBManager();
+		user = dbm.selectUsuario(idUsuario);
 		
 		getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 62));
 		getContentPane().setLayout(null);
@@ -209,7 +213,7 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 		panel.setLayout(null);
 		
 		
-		if (VentanaInicio.getUser() == null) {
+		if (idUsuario == 0) {
 			
 			JButton btnRegistro = new JButton("Hazte cuenta");
 			btnRegistro.setBounds(960, 13, 117, 23);
@@ -242,7 +246,11 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 			});
 			
 		}else {
-			JLabel lblNewLabel = new JLabel("Has iniciado sesion como:  " + VentanaInicio.getUser().getNomUsuario());
+			
+			
+			
+		
+			JLabel lblNewLabel = new JLabel("Has iniciado sesion como:  " + user.getNomUsuario());
 			lblNewLabel.setForeground(Color.LIGHT_GRAY);
 			lblNewLabel.setBounds(991, 36, 201, 14);
 			panelNorte.add(lblNewLabel);
@@ -270,7 +278,7 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
-					VentanaMisAnuncios vma = new VentanaMisAnuncios(VentanaInicio.getUser());
+					VentanaMisAnuncios vma = new VentanaMisAnuncios(user.getId());
 					vma.setVisible(true);
 					
 					
@@ -361,19 +369,19 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				setVisible(false);
-				VentanaNuevoAnuncio vca = new VentanaNuevoAnuncio(user);
+				VentanaNuevoAnuncio vca = new VentanaNuevoAnuncio(user.getId());
 				vca.setVisible(true);
 				
 			}
 		});
 		
-		DBManager dbm = new DBManager();
+		
 		List<Anuncio> anuncios;
 		
 		int y = 0;
 		anuncios = dbm.getAnuncios();
 		for (Anuncio a : anuncios) {
-			if (a.getUsuario().getNomUsuario().equals(user.getNomUsuario())) {
+			if (a.getIdUsuario() == user.getId()) {
 				PanelAnuncio pa = new PanelAnuncio(a, true, user);
 				pa.setVisible(true);
 				panelCentro.add(pa);
@@ -403,7 +411,7 @@ ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en 
 								(Integer)spinnerPrecioMax.getValue());
 				
 				for (Anuncio a : anunciosFiltrados) {
-					if (a.getUsuario().getId() == user.getId()) {
+					if (a.getIdUsuario() == user.getId()) {
 		
 						PanelAnuncio pa = new PanelAnuncio(a, true, user);
 						pa.setVisible(true);

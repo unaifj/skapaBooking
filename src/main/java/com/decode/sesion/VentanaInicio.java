@@ -132,7 +132,7 @@ public class VentanaInicio extends JFrame {
 		
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaPrincipal vp = new VentanaPrincipal("ES");
+				VentanaPrincipal vp = new VentanaPrincipal("ES", user);
 				setVisible(false);
 				vp.setVisible(true);
 				}
@@ -177,7 +177,7 @@ public class VentanaInicio extends JFrame {
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				VentanaRegistro vr = new VentanaRegistro(null);
+				VentanaRegistro vr = new VentanaRegistro(idiom);
 				vr.setVisible(true);
 				setVisible(false);
 				
@@ -209,7 +209,7 @@ public class VentanaInicio extends JFrame {
 				if (acceso) {
 					JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Incio correcto", 1, null);
 					
-					VentanaPrincipal vp = new VentanaPrincipal("ES");
+					VentanaPrincipal vp = new VentanaPrincipal("ES", user);
 					vp.setVisible(true);
 					setVisible(false);
 					
