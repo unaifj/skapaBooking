@@ -6,7 +6,7 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 /**
  * Clase Usuario clase objeto para los posibles usuarios de nuestra aplicacion
- * @author Anton
+ * @author En documentacion :Anton
  *
  */
 @PersistenceCapable
@@ -44,7 +44,7 @@ public class Usuario {
 		return id;
 	}
 	/**
-	 * Permite cambiar el id del Usuario
+	 * Para cambiar el id del Usuario
 	 * @param  Int con el nuevo id del Usuario
 	 */
 	public void setId(int id) {
@@ -58,7 +58,7 @@ public class Usuario {
 		return nomUsuario;
 	}
 	/**
-	 * Permite cambiar el nombre del Usuario
+	 * Para cambiar el nombre del Usuario
 	 * @param nomUsuario String con el nuevo nombre del Usuario
 	 */
 	public void setNomUsuario(String nomUsuario) {
@@ -72,7 +72,7 @@ public class Usuario {
 		return correo;
 	}
 	/**
-	 * Permite cambiar el correo electronico del Usuario
+	 * Para cambiar el correo electronico del Usuario
 	 * @param correo String con el nuevo correo electronico del Usuario
 	 */
 	public void setCorreo(String correo) {
@@ -86,7 +86,7 @@ public class Usuario {
 		return contrasenya;
 	}
 	/**
-	 * Permite cambiar la contrasenya del Usuario
+	 * Para cambiar la contrasenya del Usuario
 	 * @param contrasenya String con la nueva contraseña del usuario
 	 */
 	public void setContrasenya(String contrasenya) {
@@ -100,7 +100,7 @@ public class Usuario {
 		return nombre;
 	}
 	/**
-	 * Permite cambiar el nombre del Usuario
+	 * Para cambiar el nombre del Usuario
 	 * @param nombre String con el nuevo nombre de usuario
 	 */
 	public void setNombre(String nombre) {
@@ -114,7 +114,7 @@ public class Usuario {
 		return apellidos;
 	}
 	/**
-	 * Permite cambiar los apellidos del Usuario
+	 * Para cambiar los apellidos del Usuario
 	 * @param apellidos String con los nuevos apellidos
 	 */
 	public void setApellidos(String apellidos) {

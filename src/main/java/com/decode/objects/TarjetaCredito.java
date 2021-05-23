@@ -6,7 +6,7 @@ import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 /**
  * Clase TarjetaCredito clase objeto para las diferentes tarjetas de credito
- * @author Anton
+ * @author En documentacion :Anton
  *
  */
 @PersistenceCapable
@@ -50,8 +50,8 @@ public class TarjetaCredito {
 		return usuario;
 	}
 	/**
-	 * Permite cambiar el usuario de la clase Usuario
-	 * @param  Usuario con el valor del Usuario
+	 * Para cambiar el usuario de la clase Usuario
+	 * @param  Usuario con el nuevo valor del Usuario
 	 */
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
@@ -64,8 +64,8 @@ public class TarjetaCredito {
 		return numTarjeta;
 	}
 	/**
-	 * Permite cambiar el numero de la tarjeta de la clase Tarjeta Credito
-	 * @param  numTarjeta con el numero de Tarjeta de Credito
+	 * Para cambiar el numero de la tarjeta de la clase Tarjeta Credito
+	 * @param  numTarjeta con el nuevo numero de Tarjeta de Credito
 	 */
 	public void setNumTarjeta(int numTarjeta) {
 		this.numTarjeta = numTarjeta;
@@ -78,7 +78,7 @@ public class TarjetaCredito {
 		return fecha;
 	}
 	/**
-	 * Permite cambiar la fecha de la clase Tarjeta de credito
+	 * Para cambiar la fecha de la clase Tarjeta de credito
 	 * @param  fecha Int con la nueva fecha
 	 */
 	public void setFecha(int fecha) {
@@ -92,8 +92,8 @@ public class TarjetaCredito {
 		return cvv;
 	}
 	/**
-	 * Permite cambiar el cvv de la clase Tarjeta de Credito
-	 * @param  cvv con el valor cvv de la Tarjeta de Credito
+	 * Para cambiar el cvv de la clase Tarjeta de Credito
+	 * @param  cvv con el nuevo valor cvv de la Tarjeta de Credito
 	 */
 	public void setCvv(int cvv) {
 		this.cvv = cvv;
