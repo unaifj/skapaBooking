@@ -8,6 +8,12 @@ import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 
+/**
+ * Clase Anuncio clase objeto para las diferentes anuncios
+ * @author En documentacion :
+ *
+ */
+
 @PersistenceCapable
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 public class Anuncio {
@@ -27,6 +33,19 @@ public class Anuncio {
 	private int numPersonas;
 	private String img;
 	
+	/**
+	 * Constructor de Anuncio
+	 * @param Int id para establecer una id unica a cada anuncio
+	 * @param Obtenemos un usuario de la clase Usuario
+	 * @param Obtenemos un apartamento de la clase Apartamento
+	 * @param String titulo para establecer un titulo al anuncio
+	 * @param String descripcion para establecer una descripcion al anuncio
+	 * @param Double precioNoche para establecer el precio por noche del apartamento del anuncio
+	 * @param Boolean disponibilidad para saber la disponibilidad del apartamento, True= libre, False= ocupado
+	 * @param Int numPersonas para saber las personas adecuadas para el apartamento
+	 * @param String imagen, establecer la imagen del apartamento en el anuncio
+	 */
+
 
 	public Anuncio(Usuario usuario, Apartamento apartamento, String titulo, String descripcion, double precioNoche,
 			boolean disponibilidad, int numPersonas, String img) {
@@ -42,7 +61,8 @@ public class Anuncio {
 		this.img = img;
 		cont++;
 	}
-
+	
+	
 	
 
 
@@ -63,7 +83,10 @@ public class Anuncio {
 
 
 
-
+	/**
+	 * Devuelve el usuario de la clase Usuario
+	 * @return Usuario de la clase usuario
+	 */
 
 
 	public Usuario getUsuario() {
@@ -72,7 +95,10 @@ public class Anuncio {
 
 
 
-
+	/**
+	 * Para cambiar el usuario de la clase Usuario
+	 * @param  Usuario con el nuevo valor del Usuario
+	 */
 
 
 	public void setUsuario(Usuario usuario) {

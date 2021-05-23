@@ -119,61 +119,42 @@ public class VentanaAdmin extends JFrame  {
 		ImageIcon img1= new ImageIcon(ico1.getImage().getScaledInstance(lblBandera.getWidth(), lblBandera.getHeight(), Image.SCALE_SMOOTH));
 		lblBandera.setIcon(img1);
 		
-		JLabel lblNewLabel_1 = new JLabel("BIENVENIDO ADMINISTRADOR");
-		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(336, 150, 439, 90);
-		getContentPane().add(lblNewLabel_1);
+		JButton btnSalir = new JButton("SALIR");
+		btnSalir.setBounds(398, 636, 158, 47);
+		getContentPane().add(btnSalir);
 		
-		JButton btnNewButton = new JButton("Administrar usuarios");
-		btnNewButton.setBounds(364, 271, 228, 39);
-		getContentPane().add(btnNewButton);
+		JPanel panel = new JPanel();
+		panel.setLayout(null);
+		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setBounds(0, 727, 1273, 130);
+		getContentPane().add(panel);
+		
+		JLabel lblContacto = new JLabel("Contacta con nosotros");
+		lblContacto.setBounds(1076, 11, 141, 14);
+		panel.add(lblContacto);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.WHITE);
+		panel_1.setBounds(255, 151, 442, 443);
+		getContentPane().add(panel_1);
+		panel_1.setLayout(null);
+		
+		JButton btnAdministrarUsuarios = new JButton("Administrar usuarios");
+		btnAdministrarUsuarios.setBounds(89, 115, 228, 39);
+		panel_1.add(btnAdministrarUsuarios);
+		
+		JLabel lblNewLabel_1 = new JLabel("BIENVENIDO ADMINISTRADOR");
+		lblNewLabel_1.setBounds(51, 0, 439, 90);
+		panel_1.add(lblNewLabel_1);
+		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		
 		JButton btnAdministrarAnuncios = new JButton("Administrar anuncios");
-		btnAdministrarAnuncios.setBounds(364, 365, 228, 39);
-		getContentPane().add(btnAdministrarAnuncios);
+		btnAdministrarAnuncios.setBounds(89, 212, 228, 39);
+		panel_1.add(btnAdministrarAnuncios);
 		
 		JButton btnAdministrarOpiniones = new JButton("Administrar opiniones");
-		btnAdministrarOpiniones.setBounds(364, 459, 228, 39);
-		getContentPane().add(btnAdministrarOpiniones);
-		
-		JButton btnNewButton_1 = new JButton("SALIR");
-		btnNewButton_1.setBounds(10, 126, 117, 29);
-		getContentPane().add(btnNewButton_1);
-		
-		
-	
-		btnNewButton_1.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				VentanaPrincipal p= new VentanaPrincipal("español");
-				setVisible(false);
-				p.setVisible(true);
-				
-				
-			}
-		});
-		
-		btnNewButton.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				VentanaAdminUsuarios p = new VentanaAdminUsuarios();
-				setVisible(false);
-				p.setVisible(true);
-			}
-		});
-	
-		
-		btnAdministrarAnuncios.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				VentanaAdminAnuncio p = new VentanaAdminAnuncio();
-				setVisible(false);
-				p.setVisible(true);
-			}
-		});
+		btnAdministrarOpiniones.setBounds(89, 309, 228, 39);
+		panel_1.add(btnAdministrarOpiniones);
 		
 		btnAdministrarOpiniones.addActionListener(new ActionListener() {
 			
@@ -182,6 +163,41 @@ public class VentanaAdmin extends JFrame  {
 				VentanaAdminOpinion p = new VentanaAdminOpinion();
 				setVisible(false);
 				p.setVisible(true);
+			}
+		});
+		
+			
+			btnAdministrarAnuncios.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					VentanaAdminAnuncio p = new VentanaAdminAnuncio();
+					setVisible(false);
+					p.setVisible(true);
+				}
+			});
+		
+		btnAdministrarUsuarios.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaAdminUsuarios p = new VentanaAdminUsuarios();
+				setVisible(false);
+				p.setVisible(true);
+			}
+		});
+		
+		
+	
+		btnSalir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaPrincipal p= new VentanaPrincipal("español");
+				setVisible(false);
+				p.setVisible(true);
+				
+				
 			}
 		});
 		
