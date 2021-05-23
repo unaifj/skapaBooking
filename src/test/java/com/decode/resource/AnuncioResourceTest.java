@@ -89,12 +89,12 @@ public class AnuncioResourceTest {
 
         String ruta = "/ruta";
        
-        anuncio1=new Anuncio(usuario1,apartamento1,"Anuncio del titulo 1","descripcion del primer anuncio",57.00,true,4, ruta);
-        anuncio2=new Anuncio(usuario2,apartamento2,"Anuncio del titulo 2","descripcion del segundo anuncio",32.00,false,5, ruta );
-        anuncio3=new Anuncio(usuario3,apartamento3,"Anuncio del titulo 3","descripcion del tercer anuncio",70.00,true,3, ruta );
-        anuncio4=new Anuncio(usuario4,apartamento4,"Anuncio del titulo 4","descripcion del cuarto anuncio",17.00,false,4, ruta );
-        anuncio5=new Anuncio(usuario5,apartamento5,"Anuncio del titulo 5","descripcion del quinto anuncio",5.00,true,4, ruta );
-        anuncio6= new Anuncio(usuario1,apartamento2,"Anuncio del titulo 6","descripcion del sexto anuncio",5.00,true,4, ruta);
+        anuncio1=new Anuncio(usuario1.getId(),apartamento1,"Anuncio del titulo 1","descripcion del primer anuncio",57.00,true,4, ruta);
+        anuncio2=new Anuncio(usuario2.getId(),apartamento2,"Anuncio del titulo 2","descripcion del segundo anuncio",32.00,false,5, ruta );
+        anuncio3=new Anuncio(usuario3.getId(),apartamento3,"Anuncio del titulo 3","descripcion del tercer anuncio",70.00,true,3, ruta );
+        anuncio4=new Anuncio(usuario4.getId(),apartamento4,"Anuncio del titulo 4","descripcion del cuarto anuncio",17.00,false,4, ruta );
+        anuncio5=new Anuncio(usuario5.getId(),apartamento5,"Anuncio del titulo 5","descripcion del quinto anuncio",5.00,true,4, ruta );
+        anuncio6= new Anuncio(usuario1.getId(),apartamento2,"Anuncio del titulo 6","descripcion del sexto anuncio",5.00,true,4, ruta);
     }
     
     @AfterClass
