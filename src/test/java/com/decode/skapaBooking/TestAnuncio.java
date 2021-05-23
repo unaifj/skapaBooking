@@ -28,7 +28,7 @@ public class TestAnuncio {
 		Apartamento apartamento= new Apartamento(4, 100, Triana, null);
 		Usuario user = new Usuario ("Tony", "tomny@gmail.com", "tonyMontana");
 		String ruta = "/ruta";
-		Anuncio anuncio=new Anuncio(user, apartamento, "Titulo anuncio", "Descripcion anuncio", 50, true,6, ruta);
+		Anuncio anuncio=new Anuncio(user.getId(), apartamento, "Titulo anuncio", "Descripcion anuncio", 50, true,6, ruta);
 		assertEquals(anuncio.getApartamento(),apartamento);
 		}
 
@@ -38,7 +38,7 @@ public class TestAnuncio {
 		Apartamento apartamento= new Apartamento(4, 100, Triana, null);
 		Usuario user = new Usuario ("Tony", "tomny@gmail.com", "tonyMontana");
 		String ruta = "/ruta";
-		Anuncio anuncio=new Anuncio(user, apartamento, "Titulo anuncio", "Descripcion anuncio", 50, true,6, ruta);
+		Anuncio anuncio=new Anuncio(user.getId(), apartamento, "Titulo anuncio", "Descripcion anuncio", 50, true,6, ruta);
 		assertEquals(anuncio.getTitulo(),"Titulo anuncio");	}
 
 	@Test
@@ -47,7 +47,7 @@ public class TestAnuncio {
 		Apartamento apartamento= new Apartamento(4, 100, Triana, null);
 		Usuario user = new Usuario ("Tony", "tomny@gmail.com", "tonyMontana");
 		String ruta = "/ruta";
-		Anuncio anuncio=new Anuncio(user, apartamento, "Titulo anuncio", "Descripcion anuncio", 50, true,6, ruta);
+		Anuncio anuncio=new Anuncio(user.getId(), apartamento, "Titulo anuncio", "Descripcion anuncio", 50, true,6, ruta);
 		assertEquals(anuncio.getDescripcion(),"Descripcion anuncio");	}
 
 	
@@ -58,7 +58,7 @@ public class TestAnuncio {
 		Apartamento apartamento= new Apartamento(4, 100, Triana, null);
 		Usuario user = new Usuario ("Tony", "tomny@gmail.com", "tonyMontana");
 		String ruta = "/ruta";
-		Anuncio anuncio=new Anuncio(user, apartamento, "Titulo anuncio", "Descripcion anuncio", 50, true,6, ruta);
+		Anuncio anuncio=new Anuncio(user.getId(), apartamento, "Titulo anuncio", "Descripcion anuncio", 50, true,6, ruta);
 		assertEquals(anuncio.getNumPersonas(),6);	}
 
 }
