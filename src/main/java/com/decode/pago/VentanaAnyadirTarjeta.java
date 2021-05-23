@@ -96,7 +96,7 @@ public class VentanaAnyadirTarjeta extends JFrame {
 		btnLogin.setBounds(1087, 13, 123, 23);
 		panelNorte.add(btnLogin);
 		
-		ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");
+		ImageIcon ico1= new ImageIcon("img/tonyespañol.png");
 		
 		JLabel lblNewLabel = new JLabel("Nombre y apellidos: ");
 		lblNewLabel.setBounds(43, 245, 232, 16);

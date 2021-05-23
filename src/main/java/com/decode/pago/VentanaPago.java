@@ -110,8 +110,8 @@ public class VentanaPago extends JFrame {
 		lblReembolso.setBounds(551, 285, 210, 137);
 		contentPane.add(lblReembolso);
 		
-		//ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");
-		ImageIcon ico2= new ImageIcon("imagenes/pago-en-efectivo.png");
+		//ImageIcon ico1= new ImageIcon("img/tonyespañol.png");
+		ImageIcon ico2= new ImageIcon("img/pago-en-efectivo.png");
 		ImageIcon ico3 = new ImageIcon("imagenes/tarjeta-de-credito.png");
 		
 		ImageIcon img2= new ImageIcon(ico2.getImage().getScaledInstance(lblReembolso.getWidth(), lblReembolso.getHeight(), Image.SCALE_SMOOTH));

@@ -102,7 +102,7 @@ public class VentanaPrincipal extends JFrame  {
 		panelNorte.add(lblBandera);
 		
 		
-		ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");//meter las rutas en la bd
+		ImageIcon ico1= new ImageIcon("img/tonyespañol.png");//meter las rutas en la bd
 		
 		ImageIcon img1= new ImageIcon(ico1.getImage().getScaledInstance(lblBandera.getWidth(), lblBandera.getHeight(), Image.SCALE_SMOOTH));
 		

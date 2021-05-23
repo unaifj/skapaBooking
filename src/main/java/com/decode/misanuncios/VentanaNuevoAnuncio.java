@@ -120,7 +120,7 @@ public class VentanaNuevoAnuncio extends JFrame {
 		btnLogin.setBounds(1087, 13, 123, 23);
 		panelNorte.add(btnLogin);
 		
-		ImageIcon ico1= new ImageIcon("imagenes/tonyespañol.png");
+		ImageIcon ico1= new ImageIcon("img/tonyespañol.png");
 		
 		JLabel lblIntro = new JLabel("Introduzca los datos de su apartamento");
 		lblIntro.setFont(new Font("Tahoma", Font.BOLD, 17));
