@@ -283,7 +283,7 @@ public class VentanaAnuncio extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaPago vp = new VentanaPago();
+				VentanaPago vp = new VentanaPago(anuncio);
 				setVisible(false);
 				vp.setVisible(true);
 				

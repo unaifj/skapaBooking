@@ -77,7 +77,9 @@ public class DBManager {
 			Calendar fechaEntrada = new GregorianCalendar(2021, 6, 24);
 			Calendar fechaSalida = new GregorianCalendar(2021, 6, 31);
 			
-			Reserva res1 = new Reserva(userA,"Contrareembolso", fechaEntrada, fechaSalida, 5);
+			TarjetaCredito t = new TarjetaCredito(0,1232,1212,123);
+			
+			Reserva res1 = new Reserva(userA.getId(),apar1.getId(),"Contrareembolso", fechaEntrada, fechaSalida, 5, t.getId());
 			pm.makePersistent(res1);
 			
 			List<Reserva>reservasA = new ArrayList<Reserva>();
@@ -495,7 +497,7 @@ public class DBManager {
 			try {
 				tx.begin();
 				
-				pm.makePersistent(reserva.getUsuario());	
+					
 				pm.makePersistent(reserva);
 				tx.commit();
 				
@@ -554,9 +556,8 @@ public class DBManager {
                 	
                 	System.out.println(t);
                 	
-//                	if (t.getUsuario().getNomUsuario() == user.getNomUsuario()) {
-//                		tarjetasUsuario.add(tarjeta);
-//                	}
+                	if (t.getId() == user.getId()) {
+                		tarjetasUsuario.add(tarjeta);                	}
           
                 }
 

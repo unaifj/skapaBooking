@@ -45,7 +45,7 @@ public class VentanaContrareembolso extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaContrareembolso() {
+	public VentanaContrareembolso(Anuncio anuncio) {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 200, 1289, 809);
@@ -134,7 +134,7 @@ public class VentanaContrareembolso extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				VentanaPago C = new VentanaPago();
+				VentanaPago C = new VentanaPago(anuncio);
 				 setVisible(false);
 				 C.setVisible(true);
 				
@@ -149,7 +149,7 @@ public class VentanaContrareembolso extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				
-				Reserva reserva= new Reserva(VentanaInicio.getUser(),"Contrareembolso", null, null, 0 );
+				Reserva reserva= new Reserva(VentanaInicio.getUser().getId(),anuncio.getApartamento().getId(),"Contrareembolso", null, null, 0, 0 );
 				DBManager dbm = new DBManager();
 				try {
 					
@@ -157,8 +157,8 @@ public class VentanaContrareembolso extends JFrame {
 					
 					 JOptionPane.showMessageDialog(null, "Pago correctamente realizado", "Pago correcto", 1, null);
 					VentanaPrincipal C = new VentanaPrincipal("ES", null);
-						 setVisible(false);
-						 C.setVisible(true);
+					setVisible(false);
+					C.setVisible(true);
 					
 				} catch (DBException e1) {
 					e1.printStackTrace();

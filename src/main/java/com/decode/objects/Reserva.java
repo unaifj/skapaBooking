@@ -22,11 +22,13 @@ public class Reserva {
 	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT, primaryKey = "true")
 	private int id;
 	@ForeignKey
-	private Usuario usuario;
+	private int idUsuario;
+	private int idApartamento;
 	private Calendar fechaEntrada;
 	private Calendar fechaSalida;
 	private int numPersonas;
 	private String metodoPago;
+	private int numTarjeta;
 	/**
 	 * Constructor de Reserva
 	 * @param Obtenemos un usuario de la clase Usuario
@@ -35,22 +37,26 @@ public class Reserva {
 	 * @param Calendar fechaSalida para saber la fecha de Salida de la Reserva
 	 * @param Int numPersonas para saber el numPersonas de la Reserva
 	 */
-	public Reserva(Usuario usuario, String metodoPago, Calendar fechaEntrada, Calendar fechaSalida, int numPersonas) {
+	public Reserva(int idUsuario, int idApartamento, String metodoPago, Calendar fechaEntrada, Calendar fechaSalida, int numPersonas, int numTarjeta) {
 		super();
-		this.usuario = usuario;
+		this.idUsuario = idUsuario;
+		this.idApartamento = idApartamento;
 		this.fechaEntrada = fechaEntrada;
 		this.fechaSalida = fechaSalida;
 		this.numPersonas = numPersonas;
+		this.numTarjeta=numTarjeta;
 	}
 	/**
 	 *Constructor vacio de Reserva
 	 */
 	public Reserva() {
 		super();
-		this.usuario = null;
+		this.idUsuario = 0;
+		this.idApartamento=0;
 		this.fechaEntrada = null;
 		this.fechaSalida = null;
 		this.numPersonas = 0;
+		this.numTarjeta=0;
 	}
 	/**
 	 * Devuelve el id de la Reserva
@@ -70,15 +76,29 @@ public class Reserva {
 	 * Devuelve el usuario de la clase Usuario
 	 * @return Usuario de la clase usuario
 	 */
-	public Usuario getUsuario() {
-		return usuario;
+	public int getIdApartamento() {
+		return idApartamento;
 	}
 	/**
 	 * Para cambiar el usuario de la clase Usuario
 	 * @param  Usuario con el nuevo valor del Usuario
 	 */
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setIdApartamento(int idApartamento) {
+		this.idApartamento = idApartamento;
+	}
+	/**
+	 * Devuelve el usuario de la clase Usuario
+	 * @return Usuario de la clase usuario
+	 */
+	public int idUsuario() {
+		return idUsuario;
+	}
+	/**
+	 * Para cambiar el usuario de la clase Usuario
+	 * @param  Usuario con el nuevo valor del Usuario
+	 */
+	public void setidUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 	/**
 	 * Devuelve la fecha de Entrada de la clase Reserva
@@ -125,11 +145,27 @@ public class Reserva {
 	/**
 	 * toString de la clase Reserva
 	 */
+	/**
+	 * Devuelve el id de la Reserva
+	 * @return Int con el id de la Reserva
+	 */
+	public int getNumTarjeta() {
+		return numTarjeta;
+	}
+	/**
+	 * Para cambiar el id de la Reserva
+	 * @param  Int con el nuevo id de la Reserva
+	 */
+	public void setNumTarjeta(int numTarjeta) {
+		this.numTarjeta = numTarjeta;
+	}
 	@Override
 	public String toString() {
-		return "Reserva [id=" + id + ", usuario=" + usuario + ", fechaEntrada=" + fechaEntrada + ", fechaSalida="
-				+ fechaSalida + ", numPersonas=" + numPersonas + "]";
+		return "Reserva [id=" + id + ", idUsuario=" + idUsuario + ", idApartamento=" + idApartamento + ", fechaEntrada="
+				+ fechaEntrada + ", fechaSalida=" + fechaSalida + ", numPersonas=" + numPersonas + ", metodoPago="
+				+ metodoPago + ", numTarjeta=" + numTarjeta + "]";
 	}
+	
 	
 
 	

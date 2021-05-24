@@ -39,23 +39,12 @@ public class VentanaPago extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaPago frame = new VentanaPago();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public VentanaPago() {
+	public VentanaPago(Anuncio anuncio) {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 200, 1289, 809);
@@ -144,7 +133,7 @@ public class VentanaPago extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaVerTarjetas C = new VentanaVerTarjetas();
+				VentanaVerTarjetas C = new VentanaVerTarjetas(anuncio);
 				 setVisible(false);
 				 C.setVisible(true);
 			}
@@ -155,7 +144,7 @@ public class VentanaPago extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				 VentanaContrareembolso C = new VentanaContrareembolso();
+				 VentanaContrareembolso C = new VentanaContrareembolso(anuncio);
 				 setVisible(false);
 				 C.setVisible(true);
 			}

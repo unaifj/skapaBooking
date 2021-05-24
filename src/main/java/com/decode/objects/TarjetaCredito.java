@@ -14,7 +14,8 @@ import javax.jdo.annotations.PersistenceCapable;
 public class TarjetaCredito {
 	
 	@ForeignKey
-	private int id;
+
+	private int id;//idusuario
 	private int numTarjeta;
 	private int fecha;
 	private int cvv;

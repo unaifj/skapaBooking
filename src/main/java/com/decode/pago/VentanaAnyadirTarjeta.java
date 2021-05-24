@@ -49,7 +49,7 @@ public class VentanaAnyadirTarjeta extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaAnyadirTarjeta() {
+	public VentanaAnyadirTarjeta(Anuncio anuncio) {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 200, 1289, 809);
@@ -167,7 +167,7 @@ public class VentanaAnyadirTarjeta extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				VentanaVerTarjetas C= new VentanaVerTarjetas();
+				VentanaVerTarjetas C= new VentanaVerTarjetas(anuncio);
 				setVisible(false);
 				C.setVisible(true);
 			}
@@ -192,7 +192,7 @@ public class VentanaAnyadirTarjeta extends JFrame {
 					dbm.insertarTarjeta(tarjeta);
 					
 					JOptionPane.showMessageDialog(null, "Tarjeta correctamente añadida", "Añadido correctamente", 1, null);
-					VentanaVerTarjetas C = new VentanaVerTarjetas();
+					VentanaVerTarjetas C = new VentanaVerTarjetas(anuncio);
 					setVisible(false);
 					C.setVisible(true);
 					
