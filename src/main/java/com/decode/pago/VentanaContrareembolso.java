@@ -148,8 +148,11 @@ public class VentanaContrareembolso extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				
+				Reserva reserva= new Reserva(VentanaInicio.getUser(),"Contrareembolso", null, null, 0 );
+				DBManager dbm = new DBManager();
 				try {
-					Reserva reserva= new Reserva(VentanaInicio.getUser(),"Contrareembolso", null, null, 0 );
+					
 					dbm.insertarReserva(reserva);
 					
 					 JOptionPane.showMessageDialog(null, "Pago correctamente realizado", "Pago correcto", 1, null);

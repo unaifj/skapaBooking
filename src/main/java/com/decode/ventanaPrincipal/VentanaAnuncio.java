@@ -163,24 +163,24 @@ public class VentanaAnuncio extends JFrame{
 		JLabel labelDesc = new JLabel(anuncio.getDescripcion());
 		labelDesc.setVerticalAlignment(SwingConstants.TOP);
 		labelDesc.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		labelDesc.setBounds(72, 406, 641, 114);
+		labelDesc.setBounds(72, 448, 641, 114);
 		panelCentro.add(labelDesc);
 		
 
 		
 		JLabel lblNewLabel_1 = new JLabel("Precio por noche: " + String.valueOf(anuncio.getPrecioNoche()) + " €");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblNewLabel_1.setBounds(72, 334, 234, 29);
+		lblNewLabel_1.setBounds(72, 334, 395, 29);
 		panelCentro.add(lblNewLabel_1);
 		
 		JLabel labelHabitaciones = new JLabel(String.valueOf(anuncio.getApartamento().getNumHabitaciones()) + " habitaciones - " + String.valueOf(anuncio.getApartamento().getMetrosCuad() + " m2 - " + String.valueOf(anuncio.getNumPersonas()) + " personas"));
 		labelHabitaciones.setFont(new Font("Tahoma", Font.BOLD, 17));
-		labelHabitaciones.setBounds(72, 302, 395, 21);
+		labelHabitaciones.setBounds(72, 302, 424, 21);
 		panelCentro.add(labelHabitaciones);
 		
-		JLabel lblNewLabel_2 = new JLabel("Localidad: " + String.valueOf(anuncio.getApartamento().getLocalidad()));
+		JLabel lblNewLabel_2 = new JLabel("Localidad: " + String.valueOf(anuncio.getApartamento().getLocalidad().getMunicipio()));
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblNewLabel_2.setBounds(72, 374, 165, 21);
+		lblNewLabel_2.setBounds(72, 374, 459, 21);
 		panelCentro.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel();
@@ -204,6 +204,11 @@ public class VentanaAnuncio extends JFrame{
 		JButton btnChat = new JButton("Chat");
 		btnChat.setBounds(703, 573, 89, 23);
 		panelCentro.add(btnChat);
+		
+		JLabel lblDireccion = new JLabel("Direccion: " + String.valueOf(anuncio.getApartamento().getLocalidad().getDireccion()));
+		lblDireccion.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblDireccion.setBounds(72, 406, 459, 21);
+		panelCentro.add(lblDireccion);
 		
 		
 		

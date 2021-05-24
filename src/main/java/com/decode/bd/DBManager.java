@@ -519,7 +519,7 @@ public class DBManager {
 					
 					try {
 						tx.begin();
-						pm.makePersistent(tarjeta.getUsuario());
+						
 						pm.makePersistent(tarjeta);
 						tx.commit();
 						
@@ -548,16 +548,15 @@ public class DBManager {
 
                 for (TarjetaCredito tarjeta : tarjetaCreditoExtent) {
                 	
-                	Usuario usuario = new Usuario(tarjeta.getUsuario().getNomUsuario(), tarjeta.getUsuario().getCorreo(), tarjeta.getUsuario().getContrasenya());
-                	usuario.setId(user.getId());
+                	
              	
-                	TarjetaCredito t = new TarjetaCredito(usuario, tarjeta.getNumTarjeta(), tarjeta.getNumTarjeta(), tarjeta.getCvv());
+                	TarjetaCredito t = new TarjetaCredito(tarjeta.getId(), tarjeta.getNumTarjeta(), tarjeta.getNumTarjeta(), tarjeta.getCvv());
                 	
                 	System.out.println(t);
                 	
-                	if (t.getUsuario().getNomUsuario() == user.getNomUsuario()) {
-                		tarjetasUsuario.add(tarjeta);
-                	}
+//                	if (t.getUsuario().getNomUsuario() == user.getNomUsuario()) {
+//                		tarjetasUsuario.add(tarjeta);
+//                	}
           
                 }
 
