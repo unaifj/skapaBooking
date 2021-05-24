@@ -8,6 +8,7 @@ import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
+import com.decode.chat.ChatSkapaBooking;
 import com.decode.sesion.VentanaInicio;
 import com.decode.ventanaPrincipal.VentanaPrincipal;
 
@@ -46,6 +47,9 @@ public class Main {
         // Lanzar el servidor si se ejecuta desde la consola
     
 
+    	ChatSkapaBooking server = new ChatSkapaBooking();
+    	server.setVisible(false);
+    	
     	VentanaPrincipal vp = new VentanaPrincipal("ES", null);
     	vp.setVisible(true);
                        	
