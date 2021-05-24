@@ -120,46 +120,13 @@ public class VentanaAdmin extends JFrame  {
 		btnAdministrarOpiniones.setBounds(89, 309, 228, 39);
 		panel_1.add(btnAdministrarOpiniones);
 		
-            if (VentanaInicio.getUser() == null) {
-			
-			JButton btnRegistro = new JButton("Hazte cuenta");
-			btnRegistro.setBounds(960, 13, 117, 23);
-			panelNorte.add(btnRegistro);
-			
-			JButton btnLogin = new JButton("Iniciar Sesion");
-			btnLogin.setBounds(1087, 13, 123, 23);
-			panelNorte.add(btnLogin);
-			
-			btnLogin.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					setVisible(false);
-					VentanaInicio vi = new VentanaInicio(null);
-					vi.setVisible(true);
-					
-				}
-			});
-			
-			btnRegistro.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					setVisible(false);
-					VentanaRegistro vr = new VentanaRegistro(null);
-					vr.setVisible(true);
-					
-				}
-			});
-			
-		}else {
-			JLabel lblNewLabel = new JLabel("Has iniciado sesion como:  " + VentanaInicio.getUser().getNomUsuario());
+			JLabel lblNewLabel = new JLabel("Has iniciado sesion como: admin " );
 			lblNewLabel.setForeground(Color.LIGHT_GRAY);
 			lblNewLabel.setBounds(1062, 17, 201, 14);
 			panelNorte.add(lblNewLabel);
 			
 			
-		}
+		
 			
 		
 		

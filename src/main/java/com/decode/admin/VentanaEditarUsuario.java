@@ -103,6 +103,12 @@ public class VentanaEditarUsuario extends JFrame{
 		lblContacto.setBounds(959, 11, 141, 14);
 		panel_1.add(lblContacto);
 		
+		JLabel lblNewLabel = new JLabel("Has iniciado sesion como: admin " );
+		lblNewLabel.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel.setBounds(1062, 17, 201, 14);
+		panelNorte.add(lblNewLabel);
+		
+		
 		btnAtras.addActionListener(new ActionListener() {
 
 			@Override
