@@ -36,7 +36,7 @@ public class DBManager {
         return instance;
     }
 
-	//INSTALACION DE DATOS
+	//INSTALACION DE DATOS 
 	public void preparedData () throws DBException{
 		
 		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
