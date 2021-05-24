@@ -35,6 +35,7 @@ import com.decode.objects.Reserva;
 import com.decode.objects.Usuario;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
+import com.decode.ventanaPrincipal.VentanaPrincipal2;
 
 public class VentanaNuevoAnuncio extends JFrame {
 
@@ -105,22 +106,7 @@ public class VentanaNuevoAnuncio extends JFrame {
 		lblMoneda.setBounds(765, 8, 46, 24);
 		panelNorte.add(lblMoneda);
 		
-		JButton btnRegistro = new JButton("Hazte cuenta");
-		btnRegistro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnRegistro.setBounds(960, 13, 117, 23);
-		panelNorte.add(btnRegistro);
-		
-		JButton btnLogin = new JButton("Iniciar Sesion");
-		btnLogin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnLogin.setBounds(1087, 13, 123, 23);
-		panelNorte.add(btnLogin);
-		
+				
 		ImageIcon ico1= new ImageIcon("img/tonyespañol.png");
 		
 		JLabel lblIntro = new JLabel("Introduzca los datos de su apartamento");
@@ -275,37 +261,7 @@ public class VentanaNuevoAnuncio extends JFrame {
 		JLabel lblNewLabel_10 = new JLabel("€");
 		lblNewLabel_10.setBounds(446, 375, 28, 14);
 		contentPane.add(lblNewLabel_10);
-		if (VentanaInicio.getUser() == null) {
-			
-			JButton btnRegistro1 = new JButton("Hazte cuenta");
-			btnRegistro1.setBounds(960, 13, 117, 23);
-			panelNorte.add(btnRegistro1);
-			
-			JButton btnLogin1 = new JButton("Iniciar Sesion");
-			btnLogin1.setBounds(1087, 13, 123, 23);
-			panelNorte.add(btnLogin1);
-			
-			btnLogin1.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					setVisible(false);
-					VentanaInicio vi = new VentanaInicio(null);
-					vi.setVisible(true);
-					
-				}
-			});
-			
-			btnRegistro1.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					setVisible(false);
-					VentanaRegistro vr = new VentanaRegistro(null);
-					vr.setVisible(true);
-					
-				}
-			});
+
 //		ImageIcon iconoImg= new ImageIcon();
 //		ImageIcon img2= new ImageIcon(iconoImg.getImage().getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_SMOOTH));
 //		lblImagen.setIcon(img2);
@@ -343,7 +299,60 @@ public class VentanaNuevoAnuncio extends JFrame {
 			}
 			
 		});
-		
+		if (VentanaInicio.getUser() == null) {
+			
+			JButton btnRegistro = new JButton("Hazte cuenta");
+			btnRegistro.setBounds(960, 13, 117, 23);
+			panelNorte.add(btnRegistro);
+			
+			JButton btnLogin = new JButton("Iniciar Sesion");
+			btnLogin.setBounds(1087, 13, 123, 23);
+			panelNorte.add(btnLogin);
+			
+			btnLogin.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+					VentanaInicio vi = new VentanaInicio(null);
+					vi.setVisible(true);
+					
+				}
+			});
+			
+			btnRegistro.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+					VentanaRegistro vr = new VentanaRegistro(null);
+					vr.setVisible(true);
+					
+				}
+			});
+			
+		}else {
+			JLabel lblNewLabel1 = new JLabel("Has iniciado sesion como:  " + VentanaInicio.getUser().getNomUsuario());
+			lblNewLabel1.setForeground(Color.LIGHT_GRAY);
+			lblNewLabel1.setBounds(1062, 17, 201, 14);
+			panelNorte.add(lblNewLabel1);
+			
+			JButton btnCerrarSesion = new JButton("Cerrar sesion");
+			btnCerrarSesion.setBounds(785, 83, 152, 23);
+			panelNorte.add(btnCerrarSesion);
+			
+			btnCerrarSesion.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+					VentanaPrincipal2 vp2 = new VentanaPrincipal2("ES",null);
+					vp2.setVisible(true);
+					
+				}
+			});
+			
+		}
 		btnPublicar.addActionListener(new ActionListener() {
 
             @Override
@@ -393,4 +402,4 @@ public class VentanaNuevoAnuncio extends JFrame {
 
 	}
 	}
-}
+

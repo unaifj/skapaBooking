@@ -30,7 +30,7 @@ public class VentanaEditarOpiniones extends JFrame {
 	public VentanaEditarOpiniones(Opinion o) {
 		getContentPane().setBackground(new Color(30, 144, 255));
 		getContentPane().setForeground(SystemColor.textHighlight);
-		setBounds(100, 100, 473, 551);
+		setBounds(100, 100, 386, 551);
 		getContentPane().setLayout(null);
 		
 		JLabel lblEditaTuOpinion = new JLabel("Edita tu opinion de los apartamentos");

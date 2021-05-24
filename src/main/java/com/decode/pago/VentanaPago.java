@@ -27,6 +27,7 @@ import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
 import com.decode.ventanaPrincipal.VentanaAnuncio;
 import com.decode.ventanaPrincipal.VentanaPrincipal;
+import com.decode.ventanaPrincipal.VentanaPrincipal2;
 
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
@@ -153,6 +154,20 @@ public class VentanaPago extends JFrame {
             lblNewLabel1.setBounds(1062, 17, 201, 14);
             panelNorte.add(lblNewLabel1);
 
+            JButton btnCerrarSesion = new JButton("Cerrar sesion");
+			btnCerrarSesion.setBounds(785, 83, 152, 23);
+			panelNorte.add(btnCerrarSesion);
+			
+			btnCerrarSesion.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+					VentanaPrincipal2 vp2 = new VentanaPrincipal2("ES",null);
+					vp2.setVisible(true);
+					
+				}
+			});
 
         }
 		

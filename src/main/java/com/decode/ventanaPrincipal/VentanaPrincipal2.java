@@ -43,7 +43,7 @@ import javax.swing.JScrollBar;
 import java.awt.ScrollPane;
 import java.awt.Scrollbar;
 
-public class VentanaPrincipal extends JFrame  {
+public class VentanaPrincipal2 extends JFrame  {
 	private JTextField textDestino;
 	private JTextField txtIntroduzcaElPrecio;	
 	private Idioma idiom;
@@ -57,7 +57,7 @@ public class VentanaPrincipal extends JFrame  {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaPrincipal frame = new VentanaPrincipal(null, null);
+					VentanaPrincipal2 frame = new VentanaPrincipal2(null, null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -66,7 +66,7 @@ public class VentanaPrincipal extends JFrame  {
 		});
 	}
 	
-	public VentanaPrincipal(String idioma, Usuario user) {
+	public VentanaPrincipal2(String idioma, Usuario user) {
 		
 		idiom = new Idioma(idioma);
 		
@@ -147,12 +147,12 @@ public class VentanaPrincipal extends JFrame  {
 			public void mouseClicked(MouseEvent e) {
 				
 			if (idioma.equals("EN")) {
-				VentanaPrincipal vp = new VentanaPrincipal("ES", user);
+				VentanaPrincipal2 vp = new VentanaPrincipal2("ES", user);
 				setVisible(false);
 				vp.setVisible(true);
 					
 			}else {
-				VentanaPrincipal vp = new VentanaPrincipal("EN", user);
+				VentanaPrincipal2 vp = new VentanaPrincipal2("EN", user);
 				setVisible(false);
 				vp.setVisible(true);
 				
@@ -164,6 +164,35 @@ public class VentanaPrincipal extends JFrame  {
 			}
 		});
 		
+		JButton btnRegistro = new JButton(idiom.getProperty("crearCuenta"));
+		btnRegistro.setBounds(874, 13, 146, 23);
+		panelNorte.add(btnRegistro);
+		
+		JButton btnLogin = new JButton(idiom.getProperty("iniciarSesion"));
+		btnLogin.setBounds(1087, 13, 123, 23);
+		panelNorte.add(btnLogin);
+		
+		btnLogin.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				VentanaInicio vi = new VentanaInicio(idiom);
+				vi.setVisible(true);
+				
+			}
+		});
+		
+		btnRegistro.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				VentanaRegistro vr = new VentanaRegistro(idiom);
+				vr.setVisible(true);
+				
+			}
+		});
 		
 		
 		
@@ -294,106 +323,6 @@ public class VentanaPrincipal extends JFrame  {
 		panel.setBounds(0, 781, 1273, 130);
 		getContentPane().add(panel);
 		panel.setLayout(null);
-		
-		
-		if (VentanaInicio.getUser() == null) {
-			
-			JButton btnRegistro = new JButton(idiom.getProperty("crearCuenta"));
-			btnRegistro.setBounds(874, 13, 146, 23);
-			panelNorte.add(btnRegistro);
-			
-			JButton btnLogin = new JButton(idiom.getProperty("iniciarSesion"));
-			btnLogin.setBounds(1087, 13, 123, 23);
-			panelNorte.add(btnLogin);
-			
-			btnLogin.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					setVisible(false);
-					VentanaInicio vi = new VentanaInicio(idiom);
-					vi.setVisible(true);
-					
-				}
-			});
-			
-			btnRegistro.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					setVisible(false);
-					VentanaRegistro vr = new VentanaRegistro(idiom);
-					vr.setVisible(true);
-					
-				}
-			});
-			
-		}else {
-			JLabel lblNewLabel = new JLabel(idiom.getProperty("hasIniciadoComo") + " "   + VentanaInicio.getUser().getNomUsuario());
-			lblNewLabel.setForeground(Color.LIGHT_GRAY);
-			lblNewLabel.setBounds(991, 36, 201, 14);
-			panelNorte.add(lblNewLabel);
-			
-			JLabel lblImagenPerfil = new JLabel("");
-			lblImagenPerfil.setBounds(1217, 11, 46, 51);
-			panelNorte.add(lblImagenPerfil);
-
-
-			ImageIcon iconoperfil = new ImageIcon("img/perfil.PNG");               
-			ImageIcon img3= new ImageIcon(iconoperfil.getImage().getScaledInstance(lblImagenPerfil.getWidth(), lblImagenPerfil.getHeight(), Image.SCALE_SMOOTH));    
-			lblImagenPerfil.setIcon(img3);
-			
-			JButton btnAnuncios = new JButton(idiom.getProperty("misAnuncios"));
-			btnAnuncios.setBounds(1023, 85, 113, 21);
-			panelNorte.add(btnAnuncios);
-			
-			JButton btnConfig = new JButton(idiom.getProperty("configuracion"));
-			btnConfig.setBounds(1150, 85, 113, 21);
-			panelNorte.add(btnConfig);
-			
-			JButton btnCerrarSesion = new JButton("Cerrar sesion");
-			btnCerrarSesion.setBounds(785, 83, 152, 23);
-			panelNorte.add(btnCerrarSesion);
-			
-			btnCerrarSesion.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					setVisible(false);
-					VentanaPrincipal2 vp2 = new VentanaPrincipal2("ES",user);
-					vp2.setVisible(true);
-					
-				}
-			});
-			btnAnuncios.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					setVisible(false);
-					VentanaMisAnuncios vma = new VentanaMisAnuncios(user.getId());
-					vma.setVisible(true);
-					
-					
-				}
-			});
-			
-			btnConfig.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					setVisible(false);
-					VentanaConfiguacion vc = new VentanaConfiguacion(VentanaInicio.getUser());
-					vc.setVisible(true);
-					
-				}
-			});
-			
-			
-			
-			
-						
-			
-		}
 		
 		
 		

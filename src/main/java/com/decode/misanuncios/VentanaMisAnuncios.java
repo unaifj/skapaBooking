@@ -32,6 +32,7 @@ import com.decode.objects.Usuario;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
 import com.decode.ventanaPrincipal.PanelAnuncio;
+import com.decode.ventanaPrincipal.VentanaPrincipal;
 
 public class VentanaMisAnuncios extends JFrame  {
 	private JTextField textDestino;
@@ -195,12 +196,6 @@ public class VentanaMisAnuncios extends JFrame  {
 		panelCentro.setBounds(314, 167, 975, 608);
 		getContentPane().add(panelCentro);
 		panelCentro.setLayout(null);
-		
-		
-		
-		JButton btnMapa = new JButton("Mapa");
-		btnMapa.setBounds(908, 120, 123, 23);
-		getContentPane().add(btnMapa);
 		
 		JLabel lblAlojamientosEncontrados = new JLabel("Mis alojamientos");
 		lblAlojamientosEncontrados.setFont(new Font("Tahoma", Font.BOLD, 19));
@@ -373,7 +368,22 @@ public class VentanaMisAnuncios extends JFrame  {
 		ImageIcon imgNuevo= new ImageIcon(icoNuevo.getImage().getScaledInstance(lblAgregarArchivo.getWidth(), lblAgregarArchivo.getHeight(), Image.SCALE_SMOOTH));
 		lblAgregarArchivo.setIcon(imgNuevo);
 		
+		JButton btnAtras = new JButton("Atras");
 		
+		btnAtras.setBounds(102, 746, 89, 23);
+		getContentPane().add(btnAtras);
+		
+		btnAtras.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				VentanaPrincipal vp = new VentanaPrincipal("ES", user);
+				vp.setVisible(true);
+				
+				
+			}
+		});
 		lblAgregarArchivo.addMouseListener(new MouseListener() {
 			
 			@Override

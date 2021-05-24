@@ -35,7 +35,7 @@ import com.decode.objects.Usuario;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
 import com.decode.ventanaPrincipal.VentanaPrincipal;
-
+import com.decode.ventanaPrincipal.VentanaPrincipal2;
 
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
@@ -124,6 +124,20 @@ public class VentanaVerTarjetas extends JFrame {
 			lblNewLabel.setBounds(1062, 17, 201, 14);
 			panelNorte.add(lblNewLabel);
 			
+			JButton btnCerrarSesion = new JButton("Cerrar sesion");
+			btnCerrarSesion.setBounds(785, 83, 152, 23);
+			panelNorte.add(btnCerrarSesion);
+			
+			btnCerrarSesion.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+					VentanaPrincipal2 vp2 = new VentanaPrincipal2("ES",null);
+					vp2.setVisible(true);
+					
+				}
+			});
 			
 		}
 		

@@ -25,6 +25,7 @@ import com.decode.misanuncios.VentanaNuevoAnuncio;
 import com.decode.objects.Usuario;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
+import com.decode.ventanaPrincipal.VentanaPrincipal;
 
 public class VentanaConfiguacion extends JFrame  {
 	private JTextField textNomUsu;
@@ -229,7 +230,7 @@ public class VentanaConfiguacion extends JFrame  {
 		getContentPane().add(textNuevaCon);
 		
 		JLabel lblNewLabel_4_2_2 = new JLabel("Repetir nueva contraseña");
-		lblNewLabel_4_2_2.setBounds(665, 483, 149, 14);
+		lblNewLabel_4_2_2.setBounds(646, 486, 135, 14);
 		getContentPane().add(lblNewLabel_4_2_2);
 		
 		textNuevaCon2 = new JTextField();
@@ -255,10 +256,21 @@ public class VentanaConfiguacion extends JFrame  {
 		lblContacto.setBounds(1031, 11, 141, 14);
 		panel.add(lblContacto);
 		
-		JButton btnAadirAtras = new JButton(" Atras\r\n");
-		btnAadirAtras.setBounds(72, 661, 117, 23);
-		getContentPane().add(btnAadirAtras);
+		JButton btnAtras = new JButton(" Atras\r\n");
+		btnAtras.setBounds(72, 661, 117, 23);
+		getContentPane().add(btnAtras);
 		
+		btnAtras.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				VentanaPrincipal vp = new VentanaPrincipal("ES", user);
+				vp.setVisible(true);
+				
+				
+			}
+		});
 		DBManager dbm = new DBManager();
 		
 	

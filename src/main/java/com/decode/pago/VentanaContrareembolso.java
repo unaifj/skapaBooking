@@ -28,6 +28,7 @@ import com.decode.objects.Reserva;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
 import com.decode.ventanaPrincipal.VentanaPrincipal;
+import com.decode.ventanaPrincipal.VentanaPrincipal2;
 
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
@@ -77,21 +78,7 @@ public class VentanaContrareembolso extends JFrame {
 		lblMoneda.setBounds(765, 8, 46, 24);
 		panelNorte.add(lblMoneda);
 		
-		JButton btnRegistro = new JButton("Hazte cuenta");
-		btnRegistro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnRegistro.setBounds(960, 13, 117, 23);
-		panelNorte.add(btnRegistro);
 		
-		JButton btnLogin = new JButton("Iniciar Sesion");
-		btnLogin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnLogin.setBounds(1087, 13, 123, 23);
-		panelNorte.add(btnLogin);
 		
 		ImageIcon ico1= new ImageIcon("img/tonyespañol.png");
 		
@@ -166,6 +153,21 @@ public class VentanaContrareembolso extends JFrame {
 			lblNewLabel1.setForeground(Color.LIGHT_GRAY);
 			lblNewLabel1.setBounds(1062, 17, 201, 14);
 			panelNorte.add(lblNewLabel1);
+			
+			JButton btnCerrarSesion = new JButton("Cerrar sesion");
+			btnCerrarSesion.setBounds(785, 83, 152, 23);
+			panelNorte.add(btnCerrarSesion);
+			
+			btnCerrarSesion.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+					VentanaPrincipal2 vp2 = new VentanaPrincipal2("ES",null);
+					vp2.setVisible(true);
+					
+				}
+			});
 			
 			
 		}

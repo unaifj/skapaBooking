@@ -106,7 +106,20 @@ public class VentanaAnuncio extends JFrame{
 			lblImagenPerfil.setBounds(1217, 11, 46, 51);
 			panelNorte.add(lblImagenPerfil);
 
-
+			JButton btnCerrarSesion = new JButton("Cerrar sesion");
+			btnCerrarSesion.setBounds(785, 83, 152, 23);
+			panelNorte.add(btnCerrarSesion);
+			
+			btnCerrarSesion.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+					VentanaPrincipal2 vp2 = new VentanaPrincipal2("ES",user);
+					vp2.setVisible(true);
+					
+				}
+			});
 			ImageIcon iconoperfil = new ImageIcon("img/perfil.PNG");               
 			ImageIcon img2= new ImageIcon(iconoperfil.getImage().getScaledInstance(lblImagenPerfil.getWidth(), lblImagenPerfil.getHeight(), Image.SCALE_SMOOTH));    
 			lblImagenPerfil.setIcon(img2);
@@ -153,6 +166,9 @@ public class VentanaAnuncio extends JFrame{
 		
 		ImageIcon img1= new ImageIcon(ico1.getImage().getScaledInstance(lblBandera.getWidth(), lblBandera.getHeight(), Image.SCALE_SMOOTH));
 		lblBandera.setIcon(img1);
+		
+	
+		
 		
 		Panel panelCentro = new Panel();
 		panelCentro.setBackground(Color.WHITE);

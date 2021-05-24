@@ -32,13 +32,13 @@ public class VentanaEditarUsuario extends JFrame{
 	private JTextField txtDireccion;
 	
 	public VentanaEditarUsuario(Usuario u) {
-		setBounds(300, 200, 1112, 907);
+		setBounds(300, 200, 1289, 907);
 		getContentPane().setLayout(null);
 		
 		JPanel panelNorte = new JPanel();
 		panelNorte.setLayout(null);
 		panelNorte.setBackground(Color.BLUE);
-		panelNorte.setBounds(0, 0, 1102, 106);
+		panelNorte.setBounds(0, 0, 1273, 106);
 		getContentPane().add(panelNorte);
 		
 		JLabel lblTitulo = new JLabel("SKAPABOOKING.COM");
@@ -58,7 +58,7 @@ public class VentanaEditarUsuario extends JFrame{
 		panelNorte.add(lblBandera);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 106, 1102, 444);
+		panel.setBounds(0, 106, 1273, 444);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -96,7 +96,7 @@ public class VentanaEditarUsuario extends JFrame{
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
 		panel_1.setBackground(Color.LIGHT_GRAY);
-		panel_1.setBounds(0, 750, 1102, 118);
+		panel_1.setBounds(0, 750, 1273, 118);
 		getContentPane().add(panel_1);
 		
 		JLabel lblContacto = new JLabel("Contacta con nosotros");
