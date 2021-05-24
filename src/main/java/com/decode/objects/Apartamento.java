@@ -9,7 +9,7 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 /**
  * Clase Anuncio clase objeto para las diferentes anuncios
- * @author En documentacion :
+ * @author En documentacion : aitor
  *
  */
 @PersistenceCapable
