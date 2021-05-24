@@ -127,7 +127,7 @@ public class VentanaVerTarjetas extends JFrame {
 		DefaultListModel<Object> modelo = new DefaultListModel<>();
 		
 		for (TarjetaCredito t : tarjetas) {
-			modelo.addElement(t.getUsuario().getNomUsuario());
+			
 			modelo.addElement(t.getNumTarjeta());
 			modelo.addElement(t.getFecha());
 		}

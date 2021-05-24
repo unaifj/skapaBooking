@@ -184,7 +184,7 @@ public class VentanaAnyadirTarjeta extends JFrame {
 				Integer fecha= Integer.parseInt(txtFecha.getText());
 				Integer cvv = Integer.parseInt(txtCVV.getText());
 				
-				TarjetaCredito tarjeta=new TarjetaCredito(VentanaInicio.getUser(),numTarjeta,fecha,cvv);
+				TarjetaCredito tarjeta=new TarjetaCredito(VentanaInicio.getUser().getId(),numTarjeta,fecha,cvv);
 				DBManager dbm = new DBManager();
 
 				try {
