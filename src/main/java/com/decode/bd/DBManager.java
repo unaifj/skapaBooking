@@ -720,6 +720,8 @@ public class DBManager {
                 	Anuncio a = new Anuncio(anuncio.getIdUsuario(), aparta, anuncio.getTitulo(), 
                 			anuncio.getDescripcion(), anuncio.getPrecioNoche(), anuncio.isDisponibilidad(), anuncio.getNumPersonas(), anuncio.getImg());
                 
+                	a.setId(anuncio.getId());
+                	
                 	anuncios.add(a);
                 	
                 }
@@ -911,7 +913,7 @@ public class DBManager {
 
                     while (iter.hasNext()) {
                     	Anuncio anuncio = (Anuncio) iter.next();
-                        if (anuncio.getTitulo() == anun.getTitulo()) {
+                    	if (anuncio.getId() == anun.getId()) {
                             System.out.println("* Updating: " + anuncio + "\n* To: " + anun);
                             anuncio.setApartamento(anun.getApartamento());
                             anuncio.setDescripcion(anun.getDescripcion());
