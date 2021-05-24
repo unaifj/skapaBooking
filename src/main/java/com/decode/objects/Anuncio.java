@@ -10,7 +10,7 @@ import javax.jdo.annotations.PrimaryKey;
 
 /**
  * Clase Anuncio clase objeto para las diferentes anuncios
- * @author En documentacion :
+ * @author En documentacion : Jagoba Gomez Sanchez
  *
  */
 
@@ -32,19 +32,17 @@ public class Anuncio {
 	private int numPersonas;
 	private String img;
 	
-	/**
-	 * Constructor de Anuncio
-	 * @param Int id para establecer una id unica a cada anuncio
-	 * @param Obtenemos un usuario de la clase Usuario
-	 * @param Obtenemos un apartamento de la clase Apartamento
-	 * @param String titulo para establecer un titulo al anuncio
-	 * @param String descripcion para establecer una descripcion al anuncio
-	 * @param Double precioNoche para establecer el precio por noche del apartamento del anuncio
-	 * @param Boolean disponibilidad para saber la disponibilidad del apartamento, True= libre, False= ocupado
-	 * @param Int numPersonas para saber las personas adecuadas para el apartamento
-	 * @param String imagen, establecer la imagen del apartamento en el anuncio
-	 */
-
+/**
+ * Constructor de Anuncio
+ * @param idUsuario id para establecer la id del usuario que ha publicado el anuncio
+ * @param apartamento obtenemos el apartamento de dicho anuncio
+ * @param titulo Para establecer un titulo al anuncio
+ * @param descripcion Para establecer una descripcion al anuncio
+ * @param precioNoche Para establecer el precio por noche del anuncio
+ * @param disponibilidad Boolean para saber si esta disponible o no
+ * @param numPersonas Para saber el numero de personas maximo para el anuncio 
+ * @param img Imagen del apartamento para el anuncio
+ */
 
 	public Anuncio(int idUsuario, Apartamento apartamento, String titulo, String descripcion,
 			double precioNoche, boolean disponibilidad, int numPersonas, String img) {
@@ -66,7 +64,11 @@ public class Anuncio {
 
 
 
-
+	
+/**
+ * Para conseguir el id del anuncio
+ * @return int Id del anuncio
+ */
 
 
 
@@ -79,7 +81,10 @@ public class Anuncio {
 
 
 
-
+/**
+ * Para cambiar el id del anuncio
+ * @param id con el id del anuncio
+ */
 
 
 	public void setId(int id) {
@@ -89,12 +94,9 @@ public class Anuncio {
 
 
 	/**
-	 * Devuelve el usuario de la clase Usuario
-	 * @return Usuario de la clase usuario
+	 * Devuelve el id del usuario que ha creado el anuncio
+	 * @return int Id usuario de la clase Anuncio
 	 */
-
-
-
 
 
 	public int getIdUsuario() {
@@ -102,11 +104,10 @@ public class Anuncio {
 	}
 
 
-
-	/**
-	 * Para cambiar el usuario de la clase Usuario
-	 * @param  Usuario con el nuevo valor del Usuario
-	 */
+/**
+ * Para cambiar el id del usuario que ha creado el anuncio
+ * @param idUsuario de la clase Anuncio
+ */
 
 
 
@@ -121,7 +122,10 @@ public class Anuncio {
 
 
 
-
+/**
+ * Devuelve el apartamento que se anuncia en el anuncio
+ * @return Apartamento Apartamento de la clase Apartamento 
+ */
 
 
 	public Apartamento getApartamento() {
@@ -133,7 +137,10 @@ public class Anuncio {
 
 
 
-
+/**
+ * Para cambiar el apartamento del anuncio
+ * @param apartamento Apartamento de la clase apartamento
+ */
 
 
 	public void setApartamento(Apartamento apartamento) {
@@ -147,7 +154,10 @@ public class Anuncio {
 
 
 
-
+/**
+ * Devuelve el titulo del anuncio
+ * @return String titulo de la clase Anuncio
+ */
 	public String getTitulo() {
 		return titulo;
 	}
@@ -157,7 +167,10 @@ public class Anuncio {
 
 
 
-
+/**
+ * Para cambiar el titulo del anuncio
+ * @param titulo del la clase anuncio
+ */
 
 
 	public void setTitulo(String titulo) {
@@ -169,7 +182,10 @@ public class Anuncio {
 
 
 
-
+/**
+ * Devuelve la descripcion del anuncio
+ * @return String descripcion de la clase Anuncio
+ */
 
 
 	public String getDescripcion() {
@@ -181,7 +197,10 @@ public class Anuncio {
 
 
 
-
+/**
+ * Para cambiar la descripcion del anuncio
+ * @param descripcion
+ */
 
 
 	public void setDescripcion(String descripcion) {
@@ -194,7 +213,10 @@ public class Anuncio {
 
 
 
-
+/**
+ * Devuelve el precio por noche del anuncio
+ * @return double PrecioNoche de la clase anuncio
+ */
 
 	public double getPrecioNoche() {
 		return precioNoche;
@@ -202,7 +224,10 @@ public class Anuncio {
 
 
 
-
+/**
+ * Para cambiar el precio por noche de cada anuncio
+ * @param precioNoche de la clase anuncio
+ */
 
 
 
@@ -212,7 +237,10 @@ public class Anuncio {
 		this.precioNoche = precioNoche;
 	}
 
-
+/**
+ * Para saber si esta dsiponible el anuncio o no
+ * @return boolean isDisponibilidad de la clase anuncio
+ */
 
 
 
@@ -229,7 +257,10 @@ public class Anuncio {
 
 
 
-
+/**
+ * Para cambiar la disponibilidad del anuncio
+ * @param disponibilidad de la clase anuncio
+ */
 
 
 	public void setDisponibilidad(boolean disponibilidad) {
@@ -241,7 +272,10 @@ public class Anuncio {
 
 
 
-
+/**
+ * Devuelve el numero de personas maximo del anuncio
+ * @return int NumPersonas de la clase anuncio
+ */
 
 
 	public int getNumPersonas() {
@@ -252,7 +286,10 @@ public class Anuncio {
 
 
 
-
+/**
+ * Para cambiar el numero de personas del anuncio
+ * @param numPersonas de la clase anuncio
+ */
 
 
 
@@ -263,7 +300,10 @@ public class Anuncio {
 
 
 
-
+/**
+ * Devuelve la imagen subida por el usuario del anuncio
+ * @return String Img de la clase anuncio
+ */
 
 
 
@@ -274,7 +314,10 @@ public class Anuncio {
 
 
 
-
+/**
+ * Para cambiar la imagen de la clase anuncio
+ * @param img de la clase anuncio
+ */
 
 
 
@@ -288,7 +331,9 @@ public class Anuncio {
 
 
 
-
+/**
+ * toString de la clase Anuncio
+ */
 
 
 
