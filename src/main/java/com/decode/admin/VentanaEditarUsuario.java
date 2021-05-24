@@ -14,6 +14,7 @@ import javax.swing.JTextPane;
 
 import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
+import com.decode.contacto.Contacto;
 import com.decode.misanuncios.VentanaMisAnuncios;
 import com.decode.objects.Usuario;
 import com.decode.sesion.VentanaInicio;
@@ -21,6 +22,8 @@ import com.decode.sesion.VentanaInicio;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class VentanaEditarUsuario extends JFrame{
 	private JTextField txtNombre;
@@ -29,7 +32,7 @@ public class VentanaEditarUsuario extends JFrame{
 	private JTextField txtDireccion;
 	
 	public VentanaEditarUsuario(Usuario u) {
-		setBounds(300, 200, 1289, 907);
+		setBounds(300, 200, 1112, 907);
 		getContentPane().setLayout(null);
 		
 		JPanel panelNorte = new JPanel();
@@ -112,7 +115,40 @@ public class VentanaEditarUsuario extends JFrame{
 			}
 			
 		});
-		
+		lblContacto.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setVisible(false);
+				Contacto c = new Contacto();
+				c.setVisible(true);
+				
+			}
+		});
 		btnInscribirse.addActionListener(new ActionListener() {
 			
 			@Override

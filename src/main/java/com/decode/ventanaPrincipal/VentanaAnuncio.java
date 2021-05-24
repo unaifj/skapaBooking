@@ -210,16 +210,6 @@ public class VentanaAnuncio extends JFrame{
 		lblDireccion.setBounds(72, 406, 459, 21);
 		panelCentro.add(lblDireccion);
 		
-		
-		
-		
-		
-		
-		
-		JButton btnMapa = new JButton("Mapa");
-		btnMapa.setBounds(1049, 120, 123, 23);
-		getContentPane().add(btnMapa);
-		
 		JLabel labelTitulo = new JLabel(anuncio.getTitulo());
 		labelTitulo.setFont(new Font("Tahoma", Font.BOLD, 19));
 		labelTitulo.setBounds(163, 120, 526, 32);

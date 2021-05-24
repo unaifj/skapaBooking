@@ -283,20 +283,6 @@ public class VentanaPrincipal extends JFrame  {
 		JScrollBar scrollBar = new JScrollBar(Scrollbar.VERTICAL, 10, 60, 0, 100);
 		scrollBar.setBounds(901, 0, 17, 619);
 		panelCentro.add(scrollBar);
-
-	
-		
-		
-
-
-	
-		
-
-		
-		
-		JButton btnMapa = new JButton("Mapa");
-		btnMapa.setBounds(1049, 120, 123, 23);
-		getContentPane().add(btnMapa);
 		
 		JLabel lblAlojamientosEncontrados = new JLabel(idiom.getProperty("alojamientosEncontrados"));
 		lblAlojamientosEncontrados.setFont(new Font("Tahoma", Font.BOLD, 19));

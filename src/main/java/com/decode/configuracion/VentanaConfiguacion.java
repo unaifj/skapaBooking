@@ -137,11 +137,6 @@ public class VentanaConfiguacion extends JFrame  {
 		lblNewLabel_1.setBounds(10, 120, 179, 14);
 		getContentPane().add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Configuracion avanzada");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_2.setBounds(10, 467, 179, 14);
-		getContentPane().add(lblNewLabel_2);
-		
 		JLabel lblNewLabel_3 = new JLabel("Informacion de la cuenta");
 		lblNewLabel_3.setBounds(59, 145, 130, 14);
 		getContentPane().add(lblNewLabel_3);
@@ -241,8 +236,8 @@ public class VentanaConfiguacion extends JFrame  {
 		btnContrasenya.setBounds(954, 366, 89, 23);
 		getContentPane().add(btnContrasenya);
 		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(72, 415, 89, 23);
+		JButton btnNewButton = new JButton("Añadir Anuncio");
+		btnNewButton.setBounds(72, 415, 117, 23);
 		getContentPane().add(btnNewButton);
 		
 		DBManager dbm = new DBManager();

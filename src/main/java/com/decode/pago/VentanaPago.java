@@ -23,6 +23,8 @@ import com.decode.bd.DBManager;
 import com.decode.objects.Anuncio;
 import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
+import com.decode.sesion.VentanaInicio;
+import com.decode.sesion.VentanaRegistro;
 import com.decode.ventanaPrincipal.VentanaPrincipal;
 
 import javax.swing.JTextField;
@@ -127,7 +129,46 @@ public class VentanaPago extends JFrame {
 		JButton btnNewButton = new JButton("Volver");
 		btnNewButton.setBounds(10, 140, 89, 23);
 		contentPane.add(btnNewButton);
-		
+		if (VentanaInicio.getUser() == null) {
+			
+			JButton btnRegistro1 = new JButton("Hazte cuenta");
+			btnRegistro1.setBounds(960, 13, 117, 23);
+			panelNorte.add(btnRegistro1);
+			
+			JButton btnLogin1 = new JButton("Iniciar Sesion");
+			btnLogin1.setBounds(1087, 13, 123, 23);
+			panelNorte.add(btnLogin1);
+			
+			btnLogin1.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+					VentanaInicio vi = new VentanaInicio(null);
+					vi.setVisible(true);
+					
+				}
+			});
+			
+			btnRegistro1.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+					VentanaRegistro vr = new VentanaRegistro(null);
+					vr.setVisible(true);
+					
+				}
+			});
+			
+		}else {
+			JLabel lblNewLabel1 = new JLabel("Has iniciado sesion como:  " + VentanaInicio.getUser().getNomUsuario());
+			lblNewLabel1.setForeground(Color.LIGHT_GRAY);
+			lblNewLabel1.setBounds(1062, 17, 201, 14);
+			panelNorte.add(lblNewLabel1);
+			
+			
+		}
 		
 		btnTarjeta.addActionListener(new ActionListener() {
 			

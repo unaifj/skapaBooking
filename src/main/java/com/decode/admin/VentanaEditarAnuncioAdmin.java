@@ -31,6 +31,7 @@ import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
 import com.decode.objects.Usuario;
 import com.decode.sesion.VentanaInicio;
+import com.decode.sesion.VentanaRegistro;
 
 public class VentanaEditarAnuncioAdmin extends JFrame {
 
@@ -263,7 +264,46 @@ public class VentanaEditarAnuncioAdmin extends JFrame {
 		ImageIcon iconoImg= new ImageIcon(anuncio.getImg());
 		ImageIcon img2= new ImageIcon(iconoImg.getImage().getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_SMOOTH));
 		lblImagen.setIcon(img2);
-		
+		if (VentanaInicio.getUser() == null) {
+			
+			JButton btnRegistro1 = new JButton("Hazte cuenta");
+			btnRegistro1.setBounds(960, 13, 117, 23);
+			panelNorte.add(btnRegistro1);
+			
+			JButton btnLogin1 = new JButton("Iniciar Sesion");
+			btnLogin1.setBounds(1087, 13, 123, 23);
+			panelNorte.add(btnLogin1);
+			
+			btnLogin1.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+					VentanaInicio vi = new VentanaInicio(null);
+					vi.setVisible(true);
+					
+				}
+			});
+			
+			btnRegistro1.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+					VentanaRegistro vr = new VentanaRegistro(null);
+					vr.setVisible(true);
+					
+				}
+			});
+			
+		}else {
+			JLabel lblNewLabel1 = new JLabel("Has iniciado sesion como:  " + VentanaInicio.getUser().getNomUsuario());
+			lblNewLabel1.setForeground(Color.LIGHT_GRAY);
+			lblNewLabel1.setBounds(1062, 17, 201, 14);
+			panelNorte.add(lblNewLabel1);
+			
+			
+		}
 		//BOTON IMAGEN 
 		btnActImagen.addActionListener(new ActionListener() {
 

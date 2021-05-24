@@ -8,11 +8,16 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.Color;
 import javax.swing.JTextField;
 
 import com.decode.bd.DBManager;
+import com.decode.contacto.Contacto;
 import com.decode.objects.Opinion;
+import com.decode.sesion.VentanaInicio;
+import com.decode.sesion.VentanaRegistro;
 
 import javax.swing.JButton;
 
@@ -73,7 +78,6 @@ public class VentanaEditarOpiniones extends JFrame {
 		JButton btnVolver = new JButton("Volver\r\n");
 		btnVolver.setBounds(256, 428, 89, 35);
 		getContentPane().add(btnVolver);
-		
 		btnVolver.addActionListener(new ActionListener() {
 			
 			@Override

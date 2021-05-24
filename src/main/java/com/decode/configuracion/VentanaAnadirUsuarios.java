@@ -5,7 +5,17 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import javax.swing.JTextField;
+
+import com.decode.contacto.Contacto;
+import com.decode.sesion.VentanaInicio;
+import com.decode.sesion.VentanaRegistro;
+
 import javax.swing.JButton;
 
 public class VentanaAnadirUsuarios extends JFrame{
@@ -93,6 +103,46 @@ public class VentanaAnadirUsuarios extends JFrame{
 		txtRepetirContrasea.setColumns(10);
 		txtRepetirContrasea.setBounds(21, 247, 297, 25);
 		panel.add(txtRepetirContrasea);
+		if (VentanaInicio.getUser() == null) {
+			
+			JButton btnRegistro1 = new JButton("Hazte cuenta");
+			btnRegistro1.setBounds(960, 13, 117, 23);
+			panelNorte.add(btnRegistro1);
+			
+			JButton btnLogin1 = new JButton("Iniciar Sesion");
+			btnLogin1.setBounds(1087, 13, 123, 23);
+			panelNorte.add(btnLogin1);
+			
+			btnLogin1.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+					VentanaInicio vi = new VentanaInicio(null);
+					vi.setVisible(true);
+					
+				}
+			});
+			
+			btnRegistro1.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+					VentanaRegistro vr = new VentanaRegistro(null);
+					vr.setVisible(true);
+					
+				}
+			});
+			
+		}else {
+			JLabel lblNewLabel1 = new JLabel("Has iniciado sesion como:  " + VentanaInicio.getUser().getNomUsuario());
+			lblNewLabel1.setForeground(Color.LIGHT_GRAY);
+			lblNewLabel1.setBounds(1062, 17, 201, 14);
+			panelNorte.add(lblNewLabel1);
+			
+			
+		}
 		
 		JButton btnNewButton = new JButton("Inscribirse");
 		btnNewButton.setBounds(50, 393, 89, 23);
@@ -120,5 +170,40 @@ public class VentanaAnadirUsuarios extends JFrame{
 		JLabel lblContacto = new JLabel("Contacta con nosotros");
 		lblContacto.setBounds(959, 11, 141, 14);
 		panel_1.add(lblContacto);
+		
+		lblContacto.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setVisible(false);
+				Contacto c = new Contacto();
+				c.setVisible(true);
+				
+			}
+		});
 	}
 }

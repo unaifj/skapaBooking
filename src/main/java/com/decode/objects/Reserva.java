@@ -159,6 +159,9 @@ public class Reserva {
 	public void setNumTarjeta(int numTarjeta) {
 		this.numTarjeta = numTarjeta;
 	}
+	/**
+	 * toString de la clase Reserva
+	 */
 	@Override
 	public String toString() {
 		return "Reserva [id=" + id + ", idUsuario=" + idUsuario + ", idApartamento=" + idApartamento + ", fechaEntrada="

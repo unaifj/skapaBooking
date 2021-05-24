@@ -34,6 +34,7 @@ import com.decode.objects.Localidad;
 import com.decode.objects.Reserva;
 import com.decode.objects.Usuario;
 import com.decode.sesion.VentanaInicio;
+import com.decode.sesion.VentanaRegistro;
 
 public class VentanaNuevoAnuncio extends JFrame {
 
@@ -274,7 +275,37 @@ public class VentanaNuevoAnuncio extends JFrame {
 		JLabel lblNewLabel_10 = new JLabel("€");
 		lblNewLabel_10.setBounds(446, 375, 28, 14);
 		contentPane.add(lblNewLabel_10);
+		if (VentanaInicio.getUser() == null) {
 			
+			JButton btnRegistro1 = new JButton("Hazte cuenta");
+			btnRegistro1.setBounds(960, 13, 117, 23);
+			panelNorte.add(btnRegistro1);
+			
+			JButton btnLogin1 = new JButton("Iniciar Sesion");
+			btnLogin1.setBounds(1087, 13, 123, 23);
+			panelNorte.add(btnLogin1);
+			
+			btnLogin1.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+					VentanaInicio vi = new VentanaInicio(null);
+					vi.setVisible(true);
+					
+				}
+			});
+			
+			btnRegistro1.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+					VentanaRegistro vr = new VentanaRegistro(null);
+					vr.setVisible(true);
+					
+				}
+			});
 //		ImageIcon iconoImg= new ImageIcon();
 //		ImageIcon img2= new ImageIcon(iconoImg.getImage().getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_SMOOTH));
 //		lblImagen.setIcon(img2);
@@ -360,5 +391,6 @@ public class VentanaNuevoAnuncio extends JFrame {
             }
         });
 
+	}
 	}
 }
