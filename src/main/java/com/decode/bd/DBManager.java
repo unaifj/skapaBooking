@@ -226,6 +226,7 @@ public class DBManager {
               for (Usuario user : usuarioExtent) {
               	
               	Usuario usuario = new Usuario(user.getNomUsuario(), user.getCorreo(), user.getContrasenya());
+              	usuario.setId(user.getId());
               	usuarios.add(usuario);
               }
 
@@ -550,7 +551,7 @@ public class DBManager {
                 	
                 	
              	
-                	TarjetaCredito t = new TarjetaCredito(tarjeta.getId(), tarjeta.getNumTarjeta(), tarjeta.getNumTarjeta(), tarjeta.getCvv());
+                	TarjetaCredito t = new TarjetaCredito(tarjeta.getIdUsuario(), tarjeta.getNumTarjeta(), tarjeta.getNumTarjeta(), tarjeta.getCvv());
                 	
                 	System.out.println(t);
                 	

@@ -14,7 +14,7 @@ import javax.jdo.annotations.PersistenceCapable;
 public class TarjetaCredito {
 	
 	@ForeignKey
-	private int id;
+	private int idUsuario;
 	private int numTarjeta;
 	private int fecha;
 	private int cvv;
@@ -27,7 +27,7 @@ public class TarjetaCredito {
 	 */
 	public TarjetaCredito(int id, int numTarjeta, int fecha, int cvv) {
 		super();
-		this.id = id;
+		this.idUsuario = id;
 		this.numTarjeta = numTarjeta;
 		this.fecha = fecha;
 		this.cvv = cvv;
@@ -37,7 +37,7 @@ public class TarjetaCredito {
 	 */
 	public TarjetaCredito() {
 		super();
-		this.id = 0;
+		this.idUsuario = 0;
 		this.numTarjeta = 0;
 		this.fecha = 0;
 		this.cvv = 0;
@@ -46,15 +46,15 @@ public class TarjetaCredito {
 	 * Devuelve el usuario de la clase Usuario
 	 * @return Usuario de la clase usuario
 	 */
-	public int getId() {
-		return id;
+	public int getIdUsuario() {
+		return idUsuario;
 	}
 	/**
 	 * Para cambiar el usuario de la clase Usuario
 	 * @param  Usuario con el nuevo valor del Usuario
 	 */
-	public void setId(int id) {
-		this.id = id;
+	public void setIdUsuario(int id) {
+		this.idUsuario = id;
 	}
 	/**
 	 * Devuelve el numero de Tarjeta
@@ -103,7 +103,7 @@ public class TarjetaCredito {
 	 */
 	@Override
 	public String toString() {
-		return "TarjetaCredito [id=" + id + ", numTarjeta=" + numTarjeta + ", fecha=" + fecha + ", cvv=" + cvv
+		return "TarjetaCredito [id=" + idUsuario + ", numTarjeta=" + numTarjeta + ", fecha=" + fecha + ", cvv=" + cvv
 				+ "]";
 	}
 	
