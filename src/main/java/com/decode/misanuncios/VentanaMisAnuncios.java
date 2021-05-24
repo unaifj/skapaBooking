@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -376,7 +377,7 @@ ImageIcon ico1= new ImageIcon("img/tonyespañol.png");//meter las rutas en la bd
 		});
 		
 		
-		List<Anuncio> anuncios;
+		List<Anuncio> anuncios = new ArrayList<Anuncio>();
 		
 		int y = 0;
 		anuncios = dbm.getAnuncios();

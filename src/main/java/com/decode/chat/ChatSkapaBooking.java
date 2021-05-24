@@ -23,6 +23,7 @@ import javax.swing.JTextField;
 import com.decode.contacto.Contacto;
 
 public class ChatSkapaBooking extends JFrame{
+	
 	JFrame ventana_chat = null;
 	JButton btn_enviar = null;
 	JTextField txt_mensaje = null;
@@ -37,6 +38,7 @@ public class ChatSkapaBooking extends JFrame{
 	
 	public ChatSkapaBooking() {
 		doInterfaz();
+		
 	}
 
 	private void doInterfaz() {
@@ -107,7 +109,9 @@ public class ChatSkapaBooking extends JFrame{
 			}
 		});
 		principal.start();
+		
 
+		ventana_chat.setVisible(false);
 		
 	}
 	public void leer() {
@@ -130,6 +134,8 @@ public class ChatSkapaBooking extends JFrame{
 		
 		
 	}
+	
+
 
 	public void escribir() {
 		Thread escribir_hilo = new Thread(new Runnable() {
@@ -160,6 +166,7 @@ public class ChatSkapaBooking extends JFrame{
 	public static void main(String[] args) {
 		
 		new ChatSkapaBooking();
+		
 		
 	}
 

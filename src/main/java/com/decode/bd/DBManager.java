@@ -77,17 +77,22 @@ public class DBManager {
 			Calendar fechaEntrada = new GregorianCalendar(2021, 6, 24);
 			Calendar fechaSalida = new GregorianCalendar(2021, 6, 31);
 			
+
 			TarjetaCredito t = new TarjetaCredito(0,1232,1212,123);
 			
 			Reserva res1 = new Reserva(userA.getId(),apar1.getId(),"Contrareembolso", fechaEntrada, fechaSalida, 5, t.getId());
 			pm.makePersistent(res1);
+
+//			Reserva res1 = new Reserva(userA,"Contrareembolso", fechaEntrada, fechaSalida, 5);
+//			pm.makePersistent(res1);
+
 			
-			List<Reserva>reservasA = new ArrayList<Reserva>();
-			reservasA.add(res1);
+//			List<Reserva>reservasA = new ArrayList<Reserva>();
+//			reservasA.add(res1);
 		
 
-			Opinion op = new Opinion(userA, "opinion titulo", "Descripcion", 8.7f);
-			pm.makePersistent(op);
+//			Opinion op = new Opinion(userA, "opinion titulo", "Descripcion", 8.7f);
+//			pm.makePersistent(op);
 			
 			Servidor s1 = new Servidor(0, "Server1", "servidor@gmail.com", "server1233", 80);
 			pm.makePersistent(s1);
@@ -228,6 +233,7 @@ public class DBManager {
               for (Usuario user : usuarioExtent) {
               	
               	Usuario usuario = new Usuario(user.getNomUsuario(), user.getCorreo(), user.getContrasenya());
+              	usuario.setId(user.getId());
               	usuarios.add(usuario);
               }
 
@@ -552,7 +558,7 @@ public class DBManager {
                 	
                 	
              	
-                	TarjetaCredito t = new TarjetaCredito(tarjeta.getId(), tarjeta.getNumTarjeta(), tarjeta.getNumTarjeta(), tarjeta.getCvv());
+                	TarjetaCredito t = new TarjetaCredito(tarjeta.getIdUsuario(), tarjeta.getNumTarjeta(), tarjeta.getNumTarjeta(), tarjeta.getCvv());
                 	
                 	System.out.println(t);
                 	
@@ -720,6 +726,8 @@ public class DBManager {
                 	Anuncio a = new Anuncio(anuncio.getIdUsuario(), aparta, anuncio.getTitulo(), 
                 			anuncio.getDescripcion(), anuncio.getPrecioNoche(), anuncio.isDisponibilidad(), anuncio.getNumPersonas(), anuncio.getImg());
                 
+                	a.setId(anuncio.getId());
+                	
                 	anuncios.add(a);
                 	
                 }
@@ -911,7 +919,7 @@ public class DBManager {
 
                     while (iter.hasNext()) {
                     	Anuncio anuncio = (Anuncio) iter.next();
-                        if (anuncio.getTitulo() == anun.getTitulo()) {
+                    	if (anuncio.getId() == anun.getId()) {
                             System.out.println("* Updating: " + anuncio + "\n* To: " + anun);
                             anuncio.setApartamento(anun.getApartamento());
                             anuncio.setDescripcion(anun.getDescripcion());
