@@ -101,21 +101,7 @@ public class VentanaEditarAnuncioAdmin extends JFrame {
 		lblMoneda.setBounds(765, 8, 46, 24);
 		panelNorte.add(lblMoneda);
 		
-		JButton btnRegistro = new JButton("Hazte cuenta");
-		btnRegistro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnRegistro.setBounds(960, 13, 117, 23);
-		panelNorte.add(btnRegistro);
-		
-		JButton btnLogin = new JButton("Iniciar Sesion");
-		btnLogin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnLogin.setBounds(1087, 13, 123, 23);
-		panelNorte.add(btnLogin);
+
 		
 		ImageIcon ico1= new ImageIcon("img/tonyespañol.png");
 		
@@ -271,6 +257,10 @@ public class VentanaEditarAnuncioAdmin extends JFrame {
 		lblFantasia.setBounds(1062, 17, 201, 14);
 		panelNorte.add(lblFantasia);
 		
+		JButton btnAtras = new JButton("Atras");
+		btnAtras.setBounds(33, 721, 89, 23);
+		contentPane.add(btnAtras);
+		
 		
 		//BOTON IMAGEN 
 		btnActImagen.addActionListener(new ActionListener() {
@@ -300,6 +290,18 @@ public class VentanaEditarAnuncioAdmin extends JFrame {
 		
 			}
 			
+		});
+
+		btnAtras.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaAdminAnuncio vaa= new VentanaAdminAnuncio();
+				setVisible(false);
+				vaa.setVisible(true);
+				
+				
+			}
 		});
 		
 		btnPublicar.addActionListener(new ActionListener() {

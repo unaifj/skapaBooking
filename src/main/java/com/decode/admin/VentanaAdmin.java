@@ -169,12 +169,9 @@ public class VentanaAdmin extends JFrame  {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				VentanaPrincipal p= new VentanaPrincipal("ES", null);
-
-			
-
+				VentanaAdminOpinion vao = new VentanaAdminOpinion();
 				setVisible(false);
-				p.setVisible(true);
+				vao.setVisible(true);
 			}
 		});
 		

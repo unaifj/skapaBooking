@@ -114,9 +114,9 @@ public class VentanaEditarUsuario extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				VentanaAdmin va = new VentanaAdmin();
+				VentanaAdminUsuarios vao = new VentanaAdminUsuarios();
 				setVisible(true);
-				va.setVisible(true);
+				vao.setVisible(true);
 				
 			}
 			

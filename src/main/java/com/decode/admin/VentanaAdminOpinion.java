@@ -132,8 +132,8 @@ public class VentanaAdminOpinion extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				setVisible(false);
 				VentanaAdmin va = new VentanaAdmin();
+				setVisible(false);
 				va.setVisible(true);
 				
 				

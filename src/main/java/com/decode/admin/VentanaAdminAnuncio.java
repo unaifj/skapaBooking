@@ -23,6 +23,7 @@ import com.decode.bd.DBManager;
 import com.decode.objects.Anuncio;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
+import com.decode.ventanaPrincipal.VentanaPrincipal;
 
 public class VentanaAdminAnuncio extends JFrame  {
 	
@@ -104,6 +105,10 @@ public class VentanaAdminAnuncio extends JFrame  {
 		getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Atras");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnNewButton_2.setBounds(26, 137, 89, 23);
 		getContentPane().add(btnNewButton_2);
 		
@@ -162,6 +167,17 @@ public class VentanaAdminAnuncio extends JFrame  {
 			}
 		});
 		
+		btnNewButton_2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaAdmin va= new VentanaAdmin();
+				setVisible(false);
+				va.setVisible(true);
+				
+				
+			}
+		});
 		
 	
 		

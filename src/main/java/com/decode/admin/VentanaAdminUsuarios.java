@@ -100,6 +100,10 @@ public class VentanaAdminUsuarios extends JFrame  {
 		getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Atras");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnNewButton_2.setBounds(26, 137, 89, 23);
 		getContentPane().add(btnNewButton_2);
 		
@@ -154,6 +158,18 @@ public class VentanaAdminUsuarios extends JFrame  {
 				VentanaEditarUsuario p= new VentanaEditarUsuario(u);
 				p.setVisible(true);
 				setVisible(false);
+				
+			}
+		});
+
+		btnNewButton_2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaAdmin va= new VentanaAdmin();
+				setVisible(false);
+				va.setVisible(true);
+				
 				
 			}
 		});

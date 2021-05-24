@@ -80,6 +80,7 @@ public class VentanaEditarOpiniones extends JFrame {
 		JButton btnVolver = new JButton("Volver\r\n");
 		btnVolver.setBounds(256, 428, 89, 35);
 		getContentPane().add(btnVolver);
+		
 		btnVolver.addActionListener(new ActionListener() {
 			
 			@Override
