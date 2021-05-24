@@ -41,6 +41,7 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
 import javax.swing.JCheckBox;
+import com.toedter.calendar.JDateChooser;
 
 
 public class VentanaPagoDatos extends JFrame {
@@ -134,49 +135,54 @@ public class VentanaPagoDatos extends JFrame {
 		ImageIcon img1= new ImageIcon(ico1.getImage().getScaledInstance(lblBandera.getWidth(), lblBandera.getHeight(), Image.SCALE_SMOOTH));
 		lblBandera.setIcon(img1);
 		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.ORANGE);
+		panel.setBounds(329, 143, 438, 474);
+		getContentPane().add(panel);
+		panel.setLayout(null);
+		
 		JButton btnNewButton_2 = new JButton("Atras");
-		btnNewButton_2.setBounds(26, 137, 89, 23);
-		getContentPane().add(btnNewButton_2);
+		btnNewButton_2.setBounds(62, 355, 84, 30);
+		panel.add(btnNewButton_2);
 		
 	
 		
 		JButton btnPagar = new JButton("Pagar");
-		btnPagar.setBounds(771, 710, 125, 32);
-		getContentPane().add(btnPagar);
+		btnPagar.setBounds(264, 355, 102, 30);
+		panel.add(btnPagar);
 		
-		textFieldNumPersonas = new JTextField();
-		textFieldNumPersonas.setBounds(232, 229, 77, 20);
-		getContentPane().add(textFieldNumPersonas);
-		textFieldNumPersonas.setColumns(10);
+		JLabel lblNewLabel_2 = new JLabel("Datos de la reserva");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblNewLabel_2.setBounds(148, 11, 152, 30);
+		panel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_1 = new JLabel("Numero de personas:");
+		lblNewLabel_1.setBounds(25, 84, 164, 19);
+		panel.add(lblNewLabel_1);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel_1.setBounds(58, 228, 164, 19);
-		getContentPane().add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Fecha de entrada:");
-		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel_1_1.setBounds(58, 298, 164, 19);
-		getContentPane().add(lblNewLabel_1_1);
+		textFieldNumPersonas = new JTextField();
+		textFieldNumPersonas.setBounds(215, 85, 77, 20);
+		panel.add(textFieldNumPersonas);
+		textFieldNumPersonas.setColumns(10);
 		
 		JLabel lblNewLabel_1_1_1 = new JLabel("Fecha de salida:");
+		lblNewLabel_1_1_1.setBounds(229, 147, 164, 19);
+		panel.add(lblNewLabel_1_1_1);
 		lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel_1_1_1.setBounds(368, 298, 164, 19);
-		getContentPane().add(lblNewLabel_1_1_1);
 		
-		btnNewButton_2.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-				
-				VentanaPago p = new VentanaPago(anuncio);
-				p.setVisible(true);
-				setVisible(false);
-				
-			}
-		});
+		JDateChooser dateChooser_1 = new JDateChooser();
+		dateChooser_1.setBounds(229, 183, 143, 23);
+		panel.add(dateChooser_1);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("Fecha de entrada:");
+		lblNewLabel_1_1.setBounds(25, 147, 164, 19);
+		panel.add(lblNewLabel_1_1);
+		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+		
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setBounds(25, 183, 143, 23);
+		panel.add(dateChooser);
 		
 		btnPagar.addActionListener(new ActionListener() {
 			
@@ -198,6 +204,20 @@ public class VentanaPagoDatos extends JFrame {
 				}catch(DBException e1){
 					
 				}
+			}
+		});
+		
+		btnNewButton_2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				
+				VentanaPago p = new VentanaPago(anuncio);
+				p.setVisible(true);
+				setVisible(false);
+				
 			}
 		});
 		
