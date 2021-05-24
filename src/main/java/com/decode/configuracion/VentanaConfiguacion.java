@@ -6,6 +6,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 
 import javax.swing.ImageIcon;
@@ -18,6 +20,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import com.decode.bd.DBManager;
+import com.decode.contacto.Contacto;
 import com.decode.misanuncios.VentanaNuevoAnuncio;
 import com.decode.objects.Usuario;
 import com.decode.sesion.VentanaInicio;
@@ -133,112 +136,128 @@ public class VentanaConfiguacion extends JFrame  {
 		lblBandera.setIcon(img1);
 		
 		JLabel lblNewLabel_1 = new JLabel("Configuracion general");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_1.setBounds(10, 120, 179, 14);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel_1.setBounds(10, 120, 227, 33);
 		getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("Informacion de la cuenta");
-		lblNewLabel_3.setBounds(59, 145, 130, 14);
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel_3.setBounds(45, 175, 191, 20);
 		getContentPane().add(lblNewLabel_3);
 		
 		textNomUsu = new JTextField(user.getNomUsuario());
 		textNomUsu.setEditable(false);
-		textNomUsu.setBounds(218, 187, 130, 20);
+		textNomUsu.setBounds(218, 206, 130, 20);
 		getContentPane().add(textNomUsu);
 		textNomUsu.setColumns(10);
 		
 		JLabel lblNewLabel_4 = new JLabel("Nombre de usuario");
-		lblNewLabel_4.setBounds(82, 190, 107, 14);
+		lblNewLabel_4.setBounds(82, 209, 107, 14);
 		getContentPane().add(lblNewLabel_4);
 		
 		textNom = new JTextField(user.getNombre());
 		textNom.setEditable(false);
-		textNom.setBounds(218, 229, 130, 20);
+		textNom.setBounds(218, 260, 130, 20);
 		getContentPane().add(textNom);
 		textNom.setColumns(10);
 		
 		JButton btnEditarNomUsuario = new JButton("Editar");
-		btnEditarNomUsuario.setBounds(381, 186, 80, 23);
+		btnEditarNomUsuario.setBounds(381, 205, 80, 23);
 		getContentPane().add(btnEditarNomUsuario);
 		
 		JLabel lblNewLabel_5 = new JLabel("Nombre");
-		lblNewLabel_5.setBounds(82, 232, 46, 14);
+		lblNewLabel_5.setBounds(82, 263, 46, 14);
 		getContentPane().add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("Apellidos");
-		lblNewLabel_6.setBounds(82, 257, 46, 14);
+		lblNewLabel_6.setBounds(82, 297, 46, 14);
 		getContentPane().add(lblNewLabel_6);
 		
 		textApe = new JTextField(user.getApellidos());
 		textApe.setEditable(false);
-		textApe.setBounds(218, 254, 130, 20);
+		textApe.setBounds(218, 291, 130, 20);
 		getContentPane().add(textApe);
 		textApe.setColumns(10);
 		
 		JButton btnEditarNombreApp = new JButton("Editar");
-		btnEditarNombreApp.setBounds(381, 253, 80, 23);
+		btnEditarNombreApp.setBounds(381, 288, 80, 23);
 		getContentPane().add(btnEditarNombreApp);
 		
 		JLabel lblNewLabel_7 = new JLabel("Imagen");
-		lblNewLabel_7.setBounds(643, 257, 46, 14);
+		lblNewLabel_7.setBounds(643, 276, 46, 14);
 		getContentPane().add(lblNewLabel_7);
 		
 		JButton btnEditarImagen = new JButton("Select");
-		btnEditarImagen.setBounds(954, 253, 80, 23);
+		btnEditarImagen.setBounds(954, 272, 80, 23);
 		getContentPane().add(btnEditarImagen);
 		
 		JLabel lblNewLabel_4_1 = new JLabel("Correo electronico");
-		lblNewLabel_4_1.setBounds(643, 183, 107, 14);
+		lblNewLabel_4_1.setBounds(643, 206, 107, 14);
 		getContentPane().add(lblNewLabel_4_1);
 		
 		textCorreo = new JTextField(user.getCorreo());
 		textCorreo.setEditable(false);
 		textCorreo.setColumns(10);
-		textCorreo.setBounds(760, 180, 149, 20);
+		textCorreo.setBounds(763, 206, 149, 20);
 		getContentPane().add(textCorreo);
 		
 		JButton btnEditarCorreo = new JButton("Editar");
-		btnEditarCorreo.setBounds(954, 179, 80, 23);
+		btnEditarCorreo.setBounds(954, 205, 80, 23);
 		getContentPane().add(btnEditarCorreo);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Cambiar contraseña");
-		lblNewLabel_3_1.setBounds(59, 330, 130, 14);
+		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel_3_1.setBounds(59, 425, 162, 20);
 		getContentPane().add(lblNewLabel_3_1);
 		
 		JLabel lblNewLabel_4_2 = new JLabel("Contraseña actual");
-		lblNewLabel_4_2.setBounds(82, 370, 107, 14);
+		lblNewLabel_4_2.setBounds(82, 486, 107, 14);
 		getContentPane().add(lblNewLabel_4_2);
 		
 		textContrasenyaActual = new JTextField();
 		textContrasenyaActual.setColumns(10);
-		textContrasenyaActual.setBounds(199, 367, 130, 20);
+		textContrasenyaActual.setBounds(193, 483, 130, 20);
 		getContentPane().add(textContrasenyaActual);
 		
 		JLabel lblNewLabel_4_2_1 = new JLabel("Nueva contraseña");
-		lblNewLabel_4_2_1.setBounds(365, 370, 107, 14);
+		lblNewLabel_4_2_1.setBounds(372, 486, 107, 14);
 		getContentPane().add(lblNewLabel_4_2_1);
 		
 		textNuevaCon = new JTextField();
 		textNuevaCon.setColumns(10);
-		textNuevaCon.setBounds(482, 367, 130, 20);
+		textNuevaCon.setBounds(482, 480, 130, 20);
 		getContentPane().add(textNuevaCon);
 		
 		JLabel lblNewLabel_4_2_2 = new JLabel("Repetir nueva contraseña");
-		lblNewLabel_4_2_2.setBounds(643, 370, 149, 14);
+		lblNewLabel_4_2_2.setBounds(665, 483, 149, 14);
 		getContentPane().add(lblNewLabel_4_2_2);
 		
 		textNuevaCon2 = new JTextField();
 		textNuevaCon2.setColumns(10);
-		textNuevaCon2.setBounds(802, 367, 130, 20);
+		textNuevaCon2.setBounds(805, 480, 130, 20);
 		getContentPane().add(textNuevaCon2);
 		
 		JButton btnContrasenya = new JButton("Guardar");
-		btnContrasenya.setBounds(954, 366, 89, 23);
+		btnContrasenya.setBounds(967, 477, 89, 23);
 		getContentPane().add(btnContrasenya);
 		
 		JButton btnAñadirAnuncio = new JButton("Añadir Anuncio");
-		btnAñadirAnuncio.setBounds(72, 415, 117, 23);
+		btnAñadirAnuncio.setBounds(82, 557, 117, 23);
 		getContentPane().add(btnAñadirAnuncio);
+		
+		JPanel panel = new JPanel();
+		panel.setLayout(null);
+		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setBounds(0, 738, 1273, 130);
+		getContentPane().add(panel);
+		
+		JLabel lblContacto = new JLabel("Contacta con nosotros");
+		lblContacto.setBounds(1031, 11, 141, 14);
+		panel.add(lblContacto);
+		
+		JButton btnAadirAtras = new JButton(" Atras\r\n");
+		btnAadirAtras.setBounds(72, 661, 117, 23);
+		getContentPane().add(btnAadirAtras);
 		
 		DBManager dbm = new DBManager();
 		
@@ -361,7 +380,40 @@ public class VentanaConfiguacion extends JFrame  {
 		});
 		
 		
-		
+           lblContacto.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setVisible(false);
+				Contacto c = new Contacto();
+				c.setVisible(true);
+				
+			}
+		});
 
 	
 		

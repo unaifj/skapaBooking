@@ -52,6 +52,7 @@ public class DBManager {
 			Usuario userC = new Usuario("Isaac", "isaac@gmail.com", "isaac123");
 			pm.makePersistent(userC);
 			
+			
 			Localidad triana1=new Localidad("Andalucia","Triana",49500, "Avd San Miguel 4");
 			pm.makePersistent(triana1);
 			Localidad conil1=new Localidad("Andaluzcia","Conil",48500, "Avd San Patricio 6");

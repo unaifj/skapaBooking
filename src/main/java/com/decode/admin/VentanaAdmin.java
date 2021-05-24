@@ -75,46 +75,7 @@ public class VentanaAdmin extends JFrame  {
 		
 		
 		
-		if (VentanaInicio.getUser() == null) {
-			
-			JButton btnRegistro = new JButton("Hazte cuenta");
-			btnRegistro.setBounds(960, 13, 117, 23);
-			panelNorte.add(btnRegistro);
-			
-			JButton btnLogin = new JButton("Iniciar Sesion");
-			btnLogin.setBounds(1087, 13, 123, 23);
-			panelNorte.add(btnLogin);
-			
-			btnLogin.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					setVisible(false);
-					VentanaInicio vi = new VentanaInicio(null);
-					vi.setVisible(true);
-					
-				}
-			});
-			
-			btnRegistro.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					setVisible(false);
-					VentanaRegistro vr = new VentanaRegistro(null);
-					vr.setVisible(true);
-					
-				}
-			});
-			
-		}else {
-			JLabel lblNewLabel = new JLabel("Has iniciado sesion como:  " + VentanaInicio.getUser().getNomUsuario());
-			lblNewLabel.setForeground(Color.LIGHT_GRAY);
-			lblNewLabel.setBounds(1062, 17, 201, 14);
-			panelNorte.add(lblNewLabel);
-			
-			
-		}
+		
 		
 		
 		ImageIcon ico1= new ImageIcon("img/tonyespañol.png");//meter las rutas en la bd
@@ -158,17 +119,18 @@ public class VentanaAdmin extends JFrame  {
 		JButton btnAdministrarOpiniones = new JButton("Administrar opiniones");
 		btnAdministrarOpiniones.setBounds(89, 309, 228, 39);
 		panel_1.add(btnAdministrarOpiniones);
-		if (VentanaInicio.getUser() == null) {
+		
+            if (VentanaInicio.getUser() == null) {
 			
-			JButton btnRegistro1 = new JButton("Hazte cuenta");
-			btnRegistro1.setBounds(960, 13, 117, 23);
-			panelNorte.add(btnRegistro1);
+			JButton btnRegistro = new JButton("Hazte cuenta");
+			btnRegistro.setBounds(960, 13, 117, 23);
+			panelNorte.add(btnRegistro);
 			
-			JButton btnLogin1 = new JButton("Iniciar Sesion");
-			btnLogin1.setBounds(1087, 13, 123, 23);
-			panelNorte.add(btnLogin1);
+			JButton btnLogin = new JButton("Iniciar Sesion");
+			btnLogin.setBounds(1087, 13, 123, 23);
+			panelNorte.add(btnLogin);
 			
-			btnLogin1.addActionListener(new ActionListener() {
+			btnLogin.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -179,7 +141,7 @@ public class VentanaAdmin extends JFrame  {
 				}
 			});
 			
-			btnRegistro1.addActionListener(new ActionListener() {
+			btnRegistro.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -191,13 +153,16 @@ public class VentanaAdmin extends JFrame  {
 			});
 			
 		}else {
-			JLabel lblNewLabel1 = new JLabel("Has iniciado sesion como:  " + VentanaInicio.getUser().getNomUsuario());
-			lblNewLabel1.setForeground(Color.LIGHT_GRAY);
-			lblNewLabel1.setBounds(1062, 17, 201, 14);
-			panelNorte.add(lblNewLabel1);
+			JLabel lblNewLabel = new JLabel("Has iniciado sesion como:  " + VentanaInicio.getUser().getNomUsuario());
+			lblNewLabel.setForeground(Color.LIGHT_GRAY);
+			lblNewLabel.setBounds(1062, 17, 201, 14);
+			panelNorte.add(lblNewLabel);
 			
 			
 		}
+			
+		
+		
 		lblContacto.addMouseListener(new MouseListener() {
 			
 			@Override

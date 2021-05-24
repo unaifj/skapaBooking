@@ -81,21 +81,8 @@ public class VentanaAnyadirTarjeta extends JFrame {
 		lblMoneda.setBounds(765, 8, 46, 24);
 		panelNorte.add(lblMoneda);
 		
-		JButton btnRegistro = new JButton("Hazte cuenta");
-		btnRegistro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnRegistro.setBounds(960, 13, 117, 23);
-		panelNorte.add(btnRegistro);
 		
-		JButton btnLogin = new JButton("Iniciar Sesion");
-		btnLogin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnLogin.setBounds(1087, 13, 123, 23);
-		panelNorte.add(btnLogin);
+		
 		
 		ImageIcon ico1= new ImageIcon("img/tonyespañol.png");
 		
@@ -164,15 +151,15 @@ public class VentanaAnyadirTarjeta extends JFrame {
 		DBManager dbm = new DBManager();
 		if (VentanaInicio.getUser() == null) {
 			
-			JButton btnRegistro1 = new JButton("Hazte cuenta");
-			btnRegistro1.setBounds(960, 13, 117, 23);
-			panelNorte.add(btnRegistro1);
+			JButton btnRegistro = new JButton("Hazte cuenta");
+			btnRegistro.setBounds(960, 13, 117, 23);
+			panelNorte.add(btnRegistro);
 			
-			JButton btnLogin1 = new JButton("Iniciar Sesion");
-			btnLogin1.setBounds(1087, 13, 123, 23);
-			panelNorte.add(btnLogin1);
+			JButton btnLogin = new JButton("Iniciar Sesion");
+			btnLogin.setBounds(1087, 13, 123, 23);
+			panelNorte.add(btnLogin);
 			
-			btnLogin1.addActionListener(new ActionListener() {
+			btnLogin.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -183,7 +170,7 @@ public class VentanaAnyadirTarjeta extends JFrame {
 				}
 			});
 			
-			btnRegistro1.addActionListener(new ActionListener() {
+			btnRegistro.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {

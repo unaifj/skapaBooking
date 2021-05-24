@@ -25,6 +25,7 @@ import com.decode.objects.Apartamento;
 import com.decode.objects.Localidad;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
+import com.decode.ventanaPrincipal.VentanaAnuncio;
 import com.decode.ventanaPrincipal.VentanaPrincipal;
 
 import javax.swing.JTextField;
@@ -77,24 +78,9 @@ public class VentanaPago extends JFrame {
 		lblMoneda.setBounds(765, 8, 46, 24);
 		panelNorte.add(lblMoneda);
 		
-		JButton btnRegistro = new JButton("Hazte cuenta");
-		btnRegistro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnRegistro.setBounds(960, 13, 117, 23);
-		panelNorte.add(btnRegistro);
-		
-		JButton btnLogin = new JButton("Iniciar Sesion");
-		btnLogin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnLogin.setBounds(1087, 13, 123, 23);
-		panelNorte.add(btnLogin);
 		
 		JLabel lblTarjeta = new JLabel("");
-		lblTarjeta.setBounds(275, 285, 197, 137);
+		lblTarjeta.setBounds(263, 285, 197, 137);
 		contentPane.add(lblTarjeta);
 		
 		JLabel lblReembolso = new JLabel("");
@@ -126,20 +112,20 @@ public class VentanaPago extends JFrame {
 		btnTarjeta.setBounds(316, 530, 138, 23);
 		contentPane.add(btnTarjeta);
 		
-		JButton btnNewButton = new JButton("Volver");
-		btnNewButton.setBounds(10, 140, 89, 23);
-		contentPane.add(btnNewButton);
+		JButton btnVolver = new JButton("Volver");
+		btnVolver.setBounds(10, 140, 89, 23);
+		contentPane.add(btnVolver);
 		if (VentanaInicio.getUser() == null) {
 			
-			JButton btnRegistro1 = new JButton("Hazte cuenta");
-			btnRegistro1.setBounds(960, 13, 117, 23);
-			panelNorte.add(btnRegistro1);
+			JButton btnRegistro = new JButton("Hazte cuenta");
+			btnRegistro.setBounds(960, 13, 117, 23);
+			panelNorte.add(btnRegistro);
 			
-			JButton btnLogin1 = new JButton("Iniciar Sesion");
-			btnLogin1.setBounds(1087, 13, 123, 23);
-			panelNorte.add(btnLogin1);
+			JButton btnLogin = new JButton("Iniciar Sesion");
+			btnLogin.setBounds(1087, 13, 123, 23);
+			panelNorte.add(btnLogin);
 			
-			btnLogin1.addActionListener(new ActionListener() {
+			btnLogin.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -150,7 +136,7 @@ public class VentanaPago extends JFrame {
 				}
 			});
 			
-			btnRegistro1.addActionListener(new ActionListener() {
+			btnRegistro.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -161,7 +147,14 @@ public class VentanaPago extends JFrame {
 				}
 			});
 			
-		
+		}else {
+            JLabel lblNewLabel1 = new JLabel("Has iniciado sesion como:  " + VentanaInicio.getUser().getNomUsuario());
+            lblNewLabel1.setForeground(Color.LIGHT_GRAY);
+            lblNewLabel1.setBounds(1062, 17, 201, 14);
+            panelNorte.add(lblNewLabel1);
+
+
+        }
 		
 		btnTarjeta.addActionListener(new ActionListener() {
 			
@@ -172,6 +165,8 @@ public class VentanaPago extends JFrame {
 				 C.setVisible(true);
 			}
 		});
+		
+		
 		
 		btnContrareembolso.addActionListener(new ActionListener() {
 			
@@ -184,7 +179,7 @@ public class VentanaPago extends JFrame {
 			}
 		});
 		
-		btnNewButton.addActionListener(new ActionListener() {
+		btnVolver.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -196,7 +191,21 @@ public class VentanaPago extends JFrame {
 			}
 		});
 		
+		btnVolver.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VentanaAnuncio va = new VentanaAnuncio(anuncio,null);
+				setVisible(false);
+				va.setVisible(true);
+				
+				
+			}
+			
+		});
+		
 	}
 }
 
-}
+
