@@ -92,7 +92,7 @@ public class VentanaMisAnuncios extends JFrame  {
 		panelNorte.add(lblBandera);
 		
 		
-ImageIcon ico1= new ImageIcon("img/tonyespañol.png");//meter las rutas en la bd
+		ImageIcon ico1= new ImageIcon("img/tonyespañol.png");//meter las rutas en la bd
 		
 		ImageIcon img1= new ImageIcon(ico1.getImage().getScaledInstance(lblBandera.getWidth(), lblBandera.getHeight(), Image.SCALE_SMOOTH));
 		lblBandera.setIcon(img1);
@@ -330,7 +330,40 @@ ImageIcon ico1= new ImageIcon("img/tonyespañol.png");//meter las rutas en la bd
 		JLabel lblContacto = new JLabel("Contacta con nosotros");
 		lblContacto.setBounds(1122, 11, 141, 14);
 		panel.add(lblContacto);
-		
+		lblContacto.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setVisible(false);
+				Contacto c = new Contacto();
+				c.setVisible(true);
+				
+			}
+		});
 		JLabel lblAgregarArchivo = new JLabel("New label");
 		lblAgregarArchivo.setBounds(1199, 114, 64, 47);
 		getContentPane().add(lblAgregarArchivo);

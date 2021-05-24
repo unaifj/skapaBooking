@@ -143,7 +143,7 @@ public class VentanaRegistro extends JFrame {
 		contentPane.add(panel_1);
 		
 		JLabel lblContacto = new JLabel("Contacta con nosotros");
-		lblContacto.setBounds(1122, 11, 141, 14);
+		lblContacto.setBounds(309, 54, 141, 14);
 		panel_1.add(lblContacto);
 		btnSingUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

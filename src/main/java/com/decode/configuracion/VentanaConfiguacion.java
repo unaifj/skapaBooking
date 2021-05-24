@@ -236,9 +236,9 @@ public class VentanaConfiguacion extends JFrame  {
 		btnContrasenya.setBounds(954, 366, 89, 23);
 		getContentPane().add(btnContrasenya);
 		
-		JButton btnNewButton = new JButton("Añadir Anuncio");
-		btnNewButton.setBounds(72, 415, 117, 23);
-		getContentPane().add(btnNewButton);
+		JButton btnAñadirAnuncio = new JButton("Añadir Anuncio");
+		btnAñadirAnuncio.setBounds(72, 415, 117, 23);
+		getContentPane().add(btnAñadirAnuncio);
 		
 		DBManager dbm = new DBManager();
 		
@@ -333,7 +333,7 @@ public class VentanaConfiguacion extends JFrame  {
 			}
 		});
 		
-		btnNewButton.addActionListener(new ActionListener() {
+		btnAñadirAnuncio.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {

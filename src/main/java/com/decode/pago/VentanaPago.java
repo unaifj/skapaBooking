@@ -161,14 +161,7 @@ public class VentanaPago extends JFrame {
 				}
 			});
 			
-		}else {
-			JLabel lblNewLabel1 = new JLabel("Has iniciado sesion como:  " + VentanaInicio.getUser().getNomUsuario());
-			lblNewLabel1.setForeground(Color.LIGHT_GRAY);
-			lblNewLabel1.setBounds(1062, 17, 201, 14);
-			panelNorte.add(lblNewLabel1);
-			
-			
-		}
+		
 		
 		btnTarjeta.addActionListener(new ActionListener() {
 			
@@ -206,4 +199,4 @@ public class VentanaPago extends JFrame {
 	}
 }
 
-
+}
