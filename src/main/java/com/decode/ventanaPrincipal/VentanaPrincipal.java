@@ -296,7 +296,7 @@ public class VentanaPrincipal extends JFrame  {
 		panel.setLayout(null);
 		
 		
-		if (VentanaInicio.getUser() == null) {
+		if (user == null) {
 			
 			JButton btnRegistro = new JButton(idiom.getProperty("crearCuenta"));
 			btnRegistro.setBounds(874, 13, 146, 23);
@@ -329,7 +329,7 @@ public class VentanaPrincipal extends JFrame  {
 			});
 			
 		}else {
-			JLabel lblNewLabel = new JLabel(idiom.getProperty("hasIniciadoComo") + " "   + VentanaInicio.getUser().getNomUsuario());
+			JLabel lblNewLabel = new JLabel(idiom.getProperty("hasIniciadoComo") + " "   + user.getNomUsuario());
 			lblNewLabel.setForeground(Color.LIGHT_GRAY);
 			lblNewLabel.setBounds(991, 36, 201, 14);
 			panelNorte.add(lblNewLabel);
@@ -360,7 +360,7 @@ public class VentanaPrincipal extends JFrame  {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
-					VentanaPrincipal2 vp2 = new VentanaPrincipal2("ES",user);
+					VentanaPrincipal vp2 = new VentanaPrincipal("ES", null);
 					vp2.setVisible(true);
 					
 				}

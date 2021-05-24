@@ -31,7 +31,7 @@ import com.decode.objects.Localidad;
 import com.decode.objects.Usuario;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
-import com.decode.ventanaPrincipal.VentanaPrincipal2;
+import com.decode.ventanaPrincipal.VentanaPrincipal;
 
 public class VentanaEditarAnuncio extends JFrame {
 
@@ -331,7 +331,7 @@ public class VentanaEditarAnuncio extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
-					VentanaPrincipal2 vp2 = new VentanaPrincipal2("ES",null);
+					VentanaPrincipal vp2 = new VentanaPrincipal("ES",null);
 					vp2.setVisible(true);
 					
 				}

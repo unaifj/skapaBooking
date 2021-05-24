@@ -1,38 +1,26 @@
 package com.decode.pago;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import com.decode.bd.DBException;
 import com.decode.bd.DBManager;
 import com.decode.objects.Anuncio;
-import com.decode.objects.Apartamento;
-import com.decode.objects.Localidad;
 import com.decode.sesion.VentanaInicio;
 import com.decode.sesion.VentanaRegistro;
 import com.decode.ventanaPrincipal.VentanaAnuncio;
 import com.decode.ventanaPrincipal.VentanaPrincipal;
-import com.decode.ventanaPrincipal.VentanaPrincipal2;
-
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
-import javax.swing.JComboBox;
-import javax.swing.SwingConstants;
 
 public class VentanaPago extends JFrame {
 
@@ -163,7 +151,7 @@ public class VentanaPago extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
-					VentanaPrincipal2 vp2 = new VentanaPrincipal2("ES",null);
+					VentanaPrincipal vp2 = new VentanaPrincipal("ES",null);
 					vp2.setVisible(true);
 					
 				}
