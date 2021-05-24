@@ -77,15 +77,15 @@ public class DBManager {
 			Calendar fechaEntrada = new GregorianCalendar(2021, 6, 24);
 			Calendar fechaSalida = new GregorianCalendar(2021, 6, 31);
 			
-			Reserva res1 = new Reserva(userA,"Contrareembolso", fechaEntrada, fechaSalida, 5);
-			pm.makePersistent(res1);
+//			Reserva res1 = new Reserva(userA,"Contrareembolso", fechaEntrada, fechaSalida, 5);
+//			pm.makePersistent(res1);
 			
-			List<Reserva>reservasA = new ArrayList<Reserva>();
-			reservasA.add(res1);
+//			List<Reserva>reservasA = new ArrayList<Reserva>();
+//			reservasA.add(res1);
 		
 
-			Opinion op = new Opinion(userA, "opinion titulo", "Descripcion", 8.7f);
-			pm.makePersistent(op);
+//			Opinion op = new Opinion(userA, "opinion titulo", "Descripcion", 8.7f);
+//			pm.makePersistent(op);
 			
 			Servidor s1 = new Servidor(0, "Server1", "servidor@gmail.com", "server1233", 80);
 			pm.makePersistent(s1);

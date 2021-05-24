@@ -36,6 +36,15 @@ public class Usuario {
 		this.contrasenya = contrasenya;
 		cont++;
 	}
+	
+	public Usuario() {
+		super();
+		
+		this.nomUsuario = "";
+		this.correo = "";
+		this.contrasenya = "";
+		
+	}
 	/**
 	 * Devuelve el id del Usuario
 	 * @return Int con el id del Usuario
