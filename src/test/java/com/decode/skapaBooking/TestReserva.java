@@ -24,7 +24,7 @@ public class TestReserva {
 	Apartamento apar= new Apartamento(0, 0, null, null);
 	TarjetaCredito t= new TarjetaCredito(0, 0, 0, 0);
 	
-	Reserva reserva = new Reserva(user.getId(),apar.getId(), null, fechaEntrada, fechaSalida, 6,t.getId());
+	Reserva reserva = new Reserva(user.getId(),apar.getId(), null, fechaEntrada, fechaSalida, 6,t.getNumTarjeta());
 	
 
 		@Before

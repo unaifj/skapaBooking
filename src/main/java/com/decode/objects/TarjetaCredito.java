@@ -16,7 +16,6 @@ public class TarjetaCredito {
 	@ForeignKey
 
 
-	private int id;
 	private int idUsuario;
 	private int numTarjeta;
 	private int fecha;
@@ -48,13 +47,7 @@ public class TarjetaCredito {
 		this.cvv = 0;
 	}
 	
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+
 	/**
 	 * Devuelve el usuario de la clase Usuario
 	 * @return Usuario de la clase usuario
@@ -116,7 +109,7 @@ public class TarjetaCredito {
 	 */
 	@Override
 	public String toString() {
-		return "TarjetaCredito [id=" + id + ", idUsuario=" + idUsuario + ", numTarjeta=" + numTarjeta + ", fecha="
+		return "TarjetaCredito [ idUsuario=" + idUsuario + ", numTarjeta=" + numTarjeta + ", fecha="
 				+ fecha + ", cvv=" + cvv + "]";
 	}
 	

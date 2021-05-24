@@ -80,7 +80,7 @@ public class DBManager {
 
 			TarjetaCredito t = new TarjetaCredito(0,1232,1212,123);
 			
-			Reserva res1 = new Reserva(userA.getId(),apar1.getId(),"Contrareembolso", fechaEntrada, fechaSalida, 5, t.getId());
+			Reserva res1 = new Reserva(userA.getId(),apar1.getId(),"Contrareembolso", fechaEntrada, fechaSalida, 5, t.getNumTarjeta());
 			pm.makePersistent(res1);
 
 //			Reserva res1 = new Reserva(userA,"Contrareembolso", fechaEntrada, fechaSalida, 5);
@@ -562,7 +562,7 @@ public class DBManager {
                 	
                 	System.out.println(t);
                 	
-                	if (t.getId() == user.getId()) {
+                	if (t.getIdUsuario() == user.getId()) {
                 		tarjetasUsuario.add(tarjeta);                	}
           
                 }
