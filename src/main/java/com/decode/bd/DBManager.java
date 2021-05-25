@@ -67,11 +67,11 @@ public class DBManager {
 			Apartamento apar3= new Apartamento(8,120,barakaldo1, null);
 			pm.makePersistent(apar3);
 			
-			Anuncio anun1=new Anuncio(userA.getId(), apar1,"Apartamento soleado en la margen izquierda de Sevilla", "Apartamento soleado con vistas al mar ideal para pasar unos dias en el sur de España", 25, true, 4, "img/anuncios/13880304.png");
+			Anuncio anun1=new Anuncio(userA.getId(), apar1,"Apartamento soleado en la margen izquierda de Sevilla", "Apartamento soleado con vistas al mar ideal para pasar unos dias en el sur de España", 25, true, 4, "img/anuncios/13880304.jpg");
 			pm.makePersistent(anun1);
-			Anuncio anun2=new Anuncio(userB.getId(), apar2,"Apartamento soleado muy bien situado en Conil", "Apartamento muy bien situado con vistas a la cala santo amor muy grande y espaciosa", 32, true, 6, "img/anuncios/13880304.png");
+			Anuncio anun2=new Anuncio(userB.getId(), apar2,"Apartamento soleado muy bien situado en Conil", "Apartamento muy bien situado con vistas a la cala santo amor muy grande y espaciosa", 32, true, 6, "img/anuncios/13880304.jpg");
 			pm.makePersistent(anun2);
-			Anuncio anun3=new Anuncio(userC.getId(), apar3,"Apartamento muy bueno y completo para conocer Vizcaya", "Apartamento muy completo con lo basico para dormir cocinar y descansar, lo demas lo dejamos a gusto del cliente", 20, true, 3, "img/anuncios/13880304.png");
+			Anuncio anun3=new Anuncio(userC.getId(), apar3,"Apartamento muy bueno y completo para conocer Vizcaya", "Apartamento muy completo con lo basico para dormir cocinar y descansar, lo demas lo dejamos a gusto del cliente", 20, true, 3, "img/anuncios/13880304.jpg");
 			pm.makePersistent(anun3);
 			
 
@@ -561,10 +561,11 @@ public class DBManager {
              	
                 	TarjetaCredito t = new TarjetaCredito(tarjeta.getIdUsuario(), tarjeta.getNumTarjeta(), tarjeta.getNumTarjeta(), tarjeta.getCvv());
                 	
+                	
                 	System.out.println(t);
                 	
                 	if (t.getIdUsuario() == user.getId()) {
-                		tarjetasUsuario.add(tarjeta);                	}
+                		tarjetasUsuario.add(t);                	}
           
                 }
 
