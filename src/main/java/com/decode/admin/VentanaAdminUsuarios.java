@@ -139,7 +139,9 @@ public class VentanaAdminUsuarios extends JFrame  {
 					DBManager dbm = new DBManager();
 					Usuario u=list.getSelectedValue();
 					dbm.deleteUsuarioByNomUsuario(u.getNomUsuario());
-				
+					VentanaAdminUsuarios v = new VentanaAdminUsuarios();
+					v.setVisible(true);
+					setVisible(false);
 				
 				
 				JOptionPane.showMessageDialog(null, "Usuario correctamente eliminada", "Eliminado correctamente", 1, null);

@@ -144,7 +144,9 @@ public class VentanaAdminAnuncio extends JFrame  {
 					DBManager dbm = new DBManager();
 					Anuncio a=list.getSelectedValue();
 					dbm.deleteAnuncio(a);
-				
+					VentanaAdminAnuncio v = new VentanaAdminAnuncio();
+					v.setVisible(true);
+					setVisible(false);
 				
 				
 				JOptionPane.showMessageDialog(null, "Anuncio correctamente eliminado", "Eliminado correctamente", 1, null);
