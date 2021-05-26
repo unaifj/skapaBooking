@@ -427,6 +427,7 @@ public class VentanaPrincipal extends JFrame  {
 			public void actionPerformed(ActionEvent e) {
 				panelCentro.removeAll();
 				panelCentro.revalidate();
+				panelCentro.repaint();
 
 				String titulo = textDestino.getText();
 			
