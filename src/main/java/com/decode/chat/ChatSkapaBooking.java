@@ -111,7 +111,7 @@ public class ChatSkapaBooking extends JFrame{
 		principal.start();
 		
 
-		ventana_chat.setVisible(false);
+		ventana_chat.setVisible(true);
 		
 	}
 	public void leer() {

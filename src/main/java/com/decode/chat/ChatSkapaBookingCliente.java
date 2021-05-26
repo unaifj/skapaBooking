@@ -19,7 +19,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import com.decode.contacto.Contacto;
-import com.decode.ventanaPrincipal.VentanaAnuncio;
 
 public class ChatSkapaBookingCliente extends JFrame{
 	JTextArea area_chat = null;
